@@ -1,0 +1,27 @@
+---
+// Assinatura "Mapere." do pacote M3, com as mesmas formas. O fundo do SVG original
+// sai para o logo pousar em qualquer seção. Abaixo de 48 px de altura do M,
+// entra o desenho de rio simplificado do próprio pacote, encaixado na mesma caixa.
+import logo from '../data/logo.json';
+
+interface Props {
+  desenho?: 'completo' | 'simplificado';
+  class?: string;
+  decorativo?: boolean;
+}
+
+const { desenho = 'completo', class: classe, decorativo = false } = Astro.props;
+const acessivel = decorativo ? { 'aria-hidden': 'true' as const } : { role: 'img' as const, 'aria-label': 'Mapere.' };
+---
+
+<svg class:list={['logo', classe]} viewBox={logo.viewBox} fill="currentColor" {...acessivel}>
+  {
+    desenho === 'completo' ? (
+      <path d={logo.simbolo48} />
+    ) : (
+      <path d={logo.simbolo24} transform="translate(1.75 7.5) scale(2.0625)" />
+    )
+  }
+  {logo.letras.map((d) => <path class="logo-letra" d={d} />)}
+  <path class="logo-ponto" d={logo.ponto} fill="var(--brasa)"></path>
+</svg>

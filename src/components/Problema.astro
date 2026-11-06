@@ -1,0 +1,403 @@
+---
+import Chip from './Chip.astro';
+import Icone from './Icone.astro';
+import Titulo from './Titulo.astro';
+import mapa from '../data/mapa/problema.json';
+import { problema as t, pesquisa, type StatusId } from '../data/copy';
+
+const pct = (v: number, total: number) => `${((v / total) * 100).toFixed(2)}%`;
+const paradas = mapa.paradas.map((p, i) => ({ ...p, ...t.paradas[i]! }));
+const extras: { xy: number[]; st: StatusId }[] = [
+  { xy: mapa.extras[0]!, st: 'defeito' },
+  { xy: mapa.extras[1]!, st: 'ocupado' },
+];
+// Onde cada anotação pousa em telas largas, em % da caixa do mapa.
+const ancora = [
+  { x: 61, y: 57, guia: 'M572 612 L606 604' },
+  { x: 11, y: 63, guia: 'M398 584 L378 636' },
+  { x: 58, y: 18, guia: 'M520 322 L578 268' },
+];
+const ultima = paradas[paradas.length - 1]!;
+---
+
+<section id="problema" class="secao problema tema-noite sobre-noite" data-secao aria-labelledby="titulo-problema">
+  <div class="problema-palco" id="problema-palco">
+    <div class="problema-texto">
+      <Titulo texto={t.titulo} id="titulo-problema" />
+      <p class="apoio">{t.apoio}</p>
+    </div>
+
+    <div class="problema-mapa">
+      <div class="mapa" id="mapa-problema" role="img" aria-label={t.cena}>
+        <img
+          class="mapa-camada"
+          src="/mapa/cidade-agua-sm.webp"
+          srcset="/mapa/cidade-agua-sm.webp 1000w, /mapa/cidade-agua.webp 1800w"
+          sizes="(min-width: 1000px) 72vw, 150vw"
+          width="1800"
+          height="1807"
+          alt=""
+          loading="lazy"
+          decoding="async"
+        />
+        {
+          [1, 2, 3].map((n) => (
+            <img
+              class="mapa-camada mapa-ruas"
+              data-anel={n}
+              src={`/mapa/cidade-ruas-${n}-sm.webp`}
+              srcset={`/mapa/cidade-ruas-${n}-sm.webp 1000w, /mapa/cidade-ruas-${n}.webp 1800w`}
+              sizes="(min-width: 1000px) 72vw, 150vw"
+              width="1800"
+              height="1807"
+              alt=""
+              loading="lazy"
+              decoding="async"
+            />
+          ))
+        }
+        <svg class="mapa-camada mapa-linhas" viewBox={mapa.viewBox} fill="none" aria-hidden="true">
+          <g class="mapa-arterias">
+            {mapa.arterias.map((a) => <path d={a.d} data-q={a.q} data-t={a.t} />)}
+          </g>
+          <g class="mapa-guias">
+            {ancora.map((a) => <path d={a.guia} />)}
+          </g>
+          <path class="mapa-rota-brilho" d={mapa.rota}></path>
+          <path class="mapa-rota" id="mapa-rota" d={mapa.rota}></path>
+          <circle class="mapa-luz-brilho" r="15" cx={ultima.x} cy={ultima.y}></circle>
+          <circle class="mapa-luz" r="5" cx={ultima.x} cy={ultima.y}></circle>
+        </svg>
+        {
+          extras.map((e) => (
+            <span class="pin mapa-pin-extra" data-st={e.st} style={`left:${pct(e.xy[0]!, mapa.largura)};top:${pct(e.xy[1]!, mapa.altura)}`}>
+              <span class="pin-corpo">
+                <Icone nome={e.st} tamanho={15} traco={3.2} />
+              </span>
+              <span class="pin-haste" />
+              <span class="pin-base" />
+            </span>
+          ))
+        }
+        {
+          paradas.map((p, i) => (
+            <span class="pin mapa-pin" data-parada={i} data-t={p.t} style={`left:${pct(p.x, mapa.largura)};top:${pct(p.y, mapa.altura)}`}>
+              <Chip status={p.status} />
+              <span class="pin-haste" />
+              <span class="pin-base" />
+            </span>
+          ))
+        }
+      </div>
+
+      <ol class="paradas">
+        {
+          paradas.map((p, i) => (
+            <li class="parada" data-parada={i} style={`--ax:${ancora[i]!.x}%;--ay:${ancora[i]!.y}%`}>
+              <span class="parada-numero numero">
+                {p.dado.quantos} de {p.dado.de}
+              </span>
+              <span class="anotacao">{p.dado.texto}</span>
+            </li>
+          ))
+        }
+      </ol>
+    </div>
+
+    <p class="anotacao problema-base">
+      {pesquisa.base}<br />
+      {t.nota}
+    </p>
+  </div>
+</section>
+
+<style is:global>
+  .problema-palco {
+    display: grid;
+    gap: var(--s-5);
+    padding: var(--s-8) var(--margem) var(--s-7);
+  }
+
+  .problema-texto {
+    display: grid;
+    gap: var(--s-3);
+    max-width: 620px;
+  }
+
+  .problema-mapa {
+    position: relative;
+    min-width: 0;
+  }
+
+  .mapa {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1000 / 1004;
+  }
+
+  .mapa-camada {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .mapa-linhas {
+    overflow: visible;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  .mapa-arterias {
+    stroke: var(--linho);
+    stroke-opacity: 0.78;
+    stroke-width: 1.15;
+  }
+
+  .mapa-guias {
+    display: none;
+    stroke: var(--texto-2-escuro);
+    stroke-width: 1;
+    stroke-dasharray: 2 5;
+  }
+
+  .mapa-rota {
+    stroke: var(--brasa);
+    stroke-width: 2.4;
+  }
+
+  .mapa-rota-brilho {
+    stroke: var(--brasa);
+    stroke-width: 9;
+    stroke-opacity: 0.28;
+  }
+
+  .mapa-luz {
+    fill: var(--brasa);
+    stroke: var(--linho);
+    stroke-width: 1.5;
+  }
+
+  .mapa-luz-brilho {
+    fill: var(--brasa);
+    fill-opacity: 0.28;
+  }
+
+  .paradas {
+    display: grid;
+    gap: var(--s-4);
+    margin-top: var(--s-4);
+  }
+
+  .parada {
+    display: grid;
+    gap: 4px;
+    max-width: 420px;
+  }
+
+  .parada .anotacao {
+    color: var(--linho);
+    font-size: 0.9375rem;
+  }
+
+  .parada-numero {
+    font-family: var(--fonte-titulo);
+    font-weight: 800;
+    font-size: 1.75rem;
+    line-height: 1;
+    letter-spacing: -0.02em;
+  }
+
+  .problema-base {
+    max-width: 460px;
+  }
+
+  @media (max-width: 699px) {
+    .problema-mapa {
+      overflow: hidden;
+      margin-inline: calc(var(--margem) * -1);
+    }
+
+    .mapa {
+      width: 170%;
+      margin-left: -36%;
+    }
+
+    .paradas {
+      padding-inline: var(--margem);
+    }
+  }
+
+  @media (min-width: 1000px) {
+    .problema-palco {
+      grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+      grid-template-rows: 1fr auto;
+      align-items: center;
+      column-gap: var(--s-5);
+      min-height: 100svh;
+    }
+
+    .problema-mapa {
+      grid-column: 2;
+      grid-row: 1 / span 2;
+    }
+
+    .parada .anotacao {
+      font-size: var(--t-mono);
+    }
+
+    .problema-base {
+      grid-column: 1;
+      grid-row: 2;
+    }
+  }
+
+  /* Telas largas: as anotações pousam ao lado dos pins, como num desenho técnico. */
+  @media (min-width: 1000px) {
+    .mapa-guias {
+      display: block;
+    }
+
+    .paradas {
+      position: absolute;
+      inset: 0;
+      margin: 0;
+      pointer-events: none;
+    }
+
+    .parada {
+      position: absolute;
+      left: var(--ax);
+      top: var(--ay);
+      width: 27%;
+      min-width: 196px;
+      padding: 12px 14px;
+      border-radius: 14px;
+      background: rgb(23 17 14 / 0.86);
+    }
+  }
+
+  @media (min-width: 1000px) and (max-width: 1199px) {
+    .parada[data-parada='1'] {
+      top: calc(var(--ay) + 7%);
+    }
+  }
+
+  /* Só com movimento: palco fixado enquanto a rota anda */
+  .fx .problema {
+    height: 380svh;
+  }
+
+  .fx .problema-palco {
+    position: sticky;
+    top: 0;
+    height: 100svh;
+    overflow: hidden;
+    padding-block: calc(var(--topo) + 8px) 20px;
+    grid-template-rows: auto minmax(0, 1fr) auto;
+    gap: var(--s-2);
+  }
+
+  .fx .problema-mapa {
+    display: grid;
+    place-items: center;
+    min-height: 0;
+  }
+
+  .fx .mapa {
+    height: 100%;
+    width: auto;
+    max-width: none;
+  }
+
+  @media (max-width: 999px) {
+    .fx .problema-mapa {
+      overflow: hidden;
+      margin-inline: calc(var(--margem) * -1);
+    }
+
+    .fx .mapa {
+      height: auto;
+      width: min(150%, 760px);
+      flex: none;
+      margin-left: 0;
+      transform: translateY(-40px);
+    }
+
+    .fx .paradas {
+      position: absolute;
+      left: var(--margem);
+      right: var(--margem);
+      bottom: 0;
+      display: block;
+      min-height: 112px;
+      margin: 0;
+    }
+
+    .fx .parada {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      max-width: none;
+      padding: 12px 14px;
+      border-radius: 14px;
+      background: rgb(23 17 14 / 0.9);
+    }
+
+    .fx .problema-texto .apoio {
+      font-size: 1rem;
+    }
+  }
+
+  @media (max-width: 999px) and (max-height: 700px) {
+    .fx .problema-texto .apoio {
+      display: none;
+    }
+
+    .fx .parada {
+      padding-block: 8px;
+    }
+  }
+
+  @media (min-width: 1000px) {
+    .fx .problema-palco {
+      --mapa-l: min(122svh, 74vw);
+      grid-template-rows: 1fr auto;
+      padding-block: 0 24px;
+    }
+
+    .fx .problema-texto,
+    .fx .problema-base {
+      position: relative;
+      z-index: 2;
+    }
+
+    /* grid-column zerado: com ele, o absoluto mediria a célula e não o palco. */
+    .fx .problema-mapa {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      display: block;
+      grid-column: auto;
+      grid-row: auto;
+    }
+
+    .fx .mapa,
+    .fx .paradas {
+      position: absolute;
+      left: calc(63% - var(--mapa-l) / 2);
+      top: calc(50% - var(--mapa-l) / 2);
+      right: auto;
+      bottom: auto;
+      width: var(--mapa-l);
+      height: var(--mapa-l);
+    }
+
+    /* O mapa some aos poucos na direção do texto. */
+    .fx .mapa {
+      -webkit-mask-image: linear-gradient(to right, transparent, #000 13%);
+      mask-image: linear-gradient(to right, transparent, #000 13%);
+    }
+  }
+</style>

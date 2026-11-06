@@ -1,0 +1,211 @@
+---
+import Chip from './Chip.astro';
+import Icone from './Icone.astro';
+import Titulo from './Titulo.astro';
+import { status as t, statusRotulo, type StatusId } from '../data/copy';
+---
+
+<section id="status" class="secao status tema-linho" data-secao data-fundo="linho" aria-labelledby="titulo-status">
+  <div class="status-cabeca moldura">
+    <Titulo texto={t.titulo} id="titulo-status" />
+    <p class="apoio">{t.apoio}</p>
+  </div>
+
+  <div class="status-corpo moldura">
+    <div class="status-controle">
+      <button class="status-chave" id="status-chave" type="button" role="switch" aria-checked="false" aria-controls="status-lista">
+        <span class="status-chave-trilho" aria-hidden="true"><span class="status-chave-ponto"></span></span>
+        {t.cinza}
+      </button>
+      <p class="anotacao" id="status-aviso" role="status" aria-live="polite" data-texto={t.cinzaLigado}></p>
+    </div>
+
+    <div class="status-palco" id="status-palco">
+      <svg class="status-fio" viewBox="0 0 8 100" preserveAspectRatio="none" fill="none" aria-hidden="true">
+        <path id="status-fio" d="M4 0V100" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+      </svg>
+      <ul class="status-lista" id="status-lista">
+        {
+          t.lista.map((s) => {
+            const id = s.id as StatusId;
+            return (
+              <li class="status-item" data-status={id}>
+                <span class="status-pin pin-corpo" data-st={id}>
+                  <Icone nome={id} tamanho={30} traco={3} />
+                  <span class="status-pin-vazio" aria-hidden="true"><Icone nome={id} tamanho={30} traco={3} /></span>
+                </span>
+                <div class="status-nome">
+                  <Chip status={id} />
+                </div>
+                <p class="status-texto">{s.texto}</p>
+                <p class="status-exemplo anotacao numero">{s.exemplo}</p>
+                <span class="so-leitor">{statusRotulo[id].nome}</span>
+              </li>
+            );
+          })
+        }
+      </ul>
+      <div class="status-cortina" id="status-cortina" aria-hidden="true"></div>
+    </div>
+    <p class="status-nota anotacao">{t.nota}</p>
+  </div>
+</section>
+
+<style is:global>
+  .status {
+    padding-bottom: var(--s-8);
+  }
+
+  .status-cabeca {
+    display: grid;
+    gap: var(--s-3);
+  }
+
+  .status-cabeca h2 {
+    max-width: 12em;
+  }
+
+  .status-corpo {
+    display: grid;
+    gap: var(--s-4);
+    margin-top: var(--s-6);
+  }
+
+  .status-controle {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--s-2) var(--s-3);
+  }
+
+  .status-chave {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    min-height: 44px;
+    padding: 0 18px 0 8px;
+    border: 1.5px solid var(--noite);
+    border-radius: 22px;
+    background: transparent;
+    color: var(--noite);
+    font-weight: 700;
+  }
+
+  .status-chave-trilho {
+    position: relative;
+    width: 44px;
+    height: 26px;
+    border-radius: 13px;
+    background: var(--noite);
+  }
+
+  .status-chave-ponto {
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: var(--linho);
+    transition: transform var(--rapido) var(--entrada);
+  }
+
+  .status-chave[aria-checked='true'] .status-chave-ponto {
+    transform: translateX(18px);
+  }
+
+  .status-palco {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .status-fio {
+    position: absolute;
+    left: 28px;
+    top: 56px;
+    bottom: 56px;
+    width: 8px;
+    height: calc(100% - 112px);
+    margin-left: -4px;
+    color: var(--noite);
+  }
+
+  .status-item {
+    position: relative;
+    display: grid;
+    grid-template-columns: 60px minmax(0, 1fr);
+    gap: 6px var(--s-3);
+    align-items: center;
+    padding-block: var(--s-4);
+    border-top: 1.5px solid var(--borda-clara);
+  }
+
+  .status-item:last-child {
+    border-bottom: 1.5px solid var(--borda-clara);
+  }
+
+  .status-pin {
+    position: relative;
+    grid-row: span 3;
+    align-self: start;
+    width: 56px;
+    height: 56px;
+    border: 2px solid var(--noite);
+    border-radius: 28px;
+  }
+
+  .status-pin-vazio {
+    position: absolute;
+    inset: -2px;
+    display: grid;
+    place-items: center;
+    border: 2px solid var(--noite);
+    border-radius: 28px;
+    background: var(--linho);
+    color: var(--noite);
+    visibility: hidden;
+  }
+
+  .status-texto {
+    font-size: var(--t-lead);
+    line-height: 1.3;
+  }
+
+  .status-exemplo {
+    color: var(--texto);
+  }
+
+  .status-item .so-leitor {
+    display: none;
+  }
+
+  .status-cortina {
+    position: absolute;
+    inset: 0;
+    transform: scaleX(0);
+    transform-origin: left center;
+    -webkit-backdrop-filter: grayscale(1);
+    backdrop-filter: grayscale(1);
+    pointer-events: none;
+  }
+
+  .status-palco[data-cinza] .status-cortina {
+    transform: none;
+  }
+
+  .status-nota {
+    margin-top: 2px;
+  }
+
+  @media (min-width: 900px) {
+    .status-item {
+      grid-template-columns: 60px 210px minmax(0, 1fr) minmax(0, 1fr);
+      gap: var(--s-4);
+    }
+
+    .status-pin {
+      grid-row: auto;
+      align-self: center;
+    }
+  }
+</style>

@@ -1,0 +1,65 @@
+---
+import '../styles/tokens.css';
+import '../styles/global.css';
+import { marca, seo } from '../data/copy';
+
+interface Props {
+  titulo?: string;
+  descricao?: string;
+  caminho?: string;
+}
+
+const { titulo = seo.titulo, descricao = seo.descricao, caminho = '/' } = Astro.props;
+const canonica = new URL(caminho, marca.url).href;
+const imagem = new URL('/og.jpg', marca.url).href;
+---
+
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{titulo}</title>
+    <meta name="description" content={descricao} />
+    <link rel="canonical" href={canonica} />
+    <meta name="theme-color" content="#17110E" />
+    <meta name="color-scheme" content="dark light" />
+
+    <link rel="icon" href="/favicon.ico" sizes="48x48" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/brand/favicon-16.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/brand/favicon-32.png" />
+    <link rel="apple-touch-icon" href="/brand/apple-touch-icon.png" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="pt_BR" />
+    <meta property="og:site_name" content={marca.nome} />
+    <meta property="og:title" content={titulo} />
+    <meta property="og:description" content={descricao} />
+    <meta property="og:url" content={canonica} />
+    <meta property="og:image" content={imagem} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content={seo.imagemAlt} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={titulo} />
+    <meta name="twitter:description" content={descricao} />
+    <meta name="twitter:image" content={imagem} />
+
+    <link rel="preload" as="font" type="font/woff2" href="/fonts/bricolage-grotesque-800.woff2" crossorigin />
+    <link rel="preload" as="font" type="font/woff2" href="/fonts/atkinson-hyperlegible-next.woff2" crossorigin />
+    <slot name="head" />
+    <noscript><style>.form-lista { display: none; }</style></noscript>
+
+    <script is:inline>
+      // Antes da primeira pintura: define se a página usa movimento.
+      // Tela muito pequena recebe a página completa, sem cenas fixadas.
+      if (!matchMedia('(prefers-reduced-motion: reduce), (max-height: 539px), (max-width: 339px)').matches) {
+        document.documentElement.classList.add('fx');
+      }
+    </script>
+  </head>
+  <body class="tema-noite">
+    <slot />
+  </body>
+</html>

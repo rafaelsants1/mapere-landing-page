@@ -1,0 +1,105 @@
+---
+import Titulo from './Titulo.astro';
+import { perguntas as t } from '../data/copy';
+---
+
+<section id="perguntas" class="secao perguntas tema-linho" data-secao data-fundo="linho" aria-labelledby="titulo-perguntas">
+  <div class="perguntas-grade moldura">
+    <Titulo texto={t.titulo} id="titulo-perguntas" />
+    <div class="perguntas-lista">
+      {
+        t.lista.map((item, i) => (
+          <details name="perguntas" open={i === 0}>
+            <summary>
+              <span class="perguntas-ponto" aria-hidden="true" />
+              {item.p}
+            </summary>
+            <p>{item.r}</p>
+          </details>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style is:global>
+  .perguntas {
+    padding-block: var(--s-8);
+  }
+
+  .perguntas-grade {
+    display: grid;
+    gap: var(--s-5);
+  }
+
+  .perguntas h2 {
+    max-width: 8em;
+  }
+
+  .perguntas details {
+    border-top: 1.5px solid var(--borda-clara);
+  }
+
+  .perguntas details:last-child {
+    border-bottom: 1.5px solid var(--borda-clara);
+  }
+
+  .perguntas summary {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: var(--s-2);
+    min-height: 68px;
+    padding-block: var(--s-2);
+    font-weight: 800;
+    font-size: var(--t-lead);
+    line-height: 1.2;
+    list-style: none;
+    cursor: pointer;
+  }
+
+  .perguntas summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .perguntas-ponto {
+    flex: none;
+    width: 14px;
+    height: 14px;
+    border: 2px solid var(--noite);
+    border-radius: 50%;
+  }
+
+  .perguntas details[open] .perguntas-ponto {
+    border-color: var(--brasa-texto);
+    background: var(--brasa-texto);
+  }
+
+  .perguntas details p {
+    max-width: 38em;
+    padding: 0 0 var(--s-4) calc(14px + var(--s-2));
+    font-size: 1.0625rem;
+    line-height: 1.5;
+    color: var(--texto-2);
+  }
+
+  .perguntas details::details-content {
+    opacity: 0;
+    translate: 0 -6px;
+    transition:
+      opacity var(--rapido) var(--entrada),
+      translate var(--rapido) var(--entrada),
+      content-visibility var(--rapido) allow-discrete;
+  }
+
+  .perguntas details[open]::details-content {
+    opacity: 1;
+    translate: 0 0;
+  }
+
+  @media (min-width: 900px) {
+    .perguntas-grade {
+      grid-template-columns: minmax(0, 4fr) minmax(0, 8fr);
+    }
+  }
+</style>

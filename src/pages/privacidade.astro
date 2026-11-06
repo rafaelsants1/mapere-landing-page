@@ -1,0 +1,76 @@
+---
+import Base from '../layouts/Base.astro';
+import Logo from '../components/Logo.astro';
+import { privacidade as t, rodape as r } from '../data/copy';
+---
+
+<Base titulo="Privacidade · Mapere" descricao="O que o Mapere coleta na lista de espera, para quê e como pedir a exclusão." caminho="/privacidade">
+  <div class="priv tema-noite">
+    <a class="priv-marca" href="/" aria-label={t.voltar}>
+      <Logo desenho="simplificado" decorativo />
+    </a>
+    <main class="priv-corpo">
+      <h1>{t.titulo}</h1>
+      <p class="anotacao priv-marca-revisao">{t.marca}</p>
+      {
+        t.blocos.map((b) => (
+          <section>
+            <h2>{b.t}</h2>
+            <p>{b.r}</p>
+          </section>
+        ))
+      }
+      <p><a href="/">{t.voltar}</a></p>
+    </main>
+    <p class="anotacao"><a href={r.osmUrl} target="_blank" rel="noopener noreferrer">{r.osm}</a> · {r.direitos}</p>
+  </div>
+</Base>
+
+<style is:global>
+  .priv {
+    display: grid;
+    gap: var(--s-6);
+    min-height: 100svh;
+    padding: var(--s-4) var(--margem) var(--s-5);
+    align-content: start;
+  }
+
+  .priv-marca {
+    display: block;
+    width: max-content;
+    color: var(--linho);
+  }
+
+  .priv-marca .logo {
+    width: auto;
+    height: 42px;
+    margin-left: -8px;
+  }
+
+  .priv-corpo {
+    display: grid;
+    gap: var(--s-4);
+    max-width: 640px;
+  }
+
+  .priv-corpo section {
+    display: grid;
+    gap: var(--s-1);
+  }
+
+  .priv-corpo h2 {
+    font-size: var(--t-h3);
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+  }
+
+  .priv-corpo p {
+    font-size: 1.0625rem;
+    color: var(--texto-2);
+  }
+
+  .priv-marca-revisao {
+    color: var(--brasa);
+    font-size: var(--t-mono);
+  }
+</style>

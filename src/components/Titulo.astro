@@ -1,0 +1,17 @@
+---
+// Título com uma palavra de destaque. SplitText divide por linha quando há movimento.
+interface Props {
+  texto: { antes: string; destaque: string; depois: string };
+  nivel?: 'h1' | 'h2' | 'p';
+  id?: string;
+  class?: string;
+  dividir?: boolean;
+}
+
+const { texto, nivel = 'h2', id, class: classe, dividir = true } = Astro.props;
+const Tag = nivel;
+---
+
+<Tag id={id} class={classe} data-titulo={dividir ? '' : undefined}
+  >{texto.antes}<span class="destaque">{texto.destaque}</span>{texto.depois}</Tag
+>

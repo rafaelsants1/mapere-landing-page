@@ -1,0 +1,96 @@
+---
+import FormularioLista from './FormularioLista.astro';
+import Logo from './Logo.astro';
+import Textura from './Textura.astro';
+import Titulo from './Titulo.astro';
+import { lista as t, links, marca, rodape as r } from '../data/copy';
+---
+
+<section id="lista" class="secao lista tema-noite" data-secao aria-labelledby="titulo-lista">
+  <Textura />
+  <div class="lista-corpo moldura" id="lista-formulario">
+    <Titulo texto={t.titulo} id="titulo-lista" />
+    <p class="apoio">{t.apoio}</p>
+    <FormularioLista origem="lista" />
+  </div>
+</section>
+
+<footer class="rodape tema-noite">
+  <div class="rodape-marca moldura">
+    <Logo desenho="completo" />
+  </div>
+  <div class="rodape-linha moldura">
+    <ul class="rodape-links">
+      <li><a href={marca.instagram.url} target="_blank" rel="noopener noreferrer">{r.instagram} {marca.instagram.usuario}</a></li>
+      {links.pesquisa && <li><a href={links.pesquisa} target="_blank" rel="noopener noreferrer">{r.pesquisa}</a></li>}
+      <li><a href="/privacidade">{r.privacidade}</a></li>
+      <li><a href={r.osmUrl} target="_blank" rel="noopener noreferrer">{r.osm}</a></li>
+    </ul>
+    <button class="rodape-atalhos" id="atalhos-chave" type="button" aria-pressed="true" data-ligado={r.atalhosLigados} data-desligado={r.atalhosDesligados}>
+      {r.atalhos}: <span>{r.atalhosLigados}</span>
+    </button>
+    <p class="anotacao">{r.direitos}</p>
+  </div>
+</footer>
+
+<style is:global>
+  .lista {
+    overflow: hidden;
+    padding-block: var(--s-8) var(--s-7);
+  }
+
+  .lista-corpo {
+    position: relative;
+    display: grid;
+    gap: var(--s-3);
+    max-width: calc(760px + 2 * var(--margem));
+  }
+
+  .lista-corpo .form-lista {
+    margin-top: var(--s-2);
+  }
+
+  .rodape {
+    position: relative;
+    padding-bottom: var(--s-4);
+  }
+
+  .rodape-marca .logo {
+    width: 100%;
+    max-width: 1500px;
+    height: auto;
+    margin-left: -2.2%;
+  }
+
+  .rodape-linha {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--s-2) var(--s-5);
+    margin-top: var(--s-4);
+  }
+
+  .rodape-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--s-1) var(--s-4);
+  }
+
+  .rodape-links a,
+  .rodape-atalhos {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+  }
+
+  .rodape-atalhos {
+    gap: 6px;
+    padding: 0;
+    border: 0;
+    background: none;
+    color: var(--linho);
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+  }
+</style>

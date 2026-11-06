@@ -1,0 +1,23 @@
+---
+// Grade de pontos a cada 20 px, Linho 12% sobre Noite, apagada onde passa o rio Sergipe.
+// O rio é recortado por máscara: a textura fica transparente ali, sobre qualquer fundo.
+import rio from '../data/mapa/rio.json';
+
+const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="${rio.viewBox}" preserveAspectRatio="none"><mask id="r"><rect width="1600" height="900" fill="#fff"/><path d="${rio.d}" fill="none" stroke="#000" stroke-width="130" stroke-linecap="round" stroke-linejoin="round"/></mask><rect width="1600" height="900" mask="url(#r)"/></svg>`;
+const mascara = `url("data:image/svg+xml,${encodeURIComponent(svg)}")`;
+---
+
+<div class="textura" aria-hidden="true" style={`--rio:${mascara}`}></div>
+
+<style is:global>
+  .textura {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background-image: radial-gradient(circle, rgb(243 237 226 / 0.12) 1.2px, transparent 1.7px);
+    background-size: 20px 20px;
+    background-position: center;
+    -webkit-mask: var(--rio) center / 100% 100% no-repeat;
+    mask: var(--rio) center / 100% 100% no-repeat;
+  }
+</style>

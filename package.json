@@ -1,0 +1,30 @@
+{
+  "name": "mapere-landing",
+  "type": "module",
+  "version": "0.1.0",
+  "private": true,
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro check && astro build",
+    "preview": "astro preview",
+    "map": "node scripts/build-map.mjs",
+    "map:refresh": "node scripts/build-map.mjs --refresh",
+    "fonts": "python scripts/build-fonts.py",
+    "frames": "node scripts/build-frames.mjs",
+    "og": "node scripts/build-og.mjs"
+  },
+  "dependencies": {
+    "astro": "^7.4.7",
+    "gsap": "^3.15.1",
+    "lenis": "^1.3.27"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.12",
+    "mapshaper": "^0.7.101",
+    "sharp": "^0.35.5",
+    "typescript": "^6.0.3"
+  }
+}

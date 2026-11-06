@@ -1,0 +1,96 @@
+---
+import Textura from './Textura.astro';
+import Titulo from './Titulo.astro';
+import { momento as t } from '../data/copy';
+
+// Linha de lacê: o cordão dá uma volta em cada ponto antes de seguir, como na renda.
+// Cada trecho termina fechando o anel; o ponto de dentro acende depois.
+const R = 26;
+const nos = [
+  [210, 196],
+  [470, 104],
+  [730, 200],
+  [990, 96],
+  [1250, 196],
+] as const;
+
+const fim = [1660, 120] as const;
+let x = -60;
+let y = 150;
+const trechos: string[] = [];
+for (const [nx, ny] of nos) {
+  const topo = ny - R;
+  const dx = (nx - x) * 0.52;
+  trechos.push(`M${x} ${y}C${x + dx} ${y} ${nx - dx} ${topo} ${nx} ${topo}a${R} ${R} 0 1 1 0 ${R * 2}a${R} ${R} 0 1 1 0 ${-R * 2}`);
+  x = nx;
+  y = topo;
+}
+const dxFim = (fim[0] - x) * 0.5;
+trechos.push(`M${x} ${y}C${x + dxFim} ${y} ${fim[0] - dxFim} ${fim[1]} ${fim[0]} ${fim[1]}`);
+---
+
+<section class="secao momento tema-noite" id="momento" aria-labelledby="titulo-momento">
+  <div class="momento-palco" id="momento-palco">
+    <Textura />
+    <div class="momento-corpo moldura">
+      <Titulo texto={t.frase} id="titulo-momento" class="momento-frase" />
+    </div>
+    <svg class="momento-lace" id="momento-lace" viewBox="0 0 1600 300" preserveAspectRatio="xMidYMid slice" fill="none" aria-hidden="true">
+      {trechos.map((d) => <path class="momento-trecho" d={d} />)}
+      {nos.map(([cx, cy]) => <circle class="momento-ponto" cx={cx} cy={cy} r="11" />)}
+    </svg>
+  </div>
+</section>
+
+<style is:global>
+  .momento-palco {
+    position: relative;
+    display: grid;
+    align-content: center;
+    gap: var(--s-6);
+    padding-block: var(--s-8);
+    overflow: hidden;
+  }
+
+  .fx .momento {
+    height: 210svh;
+  }
+
+  .fx .momento-palco {
+    position: sticky;
+    top: 0;
+    height: 100svh;
+    padding-block: var(--topo) var(--s-4);
+  }
+
+  .momento-corpo {
+    position: relative;
+  }
+
+  .momento-frase {
+    max-width: 13.5em;
+    font-family: var(--fonte-titulo);
+    font-weight: 800;
+    font-size: var(--t-display);
+    line-height: 1;
+    letter-spacing: -0.03em;
+    text-wrap: balance;
+  }
+
+  .momento-lace {
+    position: relative;
+    width: 100%;
+    height: clamp(170px, 19vw, 300px);
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  .momento-trecho {
+    stroke: var(--linho);
+    stroke-width: 2.5;
+  }
+
+  .momento-ponto {
+    fill: var(--brasa);
+  }
+</style>

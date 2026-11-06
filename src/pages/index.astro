@@ -1,0 +1,64 @@
+---
+import Base from '../layouts/Base.astro';
+import Cabecalho from '../components/Cabecalho.astro';
+import Abertura from '../components/Abertura.astro';
+import Problema from '../components/Problema.astro';
+import ComoFunciona from '../components/ComoFunciona.astro';
+import Status from '../components/Status.astro';
+import Redes from '../components/Redes.astro';
+import Momento from '../components/Momento.astro';
+import Perguntas from '../components/Perguntas.astro';
+import Lista from '../components/Lista.astro';
+---
+
+<Base>
+  <Fragment slot="head">
+    <link rel="preload" as="image" href="/frames/celular/f000.webp" fetchpriority="high" media="(max-aspect-ratio: 1/1) and (prefers-reduced-motion: no-preference)" />
+    <link rel="preload" as="image" href="/frames/desktop/f000.webp" fetchpriority="high" media="(min-aspect-ratio: 1/1) and (prefers-reduced-motion: no-preference)" />
+  </Fragment>
+  <Cabecalho />
+  <div class="fundo-claro" id="fundo-claro" aria-hidden="true"></div>
+  <main>
+    <Abertura />
+    <Problema />
+    <ComoFunciona />
+    <Status />
+    <Redes />
+    <Momento />
+    <Perguntas />
+    <Lista />
+  </main>
+</Base>
+
+<script>
+  import '../scripts/main';
+</script>
+
+<style is:global>
+  .fundo-claro {
+    display: none;
+  }
+
+  /* Com movimento, a troca Noite/Linho é uma camada fixa guiada pela rolagem. */
+  .fx .fundo-claro {
+    display: block;
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    background: var(--linho);
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .fx main {
+    position: relative;
+    z-index: 1;
+  }
+
+  /* Seções de Noite deixam ver a camada fixa. As de Linho mantêm o fundo real
+     e só ficam transparentes enquanto estão na tela (motion/detalhes.ts). */
+  .fx .secao.tema-noite,
+  .fx .secao.fundo-vivo {
+    background-color: transparent;
+  }
+</style>

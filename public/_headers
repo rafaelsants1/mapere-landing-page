@@ -1,0 +1,9 @@
+# Cache para hospedagens que leem este arquivo (Cloudflare Pages, Netlify).
+/_astro/*
+  Cache-Control: public, max-age=31536000, immutable
+/fonts/*
+  Cache-Control: public, max-age=31536000, immutable
+/frames/*
+  Cache-Control: public, max-age=2592000
+/mapa/*
+  Cache-Control: public, max-age=2592000

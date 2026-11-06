@@ -1,0 +1,238 @@
+---
+import Celular from './Celular.astro';
+import TelaMapa from './TelaMapa.astro';
+import TelaDetalhe from './TelaDetalhe.astro';
+import Titulo from './Titulo.astro';
+import { comoFunciona as t, pesquisa } from '../data/copy';
+---
+
+<section id="como-funciona" class="secao como tema-linho" data-secao data-fundo="linho" aria-labelledby="titulo-como">
+  <div class="como-cabeca moldura">
+    <Titulo texto={t.titulo} id="titulo-como" />
+  </div>
+
+  <div class="como-grade moldura">
+    <div class="como-telas" id="como-telas" role="img" aria-label={t.cena}>
+      <div class="como-duas" aria-hidden="true" inert>
+        <Celular class="celular-mapa"><TelaMapa /></Celular>
+        <Celular class="celular-detalhe"><TelaDetalhe /></Celular>
+      </div>
+    </div>
+
+    <ol class="como-passos">
+      {
+        t.passos.map((p, i) => (
+          <li class="passo" data-passo={i}>
+            <div class="passo-cartao">
+              <span class="anotacao numero">{`0${i + 1} / 0${t.passos.length}`}</span>
+              <h3>{p.nome}</h3>
+              <p>{p.texto}</p>
+              <p class="passo-exemplo anotacao">{p.exemplo}</p>
+              {p.dado && (
+                <p class="passo-dado anotacao">
+                  <strong class="numero">
+                    {p.dado.quantos} de {p.dado.de}
+                  </strong>{' '}
+                  {p.dado.texto} {pesquisa.base}
+                </p>
+              )}
+            </div>
+          </li>
+        ))
+      }
+    </ol>
+  </div>
+
+  <p class="como-legenda anotacao moldura">{t.legenda}</p>
+</section>
+
+<style is:global>
+  .como {
+    --e: 0.72;
+    padding-block: var(--s-8);
+  }
+
+  .como-cabeca h2 {
+    max-width: 13em;
+  }
+
+  .como-grade {
+    display: grid;
+    gap: var(--s-6);
+    margin-top: var(--s-6);
+  }
+
+  .como-duas {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--s-4);
+  }
+
+  .como-passos {
+    display: grid;
+    gap: var(--s-6);
+  }
+
+  .passo-cartao {
+    display: grid;
+    gap: var(--s-2);
+    max-width: 460px;
+  }
+
+  .passo-cartao p:not(.anotacao) {
+    font-size: var(--t-lead);
+    line-height: 1.4;
+  }
+
+  .passo-exemplo {
+    color: var(--texto);
+  }
+
+  .passo-dado strong {
+    font-weight: 500;
+    color: var(--texto);
+  }
+
+  .como-legenda {
+    margin-top: var(--s-5);
+  }
+
+  @media (max-width: 359px) {
+    .como {
+      --e: 0.62;
+    }
+  }
+
+  @media (min-width: 1000px) {
+    .como-grade {
+      grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+      align-items: start;
+    }
+
+    .como-telas {
+      grid-column: 2;
+      grid-row: 1;
+    }
+
+    .como-passos {
+      grid-column: 1;
+      grid-row: 1;
+      align-self: center;
+    }
+
+    .como-duas {
+      flex-wrap: nowrap;
+    }
+
+    .como {
+      --e: 0.7;
+    }
+  }
+
+  @media (min-width: 1000px) and (min-height: 820px) {
+    .como {
+      --e: 0.82;
+    }
+  }
+
+  @media (min-width: 1000px) and (min-height: 980px) {
+    .como {
+      --e: 0.95;
+    }
+  }
+
+  @media (min-width: 1000px) and (max-width: 1239px) {
+    .como {
+      --e: 0.62;
+    }
+  }
+
+  /* Com movimento: as telas ficam fixas e o texto rola */
+  .fx .como-telas {
+    position: sticky;
+    top: calc(var(--topo) + 4px);
+    display: grid;
+    place-items: center;
+    height: calc(100svh - var(--topo) - 8px);
+  }
+
+  .fx .passo {
+    display: flex;
+    align-items: center;
+    min-height: 92svh;
+  }
+
+  .fx .como-passos {
+    gap: 0;
+    align-self: start;
+    padding-bottom: 14svh;
+  }
+
+  @media (max-width: 999px) {
+    .fx .como-grade {
+      gap: 0;
+      margin-top: var(--s-4);
+    }
+
+    .fx .como-telas {
+      top: var(--topo);
+      z-index: 0;
+      align-items: start;
+      height: calc(100svh - var(--topo));
+    }
+
+    .fx .como-duas {
+      position: relative;
+      width: calc(410px * var(--e));
+      height: calc(864px * var(--e));
+      flex-wrap: nowrap;
+    }
+
+    .fx .como-duas .celular {
+      position: absolute;
+      inset: 0;
+    }
+
+    .fx .como {
+      --e: 0.5;
+    }
+
+    .fx .como-passos {
+      position: relative;
+      z-index: 1;
+      margin-top: -46svh;
+      padding-bottom: 34svh;
+    }
+
+    .fx .passo {
+      align-items: flex-end;
+      min-height: 96svh;
+      padding-bottom: 12px;
+    }
+
+    .fx .passo-cartao {
+      width: 100%;
+      padding: 18px;
+      border: 1.5px solid var(--borda-clara);
+      border-radius: 22px;
+      background: var(--superficie-clara);
+    }
+
+    .fx .passo-cartao p:not(.anotacao) {
+      font-size: 1rem;
+    }
+  }
+
+  @media (max-width: 999px) and (min-height: 740px) {
+    .fx .como {
+      --e: 0.56;
+    }
+  }
+
+  @media (max-width: 999px) and (min-height: 860px) {
+    .fx .como {
+      --e: 0.64;
+    }
+  }
+</style>

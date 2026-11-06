@@ -1,0 +1,142 @@
+/* Identidade A1 · Brasa. Os nomes de cor vêm do manual: não renomear. */
+
+@font-face {
+  font-family: 'Bricolage Grotesque';
+  src: url('/fonts/bricolage-grotesque-800.woff2') format('woff2');
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Atkinson Hyperlegible Next';
+  src: url('/fonts/atkinson-hyperlegible-next.woff2') format('woff2');
+  font-weight: 400 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Atkinson Hyperlegible Mono';
+  src: url('/fonts/atkinson-hyperlegible-mono.woff2') format('woff2');
+  font-weight: 400 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Reservas com as medidas das fontes finais (calculadas dos arquivos): sem elas,
+   o título quebra diferente até a fonte chegar e o card da abertura pula. */
+@font-face {
+  font-family: 'Bricolage Reserva';
+  src: local('Arial Bold'), local('Arial-BoldMT'), local('Roboto Bold'), local('Roboto-Bold');
+  font-weight: 800;
+  size-adjust: 94.89%;
+  ascent-override: 98.01%;
+  descent-override: 28.45%;
+  line-gap-override: 0%;
+}
+
+@font-face {
+  font-family: 'Atkinson Reserva';
+  src: local('Arial'), local('ArialMT'), local('Roboto');
+  font-weight: 400 600;
+  size-adjust: 98.76%;
+  ascent-override: 99.64%;
+  descent-override: 32%;
+  line-gap-override: 0%;
+}
+
+@font-face {
+  font-family: 'Atkinson Reserva';
+  src: local('Arial Bold'), local('Arial-BoldMT'), local('Roboto Bold'), local('Roboto-Bold');
+  font-weight: 700 800;
+  size-adjust: 101.03%;
+  ascent-override: 97.4%;
+  descent-override: 31.28%;
+  line-gap-override: 0%;
+}
+
+@font-face {
+  font-family: 'Atkinson Mono Reserva';
+  src: local('Consolas'), local('Menlo'), local('Roboto Mono'), local('Courier New');
+  font-weight: 400 500;
+  size-adjust: 114.95%;
+  ascent-override: 85.6%;
+  descent-override: 27.49%;
+  line-gap-override: 0%;
+}
+
+:root {
+  --noite: #17110e;
+  --grafite: #2a211c;
+  --linho: #f3ede2;
+  --superficie-clara: #fbf8f2;
+  --texto-2-claro: #5e554c;
+  --texto-2-escuro: #b5aca0;
+  --borda-clara: #cdc2b1;
+  --borda-escura: #45392f;
+  --brasa: #f0641e;
+  --brasa-texto: #b23f0b;
+  --livre: #12b76a;
+  --ocupado: #f5b700;
+  --defeito: #d92d4b;
+  --seminfo: #8c857b;
+
+  --fonte-titulo: 'Bricolage Grotesque', 'Bricolage Reserva', system-ui, sans-serif;
+  --fonte-texto: 'Atkinson Hyperlegible Next', 'Atkinson Reserva', system-ui, sans-serif;
+  --fonte-mono: 'Atkinson Hyperlegible Mono', 'Atkinson Mono Reserva', ui-monospace, monospace;
+
+  --t-display: clamp(2.75rem, 1.2rem + 7.6vw, 6rem);
+  --t-h2: clamp(2.625rem, 1.5rem + 4.6vw, 5rem);
+  --t-h3: clamp(1.5rem, 1.25rem + 0.9vw, 2rem);
+  --t-lead: clamp(1.125rem, 1.05rem + 0.35vw, 1.3125rem);
+  --t-corpo: 1rem;
+  --t-mono: 0.875rem;
+
+  --margem: clamp(20px, 4.4vw, 64px);
+  --topo: 72px;
+  --s-1: 8px;
+  --s-2: 12px;
+  --s-3: 16px;
+  --s-4: 24px;
+  --s-5: 32px;
+  --s-6: 48px;
+  --s-7: 72px;
+  --s-8: clamp(88px, 12vw, 160px);
+
+  --entrada: cubic-bezier(0.2, 0.7, 0.2, 1);
+  --rapido: 180ms;
+  --medio: 280ms;
+
+  --z-fundo: -1;
+  --z-cena: 1;
+  --z-indice: 20;
+  --z-topo: 30;
+  --z-pular: 40;
+}
+
+.tema-noite {
+  --fundo: var(--noite);
+  --texto: var(--linho);
+  --texto-2: var(--texto-2-escuro);
+  --borda: var(--borda-escura);
+  --link: var(--linho);
+  --destaque: var(--brasa);
+  --foco-1: var(--linho);
+  --foco-2: var(--brasa);
+  background-color: var(--fundo);
+  color: var(--texto);
+}
+
+.tema-linho {
+  --fundo: var(--linho);
+  --texto: var(--noite);
+  --texto-2: var(--texto-2-claro);
+  --borda: var(--borda-clara);
+  --link: var(--brasa-texto);
+  --destaque: var(--brasa-texto);
+  --foco-1: var(--noite);
+  --foco-2: var(--brasa-texto);
+  background-color: var(--fundo);
+  color: var(--texto);
+}

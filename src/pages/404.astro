@@ -1,0 +1,41 @@
+---
+import Base from '../layouts/Base.astro';
+import Logo from '../components/Logo.astro';
+---
+
+<Base titulo="Página não encontrada · Mapere" descricao="Esta página não existe." caminho="/404">
+  <main class="nada tema-noite">
+    <a class="nada-marca" href="/" aria-label="Mapere, voltar para a página inicial">
+      <Logo desenho="simplificado" decorativo />
+    </a>
+    <h1>Essa rua não está no mapa.</h1>
+    <p class="apoio">A página que você procurou não existe.</p>
+    <a class="botao" href="/">Voltar para o início</a>
+  </main>
+</Base>
+
+<style is:global>
+  .nada {
+    display: grid;
+    align-content: center;
+    justify-items: start;
+    gap: var(--s-3);
+    min-height: 100svh;
+    padding: var(--s-5) var(--margem);
+  }
+
+  .nada-marca {
+    color: var(--linho);
+  }
+
+  .nada-marca .logo {
+    width: auto;
+    height: 42px;
+    margin-left: -8px;
+  }
+
+  .nada .botao {
+    margin-top: var(--s-2);
+    text-decoration: none;
+  }
+</style>

@@ -1,0 +1,274 @@
+---
+import Logo from './Logo.astro';
+import Chip from './Chip.astro';
+import FormularioLista from './FormularioLista.astro';
+import { abertura as t } from '../data/copy';
+
+const ultimoDesktop = '/frames/desktop/f119.webp';
+const ultimoCelular = '/frames/celular/f059.webp';
+---
+
+<section id="abertura" class="secao abertura tema-noite" data-secao aria-labelledby="titulo-abertura">
+  <div class="abertura-palco" id="abertura-palco">
+    <div class="abertura-cena" role="img" aria-label={t.cena}>
+      <picture>
+        <source media="(prefers-reduced-motion: reduce) and (max-aspect-ratio: 1/1)" srcset={ultimoCelular} width="492" height="768" />
+        <source media="(prefers-reduced-motion: reduce)" srcset={ultimoDesktop} width="1364" height="768" />
+        <source media="(max-aspect-ratio: 1/1)" srcset="/frames/celular/f000.webp" width="492" height="768" />
+        <img src="/frames/desktop/f000.webp" width="1364" height="768" alt="" fetchpriority="high" decoding="async" />
+      </picture>
+      <canvas id="abertura-canvas" aria-hidden="true"></canvas>
+    </div>
+    <div class="abertura-veu" aria-hidden="true"></div>
+
+    <div class="abertura-card" id="abertura-card">
+      <h1 id="titulo-abertura">
+        {t.titulo.linhas[0]}<br />{t.titulo.linhas[1]}<br class="quebra-estreita" /> <span class="destaque">{t.titulo.destaque}</span
+        ><br class="quebra-larga" /> {t.titulo.linhas[2]}<br class="quebra-estreita" /> {t.titulo.linhas[3]}
+      </h1>
+      <p class="apoio">{t.apoio}</p>
+      <FormularioLista origem="abertura" />
+      <p class="anotacao">{t.lojas}</p>
+    </div>
+
+    <ol class="abertura-passos" aria-hidden="true">
+      {
+        t.passos.map((passo, i) => (
+          <li class="abertura-passo" data-passo={i}>
+            <span class="anotacao numero">{`0${i + 1} / 0${t.passos.length}`}</span>
+            <span class="abertura-passo-texto">{passo}</span>
+            {i === t.passos.length - 1 && (
+              <span class="abertura-confirmacao">
+                <Chip status="livre" />
+                <span class="anotacao numero">{t.statusExemplo}</span>
+              </span>
+            )}
+          </li>
+        ))
+      }
+    </ol>
+
+    <div class="abertura-final" id="abertura-final" aria-hidden="true">
+      <Logo desenho="completo" decorativo />
+    </div>
+    <span class="abertura-ponto" id="abertura-ponto" aria-hidden="true"></span>
+    <span class="abertura-rolar anotacao" id="abertura-rolar" aria-hidden="true">{t.rolar}</span>
+  </div>
+</section>
+
+<style is:global>
+  .abertura-palco {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-start;
+    min-height: 100svh;
+    overflow: hidden;
+    background: var(--noite);
+  }
+
+  .abertura-cena {
+    position: absolute;
+    inset: 0;
+  }
+
+  .abertura-cena img,
+  .abertura-cena canvas {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    max-width: none;
+    object-fit: cover;
+    object-position: 50% 50%;
+  }
+
+  .abertura-cena canvas {
+    display: none;
+  }
+
+  .abertura-veu {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgb(23 17 14 / 0.5), rgb(23 17 14 / 0) 42%);
+    pointer-events: none;
+  }
+
+  .abertura-card {
+    position: relative;
+    z-index: 2;
+    display: grid;
+    gap: var(--s-3);
+    width: min(100% - 2 * var(--margem), 660px);
+    margin: calc(var(--topo) + 8px) var(--margem) clamp(16px, 4.5vh, 48px);
+    padding: clamp(20px, 3vw, 36px);
+    border: 1.5px solid var(--borda-escura);
+    border-radius: 28px;
+    background: rgb(23 17 14 / 0.82);
+  }
+
+  .abertura-card h1 {
+    font-size: min(clamp(3rem, 2.2rem + 3.3vw, 5rem), 9.6svh);
+    line-height: 0.98;
+  }
+
+  /* Quatro linhas no celular, três no resto: fixo, para a troca de fonte não mexer no card. */
+  .quebra-larga {
+    display: none;
+  }
+
+  @media (min-width: 480px) {
+    .quebra-estreita {
+      display: none;
+    }
+
+    .quebra-larga {
+      display: inline;
+    }
+  }
+
+  /* Tela baixa: o título e o campo ficam, o resto cede lugar. */
+  @media (max-height: 700px) {
+    .fx .abertura-card {
+      gap: var(--s-2);
+      margin-top: var(--topo);
+      padding-block: 18px;
+    }
+
+    .fx .abertura-card .apoio,
+    .fx .abertura-card > .anotacao {
+      display: none;
+    }
+
+    .fx .abertura-card .form-campo label {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+      clip-path: inset(50%);
+    }
+  }
+
+  .abertura-passos,
+  .abertura-final,
+  .abertura-ponto,
+  .abertura-rolar {
+    display: none;
+  }
+
+  /* Só com movimento: seção alta com palco fixado */
+  .fx .abertura {
+    height: 470svh;
+  }
+
+  .fx .abertura-palco {
+    position: sticky;
+    top: 0;
+    height: 100svh;
+  }
+
+  .fx .abertura-cena canvas {
+    display: block;
+    visibility: hidden;
+  }
+
+  .fx .abertura-cena canvas.pronto {
+    visibility: visible;
+  }
+
+  .fx .abertura-passos {
+    display: block;
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    pointer-events: none;
+  }
+
+  .fx .abertura-passo {
+    position: absolute;
+    left: var(--margem);
+    bottom: clamp(24px, 7vh, 64px);
+    display: grid;
+    gap: 6px;
+    width: min(100% - 2 * var(--margem), 460px);
+    padding: 20px 22px;
+    border: 1.5px solid var(--borda-escura);
+    border-radius: 22px;
+    background: rgb(23 17 14 / 0.82);
+    visibility: hidden;
+  }
+
+  .abertura-passo-texto {
+    font-family: var(--fonte-titulo);
+    font-weight: 800;
+    font-size: var(--t-h3);
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+  }
+
+  .abertura-confirmacao {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+    margin-top: 6px;
+  }
+
+  .fx .abertura-final {
+    display: grid;
+    place-items: center;
+    position: absolute;
+    inset: 0;
+    z-index: 3;
+    padding-inline: var(--margem);
+    background: var(--noite);
+    color: var(--linho);
+    visibility: hidden;
+  }
+
+  .abertura-final .logo {
+    width: min(78vw, 760px);
+    height: auto;
+  }
+
+  .fx .abertura-ponto {
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 4;
+    width: 28px;
+    height: 28px;
+    margin: -14px 0 0 -14px;
+    border-radius: 50%;
+    background: var(--brasa);
+    visibility: hidden;
+    pointer-events: none;
+  }
+
+  /* Halo do ponto: some antes de pousar, porque o logo não leva brilho. */
+  .fx .abertura-ponto::after {
+    content: '';
+    position: absolute;
+    inset: -220%;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgb(240 100 30 / 0.6), rgb(240 100 30 / 0) 62%);
+    opacity: var(--halo, 1);
+  }
+
+  .fx .abertura-rolar {
+    display: block;
+    position: absolute;
+    right: var(--margem);
+    bottom: clamp(16px, 4.5vh, 48px);
+    z-index: 2;
+    color: var(--linho);
+  }
+
+  @media (max-width: 759px) {
+    .fx .abertura-rolar {
+      display: none;
+    }
+  }
+</style>

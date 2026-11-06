@@ -1,0 +1,272 @@
+---
+import Logo from './Logo.astro';
+import { cabecalho as t, indice, marca } from '../data/copy';
+
+const total = String(indice.length).padStart(2, '0');
+---
+
+<a class="pular" href="#lista-formulario">{t.pularConteudo}</a>
+<div class="progresso" id="progresso" aria-hidden="true"></div>
+
+<header class="topo" id="topo">
+  <a class="topo-marca" href="#abertura" aria-label="Mapere, ir para o início">
+    <Logo desenho="simplificado" decorativo />
+  </a>
+  <nav class="topo-acoes" aria-label="Ações rápidas">
+    <a class="pilula" href="#lista" data-atalho="l" aria-keyshortcuts="L">
+      {t.lista} <kbd aria-hidden="true">[L]</kbd>
+    </a>
+    <a class="pilula" href={marca.instagram.url} target="_blank" rel="noopener noreferrer">
+      {t.instagram}
+    </a>
+  </nav>
+</header>
+
+<nav class="indice" id="indice" aria-label={t.indiceRotulo}>
+  <p class="indice-contador" aria-hidden="true"><span id="indice-atual">01</span> / {total}</p>
+  <ol>
+    {
+      indice.map((item) => (
+        <li>
+          <a href={`#${item.id}`} data-indice={item.id}>
+            <span class="indice-rotulo">{item.rotulo}</span>
+            <span class="indice-ponto" aria-hidden="true" />
+          </a>
+        </li>
+      ))
+    }
+  </ol>
+</nav>
+
+<style is:global>
+  .pular {
+    position: fixed;
+    top: 8px;
+    left: 8px;
+    z-index: var(--z-pular);
+    padding: 12px 20px;
+    border-radius: 24px;
+    background: var(--linho);
+    color: var(--noite);
+    font-weight: 700;
+    transform: translateY(-200%);
+  }
+
+  .pular:focus {
+    transform: none;
+  }
+
+  .progresso {
+    position: fixed;
+    inset: 0 0 auto;
+    z-index: var(--z-topo);
+    height: 2px;
+    background: var(--brasa);
+    transform: scaleX(0);
+    transform-origin: left center;
+  }
+
+  .topo {
+    position: fixed;
+    inset: 0 0 auto;
+    z-index: var(--z-topo);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--s-3);
+    height: var(--topo);
+    padding-inline: var(--margem);
+    pointer-events: none;
+    isolation: isolate;
+  }
+
+  .topo > * {
+    position: relative;
+    pointer-events: auto;
+  }
+
+  /* Véu: o conteúdo que sobe some antes de encostar no logo. */
+  .topo::before,
+  .topo::after {
+    content: '';
+    position: absolute;
+    inset: 0 0 -28px;
+    z-index: -1;
+    pointer-events: none;
+  }
+
+  .topo::before {
+    background: linear-gradient(to bottom, var(--noite) 44%, rgb(23 17 14 / 0));
+    opacity: calc(1 - var(--veu, 0));
+  }
+
+  .topo::after {
+    background: linear-gradient(to bottom, var(--linho) 44%, rgb(243 237 226 / 0));
+    opacity: var(--veu, 0);
+  }
+
+  .topo[data-sobre='linho'] {
+    --veu: 1;
+  }
+
+  .topo-marca {
+    display: block;
+    color: var(--linho);
+  }
+
+  .topo[data-sobre='linho'] .topo-marca {
+    color: var(--noite);
+    --foco-1: var(--noite);
+    --foco-2: var(--brasa-texto);
+  }
+
+  .topo-marca .logo {
+    width: auto;
+    height: 42px;
+    margin-left: -8px;
+  }
+
+  .topo-acoes {
+    display: flex;
+    align-items: center;
+    gap: var(--s-1);
+  }
+
+  .pilula {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    min-height: 44px;
+    padding: 0 16px;
+    border: 1.5px solid var(--borda-escura);
+    border-radius: 22px;
+    background: var(--noite);
+    color: var(--linho);
+    font-weight: 700;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+
+  .pilula kbd {
+    font-family: var(--fonte-mono);
+    font-size: var(--t-mono);
+    font-weight: 400;
+    color: var(--texto-2-escuro);
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .pilula:hover {
+      background: var(--grafite);
+      border-color: var(--texto-2-escuro);
+    }
+  }
+
+  @media (hover: none) {
+    .pilula kbd {
+      display: none;
+    }
+  }
+
+  .indice {
+    position: fixed;
+    top: 50%;
+    right: 14px;
+    z-index: var(--z-indice);
+    display: none;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: var(--s-2);
+    padding: 12px 8px;
+    border-radius: 18px;
+    background: var(--noite);
+    transform: translateY(-50%);
+  }
+
+  @media (min-width: 1100px) {
+    .indice {
+      display: flex;
+    }
+  }
+
+  .indice-contador {
+    font-family: var(--fonte-mono);
+    font-size: 0.75rem;
+    color: var(--texto-2-escuro);
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+  }
+
+  .indice ol {
+    display: grid;
+    gap: 2px;
+    justify-items: end;
+  }
+
+  .indice a {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    width: 28px;
+    height: 24px;
+    padding-right: 7px;
+    color: var(--linho);
+    text-decoration: none;
+  }
+
+  .indice-ponto {
+    width: 10px;
+    height: 10px;
+    border: 2px solid var(--texto-2-escuro);
+    border-radius: 50%;
+  }
+
+  .indice a[data-visto] .indice-ponto {
+    border-color: var(--linho);
+    background: var(--linho);
+  }
+
+  .indice a[aria-current='true'] .indice-ponto {
+    border-color: var(--brasa);
+    background: var(--brasa);
+  }
+
+  .indice-rotulo {
+    position: absolute;
+    right: 34px;
+    padding: 4px 10px;
+    border-radius: 12px;
+    background: var(--noite);
+    font-size: 0.9375rem;
+    font-weight: 700;
+    white-space: nowrap;
+    opacity: 0;
+    transform: translateX(6px);
+    pointer-events: none;
+    transition:
+      opacity var(--rapido) var(--entrada),
+      transform var(--rapido) var(--entrada);
+  }
+
+  .indice a:focus-visible .indice-rotulo {
+    opacity: 1;
+    transform: none;
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .indice a:hover .indice-rotulo {
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  @media (max-width: 420px) {
+    .pilula {
+      padding: 0 13px;
+    }
+
+    .topo-marca .logo {
+      height: 36px;
+    }
+  }
+</style>

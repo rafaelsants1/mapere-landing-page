@@ -1,0 +1,356 @@
+---
+// Tela 1 · Mapa, modo claro. O mapa é um recorte real de Aracaju (OSM).
+// O HTML traz o estado final: posto Livre, rota desenhada e alerta na tela.
+import Chip from './Chip.astro';
+import Icone from './Icone.astro';
+import tela from '../data/mapa/tela.json';
+import { telaExemplo as t, type StatusId } from '../data/copy';
+import type { NomeIcone } from './Icone.astro';
+
+const navIcones: NomeIcone[] = ['mapa', 'coracao', 'sino', 'perfil'];
+const lugares = tela.lugares as { id: string; st: StatusId; xy: number[] }[];
+---
+
+<div class="tela tela-claro" data-tela="mapa">
+  <svg class="tela-carta" width="390" height="844" viewBox={tela.viewBox} fill="none" aria-hidden="true">
+    <rect width="390" height="844" fill="#EFE8DB"></rect>
+    <path d={tela.agua} fill="#CFC3AF" fill-rule="evenodd"></path>
+    <g stroke="#FBF8F2" stroke-linecap="round" stroke-linejoin="round">
+      <path d={tela.local} stroke-width="2.6"></path>
+      <path d={tela.terciaria} stroke-width="4"></path>
+      <path d={tela.principal} stroke-width="6.5"></path>
+    </g>
+    <g stroke-linecap="round" stroke-linejoin="round">
+      <path class="tela-rota-contorno" d={tela.rota} stroke="#17110E" stroke-width="8"></path>
+      <path class="tela-rota" id="tela-rota" d={tela.rota} stroke="#F0641E" stroke-width="4.5"></path>
+    </g>
+    <circle cx={tela.eu[0]} cy={tela.eu[1]} r="10" fill="#17110E" stroke="#FBF8F2" stroke-width="3.5"></circle>
+  </svg>
+
+  {
+    lugares.map((l) => (
+      <span class="pin tela-pin" data-st={l.st} style={`left:${l.xy[0]}px;top:${l.xy[1]}px`}>
+        <span class="pin-corpo">
+          <Icone nome={l.st} tamanho={15} traco={3.2} />
+        </span>
+        <span class="pin-haste" />
+        <span class="pin-base" />
+      </span>
+    ))
+  }
+
+  <span class="pin tela-pin-sel" style={`left:${tela.posto[0]}px;top:${tela.posto[1]}px`}>
+    <span class="tela-fase">
+      <span data-fase="antes" data-tela-fase="pin"><Chip status="seminfo" curto /></span>
+      <span data-fase="depois" data-tela-fase="pin"><Chip status="livre" /></span>
+    </span>
+    <span class="pin-haste"></span>
+    <span class="pin-base"></span>
+  </span>
+
+  <div class="tela-barra"><span>{t.horaMapa}</span><span class="tela-bateria"><i></i><b></b></span></div>
+
+  <div class="tela-topo">
+    <div class="tela-busca-linha">
+      <div class="tela-busca"><Icone nome="busca" tamanho={22} />{t.busca}</div>
+      <div class="tela-filtro"><Icone nome="filtros" tamanho={22} /></div>
+    </div>
+    <div class="tela-chips">
+      {
+        t.chips.map((c, i) => (
+          <span class:list={['tela-chip', { ativo: i === 0 }]}>
+            {i === 0 && <Icone nome="raio" tamanho={18} traco={2.4} />}
+            {c}
+          </span>
+        ))
+      }
+    </div>
+  </div>
+
+  <div class="tela-folha">
+    <span class="tela-folha-alca"></span>
+    <p class="tela-folha-kicker">{t.maisProximo}</p>
+    <p class="tela-folha-nome">{t.posto}</p>
+    <div class="tela-folha-linha">
+      <span class="tela-folha-distancia">{t.distancia}</span>
+      <span class="tela-fase">
+        <span data-fase="antes" data-tela-fase="folha"><Chip status="seminfo" curto /></span>
+        <span data-fase="depois" data-tela-fase="folha"><Chip status="livre" /></span>
+      </span>
+    </div>
+    <p class="tela-folha-confirma tela-fase">
+      <span data-fase="antes" data-tela-fase="confirma">Sem confirmação recente</span>
+      <span data-fase="depois" data-tela-fase="confirma">{t.confirmado}</span>
+    </p>
+    <p class="tela-folha-preco">{t.potencia} · {t.preco}</p>
+    <span class="tela-ver">{t.verPosto}<Icone nome="seta" tamanho={20} traco={2.4} /></span>
+    <div class="tela-nav">
+      {
+        t.nav.map((item, i) =>
+          i === 0 ? (
+            <span class="tela-nav-ativo">
+              <Icone nome={navIcones[i]!} tamanho={22} traco={2.2} />
+              {item}
+            </span>
+          ) : (
+            <span class:list={['tela-nav-item', { 'tela-nav-sino': i === 2 }]}>
+              <Icone nome={navIcones[i]!} tamanho={24} />
+            </span>
+          ),
+        )
+      }
+    </div>
+  </div>
+
+  <div class="tela-alerta" id="tela-alerta">
+    <span class="tela-alerta-icone"><Icone nome="sino" tamanho={20} traco={2.2} /></span>
+    <span class="tela-alerta-texto">
+      <strong>{t.alerta.titulo}</strong>
+      <span>{t.alerta.texto}</span>
+    </span>
+  </div>
+</div>
+
+<style is:global>
+  .tela-claro {
+    background: #efe8db;
+    color: var(--noite);
+  }
+
+  .tela-carta {
+    position: absolute;
+    inset: 0;
+  }
+
+  .tela-pin-sel {
+    z-index: 2;
+  }
+
+  .tela-topo {
+    position: absolute;
+    top: 56px;
+    left: 16px;
+    right: 16px;
+    z-index: 3;
+    display: grid;
+    gap: 10px;
+  }
+
+  .tela-busca-linha {
+    display: flex;
+    gap: 10px;
+  }
+
+  .tela-busca {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    height: 54px;
+    padding: 0 18px;
+    border: 1.5px solid var(--borda-clara);
+    border-radius: 27px;
+    background: var(--superficie-clara);
+    color: var(--texto-2-claro);
+    white-space: nowrap;
+  }
+
+  .tela-busca svg {
+    color: var(--noite);
+  }
+
+  .tela-filtro {
+    display: grid;
+    place-items: center;
+    flex: none;
+    width: 54px;
+    height: 54px;
+    border-radius: 27px;
+    background: var(--noite);
+    color: var(--linho);
+  }
+
+  .tela-chips {
+    display: flex;
+    gap: 8px;
+    margin-right: -16px;
+    overflow: hidden;
+  }
+
+  .tela-chip {
+    flex: none;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    height: 42px;
+    padding: 0 16px;
+    border: 1.5px solid var(--borda-clara);
+    border-radius: 21px;
+    background: var(--superficie-clara);
+    font-weight: 700;
+    white-space: nowrap;
+  }
+
+  .tela-chip.ativo {
+    padding-left: 12px;
+    border-color: var(--noite);
+    background: var(--noite);
+    color: var(--linho);
+  }
+
+  .tela-folha {
+    position: absolute;
+    inset: auto 0 0;
+    z-index: 3;
+    display: flex;
+    flex-direction: column;
+    height: 352px;
+    padding: 10px 20px 0;
+    border-radius: 30px 30px 0 0;
+    background: var(--grafite);
+    color: var(--linho);
+  }
+
+  .tela-folha-alca {
+    width: 40px;
+    height: 5px;
+    margin: 0 auto 12px;
+    border-radius: 3px;
+    background: #5a4d44;
+  }
+
+  .tela-folha-kicker,
+  .tela-folha-confirma,
+  .tela-folha-preco {
+    color: var(--texto-2-escuro);
+  }
+
+  .tela-folha-nome {
+    margin-top: 2px;
+    font-family: var(--fonte-titulo);
+    font-weight: 800;
+    font-size: 28px;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+  }
+
+  .tela-folha-linha {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 8px;
+  }
+
+  .tela-folha-distancia {
+    font-size: 18px;
+    font-weight: 700;
+  }
+
+  .tela-folha-confirma {
+    margin-top: 8px;
+  }
+
+  .tela-folha-preco {
+    margin-top: 2px;
+  }
+
+  .tela-ver {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    height: 52px;
+    margin-top: 12px;
+    border-radius: 26px;
+    background: var(--brasa);
+    color: var(--noite);
+    font-weight: 800;
+    font-size: 18px;
+  }
+
+  .tela-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 62px;
+    margin-top: auto;
+    margin-bottom: 18px;
+    padding: 0 8px;
+    border: 1.5px solid var(--borda-escura);
+    border-radius: 31px;
+  }
+
+  .tela-nav-ativo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    height: 46px;
+    padding: 0 18px 0 14px;
+    border-radius: 23px;
+    background: var(--linho);
+    color: var(--noite);
+    font-weight: 800;
+  }
+
+  .tela-nav-item {
+    position: relative;
+    display: grid;
+    place-items: center;
+    width: 56px;
+    height: 46px;
+  }
+
+  .tela-nav-sino::after {
+    content: '';
+    position: absolute;
+    top: 8px;
+    right: 14px;
+    width: 10px;
+    height: 10px;
+    border: 2px solid var(--grafite);
+    border-radius: 50%;
+    background: var(--brasa);
+    opacity: var(--sino, 1);
+    transform: scale(calc(0.6 + 0.4 * var(--sino, 1)));
+  }
+
+  .tela-alerta {
+    position: absolute;
+    top: 54px;
+    left: 12px;
+    right: 12px;
+    z-index: 4;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 16px;
+    border: 1.5px solid var(--borda-escura);
+    border-radius: 24px;
+    background: var(--noite);
+    color: var(--linho);
+  }
+
+  .tela-alerta-icone {
+    display: grid;
+    place-items: center;
+    flex: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+    background: var(--livre);
+    color: var(--noite);
+  }
+
+  .tela-alerta-texto {
+    display: grid;
+    gap: 2px;
+  }
+
+  .tela-alerta-texto strong {
+    font-weight: 800;
+  }
+
+  .tela-alerta-texto span {
+    color: var(--texto-2-escuro);
+  }
+</style>

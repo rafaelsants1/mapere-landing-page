@@ -1,0 +1,110 @@
+---
+import Icone from './Icone.astro';
+import { statusRotulo, type StatusId } from '../data/copy';
+
+interface Props {
+  status: StatusId;
+  grande?: boolean;
+  curto?: boolean;
+  class?: string;
+}
+
+const { status, grande = false, curto = false, class: classe } = Astro.props;
+const rotulo = statusRotulo[status];
+---
+
+<span class:list={['chip', { 'chip-grande': grande }, classe]} data-st={status}>
+  <Icone nome={status} tamanho={grande ? 24 : 18} traco={2.8} />
+  {curto ? rotulo.curto : rotulo.nome}
+</span>
+
+<style is:global>
+  .chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    height: 34px;
+    padding: 0 14px 0 9px;
+    border-radius: 17px;
+    font-weight: 800;
+    font-size: 1rem;
+    line-height: 1;
+    white-space: nowrap;
+  }
+
+  .chip-grande {
+    height: 52px;
+    padding: 0 20px 0 14px;
+    border-radius: 26px;
+    font-size: 1.375rem;
+    gap: 8px;
+  }
+
+  [data-st='livre'] {
+    --st: var(--livre);
+    --st-tinta: var(--noite);
+  }
+
+  [data-st='ocupado'] {
+    --st: var(--ocupado);
+    --st-tinta: var(--noite);
+  }
+
+  [data-st='defeito'] {
+    --st: var(--defeito);
+    --st-tinta: #fff;
+  }
+
+  [data-st='seminfo'] {
+    --st: var(--seminfo);
+    --st-tinta: var(--noite);
+  }
+
+  .chip,
+  .pin-corpo {
+    background: var(--st);
+    color: var(--st-tinta);
+  }
+
+  /* Pin: chip ou cápsula com haste e ponto. Sempre com contorno em Noite. */
+  .pin {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transform: translate(-50%, -100%);
+  }
+
+  .pin .chip,
+  .pin-corpo {
+    border: 2px solid var(--noite);
+  }
+
+  .pin-corpo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    border-radius: 15px;
+  }
+
+  .pin-haste {
+    width: 2px;
+    height: 6px;
+    background: var(--noite);
+  }
+
+  .pin-base {
+    width: 6px;
+    height: 6px;
+    margin-top: -1px;
+    border-radius: 50%;
+    background: var(--noite);
+  }
+
+  .sobre-noite .pin-haste,
+  .sobre-noite .pin-base {
+    background: var(--linho);
+  }
+</style>

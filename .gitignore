@@ -1,0 +1,15 @@
+node_modules/
+dist/
+.astro/
+.tmp/
+.env
+.env.*
+!.env.example
+.DS_Store
+*.log
+lighthouse/*.json
+
+# Cache bruto do Overpass: `npm run map` baixa de novo se faltar.
+data/osm/raw-*.json
+.impeccable/
+.playwright-mcp/

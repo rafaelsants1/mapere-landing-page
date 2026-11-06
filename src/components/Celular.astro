@@ -1,0 +1,106 @@
+---
+// Frame simples de celular. A tela é desenhada em 390 x 844 e escalada por --e.
+interface Props {
+  class?: string;
+}
+
+const { class: classe } = Astro.props;
+---
+
+<div class:list={['celular', classe]}>
+  <div class="celular-corpo">
+    <slot />
+  </div>
+</div>
+
+<style is:global>
+  .celular {
+    position: relative;
+    flex: none;
+    width: calc(410px * var(--e));
+    height: calc(864px * var(--e));
+  }
+
+  .celular-corpo {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 410px;
+    height: 864px;
+    padding: 10px;
+    border-radius: 60px;
+    background: #050302;
+    transform: scale(var(--e));
+    transform-origin: 0 0;
+  }
+
+  .tela {
+    position: relative;
+    width: 390px;
+    height: 844px;
+    border-radius: 50px;
+    overflow: hidden;
+    font-family: var(--fonte-texto);
+    font-size: 16px;
+    line-height: 1.25;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .tela svg {
+    max-width: none;
+  }
+
+  .tela-barra {
+    position: absolute;
+    inset: 0 0 auto;
+    z-index: 3;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 50px;
+    padding: 0 30px 0 36px;
+    font-weight: 800;
+  }
+
+  .tela-bateria {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+
+  .tela-bateria i {
+    display: block;
+    width: 18px;
+    height: 10px;
+    border-radius: 2px;
+    background: currentColor;
+  }
+
+  .tela-bateria b {
+    display: flex;
+    width: 24px;
+    height: 12px;
+    padding: 1px;
+    border: 2px solid currentColor;
+    border-radius: 4px;
+  }
+
+  .tela-bateria b::before {
+    content: '';
+    flex: 0 0 70%;
+    border-radius: 1px;
+    background: currentColor;
+  }
+
+  .tela-fase {
+    display: grid;
+  }
+
+  .tela-fase > * {
+    grid-area: 1 / 1;
+  }
+
+  .tela-fase [data-fase='antes'] {
+    visibility: hidden;
+  }
+</style>

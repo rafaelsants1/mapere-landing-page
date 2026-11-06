@@ -1,0 +1,173 @@
+---
+import Titulo from './Titulo.astro';
+import arame from '../data/mapa/arame.json';
+import { redes as t, pesquisa } from '../data/copy';
+
+const centro = arame.ancoras.centro!;
+---
+
+<section id="redes" class="secao redes tema-noite" data-secao aria-labelledby="titulo-redes">
+  <div class="redes-palco" id="redes-palco">
+    <div class="redes-enquadre" id="redes-enquadre" role="img" aria-label={t.cena}>
+      <img
+        src="/mapa/cidade-arame-sm.webp"
+        srcset="/mapa/cidade-arame-sm.webp 1100w, /mapa/cidade-arame.webp 2200w"
+        sizes="max(100vw, 160svh)"
+        width="2200"
+        height="1375"
+        alt=""
+        loading="lazy"
+        decoding="async"
+      />
+      <svg class="redes-limite" viewBox={arame.viewBox} fill="none" aria-hidden="true">
+        {arame.limite.map((d) => <path class="redes-limite-brilho" d={d} />)}
+        {arame.limite.map((d) => <path class="redes-limite-linha" d={d} />)}
+        <circle class="redes-luz-brilho" r="14"></circle>
+        <circle class="redes-luz" r="4.5"></circle>
+      </svg>
+      <span class="redes-rotulo" style={`left:${centro[0]}%;top:${centro[1]}%`}>{t.rotulos.centro}</span>
+      <span class="redes-rotulo" style="left:80%;top:66%">{t.rotulos.rio}</span>
+      <span class="redes-rotulo redes-rotulo-area" style="left:63%;top:71%">{t.rotulos.area}</span>
+    </div>
+
+    <div class="redes-texto">
+      <Titulo texto={t.titulo} id="titulo-redes" />
+      <p class="apoio">{t.apoio}</p>
+    </div>
+
+    <div class="redes-notas">
+      <p class="anotacao">
+        <strong class="numero">{t.dado.quantos} de {t.dado.de}</strong>
+        {t.dado.texto}
+        {pesquisa.base}
+      </p>
+      <p class="anotacao">{t.pagamento}</p>
+      <p class="anotacao numero redes-coord" aria-hidden="true">{t.rotulos.coordenadas}</p>
+    </div>
+  </div>
+</section>
+
+<style is:global>
+  .redes-palco {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: var(--s-5);
+    min-height: 100svh;
+    padding: var(--s-8) var(--margem) var(--s-5);
+    overflow: hidden;
+  }
+
+  .redes-enquadre {
+    position: absolute;
+    top: 58%;
+    left: 50%;
+    width: max(100vw, 160svh);
+    aspect-ratio: 1600 / 1000;
+    transform: translate(-50%, -50%);
+  }
+
+  .redes-enquadre img,
+  .redes-limite {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    max-width: none;
+  }
+
+  .redes-limite {
+    overflow: visible;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  .redes-limite-linha {
+    stroke: var(--brasa);
+    stroke-width: 1.7;
+  }
+
+  .redes-limite-brilho {
+    stroke: var(--brasa);
+    stroke-width: 10;
+    stroke-opacity: 0.2;
+  }
+
+  .redes-luz {
+    fill: var(--brasa);
+    stroke: var(--linho);
+    stroke-width: 1.5;
+  }
+
+  .redes-luz-brilho {
+    fill: var(--brasa);
+    fill-opacity: 0.3;
+  }
+
+  .redes-luz,
+  .redes-luz-brilho {
+    display: none;
+  }
+
+  .fx .redes-luz,
+  .fx .redes-luz-brilho {
+    display: block;
+  }
+
+  .redes-rotulo {
+    position: absolute;
+    padding: 2px 8px;
+    border-radius: 8px;
+    background: rgb(23 17 14 / 0.8);
+    font-family: var(--fonte-mono);
+    font-size: var(--t-mono);
+    color: var(--linho);
+    white-space: nowrap;
+    transform: translate(-50%, -50%);
+  }
+
+  .redes-rotulo-area {
+    color: var(--brasa);
+  }
+
+  .redes-texto {
+    position: relative;
+    display: grid;
+    gap: var(--s-2);
+    max-width: 640px;
+  }
+
+  .redes-notas {
+    position: relative;
+    display: grid;
+    gap: 6px;
+    max-width: 460px;
+    padding: 14px 16px;
+    border-radius: 16px;
+    background: rgb(23 17 14 / 0.86);
+  }
+
+  .redes-notas strong {
+    font-weight: 500;
+    color: var(--linho);
+  }
+
+  @media (max-width: 899px) {
+    .redes-enquadre {
+      left: 0;
+      transform: translate(calc(50vw - 72%), -50%);
+    }
+  }
+
+  .fx .redes {
+    height: 260svh;
+  }
+
+  .fx .redes-palco {
+    position: sticky;
+    top: 0;
+    height: 100svh;
+    padding-top: calc(var(--topo) + 16px);
+  }
+</style>

@@ -1,0 +1,218 @@
+---
+import { formulario as t, marca } from '../data/copy';
+
+interface Props {
+  origem: 'abertura' | 'lista';
+}
+
+const { origem } = Astro.props;
+const provedor = import.meta.env.PUBLIC_WAITLIST_PROVIDER ?? 'local';
+const modoTeste = import.meta.env.DEV && provedor === 'local';
+---
+
+<noscript>
+  <p class="form-sem-js">{t.semJavaScript} <a href={marca.instagram.url}>{marca.instagram.usuario}</a></p>
+</noscript>
+<form class="form-lista" data-form-lista data-origem={origem} data-estado="inicial" method="post" novalidate>
+  <div class="form-campos">
+    <div class="form-linha">
+      <div class="form-campo">
+        <label for={`email-${origem}`}>{t.rotuloEmail}</label>
+        <input
+          id={`email-${origem}`}
+          name="email"
+          type="email"
+          autocomplete="email"
+          inputmode="email"
+          autocapitalize="off"
+          spellcheck="false"
+          placeholder={t.placeholder}
+          required
+          aria-describedby={`status-${origem}`}
+        />
+      </div>
+      <button class="botao" type="submit">
+        <span class="form-girador" aria-hidden="true"></span>
+        <span data-rotulo data-enviando={t.enviando}>{t.botao}</span>
+      </button>
+    </div>
+    <label class="form-consentimento">
+      <input type="checkbox" name="consent" required aria-describedby={`status-${origem}`} />
+      <span>{t.consentimento} <a href="/privacidade">{t.privacidade}</a></span>
+    </label>
+    <div class="form-robo" aria-hidden="true">
+      <label>Site <input type="text" name="website" tabindex="-1" autocomplete="off" /></label>
+    </div>
+  </div>
+  <p
+    class="form-status"
+    id={`status-${origem}`}
+    role="status"
+    aria-live="polite"
+    tabindex="-1"
+    data-textos={JSON.stringify({
+      ok: t.sucesso,
+      repetido: t.repetido,
+      erro: t.erro,
+      email: t.emailInvalido,
+      consentimento: t.semConsentimento,
+      indisponivel: t.indisponivel,
+    })}
+  >
+  </p>
+  {modoTeste && <p class="form-teste anotacao">{t.modoTeste}</p>}
+</form>
+
+<style is:global>
+  .form-lista {
+    display: grid;
+    gap: var(--s-2);
+    width: 100%;
+  }
+
+  .form-campos {
+    display: grid;
+    gap: var(--s-2);
+  }
+
+  .form-linha {
+    display: flex;
+    align-items: flex-end;
+    gap: var(--s-1);
+  }
+
+  .form-campo {
+    flex: 1;
+    min-width: 0;
+    display: grid;
+    gap: 6px;
+  }
+
+  .form-campo label {
+    font-weight: 700;
+    font-size: 1rem;
+  }
+
+  .form-campo input {
+    width: 100%;
+    min-height: 56px;
+    padding: 0 22px;
+    border: 1.5px solid var(--borda-clara);
+    border-radius: 28px;
+    background: var(--superficie-clara);
+    color: var(--noite);
+    font-size: 1.0625rem;
+  }
+
+  .form-campo input::placeholder {
+    color: var(--texto-2-claro);
+    opacity: 1;
+  }
+
+  .form-campo input[aria-invalid='true'] {
+    border-color: var(--defeito);
+    box-shadow: inset 0 0 0 1px var(--defeito);
+  }
+
+  .form-consentimento {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    min-height: 28px;
+    line-height: 1.4;
+    color: var(--texto);
+    cursor: pointer;
+  }
+
+  .form-consentimento input {
+    flex: none;
+    width: 22px;
+    height: 22px;
+    margin: 0;
+    accent-color: var(--brasa);
+  }
+
+  .form-robo {
+    position: absolute;
+    left: -9999px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+  }
+
+  .form-status {
+    font-weight: 700;
+  }
+
+  .form-status:focus {
+    outline: none;
+    box-shadow: none;
+  }
+
+  .form-lista[data-estado='ok'] .form-campos {
+    display: none;
+  }
+
+  .form-lista[data-estado='ok'] .form-status {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-family: var(--fonte-titulo);
+    font-weight: 800;
+    font-size: var(--t-h3);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+  }
+
+  .form-lista[data-estado='ok'] .form-status::before {
+    content: '';
+    flex: none;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: var(--brasa);
+    animation: acender 0.7s var(--entrada) both;
+  }
+
+  @keyframes acender {
+    from {
+      transform: scale(0.5);
+      opacity: 0;
+    }
+  }
+
+  .form-girador {
+    display: none;
+    width: 18px;
+    height: 18px;
+    border: 2.5px solid var(--noite);
+    border-right-color: transparent;
+    border-radius: 50%;
+    animation: girar 0.8s linear infinite;
+  }
+
+  .form-lista[data-estado='enviando'] .form-girador {
+    display: block;
+  }
+
+  @keyframes girar {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  .form-teste {
+    color: var(--texto-2);
+  }
+
+  @media (max-width: 479px) {
+    .form-linha {
+      flex-direction: column;
+      align-items: stretch;
+    }
+
+    .form-lista .botao {
+      width: 100%;
+    }
+  }
+</style>
