@@ -12,20 +12,17 @@ export const links: { pesquisa: string | null } = { pesquisa: null };
 export const seo = {
   titulo: 'Mapere · Saiba se o posto está livre antes de sair',
   descricao:
-    'O Mapere mostra se o posto de recarga está livre e funcionando agora, com o status confirmado por quem está lá. Começando por Aracaju. Entre na lista de espera.',
-  imagemAlt: 'Assinatura Mapere. com o ponto final aceso sobre a maquete noturna de Aracaju.',
+    'O Mapere mostra se o posto de recarga está livre e funcionando agora, com o status confirmado por quem está lá. Entre na lista de espera.',
+  imagemAlt: 'Assinatura Mapere. com o ponto final aceso sobre uma maquete noturna de cidade com eletropostos.',
 } as const;
 
 // Pesquisa própria, 14 a 18/10/2026. Conferida contra a planilha: 23 válidas de 24.
-const n = (quantos: number, texto: string) => ({ quantos, de: 23, texto });
+const n = (quantos: number, texto: string) => ({ percentual: `${Math.round((quantos / 23) * 100)}%`, texto });
 export const pesquisa = {
   base: 'Pesquisa Mapere com 23 motoristas de carro elétrico, out/2026.',
   dor: n(20, 'apontaram posto ocupado ou quebrado entre as maiores dores.'),
   naoRecarregou: n(16, 'já chegaram a um posto e não conseguiram recarregar.'),
   livreAgora: n(22, 'disseram que saber se o posto está livre agora é informação que não pode faltar.'),
-  avisaria: n(16, 'avisariam o status sempre ou quase sempre.'),
-  appPorRede: n(10, 'reclamaram de precisar de um app e um cadastro diferentes para cada rede.'),
-  preco: n(13, 'querem ver o preço antes de sair.'),
 } as const;
 
 export type StatusId = 'livre' | 'ocupado' | 'defeito' | 'seminfo';
@@ -58,9 +55,9 @@ export const abertura = {
   // "Saiba se o posto está livre antes de sair." em linhas, para quebrar sempre igual.
   titulo: { linhas: ['Saiba se o', 'posto está', 'antes', 'de sair.'], destaque: 'livre' },
   apoio: 'Quem está no posto confirma em poucos toques. Você vê o status de agora, no mapa.',
-  lojas: 'Em breve no Android e no iPhone. Começando por Aracaju.',
+  lojas: 'Em breve no Android e no iPhone.',
   cena:
-    'Cena: maquete noturna de Aracaju feita de renda e linho. A câmera mergulha até a rua, um fio de luz corre pela cidade e um posto de recarga acende.',
+    'Cena: maquete noturna de uma cidade feita de renda e linho, com eletropostos e carros recarregando. A câmera desce até a rua, um fio de luz corre até um posto e o status dele muda para livre.',
   passos: [
     'Você abre o mapa antes de sair.',
     'A luz segue até o posto mais perto.',
@@ -78,14 +75,14 @@ export const problema = {
     { status: 'defeito', dado: pesquisa.naoRecarregou },
     { status: 'ocupado', dado: pesquisa.livreAgora },
   ],
-  nota: 'Mapa de Aracaju com dados do OpenStreetMap. Pins ilustrativos.',
+  nota: 'Mapa com dados do OpenStreetMap. Pins ilustrativos.',
   cena:
-    'Mapa em linha de Aracaju, com as ruas, o rio Sergipe e a costa. Uma rota parte da Atalaia e passa por três postos ilustrativos: o primeiro ocupado, o segundo com defeito, o terceiro ocupado.',
+    'Mapa em linha de uma cidade, com as ruas, um rio e a costa. Uma rota parte da orla e passa por três postos ilustrativos: o primeiro ocupado, o segundo com defeito, o terceiro ocupado.',
 } as const;
 
 export const telaExemplo = {
   posto: 'Posto Fio de Luz',
-  endereco: 'Rua do Lacê, 100 · Aracaju, SE',
+  endereco: 'Rua do Lacê, 100 · Centro',
   distancia: '1,2 km · 4 min',
   confirmado: 'Confirmado há 4 min por 2 pessoas',
   confirmadoCurto: 'Confirmado há 4 min · 2 confirmações',
@@ -93,7 +90,8 @@ export const telaExemplo = {
   preco: 'R$ 2,10/kWh',
   potencia: '60 kW',
   busca: 'Buscar endereço ou bairro',
-  chips: ['CCS2 · até 60 kW', 'Carga rápida', 'Só livres'],
+  chips: ['CCS2 · até 60 kW', 'Carga rápida'],
+  soLivres: 'Só livres',
   maisProximo: 'Mais próximo de você',
   verPosto: 'Ver posto',
   nav: ['Mapa', 'Favoritos', 'Alertas', 'Perfil'],
@@ -113,6 +111,11 @@ export const telaExemplo = {
   reportar: 'Reportar problema',
   abrirRota: 'Abrir rota',
   alerta: { titulo: 'Posto Fio de Luz está livre', texto: 'Confirmado agora por 3 pessoas.' },
+  checkinPergunta: 'Como está o posto agora?',
+  checkinOpcoes: ['livre', 'ocupado', 'defeito'],
+  horaBloqueio: '17:51',
+  appNome: 'Mapere',
+  agora: 'agora',
   horaMapa: '17:42',
   horaDetalhe: '17:43',
 } as const;
@@ -123,26 +126,23 @@ export const comoFunciona = {
     {
       nome: 'Consulte antes de sair',
       texto:
-        'O mapa mostra o status de cada posto, há quanto tempo ele foi confirmado e por quantas pessoas. Preço e potência ficam no detalhe do posto.',
+        'O mapa mostra o status de cada posto, há quanto tempo ele foi confirmado e por quantas pessoas. Um toque e só os livres ficam na tela.',
       exemplo: 'Livre · há 4 min · 2 confirmações',
-      dado: pesquisa.preco,
     },
     {
       nome: 'Confirme quando chegar',
-      texto: 'Quem está no posto avisa em poucos toques. O ponto acende e todo mundo vê na hora.',
+      texto: 'Quem está no posto toca em check-in e escolhe o status. O ponto acende e todo mundo vê na hora.',
       exemplo: 'Check-in feito · 3 confirmações',
-      dado: pesquisa.avisaria,
     },
     {
       nome: 'Seja avisado',
       texto: 'O status do seu posto mudou? O alerta chega no celular antes de você sair.',
       exemplo: 'Alerta · Posto Fio de Luz está livre',
-      dado: null,
     },
   ],
   legenda: 'Tela ilustrativa. Nome, endereço, preço e distâncias são fictícios.',
   cena:
-    'Duas telas do app. Na primeira, um mapa de Aracaju com o Posto Fio de Luz, que muda de sem informação para livre. Na segunda, o detalhe do posto: um dedo toca em fazer check-in, o ponto acende no histórico e chega um alerta.',
+    'Telas do app em sequência. No mapa, o Posto Fio de Luz muda de sem informação para livre, o filtro deixa só os postos livres e a rota aparece. No detalhe do posto, um dedo toca em fazer check-in e escolhe livre, e o ponto acende no histórico. Por fim, o alerta chega na tela bloqueada do celular.',
 } as const;
 
 export const status = {
@@ -161,12 +161,10 @@ export const status = {
 
 export const redes = {
   titulo: { antes: 'Um mapa para ', destaque: 'todas', depois: ' as redes.' },
-  apoio: 'Postos de todas as redes no mesmo lugar, começando por Aracaju.',
-  dado: pesquisa.appPorRede,
+  apoio: 'Postos de todas as redes no mesmo lugar.',
   pagamento: 'A recarga continua sendo paga à operadora.',
-  rotulos: { centro: 'Centro', rio: 'Rio Sergipe', area: 'Área de lançamento', coordenadas: '10°54′S 37°04′O' },
   cena:
-    'Desenho em arame de Aracaju vista do mar, com prédios e ruas do OpenStreetMap e o rio Sergipe em primeiro plano. Uma linha de luz contorna o município, a área de lançamento.',
+    'Desenho em arame de uma cidade vista do mar, com prédios, ruas e um rio em primeiro plano. Uma linha de luz contorna a cidade.',
 } as const;
 
 export const momento = {
@@ -178,24 +176,32 @@ export const perguntas = {
   lista: [
     {
       p: 'O que é o Mapere?',
-      r: 'Um app para donos de carro elétrico saberem se o posto de recarga está livre e funcionando agora, antes de sair.',
+      r: 'Um app para quem tem carro elétrico saber se o posto de recarga está livre e funcionando agora, antes de sair de casa.',
     },
-    { p: 'Quando sai?', r: 'Em breve no Android e no iPhone. Entre na lista para saber primeiro.' },
     {
       p: 'De onde vem o status?',
       r: 'De quem está no posto. A pessoa confirma em poucos toques, e o app mostra há quanto tempo e por quantas pessoas a informação foi confirmada.',
     },
     {
+      p: 'E se ninguém confirmou há pouco tempo?',
+      r: 'O posto aparece como "Sem informação". O mapa não adivinha.',
+    },
+    { p: 'O Mapere é gratuito?', r: 'Sim. O app é gratuito.' },
+    {
       p: 'Pago a recarga pelo app?',
       r: 'Não. O pagamento continua com a operadora. No detalhe do posto você vê preço e potência.',
     },
-    { p: 'Onde funciona?', r: 'Começando por Aracaju, com os postos de todas as redes num mapa só.' },
+    {
+      p: 'Vai funcionar na minha cidade?',
+      r: 'O Mapere reúne postos de todas as redes num mapa só, pensado para motoristas de todo o Brasil. Entre na lista para saber quando chega até você.',
+    },
+    { p: 'Quando sai?', r: 'Em breve no Android e no iPhone. Quem está na lista fica sabendo primeiro.' },
   ],
 } as const;
 
 export const lista = {
   titulo: { antes: 'Entre na ', destaque: 'lista', depois: ' de espera.' },
-  apoio: 'A gente avisa por e-mail quando o Mapere abrir em Aracaju.',
+  apoio: 'A gente avisa por e-mail quando o Mapere abrir.',
 } as const;
 
 export const formulario = {

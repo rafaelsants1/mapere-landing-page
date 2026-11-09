@@ -1,16 +1,14 @@
 import { gsap, umo, varios } from './core';
 
-// A luz Brasa contorna o município enquanto a cidade em arame se aproxima.
+// A luz Brasa contorna a cidade enquanto a cidade em arame se aproxima.
 export function cenaRedes() {
   const linhas = varios<SVGPathElement>('.redes-limite-linha');
   const brilhos = varios<SVGPathElement>('.redes-limite-brilho');
   const luz = varios<SVGCircleElement>('.redes-luz, .redes-luz-brilho');
-  const rotulos = varios('.redes-rotulo');
   const notas = umo('.redes-notas');
   const enquadre = umo('#redes-enquadre');
   const principal = linhas[0]!;
 
-  gsap.set(rotulos, { autoAlpha: 0 });
   gsap.set(notas, { autoAlpha: 0, y: 16 });
   gsap.set(luz, { autoAlpha: 0 });
 
@@ -36,9 +34,6 @@ export function cenaRedes() {
   });
   linha.to(luz, { autoAlpha: 0, duration: 0.04 }, 0.77);
 
-  rotulos.forEach((rotulo, i) => {
-    linha.to(rotulo, { autoAlpha: 1, duration: 0.05, ease: 'entrada' }, 0.16 + i * 0.2);
-  });
   linha.to(notas, { autoAlpha: 1, y: 0, duration: 0.06, ease: 'entrada' }, 0.8);
   linha.to({}, { duration: 0.1 }, 0.9);
 }

@@ -4,7 +4,7 @@ Identidade A1 · Brasa. Tokens em `src/styles/tokens.css`; textos em `src/data/c
 
 ## Direção
 
-Uma pessoa em Aracaju, no carro ou em casa à noite, olha o celular antes de sair. A página é a noite dessa cidade: maquete de renda e linho, depois mapa em linha, depois a cidade em arame, sempre com uma luz Brasa correndo por um fio. A coisa que fica na memória: o ponto aceso do posto vira o ponto final de "Mapere.".
+Uma pessoa no carro ou em casa à noite olha o celular antes de sair. A página é a noite da cidade: maquete de renda e linho, depois mapa em linha, depois a cidade em arame, sempre com uma luz Brasa correndo por um fio. A coisa que fica na memória: o ponto aceso do posto vira o ponto final de "Mapere.".
 
 ## Cor
 

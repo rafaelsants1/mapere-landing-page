@@ -1,23 +1,121 @@
 ---
 import Logo from './Logo.astro';
 import Chip from './Chip.astro';
+import Icone from './Icone.astro';
 import FormularioLista from './FormularioLista.astro';
-import { abertura as t } from '../data/copy';
+import cena from '../data/mapa/abertura.json';
+import { abertura as t, type StatusId } from '../data/copy';
 
-const ultimoDesktop = '/frames/desktop/f119.webp';
-const ultimoCelular = '/frames/celular/f059.webp';
+const conjunto = (plano: string) => `/cena/${plano}-1400.webp 1400w, /cena/${plano}-2400.webp 2400w`;
+
+// Posições em fração da foto, no topo de cada totem.
+const pinosGeral: [number, number, StatusId][] = [
+  [0.454, 0.145, 'livre'],
+  [0.544, 0.148, 'ocupado'],
+  [0.634, 0.285, 'seminfo'],
+  [0.721, 0.225, 'livre'],
+  [0.251, 0.29, 'defeito'],
+  [0.385, 0.36, 'livre'],
+  [0.501, 0.405, 'ocupado'],
+  [0.228, 0.465, 'seminfo'],
+  [0.425, 0.515, 'livre'],
+];
+const pinosMeio: [number, number, StatusId][] = [
+  [0.207, 0.24, 'livre'],
+  [0.34, 0.44, 'ocupado'],
+  [0.552, 0.435, 'livre'],
+  [0.6375, 0.385, 'ocupado'],
+];
+const halos = [
+  [0.454, 0.163],
+  [0.544, 0.166],
+  [0.251, 0.31],
+  [0.385, 0.378],
+  [0.501, 0.423],
+  [0.425, 0.533],
+  [0.721, 0.243],
+];
+const celulasCarga = [0, 1, 2, 3, 4];
 ---
 
 <section id="abertura" class="secao abertura tema-noite" data-secao aria-labelledby="titulo-abertura">
   <div class="abertura-palco" id="abertura-palco">
     <div class="abertura-cena" role="img" aria-label={t.cena}>
-      <picture>
-        <source media="(prefers-reduced-motion: reduce) and (max-aspect-ratio: 1/1)" srcset={ultimoCelular} width="492" height="768" />
-        <source media="(prefers-reduced-motion: reduce)" srcset={ultimoDesktop} width="1364" height="768" />
-        <source media="(max-aspect-ratio: 1/1)" srcset="/frames/celular/f000.webp" width="492" height="768" />
-        <img src="/frames/desktop/f000.webp" width="1364" height="768" alt="" fetchpriority="high" decoding="async" />
-      </picture>
-      <canvas id="abertura-canvas" aria-hidden="true"></canvas>
+      <div class="plano" data-plano="geral">
+        <picture>
+          <source media="(prefers-reduced-motion: reduce)" srcset={conjunto('perto')} sizes="max(100vw, 178svh)" width="2816" height="1584" />
+          <img src="/cena/geral-1400.webp" srcset={conjunto('geral')} sizes="max(125vw, 222svh)" width="2816" height="1584" alt="" fetchpriority="high" decoding="async" />
+        </picture>
+        <div class="plano-camada" aria-hidden="true">
+          {halos.map(([x, y], i) => <span class="cena-halo" style={`left:${x! * 100}%;top:${y! * 100}%;animation-delay:${i * -0.7}s`} />)}
+          <svg class="cena-svg" viewBox={cena.viewBox} fill="none">
+            <path class="cena-rota-brilho" d={cena.rota}></path>
+            <path class="cena-rota" d={cena.rota}></path>
+            <circle class="cena-cabeca" r="11"></circle>
+          </svg>
+          {
+            pinosGeral.map(([x, y, st]) => (
+              <span class="marca" style={`left:${x * 100}%;top:${y * 100}%`}>
+                <span class="marca-pop">
+                  <span class="pin" data-st={st}>
+                    <span class="pin-corpo"><Icone nome={st} tamanho={15} traco={3.2} /></span>
+                    <span class="pin-haste" />
+                    <span class="pin-base" />
+                  </span>
+                </span>
+              </span>
+            ))
+          }
+        </div>
+      </div>
+
+      <div class="plano" data-plano="meio">
+        <img data-srcset={conjunto('meio')} sizes="max(150vw, 267svh)" width="2816" height="1584" alt="" decoding="async" />
+        <img class="plano-foco" data-srcset="/cena/meio-foco-900.webp 900w" sizes="100vw" width="900" height="506" alt="" decoding="async" />
+        <div class="plano-camada" aria-hidden="true">
+          {
+            pinosMeio.map(([x, y, st]) => (
+              <span class="marca" style={`left:${x * 100}%;top:${y * 100}%`}>
+                <span class="marca-pop">
+                  <span class="pin" data-st={st}>
+                    <span class="pin-corpo"><Icone nome={st} tamanho={15} traco={3.2} /></span>
+                    <span class="pin-haste" />
+                    <span class="pin-base" />
+                  </span>
+                </span>
+              </span>
+            ))
+          }
+        </div>
+      </div>
+
+      <div class="plano" data-plano="perto">
+        <img data-srcset={conjunto('perto')} sizes="max(120vw, 214svh)" width="2816" height="1584" alt="" decoding="async" />
+        <div class="plano-camada" aria-hidden="true">
+          <svg class="cena-svg" viewBox={cena.viewBox} fill="none">
+            <path class="cena-cabo" d="M1024 501C1050 505 1058 530 1058 600C1056 700 1060 850 1076 926C1090 985 1130 1050 1171 1111C1205 1170 1240 1222 1300 1231C1370 1238 1440 1220 1501 1206"></path>
+          </svg>
+          <span class="marca cena-chip-marca">
+            <span class="cena-anel"></span>
+            <span class="pin cena-chip">
+              <span class="tela-fase">
+                <span data-fase="antes"><Chip status="seminfo" curto /></span>
+                <span data-fase="depois"><Chip status="livre" /></span>
+              </span>
+              <span class="pin-haste"></span>
+              <span class="pin-base"></span>
+            </span>
+          </span>
+          <span class="marca cena-carga-marca">
+            <span class="cena-carga">
+              <Icone nome="raio" tamanho={16} traco={2.6} />
+              <span class="cena-carga-barra">
+                {celulasCarga.map(() => <i class="cena-carga-celula" />)}
+              </span>
+            </span>
+          </span>
+        </div>
+      </div>
     </div>
     <div class="abertura-veu" aria-hidden="true"></div>
 
@@ -73,8 +171,12 @@ const ultimoCelular = '/frames/celular/f059.webp';
     inset: 0;
   }
 
-  .abertura-cena img,
-  .abertura-cena canvas {
+  .plano {
+    position: absolute;
+    inset: 0;
+  }
+
+  .plano img {
     position: absolute;
     inset: 0;
     width: 100%;
@@ -84,8 +186,176 @@ const ultimoCelular = '/frames/celular/f059.webp';
     object-position: 50% 50%;
   }
 
-  .abertura-cena canvas {
+  /* Sem movimento a foto é o close: em tela vertical, o recorte fica no totem e na frente do carro. */
+  @media (prefers-reduced-motion: reduce) {
+    .plano img {
+      object-position: 40% 50%;
+    }
+  }
+
+  .plano-camada,
+  .plano[data-plano='meio'],
+  .plano[data-plano='perto'] {
     display: none;
+  }
+
+  /* Só com movimento: cada plano tem o tamanho da foto e a câmera o transforma. */
+  .fx .plano {
+    inset: auto;
+    top: 0;
+    left: 0;
+    transform-origin: 0 0;
+    will-change: transform;
+  }
+
+  .fx .plano[data-plano='meio'],
+  .fx .plano[data-plano='perto'],
+  .fx .plano-camada {
+    display: block;
+  }
+
+  .fx .plano[data-plano='meio'],
+  .fx .plano[data-plano='perto'] {
+    visibility: hidden;
+  }
+
+  .fx .plano-camada,
+  .cena-svg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .cena-svg {
+    overflow: visible;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  .cena-rota {
+    stroke: #ffc99f;
+    stroke-width: 3.5;
+  }
+
+  .cena-rota-brilho {
+    stroke: var(--brasa);
+    stroke-width: 13;
+    stroke-opacity: 0.32;
+  }
+
+  .cena-cabeca {
+    fill: #fff3e6;
+  }
+
+  .cena-cabo {
+    stroke: var(--brasa);
+    stroke-width: 7;
+  }
+
+  .cena-halo {
+    position: absolute;
+    width: 1.8%;
+    aspect-ratio: 1;
+    margin: -0.9% 0 0 -0.9%;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgb(240 100 30 / 0.55), rgb(240 100 30 / 0) 68%);
+    animation: cena-respira 3.4s ease-in-out infinite alternate;
+  }
+
+  @keyframes cena-respira {
+    from {
+      opacity: 0.25;
+    }
+
+    to {
+      opacity: 1;
+    }
+  }
+
+  /* Âncora de tamanho zero: mantém pino e chip no mesmo tamanho durante o zoom. */
+  .marca {
+    position: absolute;
+    width: 0;
+    height: 0;
+    transform: scale(var(--contra, 1));
+    transform-origin: 0 0;
+  }
+
+  .marca-pop {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 0;
+    height: 0;
+  }
+
+  .abertura-cena .pin-haste,
+  .abertura-cena .pin-base {
+    background: var(--linho);
+  }
+
+  .cena-chip .tela-fase {
+    justify-items: center;
+  }
+
+  .cena-anel {
+    position: absolute;
+    left: -60px;
+    top: -82px;
+    width: 120px;
+    height: 56px;
+    border: 2px solid var(--livre);
+    border-radius: 28px;
+  }
+
+  .cena-chip-marca {
+    left: 32.5%;
+    top: 22.8%;
+  }
+
+  .cena-carga-marca {
+    left: 79%;
+    top: 50.5%;
+  }
+
+  @media (max-aspect-ratio: 1/1) {
+    .cena-chip-marca {
+      left: 34.5%;
+    }
+
+    .cena-carga-marca {
+      left: 61%;
+      top: 60%;
+    }
+  }
+
+  .cena-carga {
+    position: absolute;
+    left: 0;
+    top: 0;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 10px 6px 8px;
+    border: 1.5px solid var(--borda-escura);
+    border-radius: 16px;
+    background: rgb(23 17 14 / 0.86);
+    color: var(--linho);
+    transform: translate(-50%, -100%);
+  }
+
+  .cena-carga-barra {
+    display: flex;
+    gap: 3px;
+  }
+
+  .cena-carga-celula {
+    display: block;
+    width: 7px;
+    height: 14px;
+    border-radius: 2px;
+    background: var(--livre);
   }
 
   .abertura-veu {

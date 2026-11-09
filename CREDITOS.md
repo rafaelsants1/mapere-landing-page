@@ -2,13 +2,17 @@
 
 ## Higgsfield
 
-Conta no plano grátis. Saldo inicial de 10 créditos, 7 gastos, 3 restantes.
+Conta no plano grátis. Saldo inicial de 10 créditos, 9 gastos, 1 restante.
 
 | Arquivo em `src/assets/higgsfield/` | Modelo | Créditos | Uso |
 |---|---|---|---|
 | `maquete-aracaju-16x9-v1.png` | Seedream 5.0 Flash (`seedream_5_0_flash`, 2k) | 0,5 | Imagem aprovada; início do vídeo e base do Open Graph |
 | `maquete-aracaju-9x16-v1.png` | Seedream 5.0 Flash (`seedream_5_0_flash`, 2k) | 0,5 | Alternativa, não usada na página |
-| `maquete-aracaju-mergulho-6s.mp4` | MiniMax Hailuo 2.3 (`minimax_hailuo`, 6 s, 768p) | 6 | Vídeo da abertura, extraído em `public/frames/` |
+| `maquete-aracaju-mergulho-6s.mp4` | MiniMax Hailuo 2.3 (`minimax_hailuo`, 6 s, 768p) | 6 | Vídeo da v1 da abertura, fora de uso (fonte dos quadros removidos) |
+| `maquete-recarga-geral-v2.png` | Seedream 5.0 Flash (`seedream_5_0_flash`, 2k), a partir da maquete 16:9 | 0,5 | Abertura, vista geral, e base do Open Graph |
+| `maquete-recarga-meio-v2.png` | Seedream 5.0 Flash, a partir da vista geral | 0,5 | Abertura, meia distância |
+| `maquete-recarga-perto-v3.png` | Seedream 5.0 Flash, a partir da meia distância | 0,5 | Abertura, close do totem e dos dois carros |
+| (descartada) close com um carro só | Seedream 5.0 Flash | 0,5 | Substituída pela v3 |
 
 GPT Image 2.6, Seedance 2.0 Mini, Grok Video 1.5 Lite e Kling 3.0 Turbo exigem plano pago e recusaram o pedido sem cobrar. O Veo 3.1 Lite falhou e devolveu os créditos.
 
