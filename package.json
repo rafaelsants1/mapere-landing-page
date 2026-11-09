@@ -13,7 +13,7 @@
     "map": "node scripts/build-map.mjs",
     "map:refresh": "node scripts/build-map.mjs --refresh",
     "fonts": "python scripts/build-fonts.py",
-    "frames": "node scripts/build-frames.mjs",
+    "cena": "node scripts/build-cena.mjs",
     "og": "node scripts/build-og.mjs"
   },
   "dependencies": {

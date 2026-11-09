@@ -15,7 +15,7 @@ npm run preview
 |---|---|---|
 | `npm run map` | Reprojeta os mapas a partir de `data/osm/` | cache do OSM (baixa do Overpass se faltar) |
 | `npm run map:refresh` | Baixa de novo do Overpass | rede |
-| `npm run frames` | Extrai os quadros da abertura | ffmpeg |
+| `npm run cena` | Gera as imagens da abertura em `public/cena/` | nada |
 | `npm run og` | Gera `public/og.jpg` | nada |
 | `npm run fonts` | Gera as fontes woff2 | Python com `fonttools` e `brotli` |
 

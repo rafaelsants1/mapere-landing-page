@@ -1,0 +1,83 @@
+---
+// Tela 3 · Celular bloqueado. O HTML traz o estado final: o alerta já chegou.
+import Icone from './Icone.astro';
+import { telaExemplo as t } from '../data/copy';
+---
+
+<div class="tela tela-bloqueio" data-tela="bloqueio">
+  <div class="tela-barra"><span></span><span class="tela-bateria"><i></i><b></b></span></div>
+  <p class="tela-bloqueio-hora">{t.horaBloqueio}</p>
+
+  <div class="tela-alerta" id="tela-alerta">
+    <span class="tela-alerta-icone"><Icone nome="sino" tamanho={22} traco={2.2} /></span>
+    <span class="tela-alerta-texto">
+      <span class="tela-alerta-app"><span>{t.appNome}</span><span>{t.agora}</span></span>
+      <strong>{t.alerta.titulo}</strong>
+      <span>{t.alerta.texto}</span>
+    </span>
+  </div>
+</div>
+
+<style is:global>
+  .tela-bloqueio {
+    background: var(--noite);
+    color: var(--linho);
+  }
+
+  .tela-bloqueio-hora {
+    position: absolute;
+    inset: 110px 0 auto;
+    font-family: var(--fonte-titulo);
+    font-weight: 800;
+    font-size: 92px;
+    line-height: 1;
+    letter-spacing: -0.03em;
+    text-align: center;
+  }
+
+  .tela-alerta {
+    position: absolute;
+    top: 268px;
+    left: 14px;
+    right: 14px;
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 16px;
+    border: 1.5px solid var(--borda-escura);
+    border-radius: 26px;
+    background: var(--grafite);
+  }
+
+  .tela-alerta-icone {
+    display: grid;
+    place-items: center;
+    flex: none;
+    width: 44px;
+    height: 44px;
+    border-radius: 22px;
+    background: var(--livre);
+    color: var(--noite);
+  }
+
+  .tela-alerta-texto {
+    flex: 1;
+    display: grid;
+    gap: 2px;
+  }
+
+  .tela-alerta-texto strong {
+    font-weight: 800;
+    font-size: 18px;
+  }
+
+  .tela-alerta-texto > span {
+    color: var(--texto-2-escuro);
+  }
+
+  .tela-alerta-app {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+  }
+</style>

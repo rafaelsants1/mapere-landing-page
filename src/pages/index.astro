@@ -13,8 +13,7 @@ import Lista from '../components/Lista.astro';
 
 <Base>
   <Fragment slot="head">
-    <link rel="preload" as="image" href="/frames/celular/f000.webp" fetchpriority="high" media="(max-aspect-ratio: 1/1) and (prefers-reduced-motion: no-preference)" />
-    <link rel="preload" as="image" href="/frames/desktop/f000.webp" fetchpriority="high" media="(min-aspect-ratio: 1/1) and (prefers-reduced-motion: no-preference)" />
+    <link rel="preload" as="image" imagesrcset="/cena/geral-1400.webp 1400w, /cena/geral-2400.webp 2400w" imagesizes="max(125vw, 222svh)" fetchpriority="high" media="(prefers-reduced-motion: no-preference)" />
   </Fragment>
   <Cabecalho />
   <div class="fundo-claro" id="fundo-claro" aria-hidden="true"></div>

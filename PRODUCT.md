@@ -6,11 +6,11 @@ brand
 
 ## Users
 
-Donos de carro 100% elétrico em Aracaju (SE): motorista de aplicativo, quem usa o carro no dia a dia e quem viaja. Olham o celular antes de sair ou já dentro do carro, muitas vezes com pressa e sob sol forte. O trabalho a fazer: saber se vale ir até aquele posto agora.
+Donos de carro 100% elétrico no Brasil: motorista de aplicativo, quem usa o carro no dia a dia e quem viaja. Olham o celular antes de sair ou já dentro do carro, muitas vezes com pressa e sob sol forte. O trabalho a fazer: saber se vale ir até aquele posto agora.
 
 ## Product Purpose
 
-O Mapere mostra se o posto de recarga está livre e funcionando agora. O status vem de quem está lá, que confirma em poucos toques, e o app mostra há quanto tempo e por quantas pessoas a informação foi confirmada. O app ainda não existe. Esta página é uma lista de espera, começando por Aracaju. Sucesso: e-mails na lista com consentimento, e motoristas que entendem o produto em uma rolagem.
+O Mapere mostra se o posto de recarga está livre e funcionando agora. O status vem de quem está lá, que confirma em poucos toques, e o app mostra há quanto tempo e por quantas pessoas a informação foi confirmada. O app ainda não existe. Esta página é uma lista de espera. Sucesso: e-mails na lista com consentimento, e motoristas que entendem o produto em uma rolagem.
 
 ## Brand Personality
 
@@ -23,9 +23,9 @@ Landing genérica de SaaS, cards iguais em grade de 3, tema roxo, gradiente de t
 ## Design Principles
 
 1. O ponto aceso é o protagonista: o posto que acende vira o ponto final da marca, a luz da rota e a confirmação.
-2. Número só com base: toda estatística leva "23 motoristas, out/2026". Nada inventado, nada generalizado.
+2. Número só com base: toda estatística aparece em porcentagem, com a base real em nota discreta ("23 motoristas, out/2026"). Nada inventado, nada generalizado.
 3. Status nunca depende de cor: sempre ícone e texto, com a idade da informação colada ao lado.
-4. O mapa é Aracaju de verdade: dados do OpenStreetMap, não ilustração genérica.
+4. O mapa é cidade de verdade: dados do OpenStreetMap, não ilustração genérica, e sem nomear lugares na página.
 5. Sem movimento a página continua completa: o estado final é o conteúdo, a animação só chega até ele.
 
 ## Accessibility & Inclusion

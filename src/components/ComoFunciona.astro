@@ -2,8 +2,9 @@
 import Celular from './Celular.astro';
 import TelaMapa from './TelaMapa.astro';
 import TelaDetalhe from './TelaDetalhe.astro';
+import TelaBloqueio from './TelaBloqueio.astro';
 import Titulo from './Titulo.astro';
-import { comoFunciona as t, pesquisa } from '../data/copy';
+import { comoFunciona as t } from '../data/copy';
 ---
 
 <section id="como-funciona" class="secao como tema-linho" data-secao data-fundo="linho" aria-labelledby="titulo-como">
@@ -16,6 +17,7 @@ import { comoFunciona as t, pesquisa } from '../data/copy';
       <div class="como-duas" aria-hidden="true" inert>
         <Celular class="celular-mapa"><TelaMapa /></Celular>
         <Celular class="celular-detalhe"><TelaDetalhe /></Celular>
+        <Celular class="celular-bloqueio"><TelaBloqueio /></Celular>
       </div>
     </div>
 
@@ -28,14 +30,6 @@ import { comoFunciona as t, pesquisa } from '../data/copy';
               <h3>{p.nome}</h3>
               <p>{p.texto}</p>
               <p class="passo-exemplo anotacao">{p.exemplo}</p>
-              {p.dado && (
-                <p class="passo-dado anotacao">
-                  <strong class="numero">
-                    {p.dado.quantos} de {p.dado.de}
-                  </strong>{' '}
-                  {p.dado.texto} {pesquisa.base}
-                </p>
-              )}
             </div>
           </li>
         ))
@@ -89,11 +83,6 @@ import { comoFunciona as t, pesquisa } from '../data/copy';
     color: var(--texto);
   }
 
-  .passo-dado strong {
-    font-weight: 500;
-    color: var(--texto);
-  }
-
   .como-legenda {
     margin-top: var(--s-5);
   }
@@ -121,8 +110,20 @@ import { comoFunciona as t, pesquisa } from '../data/copy';
       align-self: center;
     }
 
-    .como-duas {
-      flex-wrap: nowrap;
+    /* O mapa e a tela bloqueada dividem o mesmo lugar. */
+    .fx .como-duas {
+      display: grid;
+      grid-template-columns: repeat(2, auto);
+      justify-content: center;
+    }
+
+    .fx .celular-mapa,
+    .fx .celular-bloqueio {
+      grid-area: 1 / 1;
+    }
+
+    .fx .celular-detalhe {
+      grid-area: 1 / 2;
     }
 
     .como {
@@ -160,7 +161,7 @@ import { comoFunciona as t, pesquisa } from '../data/copy';
   .fx .passo {
     display: flex;
     align-items: center;
-    min-height: 92svh;
+    min-height: 125svh;
   }
 
   .fx .como-passos {
@@ -207,7 +208,7 @@ import { comoFunciona as t, pesquisa } from '../data/copy';
 
     .fx .passo {
       align-items: flex-end;
-      min-height: 96svh;
+      min-height: 125svh;
       padding-bottom: 12px;
     }
 

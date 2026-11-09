@@ -86,7 +86,23 @@ import { telaExemplo as t, type StatusId } from '../data/copy';
     </div>
   </div>
 
+  <div class="tela-sheet" id="tela-sheet">
+    <span class="tela-folha-alca"></span>
+    <p class="tela-sheet-titulo">{t.checkinPergunta}</p>
+    <ul class="tela-sheet-opcoes">
+      {
+        t.checkinOpcoes.map((o) => (
+          <li class="tela-sheet-opcao" data-opcao={o}>
+            <Chip status={o as StatusId} />
+            <i class="tela-sheet-marca" />
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+
   <span class="dedo" id="dedo"></span>
+  <span class="dedo dedo-sheet" id="dedo-sheet"></span>
 </div>
 
 <style is:global>
@@ -302,6 +318,53 @@ import { telaExemplo as t, type StatusId } from '../data/copy';
     white-space: nowrap;
   }
 
+  .tela-sheet {
+    display: none;
+  }
+
+  .fx .tela-sheet {
+    position: absolute;
+    inset: auto 0 0;
+    z-index: 4;
+    display: flex;
+    flex-direction: column;
+    padding: 10px 20px 26px;
+    border-radius: 30px 30px 0 0;
+    background: var(--grafite);
+  }
+
+  .tela-sheet-titulo {
+    font-family: var(--fonte-titulo);
+    font-weight: 800;
+    font-size: 26px;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+  }
+
+  .tela-sheet-opcoes {
+    display: grid;
+    gap: 10px;
+    margin-top: 16px;
+  }
+
+  .tela-sheet-opcao {
+    position: relative;
+    display: flex;
+    align-items: center;
+    height: 64px;
+    padding: 0 14px;
+    border: 1.5px solid var(--borda-escura);
+    border-radius: 20px;
+  }
+
+  .tela-sheet-marca {
+    position: absolute;
+    inset: -1.5px;
+    border: 3px solid var(--linho);
+    border-radius: 20px;
+    visibility: hidden;
+  }
+
   .dedo {
     display: none;
   }
@@ -319,5 +382,11 @@ import { telaExemplo as t, type StatusId } from '../data/copy';
     border-radius: 50%;
     background: rgb(243 237 226 / 0.28);
     visibility: hidden;
+  }
+
+  .fx .dedo.dedo-sheet {
+    left: 86px;
+    top: 607px;
+    bottom: auto;
   }
 </style>

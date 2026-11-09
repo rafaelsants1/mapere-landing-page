@@ -1,6 +1,6 @@
 ---
-// Tela 1 · Mapa, modo claro. O mapa é um recorte real de Aracaju (OSM).
-// O HTML traz o estado final: posto Livre, rota desenhada e alerta na tela.
+// Tela 1 · Mapa, modo claro. O mapa é um recorte real de cidade (OSM).
+// O HTML traz o estado final: posto Livre, filtro ligado e rota desenhada.
 import Chip from './Chip.astro';
 import Icone from './Icone.astro';
 import tela from '../data/mapa/tela.json';
@@ -29,7 +29,7 @@ const lugares = tela.lugares as { id: string; st: StatusId; xy: number[] }[];
 
   {
     lugares.map((l) => (
-      <span class="pin tela-pin" data-st={l.st} style={`left:${l.xy[0]}px;top:${l.xy[1]}px`}>
+      <span class="pin tela-pin" data-st={l.st} data-filtravel={l.st === 'livre' ? undefined : ''} style={`left:${l.xy[0]}px;top:${l.xy[1]}px`}>
         <span class="pin-corpo">
           <Icone nome={l.st} tamanho={15} traco={3.2} />
         </span>
@@ -56,14 +56,11 @@ const lugares = tela.lugares as { id: string; st: StatusId; xy: number[] }[];
       <div class="tela-filtro"><Icone nome="filtros" tamanho={22} /></div>
     </div>
     <div class="tela-chips">
-      {
-        t.chips.map((c, i) => (
-          <span class:list={['tela-chip', { ativo: i === 0 }]}>
-            {i === 0 && <Icone nome="raio" tamanho={18} traco={2.4} />}
-            {c}
-          </span>
-        ))
-      }
+      <span class="tela-fase tela-chip-fase">
+        <span class="tela-chip" data-fase="antes" data-tela-fase="filtro">{t.soLivres}</span>
+        <span class="tela-chip ativo" data-fase="depois" data-tela-fase="filtro"><Icone nome="livre" tamanho={18} traco={2.8} />{t.soLivres}</span>
+      </span>
+      {t.chips.map((c) => <span class="tela-chip">{c}</span>)}
     </div>
   </div>
 
@@ -93,7 +90,7 @@ const lugares = tela.lugares as { id: string; st: StatusId; xy: number[] }[];
               {item}
             </span>
           ) : (
-            <span class:list={['tela-nav-item', { 'tela-nav-sino': i === 2 }]}>
+            <span class="tela-nav-item">
               <Icone nome={navIcones[i]!} tamanho={24} />
             </span>
           ),
@@ -102,13 +99,7 @@ const lugares = tela.lugares as { id: string; st: StatusId; xy: number[] }[];
     </div>
   </div>
 
-  <div class="tela-alerta" id="tela-alerta">
-    <span class="tela-alerta-icone"><Icone nome="sino" tamanho={20} traco={2.2} /></span>
-    <span class="tela-alerta-texto">
-      <strong>{t.alerta.titulo}</strong>
-      <span>{t.alerta.texto}</span>
-    </span>
-  </div>
+  <span class="dedo dedo-filtro" id="dedo-filtro"></span>
 </div>
 
 <style is:global>
@@ -300,57 +291,20 @@ const lugares = tela.lugares as { id: string; st: StatusId; xy: number[] }[];
     height: 46px;
   }
 
-  .tela-nav-sino::after {
-    content: '';
-    position: absolute;
-    top: 8px;
-    right: 14px;
-    width: 10px;
-    height: 10px;
-    border: 2px solid var(--grafite);
-    border-radius: 50%;
-    background: var(--brasa);
-    opacity: var(--sino, 1);
-    transform: scale(calc(0.6 + 0.4 * var(--sino, 1)));
+  .tela-pin[data-filtravel] {
+    visibility: hidden;
   }
 
-  .tela-alerta {
-    position: absolute;
-    top: 54px;
-    left: 12px;
-    right: 12px;
-    z-index: 4;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    padding: 14px 16px;
-    border: 1.5px solid var(--borda-escura);
-    border-radius: 24px;
-    background: var(--noite);
-    color: var(--linho);
-  }
-
-  .tela-alerta-icone {
-    display: grid;
-    place-items: center;
+  .tela-chip-fase {
     flex: none;
-    width: 40px;
-    height: 40px;
-    border-radius: 20px;
-    background: var(--livre);
-    color: var(--noite);
+    justify-items: start;
   }
 
-  .tela-alerta-texto {
-    display: grid;
-    gap: 2px;
-  }
-
-  .tela-alerta-texto strong {
-    font-weight: 800;
-  }
-
-  .tela-alerta-texto span {
-    color: var(--texto-2-escuro);
+  .fx .dedo.dedo-filtro {
+    left: 62px;
+    top: 113px;
+    bottom: auto;
+    border-color: var(--noite);
+    background: rgb(23 17 14 / 0.22);
   }
 </style>

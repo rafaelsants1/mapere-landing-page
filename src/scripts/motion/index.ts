@@ -23,7 +23,14 @@ export function iniciarMovimento(): Movimento {
   const mm = gsap.matchMedia();
   let irPara: Movimento['irPara'] = (alvo) => alvo.scrollIntoView();
 
-  mm.add({ largo: '(min-width: 1000px)', estreito: '(max-width: 999px)' }, (contexto) => {
+  // A orientação entra nas condições porque o enquadramento da abertura depende dela.
+  const condicoes = {
+    largo: '(min-width: 1000px)',
+    estreito: '(max-width: 999px)',
+    retrato: '(max-aspect-ratio: 1/1)',
+    paisagem: '(min-aspect-ratio: 1/1)',
+  };
+  mm.add(condicoes, (contexto) => {
     const { largo } = contexto.conditions as { largo: boolean };
 
     const lenis = iniciarLenis();

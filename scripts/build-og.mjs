@@ -13,7 +13,7 @@ const assinatura = `<svg xmlns="http://www.w3.org/2000/svg" width="${largura}" h
 
 const veu = `<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}"><defs><linearGradient id="v" x1="0" x2="1" y1="0" y2="0"><stop offset="0" stop-color="#17110E" stop-opacity=".94"/><stop offset=".62" stop-color="#17110E" stop-opacity=".78"/><stop offset="1" stop-color="#17110E" stop-opacity=".32"/></linearGradient></defs><rect width="${W}" height="${H}" fill="url(#v)"/></svg>`;
 
-await sharp('src/assets/higgsfield/maquete-aracaju-16x9-v1.png')
+await sharp('src/assets/higgsfield/maquete-recarga-geral-v2.png')
   .resize(W, H, { fit: 'cover', position: 'attention' })
   .composite([
     { input: Buffer.from(veu) },

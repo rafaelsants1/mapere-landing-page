@@ -94,9 +94,7 @@ const ultima = paradas[paradas.length - 1]!;
         {
           paradas.map((p, i) => (
             <li class="parada" data-parada={i} style={`--ax:${ancora[i]!.x}%;--ay:${ancora[i]!.y}%`}>
-              <span class="parada-numero numero">
-                {p.dado.quantos} de {p.dado.de}
-              </span>
+              <span class="parada-numero numero">{p.dado.percentual}</span>
               <span class="anotacao">{p.dado.texto}</span>
             </li>
           ))

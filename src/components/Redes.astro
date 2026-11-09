@@ -1,9 +1,7 @@
 ---
 import Titulo from './Titulo.astro';
 import arame from '../data/mapa/arame.json';
-import { redes as t, pesquisa } from '../data/copy';
-
-const centro = arame.ancoras.centro!;
+import { redes as t } from '../data/copy';
 ---
 
 <section id="redes" class="secao redes tema-noite" data-secao aria-labelledby="titulo-redes">
@@ -25,9 +23,6 @@ const centro = arame.ancoras.centro!;
         <circle class="redes-luz-brilho" r="14"></circle>
         <circle class="redes-luz" r="4.5"></circle>
       </svg>
-      <span class="redes-rotulo" style={`left:${centro[0]}%;top:${centro[1]}%`}>{t.rotulos.centro}</span>
-      <span class="redes-rotulo" style="left:80%;top:66%">{t.rotulos.rio}</span>
-      <span class="redes-rotulo redes-rotulo-area" style="left:63%;top:71%">{t.rotulos.area}</span>
     </div>
 
     <div class="redes-texto">
@@ -36,13 +31,7 @@ const centro = arame.ancoras.centro!;
     </div>
 
     <div class="redes-notas">
-      <p class="anotacao">
-        <strong class="numero">{t.dado.quantos} de {t.dado.de}</strong>
-        {t.dado.texto}
-        {pesquisa.base}
-      </p>
       <p class="anotacao">{t.pagamento}</p>
-      <p class="anotacao numero redes-coord" aria-hidden="true">{t.rotulos.coordenadas}</p>
     </div>
   </div>
 </section>
@@ -115,22 +104,6 @@ const centro = arame.ancoras.centro!;
     display: block;
   }
 
-  .redes-rotulo {
-    position: absolute;
-    padding: 2px 8px;
-    border-radius: 8px;
-    background: rgb(23 17 14 / 0.8);
-    font-family: var(--fonte-mono);
-    font-size: var(--t-mono);
-    color: var(--linho);
-    white-space: nowrap;
-    transform: translate(-50%, -50%);
-  }
-
-  .redes-rotulo-area {
-    color: var(--brasa);
-  }
-
   .redes-texto {
     position: relative;
     display: grid;
@@ -146,11 +119,6 @@ const centro = arame.ancoras.centro!;
     padding: 14px 16px;
     border-radius: 16px;
     background: rgb(23 17 14 / 0.86);
-  }
-
-  .redes-notas strong {
-    font-weight: 500;
-    color: var(--linho);
   }
 
   @media (max-width: 899px) {
