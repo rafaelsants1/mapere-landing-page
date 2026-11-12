@@ -1,0 +1,776 @@
+{
+  "origem": "audio/alinhamento.json",
+  "duracao": 39.49,
+  "ultimaLinha": 7,
+  "marcas": {
+    "para": 0.45,
+    "tentar": 1.54,
+    "l1Fim": 2.47,
+    "tres": 2.925,
+    "fazer": 6.047,
+    "l2Fim": 6.29,
+    "cap1": 6.89,
+    "sinal": 8.455,
+    "subsolo": 9.735,
+    "comum": 10.525,
+    "dica": 10.925,
+    "pluga": 11.515,
+    "sobe": 12.395,
+    "pega": 13.115,
+    "inicia": 13.875,
+    "l3Fim": 14.61,
+    "cap2": 15.51,
+    "travou": 16.855,
+    "cartao": 18.855,
+    "pix": 19.295,
+    "segundo": 20.895,
+    "l4Fim": 22.48,
+    "cap3": 23.28,
+    "internet": 25.295,
+    "acende": 26.46,
+    "liberacao": 27.167,
+    "chega": 27.86,
+    "app5": 29.655,
+    "outro": 31.455,
+    "l5Fim": 32.065,
+    "isso": 33.065,
+    "antes": 34.115,
+    "mapere": 35.475,
+    "l6Fim": 36.22,
+    "siga": 37.22,
+    "sigaFim": 38.69,
+    "fim": 39.49
+  },
+  "blocos": [
+    {
+      "linha": 1,
+      "palavras": [
+        {
+          "tela": "Para",
+          "ini": 0.45,
+          "fim": 0.66
+        },
+        {
+          "tela": "de",
+          "ini": 0.7,
+          "fim": 0.74
+        },
+        {
+          "tela": "apertar",
+          "ini": 0.82,
+          "fim": 1.3
+        }
+      ]
+    },
+    {
+      "linha": 1,
+      "palavras": [
+        {
+          "tela": "“tentar",
+          "ini": 1.54,
+          "fim": 1.94
+        },
+        {
+          "tela": "de",
+          "ini": 1.98,
+          "fim": 2.02
+        },
+        {
+          "tela": "novo”.",
+          "ini": 2.1,
+          "fim": 2.47
+        }
+      ]
+    },
+    {
+      "linha": 2,
+      "palavras": [
+        {
+          "tela": "3",
+          "ini": 2.925,
+          "fim": 3.14
+        },
+        {
+          "tela": "motivos",
+          "ini": 3.26,
+          "fim": 3.62
+        },
+        {
+          "tela": "pro",
+          "ini": 3.7,
+          "fim": 3.78
+        }
+      ]
+    },
+    {
+      "linha": 2,
+      "palavras": [
+        {
+          "tela": "seu",
+          "ini": 3.82,
+          "fim": 3.94
+        },
+        {
+          "tela": "carro",
+          "ini": 4.02,
+          "fim": 4.26
+        },
+        {
+          "tela": "não",
+          "ini": 4.34,
+          "fim": 4.5
+        }
+      ]
+    },
+    {
+      "linha": 2,
+      "palavras": [
+        {
+          "tela": "carregar",
+          "ini": 4.58,
+          "fim": 4.9
+        },
+        {
+          "tela": "no",
+          "ini": 4.98,
+          "fim": 5.06
+        },
+        {
+          "tela": "posto,",
+          "ini": 5.22,
+          "fim": 5.62
+        }
+      ]
+    },
+    {
+      "linha": 2,
+      "palavras": [
+        {
+          "tela": "e",
+          "ini": 5.66,
+          "fim": 5.7
+        },
+        {
+          "tela": "o",
+          "ini": 5.74,
+          "fim": 5.78
+        },
+        {
+          "tela": "que",
+          "ini": 5.86,
+          "fim": 5.94
+        },
+        {
+          "tela": "fazer.",
+          "ini": 6.047,
+          "fim": 6.29
+        }
+      ]
+    },
+    {
+      "linha": 3,
+      "palavras": [
+        {
+          "tela": "Um:",
+          "ini": 6.89,
+          "fim": 7.415
+        },
+        {
+          "tela": "seu",
+          "ini": 7.455,
+          "fim": 7.575
+        },
+        {
+          "tela": "celular",
+          "ini": 7.655,
+          "fim": 7.975
+        }
+      ]
+    },
+    {
+      "linha": 3,
+      "palavras": [
+        {
+          "tela": "tá",
+          "ini": 8.055,
+          "fim": 8.215
+        },
+        {
+          "tela": "sem",
+          "ini": 8.295,
+          "fim": 8.375
+        },
+        {
+          "tela": "sinal.",
+          "ini": 8.455,
+          "fim": 8.78
+        }
+      ]
+    },
+    {
+      "linha": 3,
+      "palavras": [
+        {
+          "tela": "Em",
+          "ini": 8.99,
+          "fim": 9.095
+        },
+        {
+          "tela": "garagem",
+          "ini": 9.135,
+          "fim": 9.415
+        },
+        {
+          "tela": "de",
+          "ini": 9.495,
+          "fim": 9.575
+        }
+      ]
+    },
+    {
+      "linha": 3,
+      "palavras": [
+        {
+          "tela": "subsolo",
+          "ini": 9.735,
+          "fim": 10.055
+        },
+        {
+          "tela": "é",
+          "ini": 10.095,
+          "fim": 10.135
+        },
+        {
+          "tela": "comum.",
+          "ini": 10.215,
+          "fim": 10.525
+        }
+      ]
+    },
+    {
+      "linha": 3,
+      "palavras": [
+        {
+          "tela": "Dica:",
+          "ini": 10.925,
+          "fim": 11.475
+        },
+        {
+          "tela": "pluga",
+          "ini": 11.515,
+          "fim": 11.715
+        },
+        {
+          "tela": "o",
+          "ini": 11.755,
+          "fim": 11.795
+        },
+        {
+          "tela": "carro,",
+          "ini": 11.875,
+          "fim": 12.355
+        }
+      ]
+    },
+    {
+      "linha": 3,
+      "palavras": [
+        {
+          "tela": "sobe",
+          "ini": 12.395,
+          "fim": 12.595
+        },
+        {
+          "tela": "até",
+          "ini": 12.675,
+          "fim": 12.915
+        },
+        {
+          "tela": "onde",
+          "ini": 12.995,
+          "fim": 13.075
+        }
+      ]
+    },
+    {
+      "linha": 3,
+      "palavras": [
+        {
+          "tela": "pega",
+          "ini": 13.115,
+          "fim": 13.315
+        },
+        {
+          "tela": "sinal",
+          "ini": 13.355,
+          "fim": 13.715
+        },
+        {
+          "tela": "e",
+          "ini": 13.795,
+          "fim": 13.835
+        }
+      ]
+    },
+    {
+      "linha": 3,
+      "palavras": [
+        {
+          "tela": "inicia",
+          "ini": 13.875,
+          "fim": 14.275
+        },
+        {
+          "tela": "por",
+          "ini": 14.355,
+          "fim": 14.435
+        },
+        {
+          "tela": "lá.",
+          "ini": 14.515,
+          "fim": 14.61
+        }
+      ]
+    },
+    {
+      "linha": 4,
+      "palavras": [
+        {
+          "tela": "Dois:",
+          "ini": 15.51,
+          "fim": 16.175
+        },
+        {
+          "tela": "o",
+          "ini": 16.215,
+          "fim": 16.255
+        },
+        {
+          "tela": "pagamento",
+          "ini": 16.335,
+          "fim": 16.815
+        }
+      ]
+    },
+    {
+      "linha": 4,
+      "palavras": [
+        {
+          "tela": "travou.",
+          "ini": 16.855,
+          "fim": 17.32
+        }
+      ]
+    },
+    {
+      "linha": 4,
+      "palavras": [
+        {
+          "tela": "Às",
+          "ini": 17.54,
+          "fim": 17.735
+        },
+        {
+          "tela": "vezes",
+          "ini": 17.775,
+          "fim": 18.095
+        },
+        {
+          "tela": "é",
+          "ini": 18.175,
+          "fim": 18.255
+        },
+        {
+          "tela": "só",
+          "ini": 18.295,
+          "fim": 18.415
+        }
+      ]
+    },
+    {
+      "linha": 4,
+      "palavras": [
+        {
+          "tela": "trocar",
+          "ini": 18.495,
+          "fim": 18.655
+        },
+        {
+          "tela": "o",
+          "ini": 18.695,
+          "fim": 18.735
+        },
+        {
+          "tela": "cartão",
+          "ini": 18.855,
+          "fim": 19.055
+        }
+      ]
+    },
+    {
+      "linha": 4,
+      "palavras": [
+        {
+          "tela": "pelo",
+          "ini": 19.095,
+          "fim": 19.215
+        },
+        {
+          "tela": "Pix.",
+          "ini": 19.295,
+          "fim": 19.715
+        }
+      ]
+    },
+    {
+      "linha": 4,
+      "palavras": [
+        {
+          "tela": "Deixa",
+          "ini": 20.115,
+          "fim": 20.415
+        },
+        {
+          "tela": "sempre",
+          "ini": 20.495,
+          "fim": 20.775
+        },
+        {
+          "tela": "um",
+          "ini": 20.815,
+          "fim": 20.855
+        }
+      ]
+    },
+    {
+      "linha": 4,
+      "palavras": [
+        {
+          "tela": "segundo",
+          "ini": 20.895,
+          "fim": 21.375
+        },
+        {
+          "tela": "jeito",
+          "ini": 21.455,
+          "fim": 21.695
+        }
+      ]
+    },
+    {
+      "linha": 4,
+      "palavras": [
+        {
+          "tela": "de",
+          "ini": 21.735,
+          "fim": 21.775
+        },
+        {
+          "tela": "pagar",
+          "ini": 21.855,
+          "fim": 22.015
+        },
+        {
+          "tela": "no",
+          "ini": 22.095,
+          "fim": 22.175
+        },
+        {
+          "tela": "app.",
+          "ini": 22.295,
+          "fim": 22.48
+        }
+      ]
+    },
+    {
+      "linha": 5,
+      "palavras": [
+        {
+          "tela": "Três:",
+          "ini": 23.28,
+          "fim": 23.935
+        },
+        {
+          "tela": "o",
+          "ini": 23.962,
+          "fim": 23.988
+        },
+        {
+          "tela": "carregador",
+          "ini": 24.015,
+          "fim": 24.575
+        }
+      ]
+    },
+    {
+      "linha": 5,
+      "palavras": [
+        {
+          "tela": "tá",
+          "ini": 24.695,
+          "fim": 24.815
+        },
+        {
+          "tela": "sem",
+          "ini": 24.895,
+          "fim": 24.975
+        },
+        {
+          "tela": "internet.",
+          "ini": 25.295,
+          "fim": 25.64
+        }
+      ]
+    },
+    {
+      "linha": 5,
+      "palavras": [
+        {
+          "tela": "A",
+          "ini": 26.04,
+          "fim": 26.1
+        },
+        {
+          "tela": "tela",
+          "ini": 26.18,
+          "fim": 26.34
+        },
+        {
+          "tela": "acende,",
+          "ini": 26.46,
+          "fim": 26.86
+        }
+      ]
+    },
+    {
+      "linha": 5,
+      "palavras": [
+        {
+          "tela": "mas",
+          "ini": 26.9,
+          "fim": 26.98
+        },
+        {
+          "tela": "a",
+          "ini": 27.06,
+          "fim": 27.113
+        },
+        {
+          "tela": "liberação",
+          "ini": 27.167,
+          "fim": 27.54
+        }
+      ]
+    },
+    {
+      "linha": 5,
+      "palavras": [
+        {
+          "tela": "não",
+          "ini": 27.62,
+          "fim": 27.78
+        },
+        {
+          "tela": "chega.",
+          "ini": 27.86,
+          "fim": 28.17
+        }
+      ]
+    },
+    {
+      "linha": 5,
+      "palavras": [
+        {
+          "tela": "Aí,",
+          "ini": 28.77,
+          "fim": 29.255
+        },
+        {
+          "tela": "pelo",
+          "ini": 29.335,
+          "fim": 29.495
+        },
+        {
+          "tela": "app,",
+          "ini": 29.655,
+          "fim": 29.975
+        }
+      ]
+    },
+    {
+      "linha": 5,
+      "palavras": [
+        {
+          "tela": "não",
+          "ini": 30.028,
+          "fim": 30.135
+        },
+        {
+          "tela": "tem",
+          "ini": 30.215,
+          "fim": 30.295
+        },
+        {
+          "tela": "jeito:",
+          "ini": 30.375,
+          "fim": 30.855
+        }
+      ]
+    },
+    {
+      "linha": 5,
+      "palavras": [
+        {
+          "tela": "é",
+          "ini": 30.895,
+          "fim": 30.935
+        },
+        {
+          "tela": "ir",
+          "ini": 31.015,
+          "fim": 31.095
+        },
+        {
+          "tela": "pra",
+          "ini": 31.175,
+          "fim": 31.335
+        },
+        {
+          "tela": "outro",
+          "ini": 31.455,
+          "fim": 31.655
+        },
+        {
+          "tela": "posto.",
+          "ini": 31.815,
+          "fim": 32.065
+        }
+      ]
+    },
+    {
+      "linha": 6,
+      "palavras": [
+        {
+          "tela": "E",
+          "ini": 33.065,
+          "fim": 33.155
+        },
+        {
+          "tela": "isso",
+          "ini": 33.235,
+          "fim": 33.395
+        },
+        {
+          "tela": "dá",
+          "ini": 33.435,
+          "fim": 33.515
+        },
+        {
+          "tela": "pra",
+          "ini": 33.555,
+          "fim": 33.635
+        }
+      ]
+    },
+    {
+      "linha": 6,
+      "palavras": [
+        {
+          "tela": "saber",
+          "ini": 33.675,
+          "fim": 33.955
+        },
+        {
+          "tela": "antes",
+          "ini": 34.115,
+          "fim": 34.435
+        },
+        {
+          "tela": "de",
+          "ini": 34.515,
+          "fim": 34.595
+        },
+        {
+          "tela": "sair.",
+          "ini": 34.635,
+          "fim": 34.925
+        }
+      ]
+    },
+    {
+      "linha": 6,
+      "palavras": [
+        {
+          "tela": "É",
+          "ini": 35.085,
+          "fim": 35.155
+        },
+        {
+          "tela": "o",
+          "ini": 35.182,
+          "fim": 35.208
+        },
+        {
+          "tela": "que",
+          "ini": 35.235,
+          "fim": 35.275
+        },
+        {
+          "tela": "o",
+          "ini": 35.315,
+          "fim": 35.395
+        },
+        {
+          "tela": "Mapere",
+          "ini": 35.475,
+          "fim": 35.715
+        }
+      ]
+    },
+    {
+      "linha": 6,
+      "palavras": [
+        {
+          "tela": "vai",
+          "ini": 35.742,
+          "fim": 35.795
+        },
+        {
+          "tela": "mostrar.",
+          "ini": 35.875,
+          "fim": 36.22
+        }
+      ]
+    },
+    {
+      "linha": 7,
+      "palavras": [
+        {
+          "tela": "Siga",
+          "ini": 37.22,
+          "fim": 37.505
+        },
+        {
+          "tela": "pra",
+          "ini": 37.585,
+          "fim": 37.665
+        },
+        {
+          "tela": "acompanhar",
+          "ini": 37.785,
+          "fim": 38.065
+        },
+        {
+          "tela": "a",
+          "ini": 38.092,
+          "fim": 38.118
+        },
+        {
+          "tela": "construção.",
+          "ini": 38.145,
+          "fim": 38.69
+        }
+      ]
+    }
+  ]
+}

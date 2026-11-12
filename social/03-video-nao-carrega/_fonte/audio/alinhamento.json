@@ -1,0 +1,722 @@
+{
+  "origem": "narracao-take-a.mp3 e narracao-take-a.palavras.json (ElevenLabs), com as pausas de montar-narracao.mjs",
+  "take": "a",
+  "duracao": 39.69,
+  "fala": {
+    "ini": 0.45,
+    "fim": 38.69
+  },
+  "frases": [
+    {
+      "texto": "Para de apertar 'tentar de novo'.",
+      "ini": 0.45,
+      "fim": 2.47,
+      "naTake": [
+        0.11,
+        2.13
+      ],
+      "pausaDepois": 0.455,
+      "pausaNaTake": 0.455
+    },
+    {
+      "texto": "Três motivos pro seu carro não carregar no posto, e o que fazer.",
+      "ini": 2.925,
+      "fim": 6.29,
+      "naTake": [
+        2.585,
+        5.95
+      ],
+      "pausaDepois": 0.6,
+      "pausaNaTake": 0.405
+    },
+    {
+      "texto": "Um: seu celular tá sem sinal.",
+      "ini": 6.89,
+      "fim": 8.78,
+      "naTake": [
+        6.355,
+        8.245
+      ],
+      "pausaDepois": 0.21,
+      "pausaNaTake": 0.21
+    },
+    {
+      "texto": "Em garagem de subsolo é comum.",
+      "ini": 8.99,
+      "fim": 10.525,
+      "naTake": [
+        8.455,
+        9.99
+      ],
+      "pausaDepois": 0.4,
+      "pausaNaTake": 0.18
+    },
+    {
+      "texto": "Dica: pluga o carro, sobe até onde pega sinal e inicia por lá.",
+      "ini": 10.925,
+      "fim": 14.61,
+      "naTake": [
+        10.17,
+        13.855
+      ],
+      "pausaDepois": 0.9,
+      "pausaNaTake": 0.28
+    },
+    {
+      "texto": "Dois: o pagamento travou.",
+      "ini": 15.51,
+      "fim": 17.32,
+      "naTake": [
+        14.135,
+        15.945
+      ],
+      "pausaDepois": 0.22,
+      "pausaNaTake": 0.22
+    },
+    {
+      "texto": "Às vezes é só trocar o cartão pelo Pix.",
+      "ini": 17.54,
+      "fim": 19.715,
+      "naTake": [
+        16.165,
+        18.34
+      ],
+      "pausaDepois": 0.4,
+      "pausaNaTake": 0.16
+    },
+    {
+      "texto": "Deixa sempre um segundo jeito de pagar no app.",
+      "ini": 20.115,
+      "fim": 22.48,
+      "naTake": [
+        18.5,
+        20.865
+      ],
+      "pausaDepois": 0.8,
+      "pausaNaTake": 0.24
+    },
+    {
+      "texto": "Três: o carregador tá sem internet.",
+      "ini": 23.28,
+      "fim": 25.64,
+      "naTake": [
+        21.105,
+        23.465
+      ],
+      "pausaDepois": 0.4,
+      "pausaNaTake": 0.155
+    },
+    {
+      "texto": "A tela acende, mas a liberação não chega.",
+      "ini": 26.04,
+      "fim": 28.17,
+      "naTake": [
+        23.62,
+        25.75
+      ],
+      "pausaDepois": 0.6,
+      "pausaNaTake": 0.165
+    },
+    {
+      "texto": "Aí, pelo app, não tem jeito: é ir pra outro posto.",
+      "ini": 28.77,
+      "fim": 32.065,
+      "naTake": [
+        25.915,
+        29.21
+      ],
+      "pausaDepois": 1,
+      "pausaNaTake": 0.14
+    },
+    {
+      "texto": "E isso dá pra saber antes de sair.",
+      "ini": 33.065,
+      "fim": 34.925,
+      "naTake": [
+        29.35,
+        31.21
+      ],
+      "pausaDepois": 0.16,
+      "pausaNaTake": 0.16
+    },
+    {
+      "texto": "É o que o Mapere vai mostrar.",
+      "ini": 35.085,
+      "fim": 36.22,
+      "naTake": [
+        31.37,
+        32.505
+      ],
+      "pausaDepois": 1,
+      "pausaNaTake": 0.17
+    },
+    {
+      "texto": "Siga pra acompanhar a construção.",
+      "ini": 37.22,
+      "fim": 38.69,
+      "naTake": [
+        32.675,
+        34.145
+      ],
+      "pausaDepois": null,
+      "pausaNaTake": null
+    }
+  ],
+  "palavras": [
+    {
+      "texto": "Para",
+      "ini": 0.45,
+      "fim": 0.66
+    },
+    {
+      "texto": "de",
+      "ini": 0.7,
+      "fim": 0.74
+    },
+    {
+      "texto": "apertar",
+      "ini": 0.82,
+      "fim": 1.3
+    },
+    {
+      "texto": "'tentar",
+      "ini": 1.54,
+      "fim": 1.94
+    },
+    {
+      "texto": "de",
+      "ini": 1.98,
+      "fim": 2.02
+    },
+    {
+      "texto": "novo'.",
+      "ini": 2.1,
+      "fim": 2.47
+    },
+    {
+      "texto": "Três",
+      "ini": 2.925,
+      "fim": 3.14
+    },
+    {
+      "texto": "motivos",
+      "ini": 3.26,
+      "fim": 3.62
+    },
+    {
+      "texto": "pro",
+      "ini": 3.7,
+      "fim": 3.78
+    },
+    {
+      "texto": "seu",
+      "ini": 3.82,
+      "fim": 3.94
+    },
+    {
+      "texto": "carro",
+      "ini": 4.02,
+      "fim": 4.26
+    },
+    {
+      "texto": "não",
+      "ini": 4.34,
+      "fim": 4.5
+    },
+    {
+      "texto": "carregar",
+      "ini": 4.58,
+      "fim": 4.9
+    },
+    {
+      "texto": "no",
+      "ini": 4.98,
+      "fim": 5.06
+    },
+    {
+      "texto": "posto,",
+      "ini": 5.22,
+      "fim": 5.62
+    },
+    {
+      "texto": "e",
+      "ini": 5.66,
+      "fim": 5.7
+    },
+    {
+      "texto": "o",
+      "ini": 5.74,
+      "fim": 5.78
+    },
+    {
+      "texto": "que",
+      "ini": 5.86,
+      "fim": 5.94
+    },
+    {
+      "texto": "fazer.",
+      "ini": 6.047,
+      "fim": 6.29
+    },
+    {
+      "texto": "Um:",
+      "ini": 6.89,
+      "fim": 7.415
+    },
+    {
+      "texto": "seu",
+      "ini": 7.455,
+      "fim": 7.575
+    },
+    {
+      "texto": "celular",
+      "ini": 7.655,
+      "fim": 7.975
+    },
+    {
+      "texto": "tá",
+      "ini": 8.055,
+      "fim": 8.215
+    },
+    {
+      "texto": "sem",
+      "ini": 8.295,
+      "fim": 8.375
+    },
+    {
+      "texto": "sinal.",
+      "ini": 8.455,
+      "fim": 8.78
+    },
+    {
+      "texto": "Em",
+      "ini": 8.99,
+      "fim": 9.095
+    },
+    {
+      "texto": "garagem",
+      "ini": 9.135,
+      "fim": 9.415
+    },
+    {
+      "texto": "de",
+      "ini": 9.495,
+      "fim": 9.575
+    },
+    {
+      "texto": "subsolo",
+      "ini": 9.735,
+      "fim": 10.055
+    },
+    {
+      "texto": "é",
+      "ini": 10.095,
+      "fim": 10.135
+    },
+    {
+      "texto": "comum.",
+      "ini": 10.215,
+      "fim": 10.525
+    },
+    {
+      "texto": "Dica:",
+      "ini": 10.925,
+      "fim": 11.475
+    },
+    {
+      "texto": "pluga",
+      "ini": 11.515,
+      "fim": 11.715
+    },
+    {
+      "texto": "o",
+      "ini": 11.755,
+      "fim": 11.795
+    },
+    {
+      "texto": "carro,",
+      "ini": 11.875,
+      "fim": 12.355
+    },
+    {
+      "texto": "sobe",
+      "ini": 12.395,
+      "fim": 12.595
+    },
+    {
+      "texto": "até",
+      "ini": 12.675,
+      "fim": 12.915
+    },
+    {
+      "texto": "onde",
+      "ini": 12.995,
+      "fim": 13.075
+    },
+    {
+      "texto": "pega",
+      "ini": 13.115,
+      "fim": 13.315
+    },
+    {
+      "texto": "sinal",
+      "ini": 13.355,
+      "fim": 13.715
+    },
+    {
+      "texto": "e",
+      "ini": 13.795,
+      "fim": 13.835
+    },
+    {
+      "texto": "inicia",
+      "ini": 13.875,
+      "fim": 14.275
+    },
+    {
+      "texto": "por",
+      "ini": 14.355,
+      "fim": 14.435
+    },
+    {
+      "texto": "lá.",
+      "ini": 14.515,
+      "fim": 14.61
+    },
+    {
+      "texto": "Dois:",
+      "ini": 15.51,
+      "fim": 16.175
+    },
+    {
+      "texto": "o",
+      "ini": 16.215,
+      "fim": 16.255
+    },
+    {
+      "texto": "pagamento",
+      "ini": 16.335,
+      "fim": 16.815
+    },
+    {
+      "texto": "travou.",
+      "ini": 16.855,
+      "fim": 17.32
+    },
+    {
+      "texto": "Às",
+      "ini": 17.54,
+      "fim": 17.735
+    },
+    {
+      "texto": "vezes",
+      "ini": 17.775,
+      "fim": 18.095
+    },
+    {
+      "texto": "é",
+      "ini": 18.175,
+      "fim": 18.255
+    },
+    {
+      "texto": "só",
+      "ini": 18.295,
+      "fim": 18.415
+    },
+    {
+      "texto": "trocar",
+      "ini": 18.495,
+      "fim": 18.655
+    },
+    {
+      "texto": "o",
+      "ini": 18.695,
+      "fim": 18.735
+    },
+    {
+      "texto": "cartão",
+      "ini": 18.855,
+      "fim": 19.055
+    },
+    {
+      "texto": "pelo",
+      "ini": 19.095,
+      "fim": 19.215
+    },
+    {
+      "texto": "Pix.",
+      "ini": 19.295,
+      "fim": 19.715
+    },
+    {
+      "texto": "Deixa",
+      "ini": 20.115,
+      "fim": 20.415
+    },
+    {
+      "texto": "sempre",
+      "ini": 20.495,
+      "fim": 20.775
+    },
+    {
+      "texto": "um",
+      "ini": 20.815,
+      "fim": 20.855
+    },
+    {
+      "texto": "segundo",
+      "ini": 20.895,
+      "fim": 21.375
+    },
+    {
+      "texto": "jeito",
+      "ini": 21.455,
+      "fim": 21.695
+    },
+    {
+      "texto": "de",
+      "ini": 21.735,
+      "fim": 21.775
+    },
+    {
+      "texto": "pagar",
+      "ini": 21.855,
+      "fim": 22.015
+    },
+    {
+      "texto": "no",
+      "ini": 22.095,
+      "fim": 22.175
+    },
+    {
+      "texto": "app.",
+      "ini": 22.295,
+      "fim": 22.48
+    },
+    {
+      "texto": "Três:",
+      "ini": 23.28,
+      "fim": 23.935
+    },
+    {
+      "texto": "o",
+      "ini": 23.962,
+      "fim": 23.988
+    },
+    {
+      "texto": "carregador",
+      "ini": 24.015,
+      "fim": 24.575
+    },
+    {
+      "texto": "tá",
+      "ini": 24.695,
+      "fim": 24.815
+    },
+    {
+      "texto": "sem",
+      "ini": 24.895,
+      "fim": 24.975
+    },
+    {
+      "texto": "internet.",
+      "ini": 25.295,
+      "fim": 25.64
+    },
+    {
+      "texto": "A",
+      "ini": 26.04,
+      "fim": 26.1
+    },
+    {
+      "texto": "tela",
+      "ini": 26.18,
+      "fim": 26.34
+    },
+    {
+      "texto": "acende,",
+      "ini": 26.46,
+      "fim": 26.86
+    },
+    {
+      "texto": "mas",
+      "ini": 26.9,
+      "fim": 26.98
+    },
+    {
+      "texto": "a",
+      "ini": 27.06,
+      "fim": 27.113
+    },
+    {
+      "texto": "liberação",
+      "ini": 27.167,
+      "fim": 27.54
+    },
+    {
+      "texto": "não",
+      "ini": 27.62,
+      "fim": 27.78
+    },
+    {
+      "texto": "chega.",
+      "ini": 27.86,
+      "fim": 28.17
+    },
+    {
+      "texto": "Aí,",
+      "ini": 28.77,
+      "fim": 29.255
+    },
+    {
+      "texto": "pelo",
+      "ini": 29.335,
+      "fim": 29.495
+    },
+    {
+      "texto": "app,",
+      "ini": 29.655,
+      "fim": 29.975
+    },
+    {
+      "texto": "não",
+      "ini": 30.028,
+      "fim": 30.135
+    },
+    {
+      "texto": "tem",
+      "ini": 30.215,
+      "fim": 30.295
+    },
+    {
+      "texto": "jeito:",
+      "ini": 30.375,
+      "fim": 30.855
+    },
+    {
+      "texto": "é",
+      "ini": 30.895,
+      "fim": 30.935
+    },
+    {
+      "texto": "ir",
+      "ini": 31.015,
+      "fim": 31.095
+    },
+    {
+      "texto": "pra",
+      "ini": 31.175,
+      "fim": 31.335
+    },
+    {
+      "texto": "outro",
+      "ini": 31.455,
+      "fim": 31.655
+    },
+    {
+      "texto": "posto.",
+      "ini": 31.815,
+      "fim": 32.065
+    },
+    {
+      "texto": "E",
+      "ini": 33.065,
+      "fim": 33.155
+    },
+    {
+      "texto": "isso",
+      "ini": 33.235,
+      "fim": 33.395
+    },
+    {
+      "texto": "dá",
+      "ini": 33.435,
+      "fim": 33.515
+    },
+    {
+      "texto": "pra",
+      "ini": 33.555,
+      "fim": 33.635
+    },
+    {
+      "texto": "saber",
+      "ini": 33.675,
+      "fim": 33.955
+    },
+    {
+      "texto": "antes",
+      "ini": 34.115,
+      "fim": 34.435
+    },
+    {
+      "texto": "de",
+      "ini": 34.515,
+      "fim": 34.595
+    },
+    {
+      "texto": "sair.",
+      "ini": 34.635,
+      "fim": 34.925
+    },
+    {
+      "texto": "É",
+      "ini": 35.085,
+      "fim": 35.155
+    },
+    {
+      "texto": "o",
+      "ini": 35.182,
+      "fim": 35.208
+    },
+    {
+      "texto": "que",
+      "ini": 35.235,
+      "fim": 35.275
+    },
+    {
+      "texto": "o",
+      "ini": 35.315,
+      "fim": 35.395
+    },
+    {
+      "texto": "Mapere",
+      "ini": 35.475,
+      "fim": 35.715
+    },
+    {
+      "texto": "vai",
+      "ini": 35.742,
+      "fim": 35.795
+    },
+    {
+      "texto": "mostrar.",
+      "ini": 35.875,
+      "fim": 36.22
+    },
+    {
+      "texto": "Siga",
+      "ini": 37.22,
+      "fim": 37.505
+    },
+    {
+      "texto": "pra",
+      "ini": 37.585,
+      "fim": 37.665
+    },
+    {
+      "texto": "acompanhar",
+      "ini": 37.785,
+      "fim": 38.065
+    },
+    {
+      "texto": "a",
+      "ini": 38.092,
+      "fim": 38.118
+    },
+    {
+      "texto": "construção.",
+      "ini": 38.145,
+      "fim": 38.69
+    }
+  ]
+}

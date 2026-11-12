@@ -1,0 +1,4 @@
+# Vídeo de referência de terceiros: não vai para o Git.
+_ref/
+# Cópias da _fonte compactadas para o Drive.
+*.zip

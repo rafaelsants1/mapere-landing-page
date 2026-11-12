@@ -1,0 +1,682 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Mapere · vídeo 03 · Seu carro não carrega no posto?</title>
+<style>
+@font-face{font-family:'Bricolage Grotesque';src:url('../../../public/fonts/bricolage-grotesque-800.woff2') format('woff2');font-weight:800}
+@font-face{font-family:'Atkinson Hyperlegible Next';src:url('../../../public/fonts/atkinson-hyperlegible-next.woff2') format('woff2');font-weight:400 800}
+@font-face{font-family:'Atkinson Hyperlegible Mono';src:url('../../../public/fonts/atkinson-hyperlegible-mono.woff2') format('woff2');font-weight:400 500}
+
+/* Cores e fontes de src/styles/tokens.css. */
+:root{
+  --noite:#17110e;--grafite:#2a211c;--linho:#f3ede2;--texto-2-escuro:#b5aca0;--borda-escura:#45392f;--seminfo:#8c857b;
+  --brasa:#f0641e;--livre:#12b76a;--ocupado:#f5b700;--defeito:#d92d4b;
+  --titulo:'Bricolage Grotesque',sans-serif;--texto:'Atkinson Hyperlegible Next',sans-serif;--mono:'Atkinson Hyperlegible Mono',monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:1080px;height:1920px;overflow:hidden;background:var(--noite)}
+#palco{position:relative;width:1080px;height:1920px;overflow:hidden;background:var(--noite);color:var(--linho);font-family:var(--texto)}
+
+/* ---------- Mapa da cena final (o mesmo do vídeo 02) ---------- */
+#mundo{position:absolute;left:0;top:0;width:1000px;height:1004px;transform-origin:0 0}
+#cidade{position:absolute;inset:0;-webkit-mask-image:linear-gradient(to bottom,transparent 0,#000 7%,#000 91%,transparent 100%);mask-image:linear-gradient(to bottom,transparent 0,#000 7%,#000 91%,transparent 100%)}
+#cidade img,#cidade svg{position:absolute;inset:0;width:100%;height:100%;display:block}
+#arterias{stroke:var(--linho);stroke-opacity:.78;stroke-width:1.15;stroke-linecap:round;stroke-linejoin:round}
+#arterias path{stroke-dasharray:1 1}
+.veu{position:absolute;left:0;width:1080px;pointer-events:none}
+#veu-base{top:1130px;height:790px;background:linear-gradient(to bottom,rgb(23 17 14/0) 0,var(--noite) 136px)}
+
+.camada{position:absolute;left:0;top:0;width:0;height:0}
+.camada > *{position:absolute;left:0;top:0;width:0;height:0}
+.anel,.cheio{position:absolute;border-radius:50%}
+.anel{left:-12px;top:-12px;width:24px;height:24px;border:4px solid var(--linho);background:var(--noite)}
+.cheio{left:-6px;top:-6px;width:12px;height:12px;background:var(--linho)}
+
+/* Rótulo de status: o chip de Chip.astro. Ícone e texto, nunca só cor. */
+.caixa{position:absolute;left:0;top:0;display:flex;align-items:center;white-space:nowrap}
+.haste{flex:none;background:var(--linho)}
+.lado-dir .haste,.lado-esq .haste{width:48px;height:4px}
+.lado-esq .caixa{flex-direction:row-reverse}
+.lado-cima .caixa{flex-direction:column-reverse}
+.lado-cima .haste{width:4px;height:50px}
+.chip{display:inline-flex;align-items:center;gap:10px;height:68px;padding:0 26px 0 15px;border-radius:34px;border:3px solid var(--noite);font-weight:800;font-size:34px;line-height:1;background:var(--st);color:var(--st-tinta);white-space:nowrap}
+.chip svg{flex:none;width:36px;height:36px;fill:none;stroke:currentColor;stroke-width:2.8;stroke-linecap:round;stroke-linejoin:round}
+.chip .nota{font-weight:700}
+[data-st='livre']{--st:var(--livre);--st-tinta:var(--noite)}
+[data-st='ocupado']{--st:var(--ocupado);--st-tinta:var(--noite)}
+[data-st='defeito']{--st:var(--defeito);--st-tinta:#fff}
+
+#aceso .halo,#aceso .miolo{position:absolute;border-radius:50%;background:var(--brasa)}
+#aceso .halo{opacity:.28}
+
+/* ---------- Cenas desenhadas ---------- */
+.cena{position:absolute;left:0;top:0;width:1080px;height:1920px}
+.cena > svg.desenho{position:absolute;left:0;top:0;width:1080px;height:1920px;overflow:visible}
+.cena svg .linho{fill:var(--linho)}
+.traco{fill:none;stroke:var(--linho);stroke-width:6;stroke-linecap:round;stroke-linejoin:round}
+.peca{fill:var(--grafite);stroke:var(--linho);stroke-width:5;stroke-linejoin:round}
+#laje,#chao,#cabo{stroke-dasharray:1 1}
+.fio{fill:none;stroke:var(--linho);stroke-width:4;stroke-linecap:round;stroke-dasharray:1 1}
+.liga{fill:none;stroke:var(--texto-2-escuro);stroke-width:4;stroke-linecap:round;stroke-dasharray:2 14}
+.icone{fill:none;stroke:var(--linho);stroke-linecap:round;stroke-linejoin:round}
+
+/* Etiqueta: anotação neutra em mono, com um fio fino até a peça. */
+.etiqueta{position:absolute;padding:8px 18px 9px;border-radius:12px;background:var(--linho);color:var(--noite);border:3px solid var(--noite);font-family:var(--mono);font-weight:500;font-size:32px;line-height:1.1;white-space:nowrap;transform-origin:50% 50%}
+
+/* Celular grande: tela de um app genérico, sem marca. */
+.fone{position:absolute;left:290px;top:470px;width:400px;height:760px;border-radius:56px;background:var(--grafite);border:6px solid var(--linho)}
+.fone .entalhe{position:absolute;left:150px;top:22px;width:88px;height:14px;border-radius:7px;background:var(--noite)}
+.fone .icone-topo{position:absolute;left:156px;top:118px;width:76px;height:76px}
+.fone .msg{position:absolute;left:28px;top:226px;width:332px;text-align:center;font-weight:800;font-size:40px;line-height:1.14;color:var(--linho)}
+.fone .botao{position:absolute;left:44px;top:468px;width:300px;height:92px;border-radius:46px;background:var(--brasa);color:var(--noite);font-weight:800;font-size:35px;line-height:92px;text-align:center}
+.fone .conta{position:absolute;left:0;top:392px;width:388px;text-align:center;font-family:var(--mono);font-size:27px;color:var(--texto-2-escuro)}
+.fone .cabeca{position:absolute;left:0;top:92px;width:388px;text-align:center;font-weight:800;font-size:40px}
+.fone .opcao{position:absolute;left:28px;width:332px;height:118px;border-radius:24px;background:var(--noite);border:3px solid var(--linho);display:flex;align-items:center;gap:22px;padding:0 24px;font-weight:700;font-size:38px}
+.fone .opcao svg{flex:none;width:68px;height:68px}
+#opcao-cartao{top:198px}
+#opcao-pix{top:348px}
+
+#onda{position:absolute;left:0;top:0;width:0;height:0}
+#onda span{position:absolute;left:-60px;top:-60px;width:120px;height:120px;border-radius:50%;border:5px solid var(--linho)}
+#dedo{position:absolute;left:0;top:0;width:0;height:0}
+#dedo svg{position:absolute;left:-40px;top:-14px;width:300px;height:420px;overflow:visible}
+
+/* Os três motivos: quadros que viram a barra de capítulos. */
+.motivo{position:absolute;top:720px;width:220px;height:220px;border-radius:36px;background:var(--grafite);border:4px solid var(--linho)}
+.motivo svg{position:absolute;left:51px;top:51px;width:110px;height:110px}
+.motivo .num{position:absolute;left:0;top:-58px;width:212px;text-align:center;font-family:var(--mono);font-size:34px;color:var(--texto-2-escuro)}
+.barra{position:absolute;top:236px;width:246px;height:12px;border-radius:6px;background:var(--borda-escura)}
+.cap-nome{position:absolute;left:110px;top:274px;font-family:var(--titulo);font-weight:800;font-size:64px;letter-spacing:-.03em;line-height:1.02;white-space:nowrap}
+
+.titulo{position:absolute;left:110px;top:250px;font-family:var(--titulo);font-weight:800;letter-spacing:-.03em;line-height:1.02;color:var(--linho);font-size:82px}
+.titulo .lin{display:block;white-space:nowrap}
+
+/* ---------- Legenda, rodapé e marca (como no vídeo 02) ---------- */
+#legenda{position:absolute;left:0;top:1296px;width:1080px;height:80px}
+.bloco{position:absolute;left:180px;width:720px;top:0;text-align:center;font-weight:800;font-size:64px;line-height:1.12;white-space:nowrap;letter-spacing:-.01em}
+.bloco span,#cta span{color:var(--linho)}
+.bloco span.futura,#cta span.futura{opacity:.5}
+.bloco span.agora,#cta span.agora{color:var(--brasa)}
+#rodape{position:absolute;left:110px;top:1400px;font-family:var(--mono);font-weight:400;font-size:22px;line-height:1.3;color:var(--texto-2-escuro);white-space:nowrap}
+#marca{position:absolute;left:0;top:0;width:1080px;height:1920px}
+#logo{position:absolute;left:210px;top:716px;width:660px;height:auto;display:block;overflow:visible}
+#cta{position:absolute;left:180px;width:720px;top:936px;text-align:center;font-weight:700;font-size:40px;line-height:1.2;white-space:nowrap}
+</style>
+</head>
+<body>
+<div id="palco">
+
+  <!-- Cena final: o mapa -->
+  <div id="mundo">
+    <div id="cidade">
+      <img src="../../../public/mapa/cidade-agua.webp" alt="">
+      <img src="../../../public/mapa/cidade-ruas-1.webp" alt="">
+      <img src="../../../public/mapa/cidade-ruas-2.webp" alt="">
+      <img src="../../../public/mapa/cidade-ruas-3.webp" alt="">
+      <svg id="arterias" viewBox="0 0 1000 1004" fill="none"></svg>
+    </div>
+  </div>
+  <div class="veu" id="veu-base"></div>
+  <div class="camada" id="pontos"></div>
+  <div class="camada" id="rotulos"></div>
+
+  <!-- Gancho: o celular com o erro e o dedo que vai apertar de novo -->
+  <div class="cena" id="cena-gancho">
+    <div class="fone" id="fone-gancho">
+      <span class="entalhe"></span>
+      <svg class="icone-topo" viewBox="0 0 24 24"><path class="icone" stroke-width="2" id="plugue-gancho"></path></svg>
+      <p class="msg" data-essencial="mensagem de erro">Não foi possível iniciar a recarga.</p>
+      <div class="botao" id="botao" data-essencial="botão">Tentar de novo</div>
+      <p class="conta">3ª tentativa</p>
+    </div>
+    <div id="onda"><span></span></div>
+    <div id="dedo">
+      <svg viewBox="-40 -14 300 420" aria-hidden="true">
+        <g fill="#F3EDE2" stroke="#17110E" stroke-width="5" stroke-linejoin="round" transform="rotate(-50) scale(0.7)">
+          <path d="M-26 150V22a26 26 0 0 1 52 0V150Z"/>
+          <path d="M-40 140h150c28 0 46 20 46 48v120c0 40-30 70-70 70H10c-30 0-50-24-50-54Z"/>
+          <path d="M26 150V96a24 24 0 0 1 48 0v54 M74 150v-40a24 24 0 0 1 48 0v40" fill="#F3EDE2"/>
+        </g>
+      </svg>
+    </div>
+  </div>
+
+  <!-- Os três motivos -->
+  <div class="cena" id="cena-motivos"></div>
+
+  <!-- Capítulo 1 · sem sinal -->
+  <div class="cena" id="cena-sinal">
+    <svg class="desenho" viewBox="0 0 1080 1920">
+      <rect x="-60" y="712" width="620" height="458" fill="#2a211c" opacity=".55"/>
+      <path class="traco" id="laje" pathLength="1" d="M-60 660H560V712H-60"/>
+      <g fill="#45392f"><rect x="110" y="712" width="34" height="24"/><rect x="290" y="712" width="34" height="24"/><rect x="470" y="712" width="34" height="24"/></g>
+      <path class="traco" id="chao" pathLength="1" d="M-60 1170H560L860 660H1140"/>
+      <g id="carregador-1">
+        <rect class="peca" x="70" y="900" width="80" height="270" rx="14"/>
+        <rect x="84" y="922" width="52" height="42" rx="6" fill="#17110e" stroke="#F3EDE2" stroke-width="3"/>
+        <path class="icone" id="raio-1" stroke-width="3.5" transform="translate(98 931) scale(1)" d=""></path>
+      </g>
+      <path class="traco" d="M150 1010c18 0 22 30 10 58" id="cabo-solto"/>
+      <path class="traco" id="cabo" pathLength="1" d="M150 1010C230 1010 196 1130 236 1113"/>
+      <g id="carro" transform="translate(200 1050)">
+        <path fill="#F3EDE2" stroke="#17110E" stroke-width="4" d="M10 84Q10 62 34 58L86 50Q112 20 150 18L204 18Q236 20 258 50L284 58Q298 62 298 84V96Q298 104 290 104H18Q10 104 10 96Z"/>
+        <path fill="#17110E" d="M100 52Q122 30 150 28H174V52Z M182 28H204Q228 30 246 52H182Z"/>
+        <circle cx="80" cy="100" r="22" fill="#2a211c" stroke="#F3EDE2" stroke-width="5"/>
+        <circle cx="232" cy="100" r="22" fill="#2a211c" stroke="#F3EDE2" stroke-width="5"/>
+        <circle cx="36" cy="66" r="7" fill="#17110E"/>
+      </g>
+      <g id="fone-1">
+        <rect class="peca" x="-55" y="-95" width="110" height="190" rx="20"/>
+        <g id="barras-1"><rect x="-32" y="-60" width="11" height="12" rx="2"/><rect x="-17" y="-68" width="11" height="20" rx="2"/><rect x="-2" y="-76" width="11" height="28" rx="2"/><rect x="13" y="-84" width="11" height="36" rx="2"/></g>
+        <path id="xis-1" class="icone" stroke-width="5" d="M-24 -24l26 26M2 -24l-26 26" transform="translate(11 10)"/>
+      </g>
+      <path class="fio" id="fio-sem-sinal" pathLength="1"/>
+      <path class="fio" id="fio-subsolo" pathLength="1"/>
+      <path class="fio" id="fio-inicia" pathLength="1"/>
+      <circle id="ponto-1" r="11" fill="#F0641E"/>
+    </svg>
+    <span class="etiqueta" id="et-sem-sinal" data-essencial="etiqueta sem sinal">sem sinal</span>
+    <span class="etiqueta" id="et-subsolo" data-essencial="etiqueta subsolo">subsolo</span>
+    <span class="etiqueta" id="et-inicia" data-essencial="etiqueta inicia daqui">inicia daqui</span>
+  </div>
+
+  <!-- Capítulo 2 · pagamento -->
+  <div class="cena" id="cena-pagamento">
+    <div class="fone" id="fone-pag">
+      <span class="entalhe"></span>
+      <p class="cabeca">Pagamento</p>
+      <div class="opcao" id="opcao-cartao">
+        <svg viewBox="0 0 68 68"><rect x="4" y="14" width="60" height="40" rx="7" fill="none" stroke="#F3EDE2" stroke-width="4"/><path d="M4 26H64" stroke="#F3EDE2" stroke-width="6"/><path d="M14 44H30" stroke="#F3EDE2" stroke-width="4" stroke-linecap="round"/></svg>
+        <span data-essencial="opção cartão">Cartão</span>
+      </div>
+      <div class="opcao" id="opcao-pix">
+        <svg viewBox="0 0 68 68"><g fill="none" stroke="#F3EDE2" stroke-width="4"><rect x="8" y="8" width="20" height="20" rx="3"/><rect x="40" y="8" width="20" height="20" rx="3"/><rect x="8" y="40" width="20" height="20" rx="3"/></g><g fill="#F3EDE2"><rect x="15" y="15" width="6" height="6"/><rect x="47" y="15" width="6" height="6"/><rect x="15" y="47" width="6" height="6"/><rect x="40" y="40" width="8" height="8"/><rect x="52" y="52" width="8" height="8"/><rect x="52" y="40" width="8" height="8"/></g></svg>
+        <span data-essencial="opção Pix">Pix</span>
+      </div>
+    </div>
+    <svg class="desenho" viewBox="0 0 1080 1920">
+      <path class="fio" id="chave-pag" pathLength="1" d="M480 996V948"/>
+    </svg>
+    <div class="rotulo-fixo" id="chip-recusado"></div>
+    <div class="rotulo-fixo" id="chip-aprovado"></div>
+    <span class="etiqueta" id="et-pagar" data-essencial="etiqueta 2 jeitos de pagar">2 jeitos de pagar</span>
+  </div>
+
+  <!-- Capítulo 3 · carregador sem internet -->
+  <div class="cena" id="cena-internet">
+    <svg class="desenho" viewBox="0 0 1080 1920">
+      <path class="liga" d="M240 920L405 690"/>
+      <path class="liga" d="M555 690L690 790"/>
+      <g id="central">
+        <rect class="peca" x="365" y="530" width="230" height="52" rx="10"/>
+        <rect class="peca" x="365" y="594" width="230" height="52" rx="10"/>
+        <rect class="peca" x="365" y="658" width="230" height="52" rx="10"/>
+        <g fill="#F3EDE2"><circle cx="565" cy="556" r="7"/><circle cx="565" cy="620" r="7"/><circle cx="565" cy="684" r="7"/></g>
+      </g>
+      <g id="fone-3" transform="translate(190 1010)">
+        <rect class="peca" x="-55" y="-95" width="110" height="190" rx="20"/>
+        <g fill="#F3EDE2"><rect x="-32" y="-60" width="11" height="12" rx="2"/><rect x="-17" y="-68" width="11" height="20" rx="2"/><rect x="-2" y="-76" width="11" height="28" rx="2"/><rect x="13" y="-84" width="11" height="36" rx="2"/></g>
+        <path id="xis-fone-3" class="icone" stroke-width="7" d="M-22 -2l44 44M22 -2l-44 44"/>
+      </g>
+      <g id="carregador-3">
+        <path class="traco" d="M810 860V790"/>
+        <circle cx="810" cy="784" r="9" fill="#F3EDE2"/>
+        <g id="ondas-3"><path class="traco" d="M784 760a36 36 0 0 1 52 0"/><path class="traco" d="M766 740a62 62 0 0 1 88 0"/></g>
+        <path id="xis-3" class="icone" stroke-width="7" d="M790 726l40 40M830 726l-40 40"/>
+        <rect class="peca" x="710" y="860" width="140" height="300" rx="18"/>
+        <rect id="tela-3" x="730" y="884" width="100" height="70" rx="8" fill="#17110e" stroke="#F3EDE2" stroke-width="3"/>
+      </g>
+      <circle id="ponto-3" r="11" fill="#F0641E"/>
+    </svg>
+    <p id="rot-central" style="position:absolute;left:380px;top:478px;width:200px;text-align:center;font-family:var(--mono);font-size:28px;color:var(--texto-2-escuro)">central</p>
+    <span class="etiqueta" id="et-conexao" data-essencial="etiqueta sem conexão">sem conexão</span>
+  </div>
+
+  <div class="camada" id="camada-aceso">
+    <div id="aceso"><span class="halo"></span><span class="miolo"></span></div>
+  </div>
+
+  <h1 class="titulo" id="titulo" data-essencial="título"><span class="lin">Seu carro não carrega</span><span class="lin">no posto? 3 motivos</span></h1>
+  <div id="capitulos">
+    <span class="barra"></span><span class="barra"></span><span class="barra"></span>
+    <p class="cap-nome" data-essencial="capítulo 1">1. Sem sinal</p>
+    <p class="cap-nome" data-essencial="capítulo 2">2. Pagamento</p>
+    <p class="cap-nome" data-essencial="capítulo 3">3. Carregador sem internet</p>
+  </div>
+
+  <div id="legenda"></div>
+  <p id="rodape">Mapa com dados do OpenStreetMap. Postos ilustrativos.</p>
+
+  <div id="marca">
+    <svg id="logo" aria-label="Mapere." data-essencial="logo"></svg>
+    <p id="cta" data-essencial="chamada"></p>
+  </div>
+</div>
+
+<script src="../../../node_modules/gsap/dist/gsap.min.js"></script>
+<script src="../../../node_modules/gsap/dist/CustomEase.min.js"></script>
+<script src="dados.js"></script>
+<script src="legenda.js"></script>
+<script>
+(async function () {
+  const M = window.MAPA;
+  const LEG = window.LEGENDA;
+  const ICONES = window.ICONES;
+  // Marcações em segundos, do legenda.js: primeiro a estimativa do roteiro do
+  // plano.md, depois os tempos reais da narração (montar-legenda.mjs).
+  const marcas = LEG.marcas;
+
+  gsap.registerPlugin(CustomEase);
+  CustomEase.create('entrada', '.2,.7,.2,1');
+  gsap.defaults({ lazy: false, overwrite: false });
+  gsap.config({ force3D: false });
+
+  const $ = (s) => document.querySelector(s);
+  const NS = 'http://www.w3.org/2000/svg';
+  const svg = (tag, attrs, pai) => {
+    const n = document.createElementNS(NS, tag);
+    for (const k in attrs) n.setAttribute(k, attrs[k]);
+    pai.appendChild(n);
+    return n;
+  };
+  const html = (tag, classe, pai, texto) => {
+    const n = document.createElement(tag);
+    if (classe) n.className = classe;
+    if (texto != null) n.textContent = texto;
+    pai.appendChild(n);
+    return n;
+  };
+  const limita = (v, a, b) => Math.max(a, Math.min(b, v));
+  const rampa = (a, b, v) => limita((v - a) / (b - a), 0, 1);
+
+  // Ícone de Icone.astro (grade de 24 px) dentro de um <g> já posicionado.
+  const icone = (nome, pai, x, y, tamanho, traco) => {
+    const g = svg('g', { transform: `translate(${x} ${y}) scale(${tamanho / 24})` }, pai);
+    svg('path', { d: ICONES[nome], class: 'icone', 'stroke-width': traco }, g);
+    return g;
+  };
+  const chip = (pai, st, texto, nota) => {
+    const c = html('span', 'chip', pai);
+    c.dataset.st = st;
+    c.dataset.essencial = `rótulo ${texto}`;
+    svg('path', { d: ICONES[st] }, svg('svg', { viewBox: '0 0 24 24' }, c));
+    html('b', '', c, texto);
+    if (nota) {
+      html('span', '', c, '·');
+      html('span', 'nota', c, nota);
+    }
+    return c;
+  };
+
+  // ---------- Peças fixas ----------
+  $('#plugue-gancho').setAttribute('d', ICONES.plugue);
+  $('#raio-1').setAttribute('d', ICONES.raio);
+  $('#raio-1').setAttribute('transform', 'translate(92 925) scale(1.5)');
+  $('#raio-1').setAttribute('stroke-width', '2.4');
+
+  // Os três motivos: sinal, pagamento e carregador.
+  const XM = [110, 370, 630]; // x dos quadros
+  const XB = [110, 382, 654]; // x das barras de capítulo
+  const desenhosMotivo = [
+    (g) => {
+      [[-36, 20, 14], [-12, 8, 26], [12, -4, 38], [36, -16, 50]].forEach(([x, y, h]) => svg('rect', { x: x - 8, y: y + 26 - h, width: 16, height: h, rx: 3, fill: '#F3EDE2' }, g));
+    },
+    (g) => {
+      svg('rect', { x: -46, y: -30, width: 92, height: 62, rx: 10, fill: 'none', stroke: '#F3EDE2', 'stroke-width': 6 }, g);
+      svg('path', { d: 'M-46 -12H46', stroke: '#F3EDE2', 'stroke-width': 9 }, g);
+      svg('path', { d: 'M-30 16H-6', stroke: '#F3EDE2', 'stroke-width': 6, 'stroke-linecap': 'round' }, g);
+    },
+    (g) => icone('plugue', g, -42, -42, 84, 2.2),
+  ];
+  const motivos = XM.map((x, i) => {
+    const m = html('div', 'motivo', $('#cena-motivos'));
+    m.style.left = `${x}px`;
+    const s = svg('svg', { viewBox: '-55 -55 110 110' }, m);
+    desenhosMotivo[i](svg('g', {}, s));
+    html('span', 'num', m, String(i + 1));
+    return m;
+  });
+  const barras = [...document.querySelectorAll('.barra')];
+  barras.forEach((b, i) => (b.style.left = `${XB[i]}px`));
+  const nomes = [...document.querySelectorAll('.cap-nome')];
+
+  // Etiquetas: caixa em posição fixa e fio até a peça.
+  const etiqueta = (id, fio, caixa, de, ate) => {
+    const no = $(id);
+    no.style.left = `${caixa[0]}px`;
+    no.style.top = `${caixa[1]}px`;
+    const f = $(fio);
+    f.setAttribute('d', `M${de[0]} ${de[1]}L${ate[0]} ${ate[1]}`);
+    return { no, fio: f };
+  };
+  const etSemSinal = etiqueta('#et-sem-sinal', '#fio-sem-sinal', [300, 760], [492, 790], [600, 838]);
+  const etSubsolo = etiqueta('#et-subsolo', '#fio-subsolo', [70, 560], [176, 606], [190, 800]);
+  const etInicia = etiqueta('#et-inicia', '#fio-inicia', [420, 452], [670, 480], [736, 520]);
+  $('#et-pagar').style.cssText += 'left:298px;top:996px';
+  $('#et-conexao').style.cssText += 'left:470px;top:800px';
+
+  // Chips de pagamento (status: ícone e texto).
+  const chipRecusado = chip($('#chip-recusado'), 'defeito', 'Recusado');
+  const chipAprovado = chip($('#chip-aprovado'), 'livre', 'Aprovado');
+  $('#chip-recusado').style.cssText = 'position:absolute;left:600px;top:700px';
+  $('#chip-aprovado').style.cssText = 'position:absolute;left:600px;top:850px';
+
+  // ---------- Mapa e postos da cena final ----------
+  const maxQ = Math.max(...M.arterias.map((a) => a.q));
+  const arterias = M.arterias.map((a) => ({ ...a, no: svg('path', { d: a.d, pathLength: 1 }, $('#arterias')) }));
+  const [, P2, P3] = M.paradas;
+  const postos = [
+    { id: 'p2', xy: [P2.x, P2.y], st: 'defeito', texto: 'Com defeito', lado: 'esq' },
+    { id: 'p3', xy: [P3.x, P3.y], st: 'livre', texto: 'Livre', nota: 'Confirmado há 4 min', lado: 'cima' },
+  ];
+  const origem = { dir: '0% 50%', esq: '100% 50%', cima: '50% 100%' };
+  const encaixe = { dir: { yPercent: -50 }, esq: { xPercent: -100, yPercent: -50 }, cima: { xPercent: -50, yPercent: -100 } };
+  for (const p of postos) {
+    p.ponto = html('div', 'ponto', $('#pontos'));
+    p.anel = html('span', 'anel', p.ponto);
+    p.cheio = html('span', 'cheio', p.ponto);
+    p.rotulo = html('div', `rotulo lado-${p.lado}`, $('#rotulos'));
+    p.caixa = html('div', 'caixa', p.rotulo);
+    html('span', 'haste', p.caixa);
+    chip(p.caixa, p.st, p.texto, p.nota);
+    gsap.set(p.caixa, { ...encaixe[p.lado], transformOrigin: origem[p.lado], autoAlpha: 0, scale: 0.6 });
+    gsap.set(p.cheio, { scale: 0, autoAlpha: 0 });
+  }
+  const posto = Object.fromEntries(postos.map((p) => [p.id, p]));
+
+  // ---------- Logo ----------
+  const logo = $('#logo');
+  logo.setAttribute('viewBox', window.LOGO.viewBox);
+  const letras = window.LOGO.letras.map((d) => svg('path', { d, fill: '#F3EDE2' }, logo));
+  const logoPonto = svg('path', { d: window.LOGO.ponto, fill: '#F0641E' }, logo);
+
+  // ---------- Legenda palavra por palavra ----------
+  // A última linha é a chamada: fica sob o logo.
+  const ULT = LEG.ultimaLinha;
+  const blocos = LEG.blocos.map((b, i) => {
+    const pai = b.linha === ULT ? $('#cta') : html('div', 'bloco', $('#legenda'));
+    if (b.linha !== ULT) pai.dataset.essencial = 'legenda';
+    const palavras = b.palavras.map((p, j) => {
+      if (j) pai.appendChild(document.createTextNode(' '));
+      return { ...p, no: html('span', 'futura', pai, p.tela) };
+    });
+    const ini = palavras[0].ini - 0.04;
+    const prox = LEG.blocos[i + 1];
+    const ultimaFim = palavras[palavras.length - 1].fim;
+    let sai = prox ? prox.palavras[0].ini - 0.04 : Infinity;
+    if (prox && sai - ultimaFim > 0.9) sai = ultimaFim + 0.55;
+    if (b.linha === ULT) sai = Infinity;
+    return { linha: b.linha, no: pai, palavras, ini, sai };
+  });
+
+  // ---------- Câmera do mapa: plano aberto fixo, com um avanço lento ----------
+  const ANCORA = { x: 540, y: 900 };
+  const aberto = (pontoMapa, naTela, s) => ({ x: pontoMapa[0] - (naTela.x - ANCORA.x) / s, y: pontoMapa[1] - (naTela.y - ANCORA.y) / s, s });
+  const CAM = aberto(M.inicio, { x: 716, y: 1108 }, 1.3);
+
+  // ---------- Estado animado ----------
+  const e = {
+    zoom: 1, // avanço lento do mapa
+    aceso: 0, // o ponto do posto livre acende
+    voo: 0, // o ponto aceso vira o ponto final do logo
+    p1: 0, // ponto em Brasa do capítulo 1: do celular até o carregador
+    p3: 0, // ponto em Brasa do capítulo 3: do celular até onde a conexão cai
+  };
+
+  // ---------- Estado inicial ----------
+  gsap.set(['#cena-motivos', '#cena-sinal', '#cena-pagamento', '#cena-internet', '#mundo', '#rodape', '#veu-base', '#pontos', '#rotulos'], { autoAlpha: 0 });
+  gsap.set('#onda', { x: 560, y: 990 });
+  gsap.set('#cena-sinal', { x: 40 });
+  gsap.set(motivos, { autoAlpha: 0, scale: 0.6 });
+  gsap.set(barras, { autoAlpha: 0 });
+  gsap.set(nomes, { autoAlpha: 0, y: 24 });
+  gsap.set('#onda span', { scale: 0.4, autoAlpha: 0.9 });
+  gsap.set('#dedo', { x: 560, y: 992, scale: 1 });
+  gsap.set(['.etiqueta', '#chip-recusado', '#chip-aprovado'], { autoAlpha: 0, scale: 0.6 });
+  gsap.set(['#fio-sem-sinal', '#fio-subsolo', '#fio-inicia', '#cabo', '#chave-pag'], { strokeDashoffset: 1 });
+  gsap.set(['#laje', '#chao'], { strokeDashoffset: 0 });
+  gsap.set('#fone-1', { attr: { transform: 'translate(640 930)' } });
+  gsap.set('#barras-1 rect', { attr: { fill: '#45392f' } });
+  gsap.set('#raio-1', { autoAlpha: 0 });
+  gsap.set(['#xis-3', '#xis-fone-3'], { autoAlpha: 0 });
+  gsap.set(['#ponto-1', '#ponto-3'], { autoAlpha: 0 });
+  gsap.set(letras, { autoAlpha: 0 });
+  gsap.set(logoPonto, { autoAlpha: 0 });
+
+  const tl = gsap.timeline({ paused: true, defaults: { ease: 'none' } });
+  const T = {
+    sai0: marcas.tres - 0.25,
+    cap1: marcas.cap1,
+    cap2: marcas.cap2,
+    cap3: marcas.cap3,
+    mapa: Math.max(marcas.outro + 0.15, marcas.chega + 1.2),
+    logo: marcas.siga - 0.3,
+  };
+  const entra = (alvo, quando, extra = {}) => tl.to(alvo, { autoAlpha: 1, scale: 1, duration: 0.32, ease: 'entrada', ...extra }, quando);
+  const sai = (alvo, quando, extra = {}) => tl.to(alvo, { autoAlpha: 0, duration: 0.3, ease: 'power2.in', ...extra }, quando);
+  const mostraEtiqueta = (et, quando) => {
+    if (et.fio) tl.to(et.fio, { strokeDashoffset: 0, duration: 0.25, ease: 'power2.out' }, quando);
+    entra(et.no || et, quando + 0.12);
+  };
+
+  // Linha 1 · gancho. O título e o celular já estão na tela no primeiro quadro.
+  // O dedo acabou de apertar pela terceira vez, sobe, volta para apertar de novo e congela no "Para".
+  tl.to('#onda span', { scale: 1.9, autoAlpha: 0, duration: 0.55, ease: 'power2.out' }, 0);
+  tl.to('#dedo', { x: 706, y: 1074, scale: 1.08, duration: 0.24, ease: 'power2.out' }, 0);
+  const desce = Math.max(0.14, marcas.para - 0.24);
+  tl.to('#dedo', { x: 652, y: 1004, scale: 1.03, duration: desce, ease: 'power1.in' }, 0.24);
+  tl.to('#dedo', { x: 664, y: 1016, duration: 0.14, ease: 'power2.out' }, 0.24 + desce);
+  tl.to('#botao', { scale: 1.05, duration: 0.14, ease: 'power2.out', yoyo: true, repeat: 1 }, marcas.tentar);
+
+  // Linha 2 · os três motivos.
+  sai(['#fone-gancho', '#dedo'], T.sai0, { x: '-=60' });
+  tl.set('#cena-motivos', { autoAlpha: 1 }, T.sai0);
+  motivos.forEach((m, i) => entra(m, marcas.tres + 0.05 + i * 0.16));
+
+  // Capítulo 1 · os quadros sobem e viram a barra de capítulos.
+  sai('#titulo', T.cap1 - 0.32, { y: -16, duration: 0.25 });
+  motivos.forEach((m, i) => {
+    tl.to(m.children, { autoAlpha: 0, duration: 0.15 }, T.cap1 - 0.2);
+    tl.to(m, { left: XB[i], top: 236, width: 246, height: 12, borderRadius: 6, borderWidth: 0, duration: 0.45, ease: 'power2.inOut' }, T.cap1 - 0.12);
+    tl.to(m, { autoAlpha: 0, duration: 0.01 }, T.cap1 + 0.33);
+    tl.to(barras[i], { autoAlpha: 1, duration: 0.01 }, T.cap1 + 0.33);
+  });
+  const trocaNome = (i, quando) => {
+    if (i > 0) tl.to(nomes[i - 1], { autoAlpha: 0, y: -18, duration: 0.2, ease: 'power2.in' }, quando - 0.2);
+    tl.to(nomes[i], { autoAlpha: 1, y: 0, duration: 0.35, ease: 'entrada' }, quando);
+  };
+  trocaNome(0, T.cap1 + 0.1);
+  entra('#cena-sinal', T.cap1 + 0.05);
+  tl.fromTo(['#laje', '#chao'], { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: 0.5, ease: 'power2.out' }, T.cap1 + 0.05);
+  mostraEtiqueta(etSemSinal, marcas.sinal);
+  mostraEtiqueta(etSubsolo, marcas.subsolo);
+  tl.to('#cabo-solto', { autoAlpha: 0, duration: 0.15 }, marcas.pluga);
+  tl.to('#cabo', { strokeDashoffset: 0, duration: 0.5, ease: 'power2.out' }, marcas.pluga);
+  sai([etSemSinal.no, etSemSinal.fio, etSubsolo.no, etSubsolo.fio], marcas.sobe - 0.1, { duration: 0.2 });
+  const subida = Math.max(0.6, marcas.pega - marcas.sobe);
+  tl.to('#fone-1', { attr: { transform: 'translate(712 800)' }, duration: subida * 0.45, ease: 'power1.in' }, marcas.sobe);
+  tl.to('#fone-1', { attr: { transform: 'translate(780 560)' }, duration: subida * 0.55, ease: 'power2.out' }, marcas.sobe + subida * 0.45);
+  tl.to('#xis-1', { autoAlpha: 0, duration: 0.15 }, marcas.pega);
+  tl.to('#barras-1 rect', { attr: { fill: '#F3EDE2' }, duration: 0.08, stagger: 0.09 }, marcas.pega);
+  mostraEtiqueta(etInicia, marcas.inicia);
+  tl.set('#ponto-1', { autoAlpha: 1 }, marcas.inicia + 0.2);
+  tl.to(e, { p1: 1, duration: 0.8, ease: 'power1.inOut' }, marcas.inicia + 0.2);
+  tl.set('#ponto-1', { autoAlpha: 0 }, marcas.inicia + 1.0);
+  tl.to('#raio-1', { autoAlpha: 1, duration: 0.15 }, marcas.inicia + 0.95);
+
+  // Capítulo 2 · pagamento.
+  sai('#cena-sinal', T.cap2 - 0.3);
+  trocaNome(1, T.cap2);
+  entra('#cena-pagamento', T.cap2 - 0.05);
+  entra('#chip-recusado', marcas.travou);
+  tl.to('#opcao-cartao', { opacity: 0.5, duration: 0.25 }, marcas.pix - 0.1);
+  tl.to('#opcao-pix', { borderWidth: 7, duration: 0.2 }, marcas.pix - 0.12);
+  entra('#chip-aprovado', marcas.pix - 0.12);
+  tl.to('#chave-pag', { strokeDashoffset: 0, duration: 0.35, ease: 'power2.out' }, marcas.segundo);
+  entra('#et-pagar', marcas.segundo + 0.2);
+
+  // Capítulo 3 · carregador sem internet.
+  sai('#cena-pagamento', T.cap3 - 0.3);
+  trocaNome(2, T.cap3);
+  entra('#cena-internet', T.cap3 - 0.05);
+  tl.to('#ondas-3', { autoAlpha: 0, duration: 0.25 }, marcas.internet);
+  tl.to('#xis-3', { autoAlpha: 1, duration: 0.2 }, marcas.internet + 0.1);
+  entra('#et-conexao', marcas.internet + 0.15);
+  tl.to('#tela-3', { attr: { fill: '#F3EDE2' }, duration: 0.15 }, marcas.acende);
+  tl.set('#ponto-3', { autoAlpha: 1 }, marcas.liberacao);
+  tl.to(e, { p3: 1, duration: 0.9, ease: 'power1.inOut' }, marcas.liberacao);
+  tl.to('#ponto-3', { autoAlpha: 0.25, duration: 0.12, yoyo: true, repeat: 3 }, marcas.chega);
+  tl.to('#ponto-3', { autoAlpha: 0, duration: 0.2 }, marcas.chega + 0.5);
+  // "Aí, pelo app, não tem jeito": o celular também não resolve.
+  tl.fromTo('#xis-fone-3', { autoAlpha: 0, scale: 0.6, transformOrigin: '50% 50%' }, { autoAlpha: 1, scale: 1, duration: 0.25, ease: 'entrada' }, marcas.app5);
+
+  // Cena final · o mapa mostra antes de sair.
+  sai(['#cena-internet', '#capitulos'], T.mapa - 0.15, { duration: 0.35 });
+  tl.to(['#mundo', '#veu-base', '#rodape', '#pontos', '#rotulos'], { autoAlpha: 1, duration: 0.6, ease: 'power2.out' }, T.mapa);
+  arterias.forEach((a) => {
+    tl.fromTo(a.no, { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: 0.5, ease: 'power1.out' }, T.mapa + 0.9 * (a.q / maxQ));
+  });
+  tl.to(e, { zoom: 1.05, duration: Math.max(1, T.logo - T.mapa), ease: 'sine.inOut' }, T.mapa);
+  const abre = (p, quando) => {
+    tl.to(p.caixa, { autoAlpha: 1, scale: 1, duration: 0.36, ease: 'entrada' }, quando);
+    tl.to(p.cheio, { autoAlpha: 1, scale: 1, duration: 0.2, ease: 'entrada' }, quando);
+  };
+  abre(posto.p2, Math.max(T.mapa + 0.5, marcas.isso + 0.15));
+  abre(posto.p3, marcas.antes);
+  tl.to(posto.p3.anel, { autoAlpha: 0, duration: 0.15 }, marcas.antes);
+  tl.to(posto.p3.cheio, { autoAlpha: 0, duration: 0.15 }, marcas.antes + 0.2);
+  tl.to(e, { aceso: 1, duration: 0.4, ease: 'entrada' }, marcas.antes);
+
+  // Chamada · o ponto aceso do posto livre vira o ponto final de "Mapere.".
+  tl.to(['#pontos', '#rotulos', '#rodape'], { autoAlpha: 0, duration: 0.45, ease: 'power2.inOut' }, T.logo);
+  tl.to('#cidade', { opacity: 0.16, duration: 0.6, ease: 'power2.inOut' }, T.logo);
+  tl.to(e, { voo: 1, duration: 0.85, ease: 'power2.inOut' }, T.logo + 0.05);
+  tl.fromTo(letras, { autoAlpha: 0, x: -10 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: 'entrada', stagger: 0.045 }, T.logo + 0.3);
+  tl.fromTo(logoPonto, { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.01 }, T.logo + 0.9);
+  tl.fromTo('#aceso', { autoAlpha: 1 }, { autoAlpha: 0, duration: 0.01 }, T.logo + 0.9);
+  tl.set({}, {}, marcas.fim);
+
+  // ---------- Desenho de um quadro: tudo o que depende só do estado e do tempo ----------
+  const mundo = $('#mundo');
+  const arteriasNo = $('#arterias');
+  const aceso = $('#aceso');
+  const halo = aceso.querySelector('.halo');
+  const miolo = aceso.querySelector('.miolo');
+  const ponto1 = $('#ponto-1');
+  const ponto3 = $('#ponto-3');
+  let alvoLogo = null;
+  const lerp = (a, b, u) => a + (b - a) * u;
+  // Caminho do ponto do capítulo 3: celular → central → onde a conexão cai.
+  const P3PTS = [[240, 920], [405, 690], [480, 690], [555, 690], [690, 790]];
+  const caminho = (pts, u) => {
+    const seg = [];
+    let total = 0;
+    for (let i = 1; i < pts.length; i++) {
+      const d = Math.hypot(pts[i][0] - pts[i - 1][0], pts[i][1] - pts[i - 1][1]);
+      seg.push(d);
+      total += d;
+    }
+    let alvo = u * total;
+    for (let i = 0; i < seg.length; i++) {
+      if (alvo <= seg[i] || i === seg.length - 1) {
+        const k = seg[i] ? limita(alvo / seg[i], 0, 1) : 0;
+        return [lerp(pts[i][0], pts[i + 1][0], k), lerp(pts[i][1], pts[i + 1][1], k)];
+      }
+      alvo -= seg[i];
+    }
+    return pts[pts.length - 1];
+  };
+
+  function desenhar() {
+    const t = tl.time();
+
+    // Mapa: plano aberto fixo, avançando devagar.
+    const s = CAM.s * e.zoom;
+    const tx = ANCORA.x - CAM.x * s;
+    const ty = ANCORA.y - CAM.y * s;
+    const tela = (xy) => [tx + xy[0] * s, ty + xy[1] * s];
+    mundo.style.transform = `translate(${tx.toFixed(2)}px,${ty.toFixed(2)}px) scale(${s.toFixed(4)})`;
+    arteriasNo.style.strokeWidth = (1.15 * Math.pow(1.09 / s, 0.55)).toFixed(3);
+    for (const p of postos) {
+      const xy = tela(p.xy);
+      const move = `translate(${xy[0].toFixed(2)}px,${xy[1].toFixed(2)}px)`;
+      p.ponto.style.transform = move;
+      p.rotulo.style.transform = move;
+      p.tela = xy;
+    }
+
+    // Barra de capítulos: o atual em Brasa, os já vistos em cinza.
+    const atual = t >= T.cap3 ? 2 : t >= T.cap2 ? 1 : 0;
+    barras.forEach((b, i) => {
+      b.style.background = i === atual ? '#F0641E' : i < atual ? '#8c857b' : '#45392f';
+    });
+
+    // Pontos em Brasa que viajam.
+    const a1 = [780, 560];
+    const b1 = [110, 943];
+    ponto1.setAttribute('cx', lerp(a1[0], b1[0], e.p1).toFixed(2));
+    ponto1.setAttribute('cy', lerp(a1[1], b1[1], e.p1).toFixed(2));
+    const q3 = caminho(P3PTS, e.p3);
+    ponto3.setAttribute('cx', q3[0].toFixed(2));
+    ponto3.setAttribute('cy', q3[1].toFixed(2));
+
+    // Ponto aceso: nasce no posto livre e voa até o ponto final do logo.
+    const de = posto.p3.tela;
+    const para = alvoLogo || { x: de[0], y: de[1], w: 24, h: 24 };
+    const ax = de[0] + (para.x - de[0]) * e.voo;
+    const ay = de[1] + (para.y - de[1]) * e.voo;
+    const w = 24 + (para.w - 24) * e.voo;
+    const h = 24 + (para.h - 24) * e.voo;
+    const pulso = 1 + 0.14 * Math.sin((t - marcas.antes) * Math.PI * 1.6);
+    const raioHalo = 2.4 * pulso * e.aceso;
+    aceso.style.transform = `translate(${ax.toFixed(2)}px,${ay.toFixed(2)}px)`;
+    const contorno = 2.5 * e.aceso * (1 - rampa(0, 0.4, e.voo));
+    miolo.style.cssText = `left:${(-w / 2) * e.aceso}px;top:${(-h / 2) * e.aceso}px;width:${w * e.aceso}px;height:${h * e.aceso}px;box-shadow:0 0 0 ${contorno.toFixed(2)}px #f3ede2`;
+    halo.style.cssText = `left:${-12 * raioHalo}px;top:${-12 * raioHalo}px;width:${24 * raioHalo}px;height:${24 * raioHalo}px;opacity:${(0.28 * (1 - rampa(0, 0.5, e.voo))).toFixed(3)}`;
+
+    // Legenda: a palavra falada acende em Brasa.
+    for (const b of blocos) {
+      b.no.style.visibility = t >= b.ini && t < b.sai ? 'visible' : 'hidden';
+      const entra = rampa(b.ini, b.ini + 0.1, t);
+      b.no.style.opacity = entra.toFixed(3);
+      b.no.style.transform = `translateY(${((1 - entra) * 10).toFixed(2)}px)`;
+      let at = -1;
+      b.palavras.forEach((p, j) => {
+        if (t >= p.ini - 0.001) at = j;
+      });
+      const terminou = b.linha === ULT && t > b.palavras[b.palavras.length - 1].fim + 0.12;
+      b.palavras.forEach((p, j) => {
+        p.no.className = j > at ? 'futura' : j === at && !terminou ? 'agora' : '';
+      });
+    }
+  }
+  tl.eventCallback('onUpdate', desenhar);
+
+  // ---------- Pronto para capturar ----------
+  const fontes = ['800 82px "Bricolage Grotesque"', '800 64px "Atkinson Hyperlegible Next"', '500 32px "Atkinson Hyperlegible Mono"'];
+  await Promise.all(fontes.map((f) => document.fonts.load(f, 'Mapere 3 motivos')));
+  await document.fonts.ready;
+  await Promise.all([...document.images].map((i) => i.decode()));
+  window.__fontes = fontes.map((f) => ({ fonte: f, ok: document.fonts.check(f, 'Mapere 3 motivos') }));
+
+  const r = logoPonto.getBoundingClientRect();
+  alvoLogo = { x: r.left + r.width / 2, y: r.top + r.height / 2, w: r.width, h: r.height };
+
+  // Passa pela linha do tempo inteira uma vez: cada animação registra seu ponto
+  // de partida em ordem, e daí em diante o quadro N depende só de N.
+  tl.progress(1).progress(0);
+  desenhar();
+
+  window.__duracao = marcas.fim;
+  window.__marcas = marcas;
+  window.__estado = () => Object.fromEntries([['t', tl.time()], ...Object.entries(e).filter(([, v]) => typeof v === 'number')]);
+  window.__ir = (segundos) => {
+    tl.time(limita(segundos, 0, marcas.fim));
+    desenhar();
+  };
+  document.body.dataset.pronto = window.__fontes.every((f) => f.ok) ? '1' : 'erro';
+})();
+</script>
+</body>
+</html>
