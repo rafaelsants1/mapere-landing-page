@@ -1,0 +1,85 @@
+{
+  "_como_ler": "fala: o texto enviado à ElevenLabs. [tom] é marcação do eleven_v4 e não é falada; {0.6} depois de uma frase pede 0,6 s de silêncio antes da próxima (sem {} fica a pausa da própria take). tela: a legenda, em blocos separados por ' | '; {4|quatro} mostra 4 e casa com 'quatro' na voz. Sem tela, a legenda sai da fala em blocos de até 20 letras. marcas: nome -> 'linha:palavra', com #n para a n-ésima vez e :fim para o fim da palavra.",
+  "video": "04",
+  "titulo": ["Vale ir nesse", "posto? 4 respostas"],
+  "saida": "mapere-4-status.mp4",
+  "voz": { "voice_id": "wSbRKUhF0tUmkj9exCud", "nome": "Matheus Alves - Versatile Neutral PT-BR", "modelo": "eleven_v4" },
+  "entrada": 0.45,
+  "sobra": 1.0,
+  "capitulos": [
+    { "nome": "Livre", "linha": 3 },
+    { "nome": "Ocupado", "linha": 4 },
+    { "nome": "Com defeito", "linha": 5 },
+    { "nome": "Sem informação", "linha": 6 }
+  ],
+  "linhas": [
+    {
+      "fala": "[firm] Esse ponto no mapa não te diz nada. {0.5}",
+      "tela": "Esse ponto no mapa | não te diz nada."
+    },
+    {
+      "fala": "[conversational] No Mapere, cada posto vai ter um {+0.5} de quatro status. {0.6}",
+      "tela": "No Mapere, cada posto | vai ter um | de {4|quatro} status."
+    },
+    {
+      "fala": "Livre: tem carregador funcionando e sem fila. E sempre com a hora: confirmado há quatro minutos. {0.7}",
+      "tela": "Livre: tem carregador | funcionando e sem fila. | E sempre com a hora: | confirmado há | {4|quatro} minutos."
+    },
+    {
+      "fala": "Ocupado: todos em uso ou com fila. Aí você decide: espera ou vai pra outro. {0.7}",
+      "tela": "Ocupado: todos em uso | ou com fila. | Aí você decide: | espera ou vai | pra outro."
+    },
+    {
+      "fala": "Com defeito: quebrado, fora do ar ou não iniciou a recarga. Esse você nem tenta. {0.7}",
+      "tela": "Com defeito: quebrado, | fora do ar ou não | iniciou a recarga. | Esse você nem tenta."
+    },
+    {
+      "fala": "Sem informação: ninguém confirmou há pouco tempo. {0.3} E o mapa não adivinha. {0.9}",
+      "tela": "Sem informação: | ninguém confirmou | há pouco tempo. | E o mapa | não adivinha."
+    },
+    {
+      "fala": "Quem tá no posto confirma em poucos toques, e o mapa acende pra quem vem depois. {0.8}",
+      "tela": "Quem tá no posto | confirma em | poucos toques, | e o mapa acende | pra quem vem depois."
+    },
+    {
+      "fala": "Siga pra acompanhar a construção.",
+      "tela": "Siga pra acompanhar a construção."
+    }
+  ],
+  "marcas": {
+    "ponto": "1:ponto",
+    "nada": "1:nada",
+    "quatro": "2:quatro",
+    "funcionando": "3:funcionando",
+    "fila3": "3:fila",
+    "hora": "3:hora",
+    "confirmado": "3:confirmado",
+    "uso": "4:uso",
+    "fila4": "4:fila",
+    "decide": "4:decide",
+    "espera": "4:espera",
+    "outro": "4:outro",
+    "quebrado": "5:quebrado",
+    "ar": "5:ar",
+    "iniciou": "5:iniciou",
+    "nem": "5:nem",
+    "ninguem": "6:ninguém",
+    "pouco": "6:pouco",
+    "adivinha": "6:adivinha",
+    "confirma": "7:confirma",
+    "toques": "7:toques",
+    "acende": "7:acende",
+    "depois": "7:depois"
+  },
+  "previa": [
+    { "nome": "1-gancho", "t": "nada+0.3" },
+    { "nome": "2-quatro-status", "t": "quatro+0.6" },
+    { "nome": "3-livre", "t": "confirmado+0.6" },
+    { "nome": "4-ocupado", "t": "espera+0.3" },
+    { "nome": "5-defeito", "t": "nem+0.2" },
+    { "nome": "6-seminfo", "t": "adivinha+0.3" },
+    { "nome": "7-mapa", "t": "depois+0.2" },
+    { "nome": "8-logo", "t": "fimFala+0.4" }
+  ],
+  "capa": { "t": "ponto+0.2" }
+}

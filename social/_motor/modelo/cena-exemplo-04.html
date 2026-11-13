@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Mapere · vídeo 04 · Vale ir nesse posto? 4 respostas</title>
+<link rel="stylesheet" href="../../_motor/kit/kit.css">
+<style>
+/* Pino genérico do gancho: o "ponto no mapa" que não diz nada. */
+#pino{position:absolute;left:0;top:0;width:0;height:0}
+#pino svg{position:absolute;left:-60px;top:-150px;width:120px;height:150px;overflow:visible}
+/* Os 4 status, em pilha no meio, antes dos capítulos. */
+.quatro{position:absolute;left:540px}
+/* Chip grande do capítulo e a idade da informação logo abaixo. */
+.chip-cap{position:absolute;left:540px;top:310px}
+.idade{left:540px;top:452px}
+#nota-cap{position:absolute;left:110px;top:1400px;font-family:var(--mono);font-size:22px;color:var(--texto-2-escuro);white-space:nowrap}
+.vaga{fill:none;stroke:var(--texto-2-escuro);stroke-width:4;stroke-dasharray:14 12}
+</style>
+</head>
+<body>
+<div id="palco">
+
+  <!-- Gancho: o pino cinza sobre o posto da foto -->
+  <div id="pino">
+    <svg viewBox="-60 -150 120 150" aria-hidden="true">
+      <path d="M0 0C-12 -34 -52 -62 -52 -98a52 52 0 0 1 104 0C52 -62 12 -34 0 0Z" fill="#8c857b" stroke="#F3EDE2" stroke-width="6" stroke-linejoin="round"/>
+      <circle cx="0" cy="-98" r="18" fill="#17110e"/>
+    </svg>
+  </div>
+  <div id="pilha"></div>
+
+  <!-- O posto dos capítulos -->
+  <div class="cena" id="estacao">
+    <svg class="desenho" viewBox="0 0 1080 1920">
+      <path class="traco" id="chao" pathLength="1" d="M60 1150H1020"/>
+      <rect class="vaga" id="vaga" x="352" y="1040" width="300" height="104" rx="14"/>
+      <g id="plugue-vaga"></g>
+      <g id="antena">
+        <path class="traco" d="M260 820V752"/>
+        <circle cx="260" cy="746" r="9" fill="#F3EDE2"/>
+        <g id="ondas"><path class="traco" d="M234 722a36 36 0 0 1 52 0"/><path class="traco" d="M216 702a62 62 0 0 1 88 0"/></g>
+        <path id="xis-antena" class="icone" stroke-width="7" d="M240 688l40 40M280 688l-40 40"/>
+      </g>
+      <g id="carregador">
+        <rect class="peca" x="200" y="820" width="120" height="330" rx="18"/>
+        <rect id="tela" x="218" y="846" width="84" height="66" rx="8" fill="#17110e" stroke="#F3EDE2" stroke-width="3"/>
+        <g id="raio-tela"></g>
+        <path id="xis-tela" class="icone" stroke-width="6" d="M242 862l36 36M278 862l-36 36"/>
+        <text id="interroga" x="260" y="900" text-anchor="middle" font-family="Bricolage Grotesque" font-weight="800" font-size="56" fill="#F3EDE2">?</text>
+      </g>
+      <path class="traco" id="cabo-solto" d="M320 960c22 0 26 40 12 80"/>
+      <path class="traco" id="cabo" pathLength="1" d="M320 960C420 960 360 1080 410 1080"/>
+      <g transform="translate(380 1046)"><g id="carro-a">
+        <path fill="#F3EDE2" stroke="#17110E" stroke-width="4" d="M10 84Q10 62 34 58L86 50Q112 20 150 18L204 18Q236 20 258 50L284 58Q298 62 298 84V96Q298 104 290 104H18Q10 104 10 96Z"/>
+        <path fill="#17110E" d="M100 52Q122 30 150 28H174V52Z M182 28H204Q228 30 246 52H182Z"/>
+        <circle cx="80" cy="100" r="22" fill="#2a211c" stroke="#F3EDE2" stroke-width="5"/>
+        <circle cx="232" cy="100" r="22" fill="#2a211c" stroke="#F3EDE2" stroke-width="5"/>
+      </g></g>
+      <g transform="translate(700 1046)"><g id="carro-b">
+        <path fill="#2a211c" stroke="#F3EDE2" stroke-width="5" d="M10 84Q10 62 34 58L86 50Q112 20 150 18L204 18Q236 20 258 50L284 58Q298 62 298 84V96Q298 104 290 104H18Q10 104 10 96Z"/>
+        <path fill="#17110E" d="M100 52Q122 30 150 28H174V52Z M182 28H204Q228 30 246 52H182Z"/>
+        <circle cx="80" cy="100" r="22" fill="#2a211c" stroke="#F3EDE2" stroke-width="5"/>
+        <circle cx="232" cy="100" r="22" fill="#2a211c" stroke="#F3EDE2" stroke-width="5"/>
+      </g></g>
+    </svg>
+    <p id="nota-cap">Exemplos ilustrativos.</p>
+  </div>
+</div>
+
+<script src="../../../node_modules/gsap/dist/gsap.min.js"></script>
+<script src="../../../node_modules/gsap/dist/CustomEase.min.js"></script>
+<script src="dados.js"></script>
+<script src="legenda.js"></script>
+<script src="../../_motor/kit/kit.js"></script>
+<script>
+Kit.iniciar({
+  fundo: 'fundo.png',
+  nomesDosCapitulos: false, // o chip grande já diz o nome do capítulo
+  montar(k) {
+    const { tl, m, $, html, chip, icone, entra, sai, etiqueta, mapa, fecho, capitulos, LEG, M } = k;
+    const cap = LEG.capitulos.map((c) => c.ini);
+    const FIM_CAPS = m.L7;
+    const STATUS = [
+      { st: 'livre', texto: 'Livre', idade: 'há 4 min · 2 confirmações' },
+      { st: 'ocupado', texto: 'Ocupado', idade: 'há 9 min · 1 confirmação' },
+      { st: 'defeito', texto: 'Com defeito', idade: 'há 1 h · 2 confirmações' },
+      { st: 'seminfo', texto: 'Sem informação', idade: 'sem confirmação recente' },
+    ];
+
+    // ---------- Peças ----------
+    icone('raio', $('#raio-tela'), 236, 855, 48, 2.6);
+    icone('plugue', $('#plugue-vaga'), 470, 1060, 64, 2.2);
+    const pilha = STATUS.map((s, i) => {
+      const c = chip($('#pilha'), s.st, s.texto);
+      c.classList.add('quatro');
+      c.style.top = `${600 + i * 100}px`;
+      return c;
+    });
+    const grandes = STATUS.map((s) => {
+      const c = chip($('#palco'), s.st, s.texto, null, true);
+      c.classList.add('chip-cap');
+      return c;
+    });
+    const idades = STATUS.map((s) => {
+      const et = etiqueta(s.idade, [540, 452]);
+      gsap.set(et.no, { xPercent: -50 });
+      return et;
+    });
+
+    // ---------- Estado inicial ----------
+    gsap.set('#pino', { x: 757, y: 600, autoAlpha: 0 });
+    gsap.set(pilha, { xPercent: -50, autoAlpha: 0, scale: 0.6 });
+    gsap.set(grandes, { xPercent: -50, autoAlpha: 0, scale: 0.7 });
+    gsap.set('#estacao', { autoAlpha: 0 });
+    gsap.set(['#carro-a', '#carro-b', '#xis-tela', '#xis-antena', '#interroga', '#raio-tela', '#plugue-vaga', '#vaga', '#antena'], { autoAlpha: 0 });
+    gsap.set('#cabo', { strokeDashoffset: 1 });
+    gsap.set('#carro-a', { x: -360 });
+    gsap.set('#carro-b', { x: 420 });
+
+    // ---------- Linha 1 · gancho: a foto, o título e o pino que não diz nada ----------
+    tl.to('#fundo .foto', { scale: 1.07, transformOrigin: '70% 45%', duration: m.L2, ease: 'sine.out' }, 0);
+    tl.fromTo('#pino', { autoAlpha: 0, y: 520 }, { autoAlpha: 1, y: 600, duration: 0.45, ease: 'back.out(2.2)' }, m.ponto - 0.1);
+    tl.to('#pino', { rotation: 9, duration: 0.09, yoyo: true, repeat: 5, ease: 'sine.inOut', transformOrigin: '50% 100%' }, m.nada);
+
+    // ---------- Linha 2 · quatro status ----------
+    tl.to('#fundo', { autoAlpha: 0, duration: 0.6, ease: 'power2.inOut' }, m.L2 - 0.15);
+    tl.to('#pino', { x: 540, y: 820, scale: 1.3, rotation: 0, duration: 0.6, ease: 'power2.inOut' }, m.L2 - 0.1);
+    tl.to('#pino', { scale: 0, autoAlpha: 0, duration: 0.2, ease: 'power2.in' }, m.quatro - 0.15);
+    pilha.forEach((c, i) => entra(c, m.quatro + i * 0.12));
+
+    // ---------- Capítulos: a pilha sobe e vira a barra ----------
+    pilha.forEach((c, i) => tl.to(c, { y: -380 - i * 100, scale: 0.4, autoAlpha: 0, duration: 0.4, ease: 'power2.in' }, cap[0] - 0.4 + i * 0.03));
+    entra('#estacao', cap[0] - 0.05);
+    tl.fromTo('#chao', { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: 0.5, ease: 'power2.out' }, cap[0] - 0.05);
+    STATUS.forEach((s, i) => {
+      entra(grandes[i], cap[i] + 0.05, { duration: 0.4 });
+      const fim = i < 3 ? cap[i + 1] - 0.25 : FIM_CAPS - 0.35;
+      sai(grandes[i], fim, { duration: 0.22 });
+      idades[i].some(fim);
+    });
+
+    // Livre: tela acende com o raio, a vaga aparece; a idade entra no "hora".
+    tl.to('#tela', { attr: { fill: '#12b76a' }, duration: 0.2 }, m.funcionando);
+    tl.to('#raio-tela', { autoAlpha: 1, duration: 0.2 }, m.funcionando);
+    const etFunc = etiqueta('funcionando', [380, 760], [372, 806], [306, 870]).mostra(m.funcionando + 0.05);
+    tl.to(['#vaga', '#plugue-vaga'], { autoAlpha: 1, duration: 0.3 }, m.fila3 - 0.1);
+    const etFila = etiqueta('sem fila', [690, 940], [700, 998], [640, 1048]).mostra(m.fila3);
+    etFunc.some(m.hora - 0.15);
+    etFila.some(m.hora - 0.15);
+    idades[0].mostra(m.hora);
+    tl.to(idades[0].no, { scale: 1.08, duration: 0.16, yoyo: true, repeat: 1, ease: 'power2.out' }, m.confirmado);
+
+    // Ocupado: um carro carregando, outro na fila.
+    tl.to(['#vaga', '#plugue-vaga'], { autoAlpha: 0, duration: 0.2 }, cap[1] - 0.25);
+    tl.to('#tela', { attr: { fill: '#f5b700' }, duration: 0.2 }, cap[1]);
+    tl.to('#carro-a', { autoAlpha: 1, x: 0, duration: 0.6, ease: 'power2.out' }, cap[1] - 0.1);
+    tl.to('#cabo-solto', { autoAlpha: 0, duration: 0.15 }, cap[1] + 0.45);
+    tl.to('#cabo', { strokeDashoffset: 0, duration: 0.4, ease: 'power2.out' }, cap[1] + 0.45);
+    idades[1].mostra(cap[1] + 0.5);
+    const etUso = etiqueta('em uso', [470, 930], [530, 990], [530, 1060]).mostra(m.uso);
+    tl.to('#carro-b', { autoAlpha: 1, x: 0, duration: 0.6, ease: 'power2.out' }, m.fila4 - 0.2);
+    const etFila2 = etiqueta('fila', [790, 930], [830, 990], [830, 1062]).mostra(m.fila4);
+    etUso.some(m.decide - 0.1);
+    etFila2.some(m.decide - 0.1);
+    const etEspera = etiqueta('espera', [480, 930], [560, 990], [560, 1062]).mostra(m.espera);
+    const etOutro = etiqueta('ou vai pra outro →', [470, 780]).mostra(m.outro - 0.05);
+
+    // Com defeito: os carros saem, a tela apaga com um X, a antena cai, a recarga não começa.
+    etEspera.some(cap[2] - 0.3);
+    etOutro.some(cap[2] - 0.3);
+    tl.to('#carro-a', { x: -420, autoAlpha: 0, duration: 0.5, ease: 'power2.in' }, cap[2] - 0.35);
+    tl.to('#carro-b', { x: 460, autoAlpha: 0, duration: 0.5, ease: 'power2.in' }, cap[2] - 0.35);
+    tl.to('#cabo', { strokeDashoffset: 1, duration: 0.25 }, cap[2] - 0.35);
+    tl.to('#cabo-solto', { autoAlpha: 1, duration: 0.15 }, cap[2] - 0.1);
+    tl.to('#tela', { attr: { fill: '#17110e' }, duration: 0.15 }, m.quebrado - 0.05);
+    tl.to('#raio-tela', { autoAlpha: 0, duration: 0.15 }, m.quebrado - 0.05);
+    tl.fromTo('#xis-tela', { autoAlpha: 0, scale: 0.5, transformOrigin: '50% 50%' }, { autoAlpha: 1, scale: 1, duration: 0.25, ease: 'entrada' }, m.quebrado);
+    tl.to('#antena', { autoAlpha: 1, duration: 0.2 }, m.ar - 0.25);
+    tl.to('#ondas', { autoAlpha: 0, duration: 0.2 }, m.ar);
+    tl.fromTo('#xis-antena', { autoAlpha: 0, scale: 0.5, transformOrigin: '50% 50%' }, { autoAlpha: 1, scale: 1, duration: 0.25, ease: 'entrada' }, m.ar + 0.05);
+    const etNao = etiqueta('não inicia', [400, 900], [430, 960], [338, 1010]).mostra(m.iniciou);
+    idades[2].mostra(cap[2] + 0.5);
+    // "Esse você nem tenta": um carro chega perto e dá meia-volta.
+    tl.set('#carro-b', { x: 460 }, m.nem - 0.6);
+    tl.to('#carro-b', { autoAlpha: 1, x: 120, duration: 0.5, ease: 'power2.out' }, m.nem - 0.5);
+    tl.to('#carro-b', { x: 480, autoAlpha: 0, duration: 0.6, ease: 'power2.in' }, m.nem + 0.25);
+
+    // Sem informação: o posto apaga; só sobra um ponto de interrogação.
+    etNao.some(cap[3] - 0.3);
+    tl.to(['#antena', '#xis-tela'], { autoAlpha: 0, duration: 0.2 }, cap[3] - 0.25);
+    tl.to('#tela', { attr: { fill: '#2a211c' }, duration: 0.2 }, cap[3] - 0.1);
+    tl.to(['#carregador', '#cabo-solto'], { opacity: 0.45, duration: 0.4 }, cap[3]);
+    tl.fromTo('#interroga', { autoAlpha: 0, scale: 0.5, transformOrigin: '50% 50%' }, { autoAlpha: 1, scale: 1, duration: 0.3, ease: 'entrada' }, cap[3] + 0.1);
+    idades[3].mostra(m.ninguem);
+    tl.to('#interroga', { rotation: 12, duration: 0.1, yoyo: true, repeat: 5, ease: 'sine.inOut', transformOrigin: '50% 80%' }, m.adivinha);
+
+    // ---------- Linha 7 · o mapa acende pra quem vem depois ----------
+    sai('#estacao', FIM_CAPS - 0.35, { duration: 0.35 });
+    capitulos.sai(FIM_CAPS - 0.35);
+    const [P1, P2, P3, E1] = M.postos;
+    mapa.enquadrar([510, 506], { x: 540, y: 860 }, 1.55);
+    const pOcupado = mapa.posto(P1, 'baixo', [{ st: 'ocupado', texto: 'Ocupado' }]);
+    const pDefeito = mapa.posto(P2, 'cima', [{ st: 'defeito', texto: 'Com defeito' }]);
+    const pLivre = mapa.posto(P3, 'cima', [{ st: 'livre', texto: 'Livre', nota: 'há 4 min' }]);
+    const pNovo = mapa.posto(E1, 'cima', [{ st: 'seminfo', texto: 'Sem informação' }, { st: 'livre', texto: 'Livre', nota: 'agora' }]);
+    mapa.mostrar(FIM_CAPS - 0.1);
+    mapa.avancar(FIM_CAPS, m.siga, 1.05);
+    mapa.abre(pLivre, FIM_CAPS + 0.15);
+    mapa.abre(pOcupado, FIM_CAPS + 0.25);
+    mapa.abre(pDefeito, FIM_CAPS + 0.35);
+    mapa.abre(pNovo, FIM_CAPS + 0.45);
+    // "confirma em poucos toques": o posto sem informação vira Livre · agora e acende.
+    mapa.troca(pNovo, 0, 1, m.toques - 0.1);
+    fecho.acende(pNovo, m.acende - 0.1);
+
+    // ---------- Linha 8 · o ponto aceso vira o ponto do logo ----------
+    fecho.logo(m.siga - 0.3);
+  },
+});
+</script>
+</body>
+</html>
