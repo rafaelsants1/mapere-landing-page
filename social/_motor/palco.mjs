@@ -1,7 +1,8 @@
 // Abre a cena de um vídeo (social/NN-.../_fonte/cena.html) no Edge do sistema e espera
 // ela ficar pronta. Base de quadros.mjs, renderizar.mjs e capa.mjs.
 // Veio do vídeo 03; agora serve a qualquer vídeo da série.
-import { existsSync, readFileSync } from 'node:fs';
+import { spawnSync } from 'node:child_process';
+import { existsSync, mkdirSync, readFileSync, readdirSync, rmSync, statSync, writeFileSync } from 'node:fs';
 import { createRequire } from 'node:module';
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
@@ -23,7 +24,6 @@ export function pastaDoVideo(arg) {
   if (!arg) throw new Error('Diga o vídeo: node _motor/<script>.mjs 04 ...');
   const social = join(motor, '..');
   if (existsSync(resolve(arg, '_fonte'))) return resolve(arg);
-  const { readdirSync } = require('node:fs');
   const achou = readdirSync(social).find((n) => n === arg || n.startsWith(`${arg}-`));
   if (!achou) throw new Error(`Não achei o vídeo "${arg}" em social/.`);
   return join(social, achou);
@@ -41,7 +41,29 @@ export function instante(expr, marcas) {
   return marcas[m[1]] + (m[2] ? Number(m[2].replace(/\s/g, '')) : 0);
 }
 
+// Fundo em vídeo (opcional): _fonte/fundo.mp4, um clipe 9:16 gerado por IA.
+// Vira uma sequência de JPG em _fonte/fundo-quadros/, que o kit troca a cada quadro
+// (fundoVideo: true na cena). Só extrai de novo se o MP4 mudou.
+export function prepararFundoVideo(video) {
+  const mp4 = join(video, '_fonte', 'fundo.mp4');
+  if (!existsSync(mp4)) return null;
+  const pasta = join(video, '_fonte', 'fundo-quadros');
+  const info = join(pasta, 'info.js');
+  if (existsSync(info) && statSync(info).mtimeMs > statSync(mp4).mtimeMs) return pasta;
+  rmSync(pasta, { recursive: true, force: true });
+  mkdirSync(pasta, { recursive: true });
+  const fps = Number(spawnSync('ffprobe', ['-v', 'error', '-select_streams', 'v:0', '-show_entries', 'stream=r_frame_rate', '-of', 'csv=p=0', mp4], { encoding: 'utf8' }).stdout.trim().split('/').reduce((a, b) => a / b));
+  const r = spawnSync('ffmpeg', ['-y', '-loglevel', 'error', '-i', mp4, '-vf', `scale=${LARGURA}:${ALTURA}:force_original_aspect_ratio=increase,crop=${LARGURA}:${ALTURA}`, '-q:v', '3', join(pasta, 'q%04d.jpg')], { encoding: 'utf8' });
+  if (r.status !== 0) throw new Error(`ffmpeg não extraiu o fundo: ${r.stderr}`);
+  const n = readdirSync(pasta).filter((f) => f.endsWith('.jpg')).length;
+  writeFileSync(info, `window.FUNDO_VIDEO = ${JSON.stringify({ n, fps })};
+`);
+  console.log(`fundo.mp4: ${n} quadros a ${fps} fps em _fonte/fundo-quadros/`);
+  return pasta;
+}
+
 export async function abrirCena(video) {
+  prepararFundoVideo(video);
   const browser = await chromium.launch({
     channel: 'msedge',
     args: ['--allow-file-access-from-files', '--force-color-profile=srgb', '--font-render-hinting=none', '--disable-gpu'],

@@ -1,0 +1,714 @@
+{
+  "origem": "narracao-take-a.mp3 e narracao-take-a.palavras.json (ElevenLabs), com as pausas de montar-narracao.mjs",
+  "take": "a",
+  "duracao": 38.87,
+  "fala": {
+    "ini": 0.45,
+    "fim": 37.87
+  },
+  "frases": [
+    {
+      "texto": "Alguém já passou por esse posto hoje.",
+      "ini": 0.45,
+      "fim": 2.42,
+      "naTake": [
+        0.075,
+        2.045
+      ],
+      "pausaDepois": 0.25,
+      "pausaNaTake": 0.25
+    },
+    {
+      "texto": "Só não te contou.",
+      "ini": 2.67,
+      "fim": 3.605,
+      "naTake": [
+        2.295,
+        3.23
+      ],
+      "pausaDepois": 0.6,
+      "pausaNaTake": 0.42
+    },
+    {
+      "texto": "Agora imagina o contrário: você chegou, plugou e a recarga começou.",
+      "ini": 4.205,
+      "fim": 7.95,
+      "naTake": [
+        3.65,
+        7.395
+      ],
+      "pausaDepois": 0.6,
+      "pausaNaTake": 0.275
+    },
+    {
+      "texto": "No Mapere, vai ser assim: você toca em check-in e escolhe o status.",
+      "ini": 8.55,
+      "fim": 12.19,
+      "naTake": [
+        7.67,
+        11.31
+      ],
+      "pausaDepois": 0.3,
+      "pausaNaTake": 0.245
+    },
+    {
+      "texto": "Livre.",
+      "ini": 12.49,
+      "fim": 12.85,
+      "naTake": [
+        11.555,
+        11.915
+      ],
+      "pausaDepois": 0.6,
+      "pausaNaTake": 0.25
+    },
+    {
+      "texto": "Poucos toques, e o ponto acende no mapa.",
+      "ini": 13.45,
+      "fim": 15.545,
+      "naTake": [
+        12.165,
+        14.26
+      ],
+      "pausaDepois": 0.225,
+      "pausaNaTake": 0.225
+    },
+    {
+      "texto": "Com a hora: confirmado agora.",
+      "ini": 15.77,
+      "fim": 17.66,
+      "naTake": [
+        14.485,
+        16.375
+      ],
+      "pausaDepois": 0.6,
+      "pausaNaTake": 0.26
+    },
+    {
+      "texto": "Deu defeito?",
+      "ini": 18.26,
+      "fim": 18.955,
+      "naTake": [
+        16.635,
+        17.33
+      ],
+      "pausaDepois": 0.16,
+      "pausaNaTake": 0.16
+    },
+    {
+      "texto": "Você avisa também.",
+      "ini": 19.115,
+      "fim": 20.03,
+      "naTake": [
+        17.49,
+        18.405
+      ],
+      "pausaDepois": 0.195,
+      "pausaNaTake": 0.195
+    },
+    {
+      "texto": "Aí ninguém perde a viagem.",
+      "ini": 20.225,
+      "fim": 21.695,
+      "naTake": [
+        18.6,
+        20.07
+      ],
+      "pausaDepois": 0.7,
+      "pausaNaTake": 0.225
+    },
+    {
+      "texto": "Do outro lado da cidade, alguém saindo de casa vê esse ponto aceso e vai direto.",
+      "ini": 22.395,
+      "fim": 26.69,
+      "naTake": [
+        20.295,
+        24.59
+      ],
+      "pausaDepois": 0.165,
+      "pausaNaTake": 0.165
+    },
+    {
+      "texto": "Sem rodar atrás de posto.",
+      "ini": 26.855,
+      "fim": 28.225,
+      "naTake": [
+        24.755,
+        26.125
+      ],
+      "pausaDepois": 0.7,
+      "pausaNaTake": 0.235
+    },
+    {
+      "texto": "Amanhã, quem tá saindo é você.",
+      "ini": 28.925,
+      "fim": 30.68,
+      "naTake": [
+        26.36,
+        28.115
+      ],
+      "pausaDepois": 0.175,
+      "pausaNaTake": 0.175
+    },
+    {
+      "texto": "E alguém já confirmou antes.",
+      "ini": 30.855,
+      "fim": 32.18,
+      "naTake": [
+        28.29,
+        29.615
+      ],
+      "pausaDepois": 0.7,
+      "pausaNaTake": 0.175
+    },
+    {
+      "texto": "Cada confirmação acende o mapa pra quem vem depois.",
+      "ini": 32.88,
+      "fim": 35.585,
+      "naTake": [
+        29.79,
+        32.495
+      ],
+      "pausaDepois": 0.8,
+      "pausaNaTake": 0.18
+    },
+    {
+      "texto": "Siga pra acompanhar a construção.",
+      "ini": 36.385,
+      "fim": 37.87,
+      "naTake": [
+        32.675,
+        34.16
+      ],
+      "pausaDepois": null,
+      "pausaNaTake": null
+    }
+  ],
+  "palavras": [
+    {
+      "texto": "Alguém",
+      "ini": 0.45,
+      "fim": 0.695
+    },
+    {
+      "texto": "já",
+      "ini": 0.735,
+      "fim": 0.855
+    },
+    {
+      "texto": "passou",
+      "ini": 0.975,
+      "fim": 1.175
+    },
+    {
+      "texto": "por",
+      "ini": 1.255,
+      "fim": 1.335
+    },
+    {
+      "texto": "esse",
+      "ini": 1.415,
+      "fim": 1.495
+    },
+    {
+      "texto": "posto",
+      "ini": 1.575,
+      "fim": 1.975
+    },
+    {
+      "texto": "hoje.",
+      "ini": 2.055,
+      "fim": 2.42
+    },
+    {
+      "texto": "Só",
+      "ini": 2.67,
+      "fim": 2.855
+    },
+    {
+      "texto": "não",
+      "ini": 2.895,
+      "fim": 3.015
+    },
+    {
+      "texto": "te",
+      "ini": 3.055,
+      "fim": 3.095
+    },
+    {
+      "texto": "contou.",
+      "ini": 3.175,
+      "fim": 3.605
+    },
+    {
+      "texto": "Agora",
+      "ini": 4.205,
+      "fim": 4.435
+    },
+    {
+      "texto": "imagina",
+      "ini": 4.475,
+      "fim": 4.795
+    },
+    {
+      "texto": "o",
+      "ini": 4.835,
+      "fim": 4.875
+    },
+    {
+      "texto": "contrário:",
+      "ini": 5.035,
+      "fim": 5.595
+    },
+    {
+      "texto": "você",
+      "ini": 5.635,
+      "fim": 5.835
+    },
+    {
+      "texto": "chegou,",
+      "ini": 5.915,
+      "fim": 6.395
+    },
+    {
+      "texto": "plugou",
+      "ini": 6.515,
+      "fim": 6.875
+    },
+    {
+      "texto": "e",
+      "ini": 6.955,
+      "fim": 7.035
+    },
+    {
+      "texto": "a",
+      "ini": 7.062,
+      "fim": 7.088
+    },
+    {
+      "texto": "recarga",
+      "ini": 7.115,
+      "fim": 7.435
+    },
+    {
+      "texto": "começou.",
+      "ini": 7.515,
+      "fim": 7.95
+    },
+    {
+      "texto": "No",
+      "ini": 8.55,
+      "fim": 8.64
+    },
+    {
+      "texto": "Mapere,",
+      "ini": 8.76,
+      "fim": 9.147
+    },
+    {
+      "texto": "vai",
+      "ini": 9.173,
+      "fim": 9.28
+    },
+    {
+      "texto": "ser",
+      "ini": 9.36,
+      "fim": 9.44
+    },
+    {
+      "texto": "assim:",
+      "ini": 9.52,
+      "fim": 10
+    },
+    {
+      "texto": "você",
+      "ini": 10.08,
+      "fim": 10.24
+    },
+    {
+      "texto": "toca",
+      "ini": 10.32,
+      "fim": 10.48
+    },
+    {
+      "texto": "em",
+      "ini": 10.52,
+      "fim": 10.56
+    },
+    {
+      "texto": "check-in",
+      "ini": 10.68,
+      "fim": 11.04
+    },
+    {
+      "texto": "e",
+      "ini": 11.12,
+      "fim": 11.16
+    },
+    {
+      "texto": "escolhe",
+      "ini": 11.2,
+      "fim": 11.52
+    },
+    {
+      "texto": "o",
+      "ini": 11.573,
+      "fim": 11.627
+    },
+    {
+      "texto": "status.",
+      "ini": 11.68,
+      "fim": 12.19
+    },
+    {
+      "texto": "Livre.",
+      "ini": 12.49,
+      "fim": 12.85
+    },
+    {
+      "texto": "Poucos",
+      "ini": 13.45,
+      "fim": 13.765
+    },
+    {
+      "texto": "toques,",
+      "ini": 13.845,
+      "fim": 14.325
+    },
+    {
+      "texto": "e",
+      "ini": 14.352,
+      "fim": 14.378
+    },
+    {
+      "texto": "o",
+      "ini": 14.405,
+      "fim": 14.445
+    },
+    {
+      "texto": "ponto",
+      "ini": 14.485,
+      "fim": 14.725
+    },
+    {
+      "texto": "acende",
+      "ini": 14.805,
+      "fim": 15.045
+    },
+    {
+      "texto": "no",
+      "ini": 15.125,
+      "fim": 15.205
+    },
+    {
+      "texto": "mapa.",
+      "ini": 15.325,
+      "fim": 15.545
+    },
+    {
+      "texto": "Com",
+      "ini": 15.77,
+      "fim": 15.845
+    },
+    {
+      "texto": "a",
+      "ini": 15.925,
+      "fim": 16.005
+    },
+    {
+      "texto": "hora:",
+      "ini": 16.085,
+      "fim": 16.485
+    },
+    {
+      "texto": "confirmado",
+      "ini": 16.685,
+      "fim": 17.125
+    },
+    {
+      "texto": "agora.",
+      "ini": 17.285,
+      "fim": 17.66
+    },
+    {
+      "texto": "Deu",
+      "ini": 18.26,
+      "fim": 18.385
+    },
+    {
+      "texto": "defeito?",
+      "ini": 18.425,
+      "fim": 18.955
+    },
+    {
+      "texto": "Você",
+      "ini": 19.115,
+      "fim": 19.305
+    },
+    {
+      "texto": "avisa",
+      "ini": 19.385,
+      "fim": 19.625
+    },
+    {
+      "texto": "também.",
+      "ini": 19.705,
+      "fim": 20.03
+    },
+    {
+      "texto": "Aí",
+      "ini": 20.225,
+      "fim": 20.425
+    },
+    {
+      "texto": "ninguém",
+      "ini": 20.505,
+      "fim": 20.905
+    },
+    {
+      "texto": "perde",
+      "ini": 20.985,
+      "fim": 21.145
+    },
+    {
+      "texto": "a",
+      "ini": 21.185,
+      "fim": 21.225
+    },
+    {
+      "texto": "viagem.",
+      "ini": 21.305,
+      "fim": 21.695
+    },
+    {
+      "texto": "Do",
+      "ini": 22.395,
+      "fim": 22.5
+    },
+    {
+      "texto": "outro",
+      "ini": 22.58,
+      "fim": 22.74
+    },
+    {
+      "texto": "lado",
+      "ini": 22.78,
+      "fim": 22.98
+    },
+    {
+      "texto": "da",
+      "ini": 23.02,
+      "fim": 23.06
+    },
+    {
+      "texto": "cidade,",
+      "ini": 23.14,
+      "fim": 23.62
+    },
+    {
+      "texto": "alguém",
+      "ini": 23.7,
+      "fim": 23.94
+    },
+    {
+      "texto": "saindo",
+      "ini": 24.02,
+      "fim": 24.26
+    },
+    {
+      "texto": "de",
+      "ini": 24.34,
+      "fim": 24.42
+    },
+    {
+      "texto": "casa",
+      "ini": 24.527,
+      "fim": 24.74
+    },
+    {
+      "texto": "vê",
+      "ini": 24.82,
+      "fim": 24.9
+    },
+    {
+      "texto": "esse",
+      "ini": 25.02,
+      "fim": 25.14
+    },
+    {
+      "texto": "ponto",
+      "ini": 25.193,
+      "fim": 25.3
+    },
+    {
+      "texto": "aceso",
+      "ini": 25.38,
+      "fim": 25.86
+    },
+    {
+      "texto": "e",
+      "ini": 25.94,
+      "fim": 26.02
+    },
+    {
+      "texto": "vai",
+      "ini": 26.073,
+      "fim": 26.18
+    },
+    {
+      "texto": "direto.",
+      "ini": 26.26,
+      "fim": 26.69
+    },
+    {
+      "texto": "Sem",
+      "ini": 26.855,
+      "fim": 27.14
+    },
+    {
+      "texto": "rodar",
+      "ini": 27.26,
+      "fim": 27.46
+    },
+    {
+      "texto": "atrás",
+      "ini": 27.54,
+      "fim": 27.7
+    },
+    {
+      "texto": "de",
+      "ini": 27.74,
+      "fim": 27.78
+    },
+    {
+      "texto": "posto.",
+      "ini": 27.86,
+      "fim": 28.225
+    },
+    {
+      "texto": "Amanhã,",
+      "ini": 28.925,
+      "fim": 29.445
+    },
+    {
+      "texto": "quem",
+      "ini": 29.485,
+      "fim": 29.605
+    },
+    {
+      "texto": "tá",
+      "ini": 29.685,
+      "fim": 29.765
+    },
+    {
+      "texto": "saindo",
+      "ini": 29.845,
+      "fim": 30.112
+    },
+    {
+      "texto": "é",
+      "ini": 30.138,
+      "fim": 30.165
+    },
+    {
+      "texto": "você.",
+      "ini": 30.245,
+      "fim": 30.68
+    },
+    {
+      "texto": "E",
+      "ini": 30.855,
+      "fim": 30.915
+    },
+    {
+      "texto": "alguém",
+      "ini": 30.965,
+      "fim": 31.205
+    },
+    {
+      "texto": "já",
+      "ini": 31.232,
+      "fim": 31.285
+    },
+    {
+      "texto": "confirmou",
+      "ini": 31.365,
+      "fim": 31.765
+    },
+    {
+      "texto": "antes.",
+      "ini": 31.965,
+      "fim": 32.18
+    },
+    {
+      "texto": "Cada",
+      "ini": 32.88,
+      "fim": 33.09
+    },
+    {
+      "texto": "confirmação",
+      "ini": 33.21,
+      "fim": 33.81
+    },
+    {
+      "texto": "acende",
+      "ini": 33.93,
+      "fim": 34.21
+    },
+    {
+      "texto": "o",
+      "ini": 34.29,
+      "fim": 34.33
+    },
+    {
+      "texto": "mapa",
+      "ini": 34.37,
+      "fim": 34.61
+    },
+    {
+      "texto": "pra",
+      "ini": 34.65,
+      "fim": 34.69
+    },
+    {
+      "texto": "quem",
+      "ini": 34.77,
+      "fim": 34.85
+    },
+    {
+      "texto": "vem",
+      "ini": 34.93,
+      "fim": 35.01
+    },
+    {
+      "texto": "depois.",
+      "ini": 35.09,
+      "fim": 35.585
+    },
+    {
+      "texto": "Siga",
+      "ini": 36.385,
+      "fim": 36.67
+    },
+    {
+      "texto": "pra",
+      "ini": 36.75,
+      "fim": 36.83
+    },
+    {
+      "texto": "acompanhar",
+      "ini": 36.91,
+      "fim": 37.23
+    },
+    {
+      "texto": "a",
+      "ini": 37.257,
+      "fim": 37.283
+    },
+    {
+      "texto": "construção.",
+      "ini": 37.31,
+      "fim": 37.87
+    }
+  ]
+}

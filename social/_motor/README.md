@@ -12,6 +12,7 @@ social/NN-slug/
     roteiro.json      fonte única: fala, tela, pausas, capítulos, marcas, prévia, capa
     cena.html         só o desenho próprio do vídeo; o resto vem do kit
     fundo.png         (opcional) imagem 9:16 gerada por IA para o gancho
+    fundo.mp4         (opcional) clipe 9:16 gerado por IA; vira fundo-quadros/ (gerado; não editar)
     creditos.md       cada chamada à ElevenLabs e o custo
     audio/            takes, transcrições, narracao.wav, alinhamento.json
     dados.js, legenda.js, legenda.json   gerados; não editar
@@ -48,7 +49,9 @@ social/NN-slug/
 
 ## A cena (kit)
 
-`cena.html` carrega `kit.css`, o GSAP, `dados.js`, `legenda.js` e `kit.js`, e chama `Kit.iniciar({ fundo?, nomesDosCapitulos?, montar(k), desenhar?(t, k) })`.
+`cena.html` carrega `kit.css`, o GSAP, `dados.js`, `legenda.js` e `kit.js`, e chama `Kit.iniciar({ fundo?, fundoVideo?, nomesDosCapitulos?, montar(k), desenhar?(t, k) })`.
+
+Fundo em vídeo (desde o vídeo 05): ponha o clipe em `_fonte/fundo.mp4` e use `fundoVideo: true` (ou `{ ini, velocidade }`). O `palco.mjs` extrai os quadros para `_fonte/fundo-quadros/` quando o MP4 muda, e o kit troca o quadro em cada `__ir`, então o render continua determinístico. Na cena, `#fundo .foto` é o próprio clipe: dá para animar escala, desfoque e opacidade como na foto.
 
 O `k` traz:
 - `tl` (a linha do tempo) e `m` (as marcas);
@@ -62,6 +65,9 @@ Sozinho, o kit cuida do título, da barra de capítulos, da legenda palavra por 
 Regras que o kit já segue: status sempre com ícone e texto, texto essencial dentro da zona segura (`ZONA` em `palco.mjs`) e nada de chama, fumaça ou fogo.
 
 ## Armadilhas conhecidas
+
+- Clipe por IA costuma trazer placa e tela com rabiscos. Trate antes de salvar `fundo.mp4`: o vídeo 05 desfoca a placa com uma caixa de borda suave que anda com o carro (comando em `05-quem-vem-depois/plano.md`) e cobre a tela do carregador com um elemento da cena.
+- Com clipe de fundo, o MP4 final passa de 7 MB. Para o Drive, gere uma cópia mais leve.
 
 - No GSAP, `x` num `<g>` de SVG sobrescreve o `transform` do atributo. Para posicionar, use um `<g transform>` externo e anime o grupo de dentro.
 - Na ElevenLabs, escrever "vertical 9:16" no prompt de imagem não muda o formato. É preciso pôr `aspect_ratio: 9:16` no nó (`creative_update_node`) antes de rodar.

@@ -1,0 +1,92 @@
+{
+  "_como_ler": "fala: o texto enviado à ElevenLabs. [tom] é marcação do eleven_v4 e não é falada; {0.6} depois de uma frase pede 0,6 s de silêncio antes da próxima (sem {} fica a pausa da própria take). tela: a legenda, em blocos separados por ' | '; {4|quatro} mostra 4 e casa com 'quatro' na voz. Sem tela, a legenda sai da fala em blocos de até 20 letras. marcas: nome -> 'linha:palavra', com #n para a n-ésima vez e :fim para o fim da palavra.",
+  "video": "05",
+  "titulo": ["Quem chega depois", "agradece"],
+  "saida": "mapere-quem-vem-depois.mp4",
+  "voz": { "voice_id": "wSbRKUhF0tUmkj9exCud", "nome": "Matheus Alves - Versatile Neutral PT-BR", "modelo": "eleven_v4" },
+  "entrada": 0.45,
+  "sobra": 1.0,
+  "capitulos": [
+    { "nome": "Check-in", "linha": 3 },
+    { "nome": "O ponto acende", "linha": 4 },
+    { "nome": "Quem vem depois", "linha": 6 }
+  ],
+  "linhas": [
+    {
+      "fala": "[curious] Alguém já passou por esse posto hoje. Só não te contou. {0.6}",
+      "tela": "Alguém já passou | por esse posto hoje. | Só não te contou."
+    },
+    {
+      "fala": "[conversational] Agora imagina o contrário: você chegou, plugou e a recarga começou. {0.6}",
+      "tela": "Agora imagina | o contrário: | você chegou, plugou | e a recarga começou."
+    },
+    {
+      "fala": "No Mapere, vai ser assim: você toca em check-in e escolhe o status. {0.3} Livre. {0.6}",
+      "tela": "No Mapere, | vai ser assim: | você toca em check-in | e escolhe o status. | Livre."
+    },
+    {
+      "fala": "Poucos toques, e o ponto acende no mapa. Com a hora: confirmado agora. {0.6}",
+      "tela": "Poucos toques, | e o ponto acende | no mapa. | Com a hora: | confirmado agora."
+    },
+    {
+      "fala": "Deu defeito? Você avisa também. Aí ninguém perde a viagem. {0.7}",
+      "tela": "Deu defeito? | Você avisa também. | Aí ninguém | perde a viagem."
+    },
+    {
+      "fala": "Do outro lado da cidade, alguém saindo de casa vê esse ponto aceso e vai direto. Sem rodar atrás de posto. {0.7}",
+      "tela": "Do outro lado | da cidade, alguém | saindo de casa | vê esse ponto aceso | e vai direto. | Sem rodar | atrás de posto."
+    },
+    {
+      "fala": "Amanhã, quem tá saindo é você. E alguém já confirmou antes. {0.7}",
+      "tela": "Amanhã, quem tá | saindo é você. | E alguém já | confirmou antes."
+    },
+    {
+      "fala": "Cada confirmação acende o mapa pra quem vem depois. {0.8}",
+      "tela": "Cada confirmação | acende o mapa | pra quem vem depois."
+    },
+    {
+      "fala": "Siga pra acompanhar a construção.",
+      "tela": "Siga pra acompanhar a construção."
+    }
+  ],
+  "marcas": {
+    "posto": "1:posto",
+    "contou": "1:contou",
+    "chegou": "2:chegou",
+    "plugou": "2:plugou",
+    "comecou": "2:começou",
+    "checkin": "3:check-in",
+    "status": "3:status",
+    "livre": "3:Livre",
+    "toques": "4:toques",
+    "acende": "4:acende",
+    "hora": "4:hora",
+    "agora": "4:agora",
+    "defeito": "5:defeito",
+    "avisa": "5:avisa",
+    "viagem": "5:viagem",
+    "cidade": "6:cidade",
+    "casa": "6:casa",
+    "aceso": "6:aceso",
+    "direto": "6:direto",
+    "rodar": "6:rodar",
+    "amanha": "7:Amanhã",
+    "voce7": "7:você",
+    "antes": "7:antes",
+    "cada": "8:confirmação",
+    "acende8": "8:acende",
+    "depois": "8:depois"
+  },
+  "previa": [
+    { "nome": "1-gancho", "t": "contou+0.3" },
+    { "nome": "2-plugou", "t": "comecou+0.3" },
+    { "nome": "3-checkin", "t": "livre+0.3" },
+    { "nome": "4-acende", "t": "agora+0.3" },
+    { "nome": "5-defeito", "t": "viagem+0.2" },
+    { "nome": "6-quem-vem", "t": "direto+0.3" },
+    { "nome": "7-amanha", "t": "antes+0.2" },
+    { "nome": "8-mapa", "t": "depois+0.2" },
+    { "nome": "9-logo", "t": "fimFala+0.4" }
+  ],
+  "capa": { "t": "contou+0.2" }
+}

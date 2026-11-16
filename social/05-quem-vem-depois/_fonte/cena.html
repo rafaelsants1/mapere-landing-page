@@ -1,0 +1,257 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Mapere · vídeo 05 · Quem chega depois agradece</title>
+<link rel="stylesheet" href="../../_motor/kit/kit.css">
+<style>
+/* Gancho: a tela do carregador do clipe vira "?" e um pino cinza cai sobre o posto. */
+#tampa{position:absolute;left:430px;top:968px;width:78px;height:114px;border-radius:10px;background:#2a211c;border:3px solid #8c857b}
+#tampa svg{position:absolute;left:12px;top:30px;width:54px;height:54px;fill:none;stroke:#F3EDE2;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+#pino{position:absolute;left:0;top:0;width:0;height:0}
+#pino svg{position:absolute;left:-60px;top:-150px;width:120px;height:150px;overflow:visible}
+#chip-gancho{position:absolute;left:540px;top:640px}
+/* Celular do check-in. */
+#cel{position:absolute;left:330px;top:400px;width:420px;height:780px;border-radius:52px;background:#211a16;border:5px solid #F3EDE2}
+#cel .entalhe{position:absolute;left:160px;top:16px;width:100px;height:14px;border-radius:7px;background:#45392f}
+#cel .nome{position:absolute;left:0;width:100%;top:66px;text-align:center;font-weight:800;font-size:36px;color:#F3EDE2}
+#cel .estado{position:absolute;left:210px;top:128px}
+#botao{position:absolute;left:40px;top:230px;width:340px;height:92px;border-radius:46px;background:#F0641E;color:#17110e;font-weight:800;font-size:36px;display:flex;align-items:center;justify-content:center;gap:12px}
+#botao svg{width:40px;height:40px;fill:none;stroke:currentColor;stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round}
+#cel .opcao{position:absolute;left:210px}
+#dedo{position:absolute;left:0;top:0;width:0;height:0}
+#dedo span{position:absolute;left:-38px;top:-38px;width:76px;height:76px;border-radius:50%;background:rgb(243 237 226/.35);border:4px solid #F3EDE2}
+#nota-cel{position:absolute;left:110px;top:1400px;font-family:var(--mono);font-size:22px;color:var(--texto-2-escuro);white-space:nowrap}
+/* Mapa: o carro de quem sai de casa e a rota direta. */
+#rota-svg{position:absolute;left:0;top:0;width:1080px;height:1920px;overflow:visible;pointer-events:none}
+#rota{fill:none;stroke-dasharray:1;stroke:#F0641E;stroke-width:8;stroke-linecap:round;stroke-linejoin:round}
+#carro{position:absolute;left:0;top:0;width:0;height:0}
+#carro span{position:absolute;left:-22px;top:-22px;width:44px;height:44px;border-radius:50%;background:#F3EDE2;border:6px solid #17110e;box-shadow:0 0 0 3px #F3EDE2}
+.pulso{position:absolute;left:0;top:0;width:0;height:0}
+.pulso span{position:absolute;left:-60px;top:-60px;width:120px;height:120px;border-radius:50%;border:5px solid #12b76a}
+</style>
+</head>
+<body>
+<div id="palco">
+
+  <!-- Linha 1 · gancho sobre o clipe -->
+  <div id="tampa"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 9.2a3 3 0 1 1 4.4 2.6c-.9.5-1.4 1.1-1.4 2.2 M12 18.2v.1"/></svg></div>
+  <div id="pino">
+    <svg viewBox="-60 -150 120 150" aria-hidden="true">
+      <path d="M0 0C-12 -34 -52 -62 -52 -98a52 52 0 0 1 104 0C52 -62 12 -34 0 0Z" fill="#8c857b" stroke="#F3EDE2" stroke-width="6" stroke-linejoin="round"/>
+      <circle cx="0" cy="-98" r="18" fill="#17110e"/>
+    </svg>
+  </div>
+
+  <!-- Linha 2 · o posto desenhado: você chegou, plugou, a recarga começou -->
+  <div class="cena" id="estacao">
+    <svg class="desenho" viewBox="0 0 1080 1920">
+      <path class="traco" id="chao" pathLength="1" d="M60 1150H1020"/>
+      <g id="carregador">
+        <rect class="peca" x="200" y="820" width="120" height="330" rx="18"/>
+        <rect id="tela" x="218" y="846" width="84" height="66" rx="8" fill="#17110e" stroke="#F3EDE2" stroke-width="3"/>
+        <g id="raio-tela"></g>
+      </g>
+      <path class="traco" id="cabo-solto" d="M320 960c22 0 26 40 12 80"/>
+      <path class="traco" id="cabo" pathLength="1" d="M320 960C420 960 360 1080 410 1080"/>
+      <g transform="translate(380 1046)"><g id="carro-a">
+        <path fill="#F3EDE2" stroke="#17110E" stroke-width="4" d="M10 84Q10 62 34 58L86 50Q112 20 150 18L204 18Q236 20 258 50L284 58Q298 62 298 84V96Q298 104 290 104H18Q10 104 10 96Z"/>
+        <path fill="#17110E" d="M100 52Q122 30 150 28H174V52Z M182 28H204Q228 30 246 52H182Z"/>
+        <circle cx="80" cy="100" r="22" fill="#2a211c" stroke="#F3EDE2" stroke-width="5"/>
+        <circle cx="232" cy="100" r="22" fill="#2a211c" stroke="#F3EDE2" stroke-width="5"/>
+      </g></g>
+    </svg>
+  </div>
+
+  <!-- Capítulo 1 · check-in no celular -->
+  <div id="cel">
+    <span class="entalhe"></span>
+    <p class="nome">Posto Fio de Luz</p>
+    <div id="botao"><svg viewBox="0 0 24 24" aria-hidden="true"><path id="ic-checkin"/></svg>Fazer check-in</div>
+  </div>
+  <div id="dedo"><span></span></div>
+  <p id="nota-cel">Tela ilustrativa. Nome fictício.</p>
+
+  <!-- Mapa: rota e carro -->
+  <svg id="rota-svg" viewBox="0 0 1080 1920"><path id="rota" pathLength="1"/></svg>
+  <div class="pulso" id="pulso"><span></span></div>
+  <div id="carro"><span></span></div>
+</div>
+
+<script src="../../../node_modules/gsap/dist/gsap.min.js"></script>
+<script src="../../../node_modules/gsap/dist/CustomEase.min.js"></script>
+<script src="dados.js"></script>
+<script src="legenda.js"></script>
+<script src="../../_motor/kit/kit.js"></script>
+<script>
+// Postos que o desenhar() acompanha quadro a quadro.
+const P = {};
+Kit.iniciar({
+  fundoVideo: true,
+  montar(k) {
+    const { tl, m, e, $, chip, icone, entra, sai, etiqueta, mapa, fecho, capitulos, LEG, M, ICONES } = k;
+    const cap = LEG.capitulos.map((c) => c.ini);
+    e.andou = 0;
+    e.alvo = 0;
+
+    // ---------- Peças ----------
+    icone('raio', $('#raio-tela'), 236, 855, 48, 2.6);
+    $('#ic-checkin').setAttribute('d', ICONES.checkin);
+    const chipGancho = chip($('#palco'), 'seminfo', 'Sem informação');
+    chipGancho.id = 'chip-gancho';
+    const estadoCel = [chip($('#cel'), 'seminfo', 'Sem informação'), chip($('#cel'), 'livre', 'Livre', 'agora')];
+    estadoCel.forEach((c) => c.classList.add('estado'));
+    const OPCOES = [
+      { st: 'livre', texto: 'Livre' },
+      { st: 'ocupado', texto: 'Ocupado' },
+      { st: 'defeito', texto: 'Com defeito' },
+      { st: 'seminfo', texto: 'Sem informação' },
+    ];
+    const opcoes = OPCOES.map((o, i) => {
+      const c = chip($('#cel'), o.st, o.texto);
+      c.classList.add('opcao');
+      c.style.top = `${380 + i * 92}px`;
+      return c;
+    });
+
+    // ---------- Estado inicial ----------
+    gsap.set('#pino', { x: 470, y: 930, autoAlpha: 0 });
+    gsap.set('#tampa', { autoAlpha: 0 });
+    gsap.set(chipGancho, { xPercent: -50, autoAlpha: 0, scale: 0.6 });
+    gsap.set('#estacao', { autoAlpha: 0 });
+    gsap.set(['#carro-a', '#raio-tela'], { autoAlpha: 0 });
+    gsap.set('#carro-a', { x: -420 });
+    gsap.set('#cabo', { strokeDashoffset: 1 });
+    gsap.set('#cel', { autoAlpha: 0, y: 140 });
+    gsap.set(estadoCel, { xPercent: -50, autoAlpha: 0 });
+    gsap.set(estadoCel[0], { autoAlpha: 1 });
+    gsap.set(opcoes, { xPercent: -50, autoAlpha: 0, scale: 0.7 });
+    gsap.set(['#dedo', '#nota-cel', '#carro', '#pulso'], { autoAlpha: 0 });
+    gsap.set('#rota', { strokeDashoffset: 1 });
+
+    // ---------- Linha 1 · o carro sai; o posto fica sem dizer nada ----------
+    tl.to('#fundo .foto', { scale: 1.06, transformOrigin: '45% 55%', duration: m.L2 + 0.6, ease: 'sine.out' }, 0);
+    tl.to('#tampa', { autoAlpha: 1, duration: 0.25 }, 0.3);
+    tl.fromTo('#pino', { autoAlpha: 0, y: 840 }, { autoAlpha: 1, y: 930, duration: 0.45, ease: 'back.out(2.2)' }, m.posto - 0.15);
+    entra(chipGancho, m.contou - 0.35);
+    tl.to('#pino', { rotation: 9, duration: 0.09, yoyo: true, repeat: 5, ease: 'sine.inOut', transformOrigin: '50% 100%' }, m.contou);
+
+    // ---------- Linha 2 · "imagina o contrário": o clipe apaga, entra o posto desenhado ----------
+    tl.to('#fundo', { autoAlpha: 0, filter: 'blur(14px)', duration: 0.7, ease: 'power2.inOut' }, m.L2 - 0.1);
+    tl.to(['#pino', '#tampa', chipGancho], { autoAlpha: 0, duration: 0.3, ease: 'power2.in' }, m.L2 - 0.1);
+    entra('#estacao', m.L2 + 0.3);
+    tl.fromTo('#chao', { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: 0.5, ease: 'power2.out' }, m.L2 + 0.3);
+    tl.to('#carro-a', { autoAlpha: 1, x: 0, duration: 0.7, ease: 'power2.out' }, m.chegou - 0.6);
+    tl.to('#cabo-solto', { autoAlpha: 0, duration: 0.15 }, m.plugou - 0.1);
+    tl.to('#cabo', { strokeDashoffset: 0, duration: 0.4, ease: 'power2.out' }, m.plugou - 0.1);
+    tl.to('#tela', { attr: { fill: '#12b76a' }, duration: 0.2 }, m.comecou - 0.1);
+    tl.to('#raio-tela', { autoAlpha: 1, duration: 0.2 }, m.comecou - 0.1);
+    const etCarrega = etiqueta('carregando', [420, 760], [420, 806], [306, 870]).mostra(m.comecou);
+
+    // ---------- Capítulo 1 · check-in ----------
+    etCarrega.some(cap[0] - 0.4);
+    tl.to('#estacao', { autoAlpha: 0.18, duration: 0.4 }, cap[0] - 0.3);
+    tl.to('#cel', { autoAlpha: 1, y: 0, duration: 0.5, ease: 'entrada' }, cap[0] - 0.2);
+    tl.to('#nota-cel', { autoAlpha: 1, duration: 0.3 }, cap[0] + 0.2);
+    // O dedo toca em "Fazer check-in".
+    const toque = (x, y, quando) => {
+      tl.set('#dedo', { x, y }, quando - 0.35);
+      tl.fromTo('#dedo', { autoAlpha: 0, scale: 1.4 }, { autoAlpha: 1, scale: 1, duration: 0.3, ease: 'power2.out' }, quando - 0.35);
+      tl.to('#dedo', { scale: 0.8, duration: 0.1, yoyo: true, repeat: 1 }, quando - 0.05);
+      tl.to('#dedo', { autoAlpha: 0, duration: 0.2 }, quando + 0.3);
+    };
+    toque(540, 676, m.checkin);
+    tl.to('#botao', { scale: 0.94, duration: 0.1, yoyo: true, repeat: 1 }, m.checkin - 0.05);
+    opcoes.forEach((c, i) => entra(c, m.checkin + 0.2 + i * 0.1));
+    tl.to(opcoes[0], { scale: 1.12, duration: 0.15, yoyo: true, repeat: 1 }, m.status);
+    // "Livre": o dedo escolhe, as outras somem, o estado do posto vira Livre · agora.
+    toque(540, 400 + 380 + 34, m.livre);
+    tl.to(opcoes.slice(1), { autoAlpha: 0, duration: 0.2 }, m.livre + 0.1);
+    tl.to(opcoes[0], { scale: 1.25, duration: 0.25, ease: 'entrada' }, m.livre + 0.1);
+    tl.to(estadoCel[0], { autoAlpha: 0, duration: 0.15 }, m.livre + 0.2);
+    tl.to(estadoCel[1], { autoAlpha: 1, duration: 0.25 }, m.livre + 0.3);
+
+    // ---------- Capítulo 2 · o ponto acende no mapa ----------
+    const [P0, P1, P2, P3, P4] = M.postos;
+    mapa.enquadrar([480, 500], { x: 540, y: 800 }, 1.3);
+    const pSeu = mapa.posto(P3, 'cima', [{ st: 'seminfo', texto: 'Sem informação' }, { st: 'livre', texto: 'Livre', nota: 'agora' }]);
+    const pDef = mapa.posto(P1, 'baixo', [{ st: 'seminfo', texto: 'Sem informação' }, { st: 'defeito', texto: 'Com defeito', nota: 'agora' }]);
+    const pAmanha = mapa.posto(P4, 'cima', [{ st: 'seminfo', texto: 'Sem informação' }, { st: 'livre', texto: 'Livre', nota: 'há 4 min' }]);
+    const pMais1 = mapa.posto(P2, 'esq', [{ st: 'livre', texto: 'Livre' }]);
+    const pMais2 = mapa.posto(P0, 'dir', [{ st: 'livre', texto: 'Livre' }]);
+    const casa = mapa.posto([330, 740], 'cima', []);
+    Object.assign(P, { pSeu, pAmanha, casa });
+
+    tl.to(['#cel', '#nota-cel'], { autoAlpha: 0, y: 80, duration: 0.35, ease: 'power2.in' }, cap[1] - 0.35);
+    tl.to('#estacao', { autoAlpha: 0, duration: 0.3 }, cap[1] - 0.35);
+    mapa.mostrar(cap[1] - 0.1);
+    mapa.avancar(cap[1], m.siga, 1.06);
+    mapa.abre(pSeu, cap[1] + 0.2);
+    mapa.abre(pDef, cap[1] + 0.35);
+    // "Poucos toques, e o ponto acende": vira Livre · agora e pulsa em verde.
+    mapa.troca(pSeu, 0, 1, m.acende - 0.25);
+    const pulso = (quando) => {
+      tl.set('#pulso', { autoAlpha: 1, scale: 0.3 }, quando);
+      tl.to('#pulso', { scale: 1.6, autoAlpha: 0, duration: 0.9, ease: 'power2.out' }, quando);
+    };
+    pulso(m.acende);
+    const etFeito = etiqueta('Check-in feito', [560, 830]);
+    etFeito.mostra(m.hora - 0.1);
+    pulso(m.agora);
+
+    // ---------- Linha 5 · deu defeito: você avisa também ----------
+    etFeito.some(m.L5 - 0.2);
+    mapa.troca(pDef, 0, 1, m.avisa - 0.15);
+
+    // ---------- Capítulo 3 · quem sai de casa vai direto ----------
+    tl.to('#carro', { autoAlpha: 1, duration: 0.3 }, m.casa - 0.3);
+    const etCasa = etiqueta('saindo de casa', [380, 1060]).mostra(m.casa - 0.2);
+    pulso(m.aceso - 0.1);
+    tl.to('#rota', { strokeDashoffset: 0, duration: 0.6, ease: 'power2.out' }, m.direto - 0.4);
+    tl.to(e, { andou: 1, duration: 1.6, ease: 'power1.inOut' }, m.direto);
+    etCasa.some(m.direto);
+    tl.to(pDef.rotulosEstado[1].caixa, { opacity: 0.45, duration: 0.3 }, m.rodar);
+
+    // ---------- Linha 7 · amanhã é você, e alguém já confirmou ----------
+    const etVoce = etiqueta('você, amanhã', [470, 1060]);
+    tl.to('#rota', { opacity: 0, duration: 0.3 }, m.amanha - 0.2);
+    tl.to('#carro', { autoAlpha: 0, duration: 0.2 }, m.amanha - 0.2);
+    tl.set(e, { andou: 0 }, m.amanha);
+    tl.set('#rota', { strokeDashoffset: 1, opacity: 1 }, m.amanha);
+    tl.to('#carro', { autoAlpha: 1, duration: 0.3 }, m.amanha + 0.05);
+    etVoce.mostra(m.voce7 - 0.3);
+    mapa.abre(pAmanha, m.voce7 - 0.2);
+    mapa.troca(pAmanha, 0, 1, m.antes - 0.4);
+    tl.set(e, { alvo: 1 }, m.amanha);
+    tl.to('#rota', { strokeDashoffset: 0, duration: 0.5, ease: 'power2.out' }, m.antes - 0.1);
+    tl.to(e, { andou: 1, duration: 1.2, ease: 'power1.inOut' }, m.antes + 0.2);
+    etVoce.some(m.L8 - 0.2);
+
+    // ---------- Linha 8 · cada confirmação acende o mapa ----------
+    tl.to('#carro', { autoAlpha: 0, duration: 0.25 }, m.L8 - 0.2);
+    mapa.abre(pMais1, m.cada - 0.2);
+    mapa.abre(pMais2, m.cada + 0.05);
+    fecho.acende(pSeu, m.acende8 - 0.1);
+
+    // ---------- Linha 9 · o ponto aceso vira o ponto do logo ----------
+    fecho.logo(m.siga - 0.3);
+    tl.to('#rota', { opacity: 0, duration: 0.4, ease: 'power2.inOut' }, m.siga - 0.3);
+  },
+  // A rota de quem sai de casa e o pulso seguem os postos, que andam com o zoom.
+  desenhar(t, k) {
+    const { e, caminho } = k;
+    if (!P.casa) return;
+    const o = P.casa.tela;
+    const alvo = (e.alvo ? P.pAmanha : P.pSeu).tela;
+    const pts = e.alvo ? [o, [o[0], alvo[1]], alvo] : [o, [alvo[0], o[1]], alvo];
+    document.getElementById('rota').setAttribute('d', `M${pts.map((q) => q.map((v) => v.toFixed(1)).join(' ')).join('L')}`);
+    const [cx, cy] = caminho(pts, e.andou);
+    document.getElementById('carro').style.transform = `translate(${cx.toFixed(1)}px,${cy.toFixed(1)}px)`;
+    const s = P.pSeu.tela;
+    document.getElementById('pulso').style.left = `${s[0].toFixed(1)}px`;
+    document.getElementById('pulso').style.top = `${s[1].toFixed(1)}px`;
+  },
+});
+</script>
+</body>
+</html>

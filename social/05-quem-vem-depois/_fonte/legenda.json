@@ -1,0 +1,782 @@
+{
+  "origem": "audio/alinhamento.json",
+  "duracao": 38.67,
+  "ultimaLinha": 9,
+  "titulo": [
+    "Quem chega depois",
+    "agradece"
+  ],
+  "capitulos": [
+    {
+      "nome": "Check-in",
+      "ini": 8.55
+    },
+    {
+      "nome": "O ponto acende",
+      "ini": 13.45
+    },
+    {
+      "nome": "Quem vem depois",
+      "ini": 22.395
+    }
+  ],
+  "marcas": {
+    "L1": 0.45,
+    "L1fim": 3.605,
+    "L2": 4.205,
+    "L2fim": 7.95,
+    "L3": 8.55,
+    "L3fim": 12.85,
+    "L4": 13.45,
+    "L4fim": 17.66,
+    "L5": 18.26,
+    "L5fim": 21.695,
+    "L6": 22.395,
+    "L6fim": 28.225,
+    "L7": 28.925,
+    "L7fim": 32.18,
+    "L8": 32.88,
+    "L8fim": 35.585,
+    "L9": 36.385,
+    "L9fim": 37.87,
+    "cap1": 8.55,
+    "cap2": 13.45,
+    "cap3": 22.395,
+    "siga": 36.385,
+    "fimFala": 37.87,
+    "fim": 38.67,
+    "posto": 1.575,
+    "contou": 3.175,
+    "chegou": 5.915,
+    "plugou": 6.515,
+    "comecou": 7.515,
+    "checkin": 10.68,
+    "status": 11.68,
+    "livre": 12.49,
+    "toques": 13.845,
+    "acende": 14.805,
+    "hora": 16.085,
+    "agora": 17.285,
+    "defeito": 18.425,
+    "avisa": 19.385,
+    "viagem": 21.305,
+    "cidade": 23.14,
+    "casa": 24.527,
+    "aceso": 25.38,
+    "direto": 26.26,
+    "rodar": 27.26,
+    "amanha": 28.925,
+    "voce7": 30.245,
+    "antes": 31.965,
+    "cada": 33.21,
+    "acende8": 33.93,
+    "depois": 35.09
+  },
+  "blocos": [
+    {
+      "linha": 1,
+      "palavras": [
+        {
+          "tela": "Alguém",
+          "ini": 0.45,
+          "fim": 0.695
+        },
+        {
+          "tela": "já",
+          "ini": 0.735,
+          "fim": 0.855
+        },
+        {
+          "tela": "passou",
+          "ini": 0.975,
+          "fim": 1.175
+        }
+      ]
+    },
+    {
+      "linha": 1,
+      "palavras": [
+        {
+          "tela": "por",
+          "ini": 1.255,
+          "fim": 1.335
+        },
+        {
+          "tela": "esse",
+          "ini": 1.415,
+          "fim": 1.495
+        },
+        {
+          "tela": "posto",
+          "ini": 1.575,
+          "fim": 1.975
+        },
+        {
+          "tela": "hoje.",
+          "ini": 2.055,
+          "fim": 2.42
+        }
+      ]
+    },
+    {
+      "linha": 1,
+      "palavras": [
+        {
+          "tela": "Só",
+          "ini": 2.67,
+          "fim": 2.855
+        },
+        {
+          "tela": "não",
+          "ini": 2.895,
+          "fim": 3.015
+        },
+        {
+          "tela": "te",
+          "ini": 3.055,
+          "fim": 3.095
+        },
+        {
+          "tela": "contou.",
+          "ini": 3.175,
+          "fim": 3.605
+        }
+      ]
+    },
+    {
+      "linha": 2,
+      "palavras": [
+        {
+          "tela": "Agora",
+          "ini": 4.205,
+          "fim": 4.435
+        },
+        {
+          "tela": "imagina",
+          "ini": 4.475,
+          "fim": 4.795
+        }
+      ]
+    },
+    {
+      "linha": 2,
+      "palavras": [
+        {
+          "tela": "o",
+          "ini": 4.835,
+          "fim": 4.875
+        },
+        {
+          "tela": "contrário:",
+          "ini": 5.035,
+          "fim": 5.595
+        }
+      ]
+    },
+    {
+      "linha": 2,
+      "palavras": [
+        {
+          "tela": "você",
+          "ini": 5.635,
+          "fim": 5.835
+        },
+        {
+          "tela": "chegou,",
+          "ini": 5.915,
+          "fim": 6.395
+        },
+        {
+          "tela": "plugou",
+          "ini": 6.515,
+          "fim": 6.875
+        }
+      ]
+    },
+    {
+      "linha": 2,
+      "palavras": [
+        {
+          "tela": "e",
+          "ini": 6.955,
+          "fim": 7.035
+        },
+        {
+          "tela": "a",
+          "ini": 7.062,
+          "fim": 7.088
+        },
+        {
+          "tela": "recarga",
+          "ini": 7.115,
+          "fim": 7.435
+        },
+        {
+          "tela": "começou.",
+          "ini": 7.515,
+          "fim": 7.95
+        }
+      ]
+    },
+    {
+      "linha": 3,
+      "palavras": [
+        {
+          "tela": "No",
+          "ini": 8.55,
+          "fim": 8.64
+        },
+        {
+          "tela": "Mapere,",
+          "ini": 8.76,
+          "fim": 9.147
+        }
+      ]
+    },
+    {
+      "linha": 3,
+      "palavras": [
+        {
+          "tela": "vai",
+          "ini": 9.173,
+          "fim": 9.28
+        },
+        {
+          "tela": "ser",
+          "ini": 9.36,
+          "fim": 9.44
+        },
+        {
+          "tela": "assim:",
+          "ini": 9.52,
+          "fim": 10
+        }
+      ]
+    },
+    {
+      "linha": 3,
+      "palavras": [
+        {
+          "tela": "você",
+          "ini": 10.08,
+          "fim": 10.24
+        },
+        {
+          "tela": "toca",
+          "ini": 10.32,
+          "fim": 10.48
+        },
+        {
+          "tela": "em",
+          "ini": 10.52,
+          "fim": 10.56
+        },
+        {
+          "tela": "check-in",
+          "ini": 10.68,
+          "fim": 11.04
+        }
+      ]
+    },
+    {
+      "linha": 3,
+      "palavras": [
+        {
+          "tela": "e",
+          "ini": 11.12,
+          "fim": 11.16
+        },
+        {
+          "tela": "escolhe",
+          "ini": 11.2,
+          "fim": 11.52
+        },
+        {
+          "tela": "o",
+          "ini": 11.573,
+          "fim": 11.627
+        },
+        {
+          "tela": "status.",
+          "ini": 11.68,
+          "fim": 12.19
+        }
+      ]
+    },
+    {
+      "linha": 3,
+      "palavras": [
+        {
+          "tela": "Livre.",
+          "ini": 12.49,
+          "fim": 12.85
+        }
+      ]
+    },
+    {
+      "linha": 4,
+      "palavras": [
+        {
+          "tela": "Poucos",
+          "ini": 13.45,
+          "fim": 13.765
+        },
+        {
+          "tela": "toques,",
+          "ini": 13.845,
+          "fim": 14.325
+        }
+      ]
+    },
+    {
+      "linha": 4,
+      "palavras": [
+        {
+          "tela": "e",
+          "ini": 14.352,
+          "fim": 14.378
+        },
+        {
+          "tela": "o",
+          "ini": 14.405,
+          "fim": 14.445
+        },
+        {
+          "tela": "ponto",
+          "ini": 14.485,
+          "fim": 14.725
+        },
+        {
+          "tela": "acende",
+          "ini": 14.805,
+          "fim": 15.045
+        }
+      ]
+    },
+    {
+      "linha": 4,
+      "palavras": [
+        {
+          "tela": "no",
+          "ini": 15.125,
+          "fim": 15.205
+        },
+        {
+          "tela": "mapa.",
+          "ini": 15.325,
+          "fim": 15.545
+        }
+      ]
+    },
+    {
+      "linha": 4,
+      "palavras": [
+        {
+          "tela": "Com",
+          "ini": 15.77,
+          "fim": 15.845
+        },
+        {
+          "tela": "a",
+          "ini": 15.925,
+          "fim": 16.005
+        },
+        {
+          "tela": "hora:",
+          "ini": 16.085,
+          "fim": 16.485
+        }
+      ]
+    },
+    {
+      "linha": 4,
+      "palavras": [
+        {
+          "tela": "confirmado",
+          "ini": 16.685,
+          "fim": 17.125
+        },
+        {
+          "tela": "agora.",
+          "ini": 17.285,
+          "fim": 17.66
+        }
+      ]
+    },
+    {
+      "linha": 5,
+      "palavras": [
+        {
+          "tela": "Deu",
+          "ini": 18.26,
+          "fim": 18.385
+        },
+        {
+          "tela": "defeito?",
+          "ini": 18.425,
+          "fim": 18.955
+        }
+      ]
+    },
+    {
+      "linha": 5,
+      "palavras": [
+        {
+          "tela": "Você",
+          "ini": 19.115,
+          "fim": 19.305
+        },
+        {
+          "tela": "avisa",
+          "ini": 19.385,
+          "fim": 19.625
+        },
+        {
+          "tela": "também.",
+          "ini": 19.705,
+          "fim": 20.03
+        }
+      ]
+    },
+    {
+      "linha": 5,
+      "palavras": [
+        {
+          "tela": "Aí",
+          "ini": 20.225,
+          "fim": 20.425
+        },
+        {
+          "tela": "ninguém",
+          "ini": 20.505,
+          "fim": 20.905
+        }
+      ]
+    },
+    {
+      "linha": 5,
+      "palavras": [
+        {
+          "tela": "perde",
+          "ini": 20.985,
+          "fim": 21.145
+        },
+        {
+          "tela": "a",
+          "ini": 21.185,
+          "fim": 21.225
+        },
+        {
+          "tela": "viagem.",
+          "ini": 21.305,
+          "fim": 21.695
+        }
+      ]
+    },
+    {
+      "linha": 6,
+      "palavras": [
+        {
+          "tela": "Do",
+          "ini": 22.395,
+          "fim": 22.5
+        },
+        {
+          "tela": "outro",
+          "ini": 22.58,
+          "fim": 22.74
+        },
+        {
+          "tela": "lado",
+          "ini": 22.78,
+          "fim": 22.98
+        }
+      ]
+    },
+    {
+      "linha": 6,
+      "palavras": [
+        {
+          "tela": "da",
+          "ini": 23.02,
+          "fim": 23.06
+        },
+        {
+          "tela": "cidade,",
+          "ini": 23.14,
+          "fim": 23.62
+        },
+        {
+          "tela": "alguém",
+          "ini": 23.7,
+          "fim": 23.94
+        }
+      ]
+    },
+    {
+      "linha": 6,
+      "palavras": [
+        {
+          "tela": "saindo",
+          "ini": 24.02,
+          "fim": 24.26
+        },
+        {
+          "tela": "de",
+          "ini": 24.34,
+          "fim": 24.42
+        },
+        {
+          "tela": "casa",
+          "ini": 24.527,
+          "fim": 24.74
+        }
+      ]
+    },
+    {
+      "linha": 6,
+      "palavras": [
+        {
+          "tela": "vê",
+          "ini": 24.82,
+          "fim": 24.9
+        },
+        {
+          "tela": "esse",
+          "ini": 25.02,
+          "fim": 25.14
+        },
+        {
+          "tela": "ponto",
+          "ini": 25.193,
+          "fim": 25.3
+        },
+        {
+          "tela": "aceso",
+          "ini": 25.38,
+          "fim": 25.86
+        }
+      ]
+    },
+    {
+      "linha": 6,
+      "palavras": [
+        {
+          "tela": "e",
+          "ini": 25.94,
+          "fim": 26.02
+        },
+        {
+          "tela": "vai",
+          "ini": 26.073,
+          "fim": 26.18
+        },
+        {
+          "tela": "direto.",
+          "ini": 26.26,
+          "fim": 26.69
+        }
+      ]
+    },
+    {
+      "linha": 6,
+      "palavras": [
+        {
+          "tela": "Sem",
+          "ini": 26.855,
+          "fim": 27.14
+        },
+        {
+          "tela": "rodar",
+          "ini": 27.26,
+          "fim": 27.46
+        }
+      ]
+    },
+    {
+      "linha": 6,
+      "palavras": [
+        {
+          "tela": "atrás",
+          "ini": 27.54,
+          "fim": 27.7
+        },
+        {
+          "tela": "de",
+          "ini": 27.74,
+          "fim": 27.78
+        },
+        {
+          "tela": "posto.",
+          "ini": 27.86,
+          "fim": 28.225
+        }
+      ]
+    },
+    {
+      "linha": 7,
+      "palavras": [
+        {
+          "tela": "Amanhã,",
+          "ini": 28.925,
+          "fim": 29.445
+        },
+        {
+          "tela": "quem",
+          "ini": 29.485,
+          "fim": 29.605
+        },
+        {
+          "tela": "tá",
+          "ini": 29.685,
+          "fim": 29.765
+        }
+      ]
+    },
+    {
+      "linha": 7,
+      "palavras": [
+        {
+          "tela": "saindo",
+          "ini": 29.845,
+          "fim": 30.112
+        },
+        {
+          "tela": "é",
+          "ini": 30.138,
+          "fim": 30.165
+        },
+        {
+          "tela": "você.",
+          "ini": 30.245,
+          "fim": 30.68
+        }
+      ]
+    },
+    {
+      "linha": 7,
+      "palavras": [
+        {
+          "tela": "E",
+          "ini": 30.855,
+          "fim": 30.915
+        },
+        {
+          "tela": "alguém",
+          "ini": 30.965,
+          "fim": 31.205
+        },
+        {
+          "tela": "já",
+          "ini": 31.232,
+          "fim": 31.285
+        }
+      ]
+    },
+    {
+      "linha": 7,
+      "palavras": [
+        {
+          "tela": "confirmou",
+          "ini": 31.365,
+          "fim": 31.765
+        },
+        {
+          "tela": "antes.",
+          "ini": 31.965,
+          "fim": 32.18
+        }
+      ]
+    },
+    {
+      "linha": 8,
+      "palavras": [
+        {
+          "tela": "Cada",
+          "ini": 32.88,
+          "fim": 33.09
+        },
+        {
+          "tela": "confirmação",
+          "ini": 33.21,
+          "fim": 33.81
+        }
+      ]
+    },
+    {
+      "linha": 8,
+      "palavras": [
+        {
+          "tela": "acende",
+          "ini": 33.93,
+          "fim": 34.21
+        },
+        {
+          "tela": "o",
+          "ini": 34.29,
+          "fim": 34.33
+        },
+        {
+          "tela": "mapa",
+          "ini": 34.37,
+          "fim": 34.61
+        }
+      ]
+    },
+    {
+      "linha": 8,
+      "palavras": [
+        {
+          "tela": "pra",
+          "ini": 34.65,
+          "fim": 34.69
+        },
+        {
+          "tela": "quem",
+          "ini": 34.77,
+          "fim": 34.85
+        },
+        {
+          "tela": "vem",
+          "ini": 34.93,
+          "fim": 35.01
+        },
+        {
+          "tela": "depois.",
+          "ini": 35.09,
+          "fim": 35.585
+        }
+      ]
+    },
+    {
+      "linha": 9,
+      "palavras": [
+        {
+          "tela": "Siga",
+          "ini": 36.385,
+          "fim": 36.67
+        },
+        {
+          "tela": "pra",
+          "ini": 36.75,
+          "fim": 36.83
+        },
+        {
+          "tela": "acompanhar",
+          "ini": 36.91,
+          "fim": 37.23
+        },
+        {
+          "tela": "a",
+          "ini": 37.257,
+          "fim": 37.283
+        },
+        {
+          "tela": "construção.",
+          "ini": 37.31,
+          "fim": 37.87
+        }
+      ]
+    }
+  ]
+}

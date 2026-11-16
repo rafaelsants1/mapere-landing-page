@@ -6,6 +6,7 @@
 //   <script>
 //     Kit.iniciar({
 //       fundo: 'fundo.png',                  // opcional: imagem 9:16 gerada por IA
+//       fundoVideo: true,                    // ou: clipe _fonte/fundo.mp4 (ou { ini, velocidade })
 //       nomesDosCapitulos: true,             // nome do capítulo abaixo da barra
 //       montar(k) { ... k.tl, k.m (marcas), k.e (estado), helpers ... },
 //       desenhar(t, k) { ... },              // opcional: o que depende só do tempo
@@ -24,6 +25,16 @@
     const M = window.MAPA;
     const ICONES = window.ICONES;
     const marcas = LEG.marcas;
+    if (cfg.fundoVideo) {
+      // Quadros extraídos por palco.mjs (prepararFundoVideo).
+      await new Promise((ok, erro) => {
+        const sc = document.createElement('script');
+        sc.src = 'fundo-quadros/info.js';
+        sc.onload = ok;
+        sc.onerror = () => erro(new Error('fundo-quadros/info.js não carregou: rode pelo motor'));
+        document.head.appendChild(sc);
+      });
+    }
 
     gsap.registerPlugin(CustomEase);
     CustomEase.create('entrada', '.2,.7,.2,1');
@@ -88,14 +99,33 @@
     const palco = $('#palco');
     const primeiro = palco.firstChild;
     const antes = (n) => palco.insertBefore(n, primeiro);
-    if (cfg.fundo) {
+    let fundoImg = null;
+    if (cfg.fundo || cfg.fundoVideo) {
       const f = html('div', '', null);
       f.id = 'fundo';
-      const foto = html('div', 'foto', f);
-      foto.style.backgroundImage = `url('${cfg.fundo}')`;
+      if (cfg.fundoVideo) {
+        fundoImg = html('img', 'foto', f);
+        fundoImg.alt = '';
+        fundoImg.src = 'fundo-quadros/q0001.jpg';
+      } else {
+        const foto = html('div', 'foto', f);
+        foto.style.backgroundImage = `url('${cfg.fundo}')`;
+      }
       html('div', 'veu', f);
       antes(f);
     }
+    // Fundo em vídeo: o quadro do clipe depende só de t (ini e velocidade opcionais).
+    let fundoAtual = -1;
+    const quadroFundo = async (t) => {
+      if (!fundoImg) return;
+      const V = window.FUNDO_VIDEO;
+      const o = cfg.fundoVideo === true ? {} : cfg.fundoVideo;
+      const i = limita(Math.floor((t - (o.ini || 0)) * (o.velocidade || 1) * V.fps + 1e-6), 0, V.n - 1);
+      if (i === fundoAtual) return;
+      fundoAtual = i;
+      fundoImg.src = `fundo-quadros/q${String(i + 1).padStart(4, '0')}.jpg`;
+      await fundoImg.decode();
+    };
     const mundo = html('div', '', null);
     mundo.id = 'mundo';
     mundo.innerHTML = `<div id="cidade">${['agua', 'ruas-1', 'ruas-2', 'ruas-3'].map((c) => `<img src="${raiz}public/mapa/cidade-${c}.webp" alt="">`).join('')}<svg id="arterias" viewBox="${M.viewBox}" fill="none"></svg></div>`;
@@ -378,11 +408,13 @@
     // Uma passada pela linha do tempo: daí em diante o quadro N depende só de N.
     tl.progress(1).progress(0);
     desenhar();
+    await quadroFundo(0);
     window.__duracao = marcas.fim;
     window.__marcas = marcas;
-    window.__ir = (segundos) => {
+    window.__ir = async (segundos) => {
       tl.time(limita(segundos, 0, marcas.fim));
       desenhar();
+      await quadroFundo(tl.time());
     };
     document.body.dataset.pronto = window.__fontes.every((f) => f.ok) ? '1' : 'erro';
   }
