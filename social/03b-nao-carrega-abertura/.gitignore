@@ -1,0 +1,9 @@
+# Cópias da _fonte compactadas para o Drive.
+*.zip
+# Gerados na sessão, só para conferir.
+_fonte/previa/
+_fonte/verificacao/
+_fonte/fundo-quadros/
+node_modules/
+# Cópia só para ouvir no VS Code (áudio MP3): não vai para o Git nem para o Drive.
+video/previa-para-ouvir-no-vscode.mp4
