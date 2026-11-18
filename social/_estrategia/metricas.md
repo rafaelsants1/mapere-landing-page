@@ -129,8 +129,10 @@ Tabela da seção 7 de [plano-alcance.md](plano-alcance.md). Uma linha por víde
 | Vídeo | Teste | Dia e hora | Duração | TikTok: visualizações | % em 1 s | % em 3 s | % em 6 s | Tempo médio | % até o fim | Para Você / perfil / busca | Instagram: visualizações | Tempo médio | Curtidas, envios, salvos, comentários (as duas redes) | Seguidores ganhos |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
 | 03 refeito | T1 | qui 19/11, 19h | 39,6 s | | | | | | | | | | | |
+| 04 refeito | T2 | sex 20/11, 19h30 | 35,6 s | | | | | | | | | | | |
 
 - 03 refeito (`social/03b-nao-carrega-abertura/`): leitura de 48 h no sábado, 21/11, depois das 19h. Critério do T1: 55% ou mais em 1 s e 25% ou mais em 3 s no TikTok. Base do 03: 33% e 12%.
+- 04 refeito (`social/04b-4-status-sem-marca/`): leitura de 48 h no domingo, 22/11, depois das 19h30. Critério do T2: dos que estavam no vídeo em 3 s, 60% ou mais continuam em 6 s, no TikTok (% em 6 s dividido por % em 3 s). Base do 04: 36%. No 04b, a linha 2 é mais curta: em 6 s a voz está na pausa antes de "Livre:", e no 04 ainda estava em "status.".
 
 ## Contas
 
