@@ -1,0 +1,686 @@
+{
+  "origem": "narracao-take-c.mp3 e narracao-take-c.palavras.json (ElevenLabs), com as pausas de montar-narracao.mjs",
+  "take": "c",
+  "duracao": 37.16,
+  "fala": {
+    "ini": 0.45,
+    "fim": 36.16
+  },
+  "frases": [
+    {
+      "texto": "Você chega com a bateria no fim, e o carregador tá apagado.",
+      "ini": 0.45,
+      "fim": 3.555,
+      "naTake": [
+        0.015,
+        3.12
+      ],
+      "pausaDepois": 0.5,
+      "pausaNaTake": 0.37
+    },
+    {
+      "texto": "Você tenta de novo.",
+      "ini": 4.055,
+      "fim": 4.96,
+      "naTake": [
+        3.49,
+        4.395
+      ],
+      "pausaDepois": 0.4,
+      "pausaNaTake": 0.39
+    },
+    {
+      "texto": "Nada.",
+      "ini": 5.36,
+      "fim": 5.78,
+      "naTake": [
+        4.785,
+        5.205
+      ],
+      "pausaDepois": 0.7,
+      "pausaNaTake": 0.37
+    },
+    {
+      "texto": "O próximo fica longe, e você só descobre se funciona chegando lá.",
+      "ini": 6.48,
+      "fim": 10.125,
+      "naTake": [
+        5.575,
+        9.22
+      ],
+      "pausaDepois": 0.8,
+      "pausaNaTake": 0.32
+    },
+    {
+      "texto": "Só que alguém já tinha passado por lá hoje.",
+      "ini": 10.925,
+      "fim": 13.2,
+      "naTake": [
+        9.54,
+        11.815
+      ],
+      "pausaDepois": 0.5,
+      "pausaNaTake": 0.3
+    },
+    {
+      "texto": "Se essa pessoa pudesse avisar, você nem tinha ido.",
+      "ini": 13.7,
+      "fim": 16.16,
+      "naTake": [
+        12.115,
+        14.575
+      ],
+      "pausaDepois": 0.6,
+      "pausaNaTake": 0.31
+    },
+    {
+      "texto": "No Mapere, quem tá no posto vai confirmar em poucos toques.",
+      "ini": 16.76,
+      "fim": 19.74,
+      "naTake": [
+        14.885,
+        17.865
+      ],
+      "pausaDepois": 0.3,
+      "pausaNaTake": 0.2
+    },
+    {
+      "texto": "E o ponto acende pra quem vem depois, com a hora da confirmação.",
+      "ini": 20.04,
+      "fim": 23.06,
+      "naTake": [
+        18.065,
+        21.085
+      ],
+      "pausaDepois": 0.9,
+      "pausaNaTake": 0.315
+    },
+    {
+      "texto": "A ideia nasceu em Aracaju, ouvindo motoristas e vendo o elétrico crescer.",
+      "ini": 23.96,
+      "fim": 27.89,
+      "naTake": [
+        21.4,
+        25.33
+      ],
+      "pausaDepois": 0.5,
+      "pausaNaTake": 0.275
+    },
+    {
+      "texto": "O app ainda não existe.",
+      "ini": 28.39,
+      "fim": 29.565,
+      "naTake": [
+        25.605,
+        26.78
+      ],
+      "pausaDepois": 0.3,
+      "pausaNaTake": 0.135
+    },
+    {
+      "texto": "A gente tá construindo.",
+      "ini": 29.865,
+      "fim": 30.905,
+      "naTake": [
+        26.915,
+        27.955
+      ],
+      "pausaDepois": 0.5,
+      "pausaNaTake": 0.255
+    },
+    {
+      "texto": "O próximo passo é mostrar aqui as primeiras telas.",
+      "ini": 31.405,
+      "fim": 33.92,
+      "naTake": [
+        28.21,
+        30.725
+      ],
+      "pausaDepois": 0.6,
+      "pausaNaTake": 0.19
+    },
+    {
+      "texto": "Siga pra acompanhar a construção.",
+      "ini": 34.52,
+      "fim": 36.16,
+      "naTake": [
+        30.915,
+        32.555
+      ],
+      "pausaDepois": null,
+      "pausaNaTake": null
+    }
+  ],
+  "palavras": [
+    {
+      "texto": "Você",
+      "ini": 0.45,
+      "fim": 0.635
+    },
+    {
+      "texto": "chega",
+      "ini": 0.79,
+      "fim": 0.99
+    },
+    {
+      "texto": "com",
+      "ini": 1.03,
+      "fim": 1.07
+    },
+    {
+      "texto": "a",
+      "ini": 1.11,
+      "fim": 1.15
+    },
+    {
+      "texto": "bateria",
+      "ini": 1.283,
+      "fim": 1.55
+    },
+    {
+      "texto": "no",
+      "ini": 1.63,
+      "fim": 1.71
+    },
+    {
+      "texto": "fim,",
+      "ini": 1.79,
+      "fim": 2.19
+    },
+    {
+      "texto": "e",
+      "ini": 2.23,
+      "fim": 2.27
+    },
+    {
+      "texto": "o",
+      "ini": 2.31,
+      "fim": 2.35
+    },
+    {
+      "texto": "carregador",
+      "ini": 2.43,
+      "fim": 2.83
+    },
+    {
+      "texto": "tá",
+      "ini": 2.91,
+      "fim": 2.99
+    },
+    {
+      "texto": "apagado.",
+      "ini": 3.07,
+      "fim": 3.555
+    },
+    {
+      "texto": "Você",
+      "ini": 4.055,
+      "fim": 4.24
+    },
+    {
+      "texto": "tenta",
+      "ini": 4.32,
+      "fim": 4.48
+    },
+    {
+      "texto": "de",
+      "ini": 4.56,
+      "fim": 4.64
+    },
+    {
+      "texto": "novo.",
+      "ini": 4.68,
+      "fim": 4.96
+    },
+    {
+      "texto": "Nada.",
+      "ini": 5.36,
+      "fim": 5.78
+    },
+    {
+      "texto": "O",
+      "ini": 6.48,
+      "fim": 6.58
+    },
+    {
+      "texto": "próximo",
+      "ini": 6.62,
+      "fim": 6.98
+    },
+    {
+      "texto": "fica",
+      "ini": 7.02,
+      "fim": 7.22
+    },
+    {
+      "texto": "longe,",
+      "ini": 7.3,
+      "fim": 7.86
+    },
+    {
+      "texto": "e",
+      "ini": 7.887,
+      "fim": 7.913
+    },
+    {
+      "texto": "você",
+      "ini": 7.94,
+      "fim": 8.18
+    },
+    {
+      "texto": "só",
+      "ini": 8.26,
+      "fim": 8.34
+    },
+    {
+      "texto": "descobre",
+      "ini": 8.42,
+      "fim": 8.82
+    },
+    {
+      "texto": "se",
+      "ini": 8.9,
+      "fim": 8.98
+    },
+    {
+      "texto": "funciona",
+      "ini": 9.1,
+      "fim": 9.46
+    },
+    {
+      "texto": "chegando",
+      "ini": 9.54,
+      "fim": 9.94
+    },
+    {
+      "texto": "lá.",
+      "ini": 10.02,
+      "fim": 10.125
+    },
+    {
+      "texto": "Só",
+      "ini": 10.925,
+      "fim": 11.1
+    },
+    {
+      "texto": "que",
+      "ini": 11.14,
+      "fim": 11.22
+    },
+    {
+      "texto": "alguém",
+      "ini": 11.3,
+      "fim": 11.54
+    },
+    {
+      "texto": "já",
+      "ini": 11.62,
+      "fim": 11.78
+    },
+    {
+      "texto": "tinha",
+      "ini": 11.86,
+      "fim": 12.1
+    },
+    {
+      "texto": "passado",
+      "ini": 12.22,
+      "fim": 12.5
+    },
+    {
+      "texto": "por",
+      "ini": 12.58,
+      "fim": 12.66
+    },
+    {
+      "texto": "lá",
+      "ini": 12.74,
+      "fim": 12.82
+    },
+    {
+      "texto": "hoje.",
+      "ini": 12.9,
+      "fim": 13.2
+    },
+    {
+      "texto": "Se",
+      "ini": 13.7,
+      "fim": 13.76
+    },
+    {
+      "texto": "essa",
+      "ini": 13.82,
+      "fim": 13.98
+    },
+    {
+      "texto": "pessoa",
+      "ini": 14.02,
+      "fim": 14.3
+    },
+    {
+      "texto": "pudesse",
+      "ini": 14.327,
+      "fim": 14.54
+    },
+    {
+      "texto": "avisar,",
+      "ini": 14.62,
+      "fim": 15.18
+    },
+    {
+      "texto": "você",
+      "ini": 15.26,
+      "fim": 15.42
+    },
+    {
+      "texto": "nem",
+      "ini": 15.5,
+      "fim": 15.66
+    },
+    {
+      "texto": "tinha",
+      "ini": 15.74,
+      "fim": 15.9
+    },
+    {
+      "texto": "ido.",
+      "ini": 16.02,
+      "fim": 16.16
+    },
+    {
+      "texto": "No",
+      "ini": 16.76,
+      "fim": 16.83
+    },
+    {
+      "texto": "Mapere,",
+      "ini": 16.99,
+      "fim": 17.47
+    },
+    {
+      "texto": "quem",
+      "ini": 17.497,
+      "fim": 17.55
+    },
+    {
+      "texto": "tá",
+      "ini": 17.63,
+      "fim": 17.71
+    },
+    {
+      "texto": "no",
+      "ini": 17.79,
+      "fim": 17.95
+    },
+    {
+      "texto": "posto",
+      "ini": 18.07,
+      "fim": 18.23
+    },
+    {
+      "texto": "vai",
+      "ini": 18.27,
+      "fim": 18.35
+    },
+    {
+      "texto": "confirmar",
+      "ini": 18.43,
+      "fim": 18.75
+    },
+    {
+      "texto": "em",
+      "ini": 18.87,
+      "fim": 18.99
+    },
+    {
+      "texto": "poucos",
+      "ini": 19.017,
+      "fim": 19.31
+    },
+    {
+      "texto": "toques.",
+      "ini": 19.39,
+      "fim": 19.74
+    },
+    {
+      "texto": "E",
+      "ini": 20.04,
+      "fim": 20.103
+    },
+    {
+      "texto": "o",
+      "ini": 20.13,
+      "fim": 20.21
+    },
+    {
+      "texto": "ponto",
+      "ini": 20.263,
+      "fim": 20.37
+    },
+    {
+      "texto": "acende",
+      "ini": 20.45,
+      "fim": 20.85
+    },
+    {
+      "texto": "pra",
+      "ini": 20.93,
+      "fim": 21.01
+    },
+    {
+      "texto": "quem",
+      "ini": 21.063,
+      "fim": 21.17
+    },
+    {
+      "texto": "vem",
+      "ini": 21.197,
+      "fim": 21.25
+    },
+    {
+      "texto": "depois,",
+      "ini": 21.33,
+      "fim": 21.89
+    },
+    {
+      "texto": "com",
+      "ini": 21.93,
+      "fim": 21.97
+    },
+    {
+      "texto": "a",
+      "ini": 22.05,
+      "fim": 22.09
+    },
+    {
+      "texto": "hora",
+      "ini": 22.13,
+      "fim": 22.29
+    },
+    {
+      "texto": "da",
+      "ini": 22.33,
+      "fim": 22.37
+    },
+    {
+      "texto": "confirmação.",
+      "ini": 22.45,
+      "fim": 23.06
+    },
+    {
+      "texto": "A",
+      "ini": 23.96,
+      "fim": 24.02
+    },
+    {
+      "texto": "ideia",
+      "ini": 24.075,
+      "fim": 24.315
+    },
+    {
+      "texto": "nasceu",
+      "ini": 24.395,
+      "fim": 24.635
+    },
+    {
+      "texto": "em",
+      "ini": 24.675,
+      "fim": 24.715
+    },
+    {
+      "texto": "Aracaju,",
+      "ini": 24.755,
+      "fim": 25.515
+    },
+    {
+      "texto": "ouvindo",
+      "ini": 25.595,
+      "fim": 25.835
+    },
+    {
+      "texto": "motoristas",
+      "ini": 25.995,
+      "fim": 26.555
+    },
+    {
+      "texto": "e",
+      "ini": 26.595,
+      "fim": 26.635
+    },
+    {
+      "texto": "vendo",
+      "ini": 26.715,
+      "fim": 26.875
+    },
+    {
+      "texto": "o",
+      "ini": 26.915,
+      "fim": 26.955
+    },
+    {
+      "texto": "elétrico",
+      "ini": 27.035,
+      "fim": 27.435
+    },
+    {
+      "texto": "crescer.",
+      "ini": 27.515,
+      "fim": 27.89
+    },
+    {
+      "texto": "O",
+      "ini": 28.39,
+      "fim": 28.46
+    },
+    {
+      "texto": "app",
+      "ini": 28.58,
+      "fim": 28.7
+    },
+    {
+      "texto": "ainda",
+      "ini": 28.74,
+      "fim": 28.94
+    },
+    {
+      "texto": "não",
+      "ini": 28.967,
+      "fim": 29.02
+    },
+    {
+      "texto": "existe.",
+      "ini": 29.14,
+      "fim": 29.565
+    },
+    {
+      "texto": "A",
+      "ini": 29.865,
+      "fim": 29.925
+    },
+    {
+      "texto": "gente",
+      "ini": 29.985,
+      "fim": 30.145
+    },
+    {
+      "texto": "tá",
+      "ini": 30.225,
+      "fim": 30.305
+    },
+    {
+      "texto": "construindo.",
+      "ini": 30.385,
+      "fim": 30.905
+    },
+    {
+      "texto": "O",
+      "ini": 31.405,
+      "fim": 31.51
+    },
+    {
+      "texto": "próximo",
+      "ini": 31.55,
+      "fim": 31.91
+    },
+    {
+      "texto": "passo",
+      "ini": 32.03,
+      "fim": 32.19
+    },
+    {
+      "texto": "é",
+      "ini": 32.23,
+      "fim": 32.283
+    },
+    {
+      "texto": "mostrar",
+      "ini": 32.337,
+      "fim": 32.63
+    },
+    {
+      "texto": "aqui",
+      "ini": 32.71,
+      "fim": 32.87
+    },
+    {
+      "texto": "as",
+      "ini": 32.95,
+      "fim": 33.03
+    },
+    {
+      "texto": "primeiras",
+      "ini": 33.11,
+      "fim": 33.51
+    },
+    {
+      "texto": "telas.",
+      "ini": 33.63,
+      "fim": 33.92
+    },
+    {
+      "texto": "Siga",
+      "ini": 34.52,
+      "fim": 34.8
+    },
+    {
+      "texto": "pra",
+      "ini": 34.88,
+      "fim": 34.96
+    },
+    {
+      "texto": "acompanhar",
+      "ini": 35.04,
+      "fim": 35.36
+    },
+    {
+      "texto": "a",
+      "ini": 35.387,
+      "fim": 35.413
+    },
+    {
+      "texto": "construção.",
+      "ini": 35.44,
+      "fim": 36.16
+    }
+  ]
+}

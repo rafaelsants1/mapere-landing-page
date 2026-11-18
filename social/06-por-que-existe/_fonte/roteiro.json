@@ -1,0 +1,102 @@
+{
+  "_como_ler": "fala: o texto enviado à ElevenLabs. [tom] é marcação do eleven_v4 e não é falada; {0.6} depois de uma frase pede 0,6 s de silêncio antes da próxima (sem {} fica a pausa da própria take). tela: a legenda, em blocos separados por ' | '; {4|quatro} mostra 4 e casa com 'quatro' na voz. Sem tela, a legenda sai da fala em blocos de até 20 letras. marcas: nome -> 'linha:palavra', com #n para a n-ésima vez e :fim para o fim da palavra.",
+  "video": "06",
+  "titulo": ["Por que esse app", "vai existir"],
+  "saida": "mapere-por-que-existe.mp4",
+  "voz": { "voice_id": "wSbRKUhF0tUmkj9exCud", "nome": "Matheus Alves - Versatile Neutral PT-BR", "modelo": "eleven_v4" },
+  "entrada": 0.45,
+  "sobra": 1.0,
+  "capitulos": [
+    { "nome": "O problema", "linha": 1 },
+    { "nome": "A ideia", "linha": 4 },
+    { "nome": "Agora", "linha": 8 }
+  ],
+  "linhas": [
+    {
+      "fala": "[firm] Você chega com a bateria no fim, e o carregador tá apagado. {0.5}",
+      "tela": "Você chega com a | bateria no fim, | e o carregador | tá apagado."
+    },
+    {
+      "fala": "Você tenta de novo. {0.4} Nada. {0.7}",
+      "tela": "Você tenta de novo. | Nada."
+    },
+    {
+      "fala": "O próximo fica longe, e você só descobre se funciona chegando lá. {0.8}",
+      "tela": "O próximo | fica longe, | e você só descobre | se funciona | chegando lá."
+    },
+    {
+      "fala": "[conversational] Só que alguém já tinha passado por lá hoje. {0.5}",
+      "tela": "Só que alguém | já tinha passado | por lá hoje."
+    },
+    {
+      "fala": "Se essa pessoa pudesse avisar, você nem tinha ido. {0.6}",
+      "tela": "Se essa pessoa | pudesse avisar, | você nem tinha ido."
+    },
+    {
+      "fala": "No Mapere, quem tá no posto vai confirmar em poucos toques. {0.3}",
+      "tela": "No Mapere, | quem tá no posto | vai confirmar | em poucos toques."
+    },
+    {
+      "fala": "E o ponto acende pra quem vem depois, com a hora da confirmação. {0.9}",
+      "tela": "E o ponto acende | pra quem vem depois, | com a hora | da confirmação."
+    },
+    {
+      "fala": "A ideia nasceu em Aracaju, ouvindo motoristas e vendo o elétrico crescer. {0.5}",
+      "tela": "A ideia nasceu | em Aracaju, | ouvindo motoristas | e vendo o elétrico | crescer."
+    },
+    {
+      "fala": "O app ainda não existe. {0.3} A gente tá construindo. {0.5}",
+      "tela": "O app ainda | não existe. | A gente tá | construindo."
+    },
+    {
+      "fala": "O próximo passo é mostrar aqui as primeiras telas. {0.6}",
+      "tela": "O próximo passo | é mostrar aqui | as primeiras telas."
+    },
+    {
+      "fala": "Siga pra acompanhar a construção.",
+      "tela": "Siga pra acompanhar a construção."
+    }
+  ],
+  "marcas": {
+    "chega": "1:chega",
+    "bateria": "1:bateria",
+    "apagado": "1:apagado",
+    "tenta": "2:tenta",
+    "nada": "2:Nada",
+    "longe": "3:longe",
+    "descobre": "3:descobre",
+    "la": "3:lá",
+    "alguem": "4:alguém",
+    "hoje": "4:hoje",
+    "avisar": "5:avisar",
+    "ido": "5:ido",
+    "mapere": "6:Mapere",
+    "confirmar": "6:confirmar",
+    "toques": "6:toques",
+    "acende": "7:acende",
+    "depois": "7:depois",
+    "hora": "7:hora",
+    "confirmacao": "7:confirmação",
+    "aracaju": "8:Aracaju",
+    "motoristas": "8:motoristas",
+    "crescer": "8:crescer",
+    "existe": "9:existe",
+    "construindo": "9:construindo",
+    "passo": "10:passo",
+    "telas": "10:telas"
+  },
+  "previa": [
+    { "nome": "01-gancho", "t": "apagado+0.3" },
+    { "nome": "02-nada", "t": "nada+0.3" },
+    { "nome": "03-longe", "t": "la+0.2" },
+    { "nome": "04-virada", "t": "hoje+0.3" },
+    { "nome": "05-avisar", "t": "ido+0.2" },
+    { "nome": "06-checkin", "t": "toques+0.2" },
+    { "nome": "07-acende", "t": "confirmacao+0.3" },
+    { "nome": "08-aracaju", "t": "crescer+0.2" },
+    { "nome": "09-construcao", "t": "construindo+0.2" },
+    { "nome": "10-telas", "t": "telas+0.3" },
+    { "nome": "11-logo", "t": "fimFala+0.4" }
+  ],
+  "capa": { "t": "apagado+0.2" }
+}

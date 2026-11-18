@@ -1,0 +1,283 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Mapere · vídeo 06 · Por que esse app vai existir</title>
+<link rel="stylesheet" href="../../_motor/kit/kit.css">
+<style>
+/* Celular do check-in (o mesmo do 05). */
+#cel{position:absolute;left:330px;top:400px;width:420px;height:780px;border-radius:52px;background:#211a16;border:5px solid #F3EDE2}
+#cel .entalhe{position:absolute;left:160px;top:16px;width:100px;height:14px;border-radius:7px;background:#45392f}
+#cel .nome{position:absolute;left:0;width:100%;top:66px;text-align:center;font-weight:800;font-size:36px;color:#F3EDE2}
+#cel .estado{position:absolute;left:210px;top:128px}
+#botao{position:absolute;left:40px;top:230px;width:340px;height:92px;border-radius:46px;background:#F0641E;color:#17110e;font-weight:800;font-size:36px;display:flex;align-items:center;justify-content:center;gap:12px}
+#botao svg{width:40px;height:40px;fill:none;stroke:currentColor;stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round}
+#cel .opcao{position:absolute;left:210px}
+#dedo{position:absolute;left:0;top:0;width:0;height:0}
+#dedo span{position:absolute;left:-38px;top:-38px;width:76px;height:76px;border-radius:50%;background:rgb(243 237 226/.35);border:4px solid #F3EDE2}
+/* Não usar a classe .nota: o kit usa .chip .nota para o "agora" do chip. */
+.aviso{position:absolute;left:110px;top:1400px;font-family:var(--mono);font-size:22px;color:var(--texto-2-escuro);white-space:nowrap}
+/* Mapa: a sua viagem e a de quem vem depois. */
+#rotas{position:absolute;left:0;top:0;width:1080px;height:1920px;overflow:visible;pointer-events:none}
+#rotas path{fill:none;stroke-dasharray:1;stroke-width:8;stroke-linecap:round;stroke-linejoin:round}
+#rota1{stroke:#F3EDE2}
+#rota2{stroke:#F0641E}
+.carro{position:absolute;left:0;top:0;width:0;height:0}
+.carro span{position:absolute;left:-22px;top:-22px;width:44px;height:44px;border-radius:50%;background:#F3EDE2;border:6px solid #17110e;box-shadow:0 0 0 3px #F3EDE2}
+#carro2 span{background:#F0641E}
+.pulso{position:absolute;left:0;top:0;width:0;height:0}
+.pulso span{position:absolute;left:-60px;top:-60px;width:120px;height:120px;border-radius:50%;border:5px solid #12b76a}
+/* "Em construção". */
+#obra{position:absolute;left:190px;top:560px;width:700px;text-align:center}
+#obra p{font-family:var(--mono);font-weight:500;font-size:46px;color:#F3EDE2}
+#obra .trilho{margin:24px auto 0;width:520px;height:20px;border-radius:10px;border:3px solid #F3EDE2;background:#2a211c;overflow:hidden}
+#obra .trilho i{display:block;height:100%;width:8%;background:#F0641E}
+/* Prévia das telas: celulares ilustrativos, desfocados de propósito. */
+#telas{position:absolute;left:0;top:0;width:1080px;height:1920px}
+.tel{position:absolute;border-radius:40px;background:#211a16;border:5px solid #F3EDE2;overflow:hidden}
+#tel-a{left:150px;top:650px;width:240px;height:490px;transform:rotate(-7deg)}
+#tel-b{left:390px;top:560px;width:300px;height:610px}
+#tel-c{left:690px;top:650px;width:240px;height:490px;transform:rotate(7deg)}
+.tel i{position:absolute;display:block;border-radius:999px}
+.tel .via{border-radius:0;background:rgb(243 237 226/.28);height:5px}
+.tel .folha{border-radius:28px 28px 0 0;background:#2a211c;left:0;width:100%;bottom:0;height:180px}
+</style>
+</head>
+<body>
+<div id="palco">
+
+  <!-- Linhas 5 e 7 · rotas no mapa -->
+  <svg id="rotas" viewBox="0 0 1080 1920"><path id="rota1" pathLength="1"/><path id="rota2" pathLength="1"/></svg>
+  <div class="pulso" id="pulso"><span></span></div>
+  <div class="carro" id="carro1"><span></span></div>
+  <div class="carro" id="carro2"><span></span></div>
+
+  <!-- Linha 6 · check-in no celular -->
+  <div id="cel">
+    <span class="entalhe"></span>
+    <p class="nome">Posto Fio de Luz</p>
+    <div id="botao"><svg viewBox="0 0 24 24" aria-hidden="true"><path id="ic-checkin"/></svg>Fazer check-in</div>
+  </div>
+  <div id="dedo"><span></span></div>
+  <p class="aviso" id="nota-cel">Tela ilustrativa. Nome fictício.</p>
+
+  <!-- Linha 9 · em construção -->
+  <div id="obra"><p data-essencial="em construção">em construção</p><div class="trilho"><i></i></div></div>
+
+  <!-- Linha 10 · as primeiras telas, ainda desfocadas -->
+  <div id="telas">
+    <div class="tel" id="tel-a">
+      <i style="left:28px;top:70px;width:180px;height:50px;background:#F0641E"></i>
+      <i style="left:28px;top:150px;width:170px;height:44px;background:#12b76a"></i>
+      <i style="left:28px;top:214px;width:170px;height:44px;background:#f5b700"></i>
+      <i style="left:28px;top:278px;width:170px;height:44px;background:#d92d4b"></i>
+      <i style="left:28px;top:342px;width:170px;height:44px;background:#8c857b"></i>
+    </div>
+    <div class="tel" id="tel-c">
+      <i style="left:60px;top:110px;width:110px;height:110px;background:#12b76a"></i>
+      <i style="left:40px;top:250px;width:150px;height:44px;background:#12b76a"></i>
+      <i style="left:30px;top:330px;width:170px;height:28px;background:rgb(243 237 226/.35)"></i>
+      <i style="left:50px;top:372px;width:130px;height:28px;background:rgb(243 237 226/.25)"></i>
+    </div>
+    <div class="tel" id="tel-b">
+      <i class="via" style="left:-20px;top:150px;width:360px;transform:rotate(18deg)"></i>
+      <i class="via" style="left:-20px;top:260px;width:360px;transform:rotate(-12deg)"></i>
+      <i class="via" style="left:120px;top:60px;width:300px;transform:rotate(80deg)"></i>
+      <i style="left:24px;top:28px;width:242px;height:46px;background:rgb(243 237 226/.3)"></i>
+      <i style="left:60px;top:170px;width:130px;height:40px;background:#12b76a"></i>
+      <i style="left:150px;top:300px;width:110px;height:40px;background:#8c857b"></i>
+      <i class="folha"></i>
+      <i style="left:28px;top:470px;width:160px;height:28px;background:rgb(243 237 226/.4)"></i>
+      <i style="left:28px;top:520px;width:234px;height:52px;background:#F0641E"></i>
+    </div>
+  </div>
+  <p class="aviso" id="nota-telas">Telas ilustrativas.</p>
+</div>
+
+<script src="../../../node_modules/gsap/dist/gsap.min.js"></script>
+<script src="../../../node_modules/gsap/dist/CustomEase.min.js"></script>
+<script src="dados.js"></script>
+<script src="legenda.js"></script>
+<script src="../../_motor/kit/kit.js"></script>
+<script>
+// Postos que o desenhar() acompanha quadro a quadro.
+const P = {};
+// Cortes do fundo.mp4 (24 fps): clipe 1 nos quadros 0-81, clipe 2 nos 34-95, clipe 3 inteiro.
+const CORTE2 = 82 / 24;
+const CORTE3 = 144 / 24;
+Kit.iniciar({
+  fundoVideo: true,
+  nomesDosCapitulos: false,
+  montar(k) {
+    const { tl, m, e, $, chip, entra, sai, etiqueta, mapa, fecho, capitulos, titulo, LEG, M, ICONES } = k;
+    const cap = LEG.capitulos.map((c) => c.ini);
+    e.a1 = 0;
+    e.a2 = 0;
+    // O capítulo 1 começa na linha 1: o título fica no ato 1 e sai na linha 3.
+    k.tituloJaSai = true;
+    k.barrasJaEntram = true;
+
+    // ---------- Peças ----------
+    $('#ic-checkin').setAttribute('d', ICONES.checkin);
+    const estadoCel = [chip($('#cel'), 'seminfo', 'Sem informação'), chip($('#cel'), 'livre', 'Livre', 'agora')];
+    estadoCel.forEach((c) => c.classList.add('estado'));
+    const OPCOES = [
+      { st: 'livre', texto: 'Livre' },
+      { st: 'ocupado', texto: 'Ocupado' },
+      { st: 'defeito', texto: 'Com defeito' },
+      { st: 'seminfo', texto: 'Sem informação' },
+    ];
+    const opcoes = OPCOES.map((o, i) => {
+      const c = chip($('#cel'), o.st, o.texto);
+      c.classList.add('opcao');
+      c.style.top = `${380 + i * 92}px`;
+      return c;
+    });
+
+    // ---------- Estado inicial ----------
+    gsap.set('#cel', { autoAlpha: 0, y: 140 });
+    gsap.set(estadoCel, { xPercent: -50, autoAlpha: 0 });
+    gsap.set(estadoCel[0], { autoAlpha: 1 });
+    gsap.set(opcoes, { xPercent: -50, autoAlpha: 0, scale: 0.7 });
+    gsap.set(['#dedo', '#nota-cel', '#nota-telas', '#carro1', '#carro2', '#pulso', '#obra', '#telas'], { autoAlpha: 0 });
+    gsap.set(['#rota1', '#rota2'], { strokeDashoffset: 1 });
+    gsap.set(capitulos.nomes, { autoAlpha: 0, y: 24 });
+
+    // ---------- Ato 1 · o clipe ----------
+    // Clipe 1: o carro chega. Avanço leve.
+    tl.fromTo('#fundo .foto', { scale: 1, x: 0, transformOrigin: '45% 55%' }, { scale: 1.04, duration: CORTE2, ease: 'sine.out' }, 0);
+    // Clipe 2: a câmera avança até o carregador (o Veo deixou parada). Com x negativo,
+    // o toque sai de baixo dos botões da direita; a borda direita da foto não entra no quadro.
+    tl.set('#fundo .foto', { scale: 1, x: 0, transformOrigin: '50% 50%' }, CORTE2);
+    tl.to('#fundo .foto', { scale: 1.22, x: -110, duration: 1.0, ease: 'power2.out' }, CORTE2);
+    tl.to('#fundo .foto', { scale: 1.26, x: -120, duration: CORTE3 - CORTE2 - 1.0 }, CORTE2 + 1.0);
+    // Clipe 3: o carro vai embora; avanço lento até a virada.
+    tl.set('#fundo .foto', { scale: 1, x: 0, transformOrigin: '82% 47%' }, CORTE3);
+    tl.to('#fundo .foto', { scale: 1.06, duration: m.L4 - CORTE3, ease: 'sine.inOut' }, CORTE3);
+
+    // Título no ato 1; na linha 3 entram a barra e "1. O problema".
+    sai(titulo, m.L3 - 0.32, { y: -16, duration: 0.25 });
+    capitulos.mostrar(m.L3 - 0.1);
+    const nome = (i, entra_, sai_) => {
+      tl.to(capitulos.nomes[i], { autoAlpha: 1, y: 0, duration: 0.35, ease: 'entrada' }, entra_);
+      if (sai_ != null) tl.to(capitulos.nomes[i], { autoAlpha: 0, y: -18, duration: 0.2, ease: 'power2.in' }, sai_);
+    };
+    nome(0, m.L3 + 0.1, cap[1] - 0.2);
+    nome(1, cap[1] + 0.1, cap[2] - 0.2);
+    nome(2, cap[2] + 0.1);
+
+    // ---------- Linha 4 · virada: o clipe desfoca e entra o mapa ----------
+    const [P0, P1, P2, P3, P4] = M.postos;
+    mapa.enquadrar(P3, { x: 540, y: 820 }, 1.3);
+    const pSeu = mapa.posto(P3, 'cima', [{ st: 'seminfo', texto: 'Sem informação' }, { st: 'livre', texto: 'Livre', nota: 'agora' }]);
+    const casa1 = mapa.posto([P3[0] - 170, P3[1] + 150], 'cima', []);
+    const casa2 = mapa.posto([P3[0] + 150, P3[1] + 190], 'cima', []);
+    const EXTRAS = [[480, 520], [640, 560], [700, 420], [450, 420], [620, 700], [520, 300]];
+    const outros = [P0, P1, P2, P4, ...EXTRAS].map((xy) => mapa.posto(xy, 'cima', []));
+    Object.assign(P, { pSeu, casa1, casa2 });
+
+    tl.to('#fundo', { autoAlpha: 0, filter: 'blur(14px)', duration: 0.7, ease: 'power2.inOut' }, m.L4 - 0.1);
+    mapa.mostrar(m.L4 + 0.1);
+    mapa.abre(pSeu, m.alguem - 0.15);
+    const etAlguem = etiqueta('alguém esteve aqui hoje', [310, 880]).mostra(m.hoje - 0.5);
+
+    // ---------- Linha 5 · se essa pessoa avisasse, você nem tinha ido ----------
+    etAlguem.some(m.L5 - 0.2);
+    tl.to('#carro1', { autoAlpha: 1, duration: 0.3 }, m.L5 - 0.1);
+    const etVoce = etiqueta('você', [262, 1062]).mostra(m.L5);
+    tl.to('#rota1', { strokeDashoffset: 0, duration: 0.6, ease: 'power2.out' }, m.L5 + 0.1);
+    tl.to(e, { a1: 0.6, duration: m.ido - 0.3 - (m.L5 + 0.4), ease: 'power1.inOut' }, m.L5 + 0.4);
+    // A viagem se desfaz: a rota recolhe e o carro volta.
+    tl.to('#rota1', { strokeDashoffset: 1, duration: 0.5, ease: 'power2.in' }, m.ido - 0.3);
+    tl.to(e, { a1: 0, duration: 0.5, ease: 'power2.in' }, m.ido - 0.3);
+    etVoce.some(m.L6 - 0.35);
+
+    // ---------- Linha 6 · quem tá no posto confirma em poucos toques ----------
+    const MAPA = ['#mundo', '#pontos', '#rotulos'];
+    tl.to(MAPA, { opacity: 0.22, duration: 0.35 }, m.L6 - 0.3);
+    tl.to(['#carro1', '#rodape'], { autoAlpha: 0, duration: 0.2 }, m.L6 - 0.3);
+    tl.to('#cel', { autoAlpha: 1, y: 0, duration: 0.5, ease: 'entrada' }, m.L6 - 0.2);
+    tl.to('#nota-cel', { autoAlpha: 1, duration: 0.3 }, m.L6 + 0.2);
+    const toque = (x, y, quando) => {
+      tl.set('#dedo', { x, y }, quando - 0.35);
+      tl.fromTo('#dedo', { autoAlpha: 0, scale: 1.4 }, { autoAlpha: 1, scale: 1, duration: 0.3, ease: 'power2.out' }, quando - 0.35);
+      tl.to('#dedo', { scale: 0.8, duration: 0.1, yoyo: true, repeat: 1 }, quando - 0.05);
+      tl.to('#dedo', { autoAlpha: 0, duration: 0.2 }, quando + 0.3);
+    };
+    toque(540, 676, m.confirmar);
+    tl.to('#botao', { scale: 0.94, duration: 0.1, yoyo: true, repeat: 1 }, m.confirmar - 0.05);
+    opcoes.forEach((c, i) => entra(c, m.confirmar + 0.2 + i * 0.08));
+    toque(540, 400 + 380 + 34, m.toques);
+    tl.to(opcoes.slice(1), { autoAlpha: 0, duration: 0.2 }, m.toques + 0.1);
+    tl.to(opcoes[0], { scale: 1.25, duration: 0.25, ease: 'entrada' }, m.toques + 0.1);
+    tl.to(estadoCel[0], { autoAlpha: 0, duration: 0.15 }, m.toques + 0.2);
+    tl.to(estadoCel[1], { autoAlpha: 1, duration: 0.25 }, m.toques + 0.3);
+
+    // ---------- Linha 7 · o ponto acende pra quem vem depois ----------
+    tl.to(['#cel', '#nota-cel'], { autoAlpha: 0, y: 80, duration: 0.35, ease: 'power2.in' }, m.L7 - 0.35);
+    tl.to(MAPA, { opacity: 1, duration: 0.35 }, m.L7 - 0.2);
+    tl.to('#rodape', { autoAlpha: 1, duration: 0.3 }, m.L7);
+    mapa.troca(pSeu, 0, 1, m.acende - 0.25);
+    const pulso = (quando) => {
+      tl.set('#pulso', { autoAlpha: 1, scale: 0.3 }, quando);
+      tl.to('#pulso', { scale: 1.6, autoAlpha: 0, duration: 0.9, ease: 'power2.out' }, quando);
+    };
+    pulso(m.acende);
+    tl.to('#carro2', { autoAlpha: 1, duration: 0.3 }, m.depois - 0.5);
+    const etDepois = etiqueta('quem vem depois', [520, 1112]).mostra(m.depois - 0.4);
+    tl.to('#rota2', { strokeDashoffset: 0, duration: 0.5, ease: 'power2.out' }, m.depois - 0.2);
+    tl.to(e, { a2: 1, duration: 1.5, ease: 'power1.inOut' }, m.depois + 0.2);
+    pulso(m.confirmacao);
+
+    // ---------- Linha 8 · a ideia nasceu em Aracaju: o mapa se afasta e acende ----------
+    etDepois.some(m.L8 - 0.3);
+    tl.to(['#carro2', '#rota2'], { autoAlpha: 0, duration: 0.3 }, m.L8 - 0.2);
+    tl.to(pSeu.rotulosEstado[1].caixa, { autoAlpha: 0, scale: 0.8, duration: 0.25, ease: 'power2.in' }, m.L8 - 0.1);
+    mapa.avancar(m.L8, m.crescer + 0.6, 0.7);
+    outros.forEach((p, i) => {
+      const q = m.motoristas - 0.2 + i * ((m.crescer + 0.2 - m.motoristas) / outros.length);
+      tl.to(p.ponto, { autoAlpha: 1, duration: 0.2 }, q);
+      tl.to(p.cheio, { autoAlpha: 1, scale: 1, duration: 0.2, ease: 'entrada' }, q);
+    });
+
+    // ---------- Linha 9 · o app ainda não existe; a gente tá construindo ----------
+    tl.to(MAPA, { opacity: 0.3, duration: 0.4 }, m.L9 - 0.2);
+    entra('#obra', m.L9);
+    tl.to('#obra .trilho i', { width: '38%', duration: 1.4, ease: 'power2.out' }, m.construindo - 0.3);
+
+    // ---------- Linha 10 · as primeiras telas, ainda desfocadas ----------
+    sai('#obra', m.L10 - 0.2);
+    tl.to('#rodape', { autoAlpha: 0, duration: 0.2 }, m.L10 - 0.2);
+    tl.fromTo('#telas', { autoAlpha: 0, y: 120 }, { autoAlpha: 1, y: 0, duration: 0.55, ease: 'entrada' }, m.passo - 0.3);
+    tl.fromTo('.tel', { filter: 'blur(18px)' }, { filter: 'blur(8px)', duration: 1.2, ease: 'power2.out' }, m.telas - 0.6);
+    tl.to('#nota-telas', { autoAlpha: 1, duration: 0.3 }, m.passo);
+    const etBreve = etiqueta('em breve', [452, 1196]).mostra(m.telas);
+
+    // ---------- Linha 11 · o ponto do posto vira o ponto do logo ----------
+    etBreve.some(m.L11 - 0.65);
+    tl.to(['#telas', '#nota-telas'], { autoAlpha: 0, duration: 0.35, ease: 'power2.in' }, m.L11 - 0.65);
+    tl.to(MAPA, { opacity: 1, duration: 0.3 }, m.L11 - 0.6);
+    fecho.acende(pSeu, m.L11 - 0.55);
+    fecho.logo(m.siga - 0.15);
+  },
+  // As rotas, os carros e o pulso seguem os postos, que andam com o zoom do mapa.
+  desenhar(t, k) {
+    const { e, caminho } = k;
+    if (!P.pSeu) return;
+    const alvo = P.pSeu.tela;
+    const rota = (id, carro, pts, andou) => {
+      document.getElementById(id).setAttribute('d', `M${pts.map((q) => q.map((v) => v.toFixed(1)).join(' ')).join('L')}`);
+      const [cx, cy] = caminho(pts, andou);
+      document.getElementById(carro).style.transform = `translate(${cx.toFixed(1)}px,${cy.toFixed(1)}px)`;
+    };
+    const o1 = P.casa1.tela;
+    rota('rota1', 'carro1', [o1, [alvo[0], o1[1]], alvo], e.a1);
+    const o2 = P.casa2.tela;
+    rota('rota2', 'carro2', [o2, [o2[0], alvo[1]], alvo], e.a2);
+    document.getElementById('pulso').style.left = `${alvo[0].toFixed(1)}px`;
+    document.getElementById('pulso').style.top = `${alvo[1].toFixed(1)}px`;
+  },
+});
+</script>
+</body>
+</html>

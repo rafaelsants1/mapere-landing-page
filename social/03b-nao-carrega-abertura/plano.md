@@ -2,9 +2,9 @@
 
 É o teste T1 do plano de alcance (`social/_estrategia/plano-alcance.md`, seções 6 e 7). Só os primeiros segundos do vídeo 03 mudam. Do capítulo 1 ("Um: seu celular tá sem sinal") até o fim, é o 03 igual, 0,1 s mais tarde.
 
-- Postagem: quinta, 19/11/2026, às 19h, como o original. Aprovação até as 17h desse dia.
+- Postagem: estava marcada para quinta, 19/11/2026, às 19h, como o original. Foi ao ar antes, na terça, 17/11, à noite (hora a confirmar).
 - Critério, fixado antes de postar: 55% ou mais ainda assistindo em 1 s e 25% ou mais em 3 s, no TikTok. Base do 03: 33% e 12%.
-- Leitura de 48 h: sábado, 21/11, depois das 19h, na tabela de testes de `metricas.md`.
+- Leitura de 48 h: quinta, 19/11, à noite, na tabela de testes de `metricas.md`. Com 17 h, já era o melhor começo da série: 274 visualizações no TikTok e 667 no Instagram.
 
 ## O que mudou em relação ao 03
 

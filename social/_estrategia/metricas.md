@@ -128,10 +128,24 @@ Tabela da seção 7 de [plano-alcance.md](plano-alcance.md). Uma linha por víde
 
 | Vídeo | Teste | Dia e hora | Duração | TikTok: visualizações | % em 1 s | % em 3 s | % em 6 s | Tempo médio | % até o fim | Para Você / perfil / busca | Instagram: visualizações | Tempo médio | Curtidas, envios, salvos, comentários (as duas redes) | Seguidores ganhos |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 03 refeito | T1 | qui 19/11, 19h | 39,6 s | | | | | | | | | | | |
+| 03 refeito | T1 | ter 17/11, à noite (hora a confirmar) | 39,6 s | | | | | | | | | | | |
 | 04 refeito | T2 | sex 20/11, 19h30 | 35,6 s | | | | | | | | | | | |
+| 06 Por que existe | fora dos testes (bastidor) | semana 2, dia a definir | 37,0 s | | | | | | | | | | | |
 
-- 03 refeito (`social/03b-nao-carrega-abertura/`): leitura de 48 h no sábado, 21/11, depois das 19h. Critério do T1: 55% ou mais em 1 s e 25% ou mais em 3 s no TikTok. Base do 03: 33% e 12%.
+- 03 refeito (`social/03b-nao-carrega-abertura/`): critério do T1, 55% ou mais em 1 s e 25% ou mais em 3 s no TikTok. Base do 03: 33% e 12%.
+  - Foi ao ar na terça, 17/11, à noite, dois dias antes do previsto (qui 19/11). A leitura de 48 h passa para quinta, 19/11, à noite. O critério não muda.
+  - Leitura parcial, cerca de 17 h depois de postar, enviada pelo Rafael em 18/11: TikTok com 274 visualizações, 16 curtidas, 1 comentário ("bom é gasolina") e 1 salvamento; Instagram com 667 visualizações e 16 curtidas. A retenção ainda não foi lida.
+  - É o melhor começo da série até aqui. O 02, que era o melhor, tem 138 no TikTok e 211 no Instagram depois de 5 dias.
+  - Seguidores das contas em 18/11: 2 no TikTok (igual a 16/11) e 2 no Instagram (era 1).
+- 06 por que existe (`social/06-por-que-existe/`): post leve, fora dos testes. O objetivo do vídeo é ganhar seguidor. Critério de sucesso proposto em 18/11, ainda sem o ok do Rafael, para a leitura de 48 h. O método é a mediana dos vídeos 03 a 05 mais 15 pontos, a margem que o plano usa:
+
+  | Métrica | 03 | 04 | 05 | Mediana | Critério proposto |
+  |---|---|---|---|---|---|
+  | Seguidores ganhos por 1.000 visualizações, nas duas redes somadas | 5,7 (1 em 175) | 0 (0 em 207) | 0 (0 em 77, parcial) | 2,2 somando os três (1 em 459) | 5 ou mais |
+  | TikTok: % ainda assistindo em 3 s | 12% | 25% | 30% | 25% | 40% ou mais |
+  | TikTok: % que chega à virada (10,9 s; o gráfico mostra o segundo 10) | 4% | 4% | 20% | 4% | 20% ou mais |
+
+  A virada caiu em 10,9 s, e não em ~18 s como no `prompt.md`, porque o ato 1 ficou com 3 clipes de 4 s (a versão B do roteiro).
 - 04 refeito (`social/04b-4-status-sem-marca/`): leitura de 48 h no domingo, 22/11, depois das 19h30. Critério do T2: dos que estavam no vídeo em 3 s, 60% ou mais continuam em 6 s, no TikTok (% em 6 s dividido por % em 3 s). Base do 04: 36%. No 04b, a linha 2 é mais curta: em 6 s a voz está na pausa antes de "Livre:", e no 04 ainda estava em "status.".
 
 ## Contas
