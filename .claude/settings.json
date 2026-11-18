@@ -1,0 +1,14 @@
+{
+  "env": {
+    "ECC_DISABLED_HOOKS": "pre:observe,pre:observe:continuous-learning,post:observe:continuous-learning,stop:evaluate-session,pre:governance-capture,post:governance-capture"
+  },
+  "enabledPlugins": {
+    "power-pages@power-platform-skills": false,
+    "model-apps@power-platform-skills": false,
+    "mcp-apps@power-platform-skills": false,
+    "canvas-apps@power-platform-skills": false,
+    "code-apps-preview@power-platform-skills": false,
+    "mobile-app@power-platform-skills": false,
+    "power-automate@power-platform-skills": false
+  }
+}
