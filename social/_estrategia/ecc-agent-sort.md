@@ -89,9 +89,11 @@ Antes de reiniciar, em 17/11:
 
 - O `isHookEnabled` do ECC, rodado com a variável acima, dá 5 hooks desligados (`pre:observe`, `post:observe:continuous-learning`, `stop:evaluate-session` e os dois `governance-capture`) e 8 ligados (os 3 gateguards, `config-protection`, `suggest-compact`, `pre:compact`, `mcp-health-check` e `doc-file-warning`).
 
-Depois de reiniciar: [A CONFERIR]
+Depois de reiniciar, em 17/11, às 23h04:
 
-1. O gateguard bloqueia o primeiro comando da sessão.
-2. O `/plugin` mostra os 7 plugins do Power Platform desligados neste projeto.
-3. A lista de agentes não traz mais `power-pages:*`, `model-apps:*`, `canvas-apps:*`, `mobile-app:*` e `code-apps-preview:*`.
-4. O `echo $ECC_DISABLED_HOOKS` no terminal da sessão mostra a lista.
+1. **Gateguard: ok.** A sessão foi retomada com o mesmo ID (`ac2b9d10…`), e o estado em `~/.gateguard/state-<id>.json` já tinha o primeiro comando registrado. Por isso o primeiro comando passou. O hook rodou: o `last_active` foi atualizado nesse horário. Numa sessão aberta do zero, ele volta a barrar o primeiro comando.
+2. **Plugins: ok.** Ao abrir a sessão, os MCPs `power-automate:flowagent`, `power-pages:microsoft-learn` e os dois Playwright do Power Platform se desconectaram. O `/plugin` não foi aberto, porque a sessão não é interativa.
+3. **Agentes: ok.** Saíram da lista os agentes `canvas-apps:*`, `code-apps-preview:*`, `mobile-app:*`, `model-apps:*` e `power-pages:*`.
+4. **Variável: ok.** O `echo $ECC_DISABLED_HOOKS` mostra os 6 IDs.
+
+ElevenLabs: as ferramentas de produção respondem (`creative_list_voices` achou a voz do Matheus), mas o `account_get_usage` continua recusado por escopo, mesmo depois de reconectar. O saldo fica para ver em elevenlabs.io.
