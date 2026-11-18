@@ -55,7 +55,7 @@ A take A ganhou pelo ritmo: "de quatro status." dura 1,08 s nela, 1,18 s na B e 
 - início igual ao 04: 30 de 30 quadros idênticos, pixel a pixel, de 0 a 2,9 s;
 - resto igual ao 04: 59 de 59 quadros idênticos, de 0,5 em 0,5 s do capítulo 1 ao fim, com o deslocamento de −0,6 s;
 - narração: linha 1 e resto iguais ao 04, amostra por amostra;
-- zona segura: 1.069 quadros conferidos, nada novo fora da zona. A etiqueta "fila", aos 14,8 s, passa 13 px da margem direita por 0,8 s. É herança do 04, que a prévia do motor não pegou porque confere só 8 quadros. Ficou como estava, para o resto continuar idêntico ao 04.
+- zona segura: 1.069 quadros conferidos, nada novo fora da zona. A etiqueta "fila", aos 14,8 s, passa 13 px da margem direita por 0,8 s. É herança do 04, que a prévia do motor não pegou porque conferia só 8 quadros. Ficou como estava, para o resto continuar idêntico ao 04. Desde 17/11, o `quadros.mjs` varre todos os quadros e pega esse caso.
 
 ## Refazer
 

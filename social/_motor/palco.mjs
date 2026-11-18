@@ -125,6 +125,47 @@ export function foraDaZona(page) {
   );
 }
 
+// Varre todos os quadros do vídeo (a 30 fps) com o foraDaZona e junta o que sai da zona
+// por texto e por lado: o maior excesso em px, o quadro onde ele acontece e os trechos de
+// tempo. Os quadros da prévia sozinhos não bastam: no vídeo 04, a etiqueta "fila" passou
+// 13 px pela direita durante 0,8 s, entre dois quadros da prévia, e ninguém viu.
+export async function varrerZona(page, duracao, fps = 30) {
+  const limite = { esquerda: ZONA.esquerda, direita: LARGURA - ZONA.direita, topo: ZONA.topo, base: ALTURA - ZONA.base };
+  const excesso = (lado, v) => (lado === 'esquerda' || lado === 'topo' ? limite[lado] - v : v - limite[lado]);
+  const grupos = new Map();
+  const total = Math.round(duracao * fps);
+  for (let n = 0; n < total; n++) {
+    await page.evaluate((s) => window.__ir(s), n / fps);
+    for (const f of await foraDaZona(page)) {
+      // "nome: direita 913, topo 210" (o nome vem de data-essencial)
+      const i = f.lastIndexOf(': ');
+      const nome = f.slice(0, i);
+      for (const motivo of f.slice(i + 2).split(', ')) {
+        const [lado, valor] = motivo.split(' ');
+        const chave = `${nome}|${lado}`;
+        if (!grupos.has(chave)) grupos.set(chave, { nome, lado, excesso: 0, pior: n / fps, quadros: [] });
+        const g = grupos.get(chave);
+        const px = excesso(lado, Number(valor));
+        if (px > g.excesso) {
+          g.excesso = px;
+          g.pior = n / fps;
+        }
+        g.quadros.push(n);
+      }
+    }
+  }
+  const achados = [...grupos.values()].map(({ quadros, ...g }) => {
+    const trechos = [];
+    for (const q of quadros) {
+      const ultimo = trechos.at(-1);
+      if (ultimo && q === ultimo.ate + 1) ultimo.ate = q;
+      else trechos.push({ de: q, ate: q });
+    }
+    return { ...g, quadros: quadros.length, trechos: trechos.map((t) => [t.de / fps, t.ate / fps]) };
+  });
+  return { total, achados };
+}
+
 // Desenha (ou tira) a zona segura por cima da cena.
 export function zonaSegura(page, ligada) {
   return page.evaluate(

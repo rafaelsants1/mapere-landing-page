@@ -41,7 +41,7 @@ social/NN-slug/
 | legenda estimada | `node _motor/legenda.mjs 04 --plano` | tempos estimados, para montar a cena antes da voz |
 | narração | `node _motor/narracao.mjs 04 a` | take + transcrição → `narracao.wav` com as pausas do roteiro |
 | legenda real | `node _motor/legenda.mjs 04` | tempos reais por palavra |
-| prévia | `node _motor/quadros.mjs 04` | um PNG por item da prévia e a folha com a zona segura (falha se algum texto sair da zona) |
+| prévia | `node _motor/quadros.mjs 04` | um PNG por item da prévia, a folha com a zona segura e a varredura de todos os quadros a 30 fps. Falha se algum texto sair da zona em qualquer quadro, e grava o pior quadro de cada caso em `previa/_zona/fora-N.png`. Com `--sem-varredura`, só a prévia |
 | folha | `node _motor/quadros.mjs 04 --folha 1.5` | um quadro a cada 1,5 s, para conferir o movimento |
 | quadros soltos | `node _motor/quadros.mjs 04 nada+0.2 12.5 --zona` | |
 | vídeo | `node _motor/renderizar.mjs 04 --sem-previa` | MP4 com CRF 19, -14 LUFS, BT.709 |
