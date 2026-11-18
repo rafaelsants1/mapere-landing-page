@@ -95,8 +95,9 @@ export async function abrirCena(video) {
   return { browser, page, duracao: estado.duracao, marcas: estado.marcas };
 }
 
-// Texto essencial visível que sai da zona segura no quadro atual.
-export function foraDaZona(page) {
+// Texto essencial visível que sai da zona segura no quadro atual, com as medidas sem
+// arredondar: [{ nome, motivos: [{ lado, valor, excesso }] }], na ordem esquerda, direita, topo, base.
+function medirForaDaZona(page) {
   return page.evaluate(
     ({ Z, L, A }) => {
       const fora = [];
@@ -113,11 +114,11 @@ export function foraDaZona(page) {
         }
         if (!b.width || !b.height) continue;
         const motivos = [];
-        if (b.left < Z.esquerda) motivos.push(`esquerda ${Math.round(b.left)}`);
-        if (b.right > L - Z.direita) motivos.push(`direita ${Math.round(b.right)}`);
-        if (b.top < Z.topo) motivos.push(`topo ${Math.round(b.top)}`);
-        if (b.bottom > A - Z.base) motivos.push(`base ${Math.round(b.bottom)}`);
-        if (motivos.length) fora.push(`${n.dataset.essencial}: ${motivos.join(', ')}`);
+        if (b.left < Z.esquerda) motivos.push({ lado: 'esquerda', valor: b.left, excesso: Z.esquerda - b.left });
+        if (b.right > L - Z.direita) motivos.push({ lado: 'direita', valor: b.right, excesso: b.right - (L - Z.direita) });
+        if (b.top < Z.topo) motivos.push({ lado: 'topo', valor: b.top, excesso: Z.topo - b.top });
+        if (b.bottom > A - Z.base) motivos.push({ lado: 'base', valor: b.bottom, excesso: b.bottom - (A - Z.base) });
+        if (motivos.length) fora.push({ nome: n.dataset.essencial, motivos });
       }
       return fora;
     },
@@ -125,32 +126,31 @@ export function foraDaZona(page) {
   );
 }
 
-// Varre todos os quadros do vídeo (a 30 fps) com o foraDaZona e junta o que sai da zona
-// por texto e por lado: o maior excesso em px, o quadro onde ele acontece e os trechos de
+// O mesmo, em texto: "etiqueta fila: direita 913" (coordenada arredondada).
+export async function foraDaZona(page) {
+  return (await medirForaDaZona(page)).map((f) => `${f.nome}: ${f.motivos.map((m) => `${m.lado} ${Math.round(m.valor)}`).join(', ')}`);
+}
+
+// Varre todos os quadros do vídeo (a 30 fps) e junta o que sai da zona por texto e por
+// lado: o maior excesso em px (sem arredondar), o quadro onde ele acontece e os trechos de
 // tempo. Os quadros da prévia sozinhos não bastam: no vídeo 04, a etiqueta "fila" passou
 // 13 px pela direita durante 0,8 s, entre dois quadros da prévia, e ninguém viu.
 export async function varrerZona(page, duracao, fps = 30) {
-  const limite = { esquerda: ZONA.esquerda, direita: LARGURA - ZONA.direita, topo: ZONA.topo, base: ALTURA - ZONA.base };
-  const excesso = (lado, v) => (lado === 'esquerda' || lado === 'topo' ? limite[lado] - v : v - limite[lado]);
   const grupos = new Map();
   const total = Math.round(duracao * fps);
   for (let n = 0; n < total; n++) {
     await page.evaluate((s) => window.__ir(s), n / fps);
-    for (const f of await foraDaZona(page)) {
-      // "nome: direita 913, topo 210" (o nome vem de data-essencial)
-      const i = f.lastIndexOf(': ');
-      const nome = f.slice(0, i);
-      for (const motivo of f.slice(i + 2).split(', ')) {
-        const [lado, valor] = motivo.split(' ');
-        const chave = `${nome}|${lado}`;
-        if (!grupos.has(chave)) grupos.set(chave, { nome, lado, excesso: 0, pior: n / fps, quadros: [] });
+    for (const f of await medirForaDaZona(page)) {
+      for (const m of f.motivos) {
+        const chave = `${f.nome}|${m.lado}`;
+        if (!grupos.has(chave)) grupos.set(chave, { nome: f.nome, lado: m.lado, excesso: 0, pior: n / fps, quadros: [] });
         const g = grupos.get(chave);
-        const px = excesso(lado, Number(valor));
-        if (px > g.excesso) {
-          g.excesso = px;
+        if (m.excesso > g.excesso) {
+          g.excesso = m.excesso;
           g.pior = n / fps;
         }
-        g.quadros.push(n);
+        // Dois elementos com o mesmo nome no mesmo quadro contam um quadro só.
+        if (g.quadros.at(-1) !== n) g.quadros.push(n);
       }
     }
   }

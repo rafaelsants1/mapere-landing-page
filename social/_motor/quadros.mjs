@@ -83,7 +83,7 @@ if (iFolha >= 0) {
       const arquivo = join(comFaixas, `fora-${k + 1}.png`);
       await captura(a.pior, arquivo);
       const quando = a.trechos.map(([de, ate]) => (de === ate ? `${s(de)} s` : `${s(de)} a ${s(ate)} s`)).join(', ');
-      console.log(`FORA DA ZONA: ${a.nome}, ${a.lado}, até ${a.excesso} px, em ${a.quadros} quadro(s): ${quando}. Pior quadro (${s(a.pior)} s): previa/_zona/fora-${k + 1}.png`);
+      console.log(`FORA DA ZONA: ${a.nome}, ${a.lado}, até ${a.excesso.toFixed(1)} px, em ${a.quadros} quadro(s): ${quando}. Pior quadro (${s(a.pior)} s): previa/_zona/fora-${k + 1}.png`);
     }
     console.log(`varredura: ${total} quadros a 30 fps, ${achados.length ? `${achados.length} texto(s) fora da zona` : 'nada fora da zona'}`);
     problemas += achados.length;
