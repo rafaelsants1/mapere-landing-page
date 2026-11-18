@@ -41,7 +41,7 @@ Fale com o Rafael em português do Brasil, com frases curtas. Siga as regras da 
    - Rode `node _motor/narracao.mjs NN a` e `node _motor/legenda.mjs NN`.
 7. **Cena.**
    - Escreva `_fonte/cena.html` a partir de `_motor/modelo/cena-exemplo-04.html`, com algo mudando na tela a cada 2 ou 3 s e amarrado às marcas da fala.
-   - Rode `node _motor/quadros.mjs NN` até não sobrar texto fora da zona segura em nenhum quadro, e olhe a folha. Ele varre todos os quadros a 30 fps e mostra o pior quadro de cada caso em `previa/_zona/fora-N.png`. Para iterar rápido na cena, use `--sem-varredura`, mas rode a varredura antes do render.
+   - Rode `node _motor/quadros.mjs NN` até não sobrar texto fora da zona segura em nenhum quadro, e olhe a folha. Ele varre todos os quadros a 30 fps e mostra o pior quadro de cada caso em `previa/_fora/N.png`. Para iterar rápido na cena, use `--sem-varredura`, mas rode a varredura antes do render.
    - Rode `node _motor/quadros.mjs NN --folha 1.5` e confira o movimento inteiro antes de renderizar.
 8. **Render: checkpoint 3.** Rode `node _motor/renderizar.mjs NN --sem-previa` e mande o MP4 com SendUserFile. Ajustes de pausa ou de legenda não gastam crédito: edite o `roteiro.json` e rode de novo narração, legenda e render.
 9. **Fechamento** (depois do ok do checkpoint 3):

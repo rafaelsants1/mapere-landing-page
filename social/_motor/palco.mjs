@@ -10,6 +10,8 @@ import { fileURLToPath, pathToFileURL } from 'node:url';
 export const motor = dirname(fileURLToPath(import.meta.url));
 export const LARGURA = 1080;
 export const ALTURA = 1920;
+// Quadros por segundo do vídeo final; a varredura da zona segura usa os mesmos quadros.
+export const FPS = 30;
 
 // Zona segura, em pixels a partir de cada borda. Medida em 2026-11-11 nas capturas do
 // vídeo 02 publicado (TikTok e Instagram, iPhone). Ver a memória "zona segura dos Reels".
@@ -131,39 +133,60 @@ export async function foraDaZona(page) {
   return (await medirForaDaZona(page)).map((f) => `${f.nome}: ${f.motivos.map((m) => `${m.lado} ${Math.round(m.valor)}`).join(', ')}`);
 }
 
-// Varre todos os quadros do vídeo (a 30 fps) e junta o que sai da zona por texto e por
-// lado: o maior excesso em px (sem arredondar), o quadro onde ele acontece e os trechos de
-// tempo. Os quadros da prévia sozinhos não bastam: no vídeo 04, a etiqueta "fila" passou
-// 13 px pela direita durante 0,8 s, entre dois quadros da prévia, e ninguém viu.
-export async function varrerZona(page, duracao, fps = 30) {
+// Junta, quadro a quadro, o que sai da zona por texto e por lado: o maior excesso em px
+// (sem arredondar), o quadro onde ele acontece e os trechos de tempo. Quem já passa por
+// todos os quadros (varrerZona, renderizar.mjs) chama medir(page, n) depois de __ir(n / fps).
+export function acumuladorZona(fps = FPS) {
   const grupos = new Map();
+  return {
+    async medir(page, n) {
+      for (const f of await medirForaDaZona(page)) {
+        for (const m of f.motivos) {
+          const chave = `${f.nome}|${m.lado}`;
+          if (!grupos.has(chave)) grupos.set(chave, { nome: f.nome, lado: m.lado, excesso: 0, pior: n / fps, quadros: [] });
+          const g = grupos.get(chave);
+          if (m.excesso > g.excesso) {
+            g.excesso = m.excesso;
+            g.pior = n / fps;
+          }
+          // Dois elementos com o mesmo nome no mesmo quadro contam um quadro só.
+          if (g.quadros.at(-1) !== n) g.quadros.push(n);
+        }
+      }
+    },
+    achados() {
+      return [...grupos.values()].map(({ quadros, ...g }) => {
+        const trechos = [];
+        for (const q of quadros) {
+          const ultimo = trechos.at(-1);
+          if (ultimo && q === ultimo.ate + 1) ultimo.ate = q;
+          else trechos.push({ de: q, ate: q });
+        }
+        return { ...g, quadros: quadros.length, trechos: trechos.map((t) => [t.de / fps, t.ate / fps]) };
+      });
+    },
+  };
+}
+
+// Um achado em uma linha: "etiqueta fila, direita, até 12.9 px, em 25 quadro(s): 14.77 a 15.57 s".
+export function descreverAchado(a) {
+  const s = (v) => v.toFixed(2);
+  const px = a.excesso >= 0.1 ? a.excesso.toFixed(1) : 'menos de 0.1';
+  const quando = a.trechos.map(([de, ate]) => (de === ate ? `${s(de)} s` : `${s(de)} a ${s(ate)} s`)).join(', ');
+  return `${a.nome}, ${a.lado}, até ${px} px, em ${a.quadros} quadro(s): ${quando}`;
+}
+
+// Varre todos os quadros do vídeo, na mesma taxa do vídeo final. Os quadros da prévia
+// sozinhos não bastam: no vídeo 04, a etiqueta "fila" passou 13 px pela direita durante
+// 0,8 s, entre dois quadros da prévia, e ninguém viu.
+export async function varrerZona(page, duracao, fps = FPS) {
+  const acumulador = acumuladorZona(fps);
   const total = Math.round(duracao * fps);
   for (let n = 0; n < total; n++) {
     await page.evaluate((s) => window.__ir(s), n / fps);
-    for (const f of await medirForaDaZona(page)) {
-      for (const m of f.motivos) {
-        const chave = `${f.nome}|${m.lado}`;
-        if (!grupos.has(chave)) grupos.set(chave, { nome: f.nome, lado: m.lado, excesso: 0, pior: n / fps, quadros: [] });
-        const g = grupos.get(chave);
-        if (m.excesso > g.excesso) {
-          g.excesso = m.excesso;
-          g.pior = n / fps;
-        }
-        // Dois elementos com o mesmo nome no mesmo quadro contam um quadro só.
-        if (g.quadros.at(-1) !== n) g.quadros.push(n);
-      }
-    }
+    await acumulador.medir(page, n);
   }
-  const achados = [...grupos.values()].map(({ quadros, ...g }) => {
-    const trechos = [];
-    for (const q of quadros) {
-      const ultimo = trechos.at(-1);
-      if (ultimo && q === ultimo.ate + 1) ultimo.ate = q;
-      else trechos.push({ de: q, ate: q });
-    }
-    return { ...g, quadros: quadros.length, trechos: trechos.map((t) => [t.de / fps, t.ate / fps]) };
-  });
-  return { total, achados };
+  return { total, achados: acumulador.achados() };
 }
 
 // Desenha (ou tira) a zona segura por cima da cena.

@@ -7,12 +7,11 @@
 import { spawn, spawnSync } from 'node:child_process';
 import { existsSync, mkdirSync } from 'node:fs';
 import { dirname, join, resolve } from 'node:path';
-import { ALTURA, LARGURA, abrirCena, lerRoteiro, pastaDoVideo } from './palco.mjs';
+import { ALTURA, FPS, LARGURA, abrirCena, acumuladorZona, descreverAchado, lerRoteiro, pastaDoVideo } from './palco.mjs';
 
 const video = pastaDoVideo(process.argv[2]);
 const roteiro = lerRoteiro(video);
 
-const FPS = 30;
 // Volume: perto de -14 LUFS, com pico real de até -1,5 dB.
 const VOLUME = 'I=-14:TP=-1.5:LRA=11';
 
@@ -69,8 +68,12 @@ const fimDoFfmpeg = new Promise((ok, erro) => {
 });
 
 const comeco = Date.now();
+// A zona segura é conferida nos mesmos quadros do vídeo. Aqui só avisa: o quadros.mjs é
+// que barra, e uma exceção de propósito (como a etiqueta herdada do 04 no 04b) ainda renderiza.
+const zona = acumuladorZona(FPS);
 for (let n = 0; n < total; n++) {
   await page.evaluate((s) => window.__ir(s), n / FPS);
+  await zona.medir(page, n);
   const png = await page.screenshot({ type: 'png', clip: { x: 0, y: 0, width: LARGURA, height: ALTURA } });
   if (!ffmpeg.stdin.write(png)) await new Promise((r) => ffmpeg.stdin.once('drain', r));
   if (n % 90 === 0 || n === total - 1) console.log(`quadro ${n + 1} de ${total}`);
@@ -79,6 +82,9 @@ ffmpeg.stdin.end();
 await browser.close();
 await fimDoFfmpeg;
 console.log(`${saida}: ${total} quadros, ${(total / FPS).toFixed(2)} s, em ${((Date.now() - comeco) / 1000).toFixed(0)} s`);
+const foraDaZona = zona.achados();
+for (const a of foraDaZona) console.log(`AVISO, FORA DA ZONA: ${descreverAchado(a)}`);
+console.log(foraDaZona.length ? `zona segura: ${foraDaZona.length} texto(s) fora em algum quadro. Veja o pior quadro com node _motor/quadros.mjs ${process.argv[2]}` : 'zona segura: nada fora, em todos os quadros');
 
 // Cópia só para conferir no VS Code, que não toca áudio AAC: mesmo vídeo, áudio em MP3.
 const previa = join(dirname(saida), 'previa-para-ouvir-no-vscode.mp4');
