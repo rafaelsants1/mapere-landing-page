@@ -18,6 +18,7 @@ Fale com o Rafael em português do Brasil, com frases curtas. Siga as regras da 
 - Voz: Matheus Alves (`wSbRKUhF0tUmkj9exCud`), `eleven_v4`, pelo conector claude.ai ElevenLabs, sem chave de API. Teto da narração: 2.000 créditos por vídeo. Imagem ou vídeo por IA tem conta separada e só roda com o ok do Rafael para o valor orçado (`estimate_only` antes).
 - Registre cada chamada à ElevenLabs em `_fonte/creditos.md`.
 - Nunca chame uma geração de novo para "tentar outra vez": cada chamada cobra.
+- Perfil de voz em `social/_estrategia/voz-mapere.md`; em conflito, vale o PRODUCT.md.
 
 ## Passos
 
