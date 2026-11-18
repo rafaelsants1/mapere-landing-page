@@ -48,9 +48,9 @@ O app ainda não existe. O próximo passo é mostrar aqui as primeiras telas. Si
 
 - **Rótulo de IA: ligue nas duas redes.** Os três clipes do começo (o carro chegando, a mão no carregador e o carro indo embora) foram gerados por IA. É a regra do plano desde 16/11.
 - **Conteúdo comercial no TikTok:** os posts anteriores saíram sem. O vídeo fala do próprio app, e o TikTok tem a opção "Sua marca" para esse caso. A decisão é sua, e vale manter a mesma escolha nos próximos.
-- **Quando:** semana 2, como post leve, fora dos testes. Uma sugestão é ter 24/11 ou qui 26/11 às 19h, para não cair no mesmo dia dos vídeos do T3 (23, 25 e 27/11).
+- **Quando:** terça, 24/11, às 19h, como post leve, fora dos testes (decisão do Rafael em 18/11). Assim não cai no mesmo dia dos vídeos do T3 (23, 25 e 27/11).
 - Responda os comentários na primeira hora, como manda o plano.
-- **Leitura de 48 h:** os três números propostos estão na linha do 06 em `social/_estrategia/metricas.md`.
+- **Leitura de 48 h:** quinta, 26/11, depois das 19h. Os três números aprovados estão na linha do 06 em `social/_estrategia/metricas.md`: 5 seguidores ou mais por 1.000 visualizações, 40% ou mais em 3 s e 20% ou mais na virada (10,9 s).
 
 ## Fora da legenda de propósito
 

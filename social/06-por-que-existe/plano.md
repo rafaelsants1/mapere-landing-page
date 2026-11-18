@@ -2,7 +2,11 @@
 
 Bastidor, fora dos testes do plano de alcance. Vai ao ar na semana 2 como post leve (decisão do Rafael, 17/11). Segue o `prompt.md` desta pasta e a skill `novo-video`.
 
-Pronto e aprovado pelo Rafael em 18/11/2026: `video/mapere-por-que-existe.mp4`, com 37,0 s. Legendas e folha de upload em `legendas.md`; o critério de sucesso proposto está em `social/_estrategia/metricas.md`.
+Pronto e aprovado pelo Rafael em 18/11/2026: `video/mapere-por-que-existe.mp4`, com 37,0 s. Legendas e folha de upload em `legendas.md`.
+
+- Postagem: terça, 24/11, às 19h (decisão do Rafael em 18/11).
+- Critério, aprovado antes de postar: 5 seguidores ou mais por 1.000 visualizações, nas duas redes somadas; no TikTok, 40% ou mais em 3 s e 20% ou mais na virada (10,9 s). Os números de base estão em `social/_estrategia/metricas.md`.
+- Leitura de 48 h: quinta, 26/11, depois das 19h.
 
 ## História
 
