@@ -47,7 +47,7 @@ Fale com o Rafael em português do Brasil, com frases curtas. Siga as regras da 
    - `node _motor/capa.mjs NN`, que confere se o título cabe no recorte 3:4.
    - `plano.md` e `legendas.md` no padrão dos vídeos anteriores, com o mesmo bloco de hashtags.
    - **Drive:** pasta `Mapere/Posts/NN-slug`, com plano, legendas, `video/` e a `_fonte` em zips de até ~7 MB cada (ver a memória do limite do Drive). Sem `_ref/`.
-   - **GitHub:** commit na branch `social` (worktree temporária a partir de `origin/social`), com a pasta do vídeo sem `_ref/` e sem `node_modules`, mais o `_motor/` se ele mudou. Sem PR.
+   - **GitHub:** commit na branch `social` (worktree temporária a partir de `origin/social`), com a pasta do vídeo sem `_ref/`, `node_modules`, `_fonte/previa/`, `_fonte/verificacao/` e `_fonte/fundo-quadros/` (o motor gera essas três de novo), mais o `_motor/` se ele mudou. Sem PR.
    - Memória do projeto: um arquivo `mapere-video-NN.md` com as decisões e o que falta.
 
 ## O que melhorar no motor
