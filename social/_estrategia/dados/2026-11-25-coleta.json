@@ -1,0 +1,178 @@
+{
+  "coleta": {
+    "data": "2026-11-25",
+    "por": "sessão do Claude, navegador, só leitura",
+    "fontes": [
+      "TikTok Studio: lista de publicações, análise de cada vídeo (visão geral e espectadores) e análise da conta (últimos 7 dias)",
+      "Meta Business Suite: Insights > Conteúdo e o detalhe dos reels 03b e 06",
+      "instagram.com/mapere.app/reels: contagem de visualizações (a sessão do navegador está em outra conta, sem acesso aos insights)"
+    ],
+    "metodo_tiktok": "As curvas saem das props do componente echarts-for-react da página (React fiber > memoizedProps.option.series[].data). Índice = segundo do vídeo; valor = fração de quem ainda assiste.",
+    "metodo_instagram": "A curva de chegada sai do texto da página de detalhe do reel: linha de timestamps (epoch, passos de 15 min no começo) e linha 'Primary' (acumulado).",
+    "observacoes": [
+      "No TikTok, o 03 (12/11) e o 05 original (16/11) estão como 'Somente eu' e a análise deles zerou. O 04 (13/11) não aparece mais: foi apagado.",
+      "No Instagram, o 03 e o 04 não estão mais no perfil.",
+      "No TikTok, a soma do gráfico diário passa do total de visualizações em todos os vídeos (ex.: 03b soma 849 e o total é 731). O total do topo é o que vale.",
+      "As contagens de comentários do TikTok incluem as respostas da própria conta."
+    ]
+  },
+  "tiktok": {
+    "videos": {
+      "02": {
+        "id": "7707036825495407890",
+        "postado": "2026-11-11 18:59",
+        "duracao_s": 20.6,
+        "privacidade": "Todos",
+        "visualizacoes": 140,
+        "curtidas": 3, "comentarios": 0, "compartilhamentos": 0, "salvamentos": 1,
+        "tempo_total": "0h17m51s",
+        "tempo_medio_s": 5.79,
+        "assistiu_completo_pct": 3.8,
+        "novos_seguidores": 1,
+        "saida_principal": "0:01",
+        "origem_pct": { "para_voce": 74.6, "perfil": 13.0, "outro": 10.8, "busca": 1.6, "som": "<0.1", "seguindo": "<0.1" },
+        "termos_busca": { "posto rosarinho próximo a itaberaba": 33.3, "Mapere": 33.3, "mapere": 33.3 },
+        "visualizacoes_por_dia_desde_11_11": [149, 2, 4, 4, 5, 1, 4],
+        "retencao": [1, 0.78, 0.62, 0.53, 0.44, 0.39, 0.35, 0.3, 0.28, 0.26, 0.25, 0.25, 0.24, 0.23, 0.22, 0.22, 0.18, 0.17, 0.17, 0.13, 0.04]
+      },
+      "03b": {
+        "id": "7709263551797480712",
+        "postado": "2026-11-17 19:00",
+        "duracao_s": 39.6,
+        "privacidade": "Todos",
+        "visualizacoes": 731,
+        "curtidas": 37, "comentarios": 2, "compartilhamentos": 0, "salvamentos": 1,
+        "tempo_total": "2h55m56s",
+        "tempo_medio_s": 12.43,
+        "assistiu_completo_pct": 5.7,
+        "novos_seguidores": 2,
+        "saida_principal": "0:01",
+        "origem_pct": { "para_voce": 96.0, "busca": 2.2, "perfil": 1.6, "outro": 0.2, "seguindo": "<0.1", "mensagens": "<0.1", "som": "<0.1" },
+        "termos_busca": {
+          "Recarga minima eletrogral desconecta ao chegar em 30 reais como configurar": 13.3,
+          "Carregadores de carro eletricos de curitiba a balneario camburio que nao funciona": 6.7,
+          "Por que o song pro nao carrega em eletroposto normal": 6.7,
+          "albox não está carregando normal": 6.7,
+          "carro elétrico sem carga": 6.7
+        },
+        "visualizacoes_por_dia_desde_17_11": [404, 54, 372, 4, 7, 1, 7],
+        "espectadores": {
+          "total": 776, "novos_pct": 91, "voltaram_pct": 9, "nao_seguidores_pct": 100,
+          "idade_pct": { "18-24": 32, "25-34": 40, "35-44": 19, "45-54": 8, "55+": 1 },
+          "genero_pct": { "masculino": 85, "feminino": 15, "outro": 0 },
+          "brasil_pct": 99.1
+        },
+        "comentario": "bom é gasolina (com 1 resposta da conta)",
+        "retencao": [1, 0.78, 0.6, 0.54, 0.48, 0.42, 0.37, 0.34, 0.32, 0.31, 0.3, 0.28, 0.27, 0.27, 0.26, 0.26, 0.25, 0.25, 0.25, 0.24, 0.23, 0.22, 0.22, 0.2, 0.19, 0.19, 0.19, 0.18, 0.18, 0.17, 0.17, 0.16, 0.16, 0.16, 0.15, 0.14, 0.13, 0.11, 0.09, 0.06]
+      },
+      "04b": {
+        "id": "7709647447672245512",
+        "postado": "2026-11-18 19:50",
+        "duracao_s": 35.6,
+        "privacidade": "Todos",
+        "visualizacoes": 144,
+        "curtidas": 1, "comentarios": 0, "compartilhamentos": 0, "salvamentos": 0,
+        "tempo_total": "0h18m37s",
+        "tempo_medio_s": 5.91,
+        "assistiu_completo_pct": 2.1,
+        "novos_seguidores": 0,
+        "saida_principal": "0:01",
+        "origem_pct": { "para_voce": 97.9, "perfil": 2.1, "busca": "<0.1" },
+        "termos_busca": "tráfego baixo, sem termos",
+        "visualizacoes_por_dia_desde_18_11": [135, 32, 20, 0, 1, 1, 0],
+        "retencao": [1, 0.7, 0.5, 0.39, 0.31, 0.24, 0.21, 0.19, 0.18, 0.17, 0.16, 0.16, 0.14, 0.12, 0.11, 0.11, 0.11, 0.11, 0.1, 0.1, 0.09, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.08, 0.07, 0.07, 0.06, 0.06, 0.05, 0.05, 0.05, 0.04]
+      },
+      "05_repost": {
+        "id": "7709992458171567368",
+        "postado": "2026-11-19 18:08",
+        "duracao_s": 38.7,
+        "privacidade": "Todos",
+        "nota": "mesmo vídeo e mesma legenda do 05 original",
+        "visualizacoes": 103,
+        "curtidas": 1, "comentarios": 0, "compartilhamentos": 0, "salvamentos": 0,
+        "tempo_total": "0h30m31s",
+        "tempo_medio_s": 13.09,
+        "assistiu_completo_pct": 2.9,
+        "novos_seguidores": 1,
+        "saida_principal": "0:01",
+        "origem_pct": { "para_voce": 97.9, "perfil": 2.1, "busca": "<0.1" },
+        "termos_busca": "tráfego baixo, sem termos",
+        "visualizacoes_por_dia_desde_19_11": [118, 20, 0, 1, 1, 0],
+        "retencao": [1, 0.66, 0.34, 0.25, 0.17, 0.13, 0.12, 0.11, 0.11, 0.11, 0.11, 0.11, 0.11, 0.11, 0.11, 0.11, 0.11, 0.11, 0.11, 0.11, 0.11, 0.11, 0.1, 0.07, 0.06, 0.06, 0.05, 0.05, 0.05, 0.05, 0.05, 0.05, 0.05, 0.05, 0.05, 0.05, 0.04, 0.04, 0.03]
+      },
+      "06": {
+        "id": "7710376846839336199",
+        "postado": "2026-11-20 19:00",
+        "duracao_s": 37.0,
+        "privacidade": "Todos",
+        "visualizacoes": 279,
+        "curtidas": 7, "comentarios": 2, "compartilhamentos": 0, "salvamentos": 0,
+        "tempo_total": "0h40m49s",
+        "tempo_medio_s": 7.51,
+        "assistiu_completo_pct": 4,
+        "novos_seguidores": 1,
+        "saida_principal": "0:02",
+        "origem_pct": { "para_voce": 98.5, "perfil": 1.2, "busca": 0.3, "seguindo": "<0.1", "mensagens": "<0.1", "som": "<0.1", "outro": "<0.1" },
+        "termos_busca": { "app de carregadores elétricos": 100.0 },
+        "visualizacoes_por_dia_desde_20_11": [163, 113, 47, 3, 0],
+        "espectadores": {
+          "total": 320, "novos_pct": 66, "voltaram_pct": 34, "nao_seguidores_pct": 99,
+          "idade_pct": { "18-24": 11, "25-34": 26, "35-44": 34, "45-54": 23, "55+": 6 },
+          "genero_pct": { "masculino": 81, "feminino": 19, "outro": 0 },
+          "brasil_pct": 98.2
+        },
+        "comentario": "Boa! 👊🏻😎 (com 1 resposta da conta)",
+        "retencao": [1, 0.78, 0.5, 0.39, 0.33, 0.32, 0.28, 0.26, 0.24, 0.22, 0.22, 0.21, 0.21, 0.21, 0.19, 0.18, 0.17, 0.16, 0.15, 0.13, 0.12, 0.11, 0.1, 0.1, 0.09, 0.09, 0.08, 0.08, 0.08, 0.08, 0.07, 0.06, 0.06, 0.06, 0.06, 0.05, 0.05]
+      },
+      "03_original": { "id": "7707410659100675346", "postado": "2026-11-12 19:09", "privacidade": "Somente eu", "visualizacoes_na_lista": 119, "curtidas": 1, "nota": "análise zerada desde que ficou privado; números de 16/11 em metricas.md" },
+      "05_original": { "id": "7708804341628620050", "postado": "2026-11-16 13:18", "privacidade": "Somente eu", "visualizacoes_na_lista": 271, "curtidas": 3, "nota": "análise zerada desde que ficou privado; retenção de 16/11 (55 visualizações) em metricas.md" },
+      "04_original": { "postado": "2026-11-13 19:32", "nota": "não aparece mais na lista: apagado" }
+    },
+    "conta_ultimos_7_dias": {
+      "periodo": "19 a 25/11/2026",
+      "visualizacoes_de_video": "1,7 mil (+1,2 mil, +224,5%)",
+      "visualizacoes_de_perfil": 3,
+      "curtidas": 49, "comentarios": 4, "compartilhamentos": 0,
+      "origem_pct": { "para_voce": 97, "perfil": 1.9, "busca": 1.1, "seguindo": 0, "som": 0 },
+      "termos_busca": {
+        "Recarga minima eletrogral desconecta ao chegar em 30 reais como configurar": 11.8,
+        "mapere": 5.9, "Mapere": 5.9,
+        "carro eletrico nao quer carregar": 5.9,
+        "Falha no carregamento vejculo eletrico": 5.9
+      },
+      "espectadores": "1,4 mil, todos novos",
+      "idade_pct": { "18-24": 23.5, "25-34": 35.9, "35-44": 24.6, "45-54": 13.2, "55+": 2.8 },
+      "genero_pct": { "masculino": 85, "feminino": 15, "outro": 0 },
+      "brasil_pct": 99.1,
+      "horario_mais_ativo": "22/11, das 9h às 10h",
+      "criadores_que_tambem_assistiram": ["Mercado Livre", "Shopee Brasil", "Méqui", "TikTok Brasil", "Anhanguera", "Subway Brasil", "BYD AUTO BRASIL", "Doritos Brasil"],
+      "publicacoes_que_tambem_viram": ["Yotaverse (acessório para banco de Toyota, 3,1 mi)", "MadMaxC7 'Protecting the tires' (7,1 mi)", "Mercado Livre (5,3 mi)", "Lucescu cezar (2 mi)", "ThaysRx, moto (149 mil)"],
+      "seguidores_total": 5,
+      "seguidores_liquidos_7_dias": 3
+    }
+  },
+  "instagram": {
+    "colunas": "visualizações, alcance, visualizadores, interações líquidas, curtidas, comentários, compartilhamentos, salvamentos, seguidores, tempo de visualização, tempo médio",
+    "reels": {
+      "02": { "postado": "2026-11-11 19:00", "visualizacoes": 218, "nota": "só a contagem do perfil; não apareceu na tabela do Business Suite" },
+      "05_original": { "postado": "2026-11-16 13:19", "visualizacoes": 126, "alcance": 118, "visualizadores": 116, "interacoes_liquidas": 2, "curtidas": 1, "comentarios": 0, "compartilhamentos": 0, "salvamentos": 0, "seguidores": 0, "tempo_total": "17 min 19 s", "tempo_medio_s": 8 },
+      "03b": {
+        "postado": "2026-11-17 19:03", "visualizacoes": 1501, "alcance": 1284, "visualizadores": 1279, "interacoes_liquidas": 41, "curtidas": 38, "comentarios": 0, "compartilhamentos": 1, "salvamentos": 0, "seguidores": 2, "tempo_total": "5 h 52 min", "tempo_medio_s": 16,
+        "chegada": { "inicio": "2026-11-17 19:18 (Brasília)", "acumulado_por_hora": { "0.25": 1, "0.5": 19, "0.75": 63, "1": 134, "1.25": 161, "1.75": 172, "2.75": 178, "3.75": 193, "4.75": 213, "5.75": 216, "7.75": 219, "9.75": 224, "11.75": 236, "12.75": 270, "13.75": 301, "14.75": 321, "15.75": 367, "16.75": 522, "17.75": 701, "18.75": 945, "19.75": 1116, "20.75": 1204, "21.75": 1280, "22.75": 1407, "23.75": 1471, "26.75": 1476, "29.75": 1479, "53.75": 1481, "167.75": 1481 } },
+        "painel": "Este reel obteve mais visualizações e mais interações em comparação com seus reels típicos"
+      },
+      "04b": { "postado": "2026-11-18 19:49", "visualizacoes": 149, "alcance": 130, "visualizadores": 135, "interacoes_liquidas": 5, "curtidas": 4, "comentarios": 0, "compartilhamentos": 0, "salvamentos": 0, "seguidores": 0, "tempo_total": "13 min 36 s", "tempo_medio_s": 6 },
+      "05_repost": { "postado": "2026-11-19 18:07", "visualizacoes": 125, "alcance": 114, "visualizadores": 113, "interacoes_liquidas": 4, "curtidas": 3, "comentarios": 0, "compartilhamentos": 0, "salvamentos": 0, "seguidores": 1, "tempo_total": "13 min 19 s", "tempo_medio_s": 7 },
+      "06": {
+        "postado": "2026-11-20 19:00", "visualizacoes": 814, "alcance": 756, "visualizadores": 737, "interacoes_liquidas": 24, "curtidas": 19, "comentarios": 0, "compartilhamentos": 0, "salvamentos": 3, "seguidores": 5, "tempo_total": "2 h 23 min", "tempo_medio_s": 11,
+        "chegada": { "inicio": "2026-11-20 19:15 (Brasília)", "acumulado_por_hora": { "0.25": 5, "0.5": 37, "0.75": 88, "1": 120, "1.25": 124, "1.75": 128, "2.75": 134, "3.75": 142, "4.75": 149, "5.75": 168, "6.75": 179, "7.75": 187, "8.75": 199, "9.75": 206, "10.75": 221, "11.75": 256, "12.75": 277, "13.75": 315, "14.75": 365, "15.75": 436, "16.75": 533, "17.75": 576, "18.75": 624, "19.75": 665, "20.75": 700, "21.75": 731, "22.75": 777, "23.75": 808, "26.75": 810, "47.75": 812, "107.75": 812 } }
+      }
+    },
+    "stories": [
+      { "postado": "2026-11-18 19:50", "visualizacoes": 0 },
+      { "postado": "2026-11-19 21:08", "visualizacoes": 0 },
+      { "postado": "2026-11-20 19:00", "visualizacoes": 4 }
+    ],
+    "conta": { "posts": 8, "seguidores": 9, "seguindo": 3 }
+  }
+}

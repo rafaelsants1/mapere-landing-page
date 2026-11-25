@@ -2,6 +2,8 @@
 
 Feito em 2026-11-16, com os números de [metricas.md](metricas.md). Aprovado pelo Rafael no mesmo dia. A seção 5 entrou com a pesquisa do Gemini, no mesmo dia.
 
+Atualizado em 2026-11-25 com os resultados da semana 1: [analise-2026-11-25.md](analise-2026-11-25.md). Mudaram o calendário e o T2 (seção 6), a seção 8 e a seção 9.
+
 Marcação: [DADO] saiu dos painéis ou dos arquivos do projeto. [HIPÓTESE] é leitura minha e pode estar errada. Nenhum vídeo passou de 211 visualizações, então toda diferença entre vídeos é hipótese, não tendência.
 
 ## 1. Resumo
@@ -145,11 +147,31 @@ Revisão final na segunda, 07/12.
 
 Se o T1 não bater o critério, o primeiro vídeo da semana 2 testa uma segunda abertura, e o T3 anda um vídeo para a frente.
 
+**Calendário refeito em 25/11.** O que saiu de fato:
+- o 03b em 17/11 e o 04b em 18/11;
+- o 05 repostado igual em 19/11;
+- o 06 em 20/11;
+- nada de 21 a 25/11, então a semana 2 não aconteceu.
+
+O T1 passou, e o T3 começa com a abertura dele. Decisões do Rafael em 25/11.
+
+| Semana | Posts | Leitura |
+|---|---|---|
+| 23 a 27/11 | sex 27: post leve com as primeiras telas do app (Figma), que cumpre a promessa do 06 | |
+| 30/11 a 04/12 | T3, todos com a receita da [análise](analise-2026-11-25.md) (seção 6). seg 30: curto, "A recarga para sozinha no meio: por quê". qua 02: longo, "Carregador quebrado na estrada: como não ficar na mão". sex 04: curto, "Meu carro não carrega nesse carregador". | T3 na segunda 07/12, 72 h depois do último |
+| 07 a 11/12 | seg 07, qua 09 e sex 11: T4, três vídeos na duração que ganhar o T3, com pedido de envio | T4 na segunda 14/12 |
+
+- Revisão final na terça, 15/12.
+- Os temas do T3 saíram dos termos de busca do TikTok (seção 7 da análise). Cada fato técnico é conferido com fonte antes do roteiro (Gemini, perfil `research`).
+- T3, comparação: os 2 curtos novos contra o longo novo e o 03b. O critério não muda: os curtos com o dobro da conclusão dos longos.
+- **T2, decisão de 25/11:** o 04 não é repostado de novo. Em cada vídeo novo, a explicação do app fica depois de o vídeo entregar alguma coisa, e a leitura do T2 sai deles. Mesma métrica (% em 6 s ÷ % em 3 s) e mesmo critério (60%).
+
 Regras fixas, que não são teste:
 - No TikTok, escolher a capa com o título e conferir depois de postar.
 - Marcar o rótulo de IA nas duas redes em todo post com foto ou clipe realista feito por IA, incluindo o 04 refeito. Os posts 04 e 05 saíram sem o rótulo. O Rafael edita os dois e liga o rótulo.
 - Responder todo comentário na primeira hora.
 - Os 2 posts leves da semana (carrossel ou bastidor) ficam fora dos testes.
+- Desde 25/11, não se reposta vídeo igual. O repost do 05 em 19/11 rendeu menos que o original. Refazer, só com um trecho novo, como o 03b.
 
 Fora deste ciclo, e por quê:
 - Teste de horário. Com 3 ou 4 vídeos por horário e temas diferentes, o resultado não diria nada. O horário fica fixo para não sujar os outros testes.
@@ -158,7 +180,7 @@ Fora deste ciclo, e por quê:
 
 ## 7. Rotina de medição
 
-**Depois de cada vídeo, em 48 horas.** Uma linha na tabela abaixo, que fica em `metricas.md`. A sessão pode coletar pelo navegador, como em 16/11.
+**Depois de cada vídeo, em 48 horas.** Uma linha na tabela abaixo, que fica em `metricas.md`. A sessão pode coletar pelo navegador, como em 16/11 e 25/11. Desde 25/11, a leitura que decide um teste no TikTok sai em 72 h, porque o 03b teve uma onda no 3º dia. No Instagram, 48 h bastam: a entrega acaba em cerca de 24 h.
 
 | Vídeo | Teste | Dia e hora | Duração | TikTok: visualizações | % em 1 s | % em 3 s | % em 6 s | Tempo médio | % até o fim | Para Você / perfil / busca | Instagram: visualizações | Tempo médio | Curtidas, envios, salvos, comentários (as duas redes) | Seguidores ganhos |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
@@ -178,10 +200,11 @@ O critério de cada teste foi fixado antes de postar. Depois de ver o número, e
 
 ## 8. Mudanças sugeridas na skill /novo-video
 
-Nenhuma foi aplicada. Só entram com pedido do Rafael, e de preferência depois que o teste correspondente bater o critério.
+Só entram com pedido do Rafael, e de preferência depois que o teste correspondente bater o critério. Em 25/11, com o T1 aprovado, ele pediu as três primeiras: a voz mais cedo, o movimento no primeiro quadro e o gancho do T1. As outras continuam esperando.
 
-- **Voz mais cedo (motor).** A primeira palavra começa em 0,2 s, como no vídeo 02. Hoje `narracao.mjs` deixa 0,45 s de silêncio.
-- **Movimento no primeiro quadro (regra e checagem).** Algo já se mexe em t = 0. Nada de tela de aplicativo parada no gancho. O `quadros.mjs` pode comparar o quadro de 0 s com o de 0,5 s e avisar se forem iguais.
+- **Voz mais cedo (motor). Aplicada em 25/11.** A primeira palavra começa em 0,2 s, como no 02 e no 03b. O `"entrada"` do `_motor/modelo/roteiro.json` passou de 0.45 para 0.2. O padrão de `narracao.mjs` ficou em 0,45 s, para não mudar os vídeos antigos que não definem `entrada`.
+- **Movimento no primeiro quadro (regra e checagem). Aplicada em 25/11.** Algo já se mexe em t = 0. Nada de tela de aplicativo parada no gancho. O `quadros.mjs` compara o quadro de 0 s com o de 0,5 s e falha se forem iguais.
+- **Gancho do T1 (regra). Aplicada em 25/11.** A situação de tensão (bateria no fim e um carregador que falha) e a promessa do que vem até os 3 s, na skill `/novo-video`.
 - **Marca fora do começo (regra).** "Mapere" só depois de o vídeo entregar alguma coisa. Depende do T2.
 - **Lote de ganchos (passo 2).** Antes do roteiro, de 6 a 10 ganchos em pelo menos 3 estilos, cada um com o que aparece, o que se diz e o texto na tela. O Rafael escolhe.
 - **Duração (passo 2).** O alvo de 35 a 45 s passa a ser o que ganhar o T3.
@@ -205,3 +228,10 @@ Todas em 2026-11-16.
 - Depois da pesquisa: o rótulo de IA vira regra fixa em todo post com foto ou clipe realista por IA.
 - Os posts 04 e 05 saíram sem o rótulo de IA. O Rafael edita os dois.
 - A sessão monta a lista de perfis do nicho para o T6, em `social/_estrategia/perfis-nicho.md`.
+
+Em 2026-11-25, depois da análise da semana 1:
+
+- Os próximos vídeos usam os termos de busca do TikTok como tema e a receita do 03b. O T3 fica com 2 curtos e 1 longo, de 30/11 a 04/12, e o calendário anda uma semana.
+- O que o T1 validou entra na skill `/novo-video` e no motor: gancho com a situação de tensão, voz em 0,2 s, movimento no primeiro quadro, promessa até os 3 s e a checagem do quadro 0 contra o de 0,5 s.
+- O T2 não reposta o 04: o ajuste vai para os vídeos novos, e a leitura sai deles.
+- Os arquivos da análise vão para a branch `social`, com commit e push.

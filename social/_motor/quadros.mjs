@@ -1,9 +1,10 @@
 // Captura quadros da cena de um vídeo.
 // Uso:
-//   node _motor/quadros.mjs 04                      prévia: um PNG por item de "previa" no roteiro.json, a folha com a
-//                                                   zona segura e a varredura de todos os quadros a 30 fps (falha se
-//                                                   algum texto essencial sair da zona em qualquer quadro; o pior
-//                                                   quadro de cada caso vai para previa/_fora/N.png)
+//   node _motor/quadros.mjs 04                      prévia: um PNG por item de "previa" no roteiro.json, a checagem de
+//                                                   movimento (falha se o quadro de 0 s e o de 0,5 s forem iguais), a
+//                                                   folha com a zona segura e a varredura de todos os quadros a 30 fps
+//                                                   (falha se algum texto essencial sair da zona em qualquer quadro; o
+//                                                   pior quadro de cada caso vai para previa/_fora/N.png)
 //   node _motor/quadros.mjs 04 --sem-varredura      só a prévia, para iterar rápido na cena
 //   node _motor/quadros.mjs 04 1.2 5.8 [--zona]     quadros nos tempos pedidos (segundos ou marcas, ex.: nada+0.2)
 //   node _motor/quadros.mjs 04 --folha 2            folha com um quadro a cada 2 s
@@ -27,6 +28,26 @@ async function captura(t, arquivo) {
   const fora = await foraDaZona(page);
   await page.screenshot({ path: arquivo, clip: { x: 0, y: 0, width: LARGURA, height: ALTURA } });
   return fora;
+}
+// Pixels RGB de um PNG, pelo ffmpeg (a mesma leitura do checar.mjs do 03b).
+const pixels = (png) => execFileSync('ffmpeg', ['-v', 'error', '-i', png, '-frames:v', '1', '-f', 'rawvideo', '-pix_fmt', 'rgb24', '-'], { maxBuffer: 64 * 1024 * 1024 });
+// Abaixo disso, passa com aviso: pode ser só um detalhe piscando num quadro parado.
+const POUCO_MOVIMENTO = 0.01;
+// Movimento no primeiro quadro, regra do T1 do plano de alcance (social/_estrategia): algo já
+// se mexe em t = 0. Compara o quadro de 0 s com o de 0,5 s, pixel a pixel.
+async function movimentoNoComeco(pasta) {
+  mkdirSync(pasta, { recursive: true });
+  const a = join(pasta, '0s.png');
+  const b = join(pasta, '0_5s.png');
+  await captura(0, a);
+  await captura(Math.min(0.5, duracao), b);
+  const p0 = pixels(a);
+  const p5 = pixels(b);
+  let mudaram = 0;
+  for (let i = 0; i < p0.length; i += 3) {
+    if (p0[i] !== p5[i] || p0[i + 1] !== p5[i + 1] || p0[i + 2] !== p5[i + 2]) mudaram++;
+  }
+  return { mudaram, total: p0.length / 3 };
 }
 const folha = (arquivos, saida, porLinha) => {
   const n = arquivos.length;
@@ -69,6 +90,17 @@ if (iFolha >= 0) {
     problemas += fora.length;
     console.log(`${l.nome}.png  t = ${l.t.toFixed(2)} s${fora.length ? `  FORA DA ZONA: ${fora.join(' | ')}` : ''}`);
   }
+  // Antes de ligar a zona segura, para a faixa desenhada por cima não entrar na comparação.
+  const mov = await movimentoNoComeco(join(saida, '_movimento'));
+  const fracao = mov.mudaram / mov.total;
+  const pct = `${mov.mudaram} de ${mov.total} pixels mudaram (${(100 * fracao).toFixed(2)}%)`;
+  if (mov.mudaram === 0) {
+    console.log(`MOVIMENTO: o quadro de 0 s e o de 0,5 s são iguais. Algo tem que se mexer desde o primeiro quadro. Veja previa/_movimento/`);
+  } else if (fracao < POUCO_MOVIMENTO) {
+    console.log(`movimento entre 0 s e 0,5 s: ${pct}. Pouco: confira em previa/_movimento/ se o gancho não está parado`);
+  } else {
+    console.log(`movimento entre 0 s e 0,5 s: ${pct}`);
+  }
   await zonaSegura(page, true);
   for (const l of linhas) await captura(l.t, join(comFaixas, `${l.nome}.png`));
   folha(linhas.map((l) => join(comFaixas, `${l.nome}.png`)), join(saida, 'zona-segura.png'));
@@ -92,6 +124,6 @@ if (iFolha >= 0) {
     problemas += achados.length;
   }
   console.log(problemas ? 'há texto essencial fora da zona segura' : pulou ? 'nos quadros da prévia, nada fora da zona segura (rode sem --sem-varredura antes do render)' : 'todo o texto essencial está dentro da zona segura, em todos os quadros');
-  if (problemas) process.exitCode = 1;
+  if (problemas || mov.mudaram === 0) process.exitCode = 1;
 }
 await browser.close();

@@ -41,7 +41,7 @@ social/NN-slug/
 | legenda estimada | `node _motor/legenda.mjs 04 --plano` | tempos estimados, para montar a cena antes da voz |
 | narração | `node _motor/narracao.mjs 04 a` | take + transcrição → `narracao.wav` com as pausas do roteiro |
 | legenda real | `node _motor/legenda.mjs 04` | tempos reais por palavra |
-| prévia | `node _motor/quadros.mjs 04` | um PNG por item da prévia, a folha com a zona segura e a varredura de todos os quadros a 30 fps. Falha se algum texto sair da zona em qualquer quadro, e grava o pior quadro de cada caso em `previa/_fora/N.png`. Com `--sem-varredura`, só a prévia |
+| prévia | `node _motor/quadros.mjs 04` | um PNG por item da prévia, a checagem de movimento, a folha com a zona segura e a varredura de todos os quadros a 30 fps. Falha se algum texto sair da zona em qualquer quadro, e grava o pior quadro de cada caso em `previa/_fora/N.png`. Também falha se o quadro de 0 s e o de 0,5 s forem iguais (regra do T1: algo se mexe desde o primeiro quadro), e avisa sem barrar se menos de 1% dos pixels mudou. Os dois quadros ficam em `previa/_movimento/`. Com `--sem-varredura`, só a prévia e o movimento |
 | folha | `node _motor/quadros.mjs 04 --folha 1.5` | um quadro a cada 1,5 s, para conferir o movimento |
 | quadros soltos | `node _motor/quadros.mjs 04 nada+0.2 12.5 --zona` | |
 | vídeo | `node _motor/renderizar.mjs 04 --sem-previa` | MP4 com CRF 19, -14 LUFS, BT.709. No fim, avisa (sem barrar) se algum texto saiu da zona segura em algum quadro |

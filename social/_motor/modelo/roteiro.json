@@ -4,7 +4,7 @@
   "titulo": ["Vale ir nesse", "posto? 4 respostas"],
   "saida": "mapere-4-status.mp4",
   "voz": { "voice_id": "wSbRKUhF0tUmkj9exCud", "nome": "Matheus Alves - Versatile Neutral PT-BR", "modelo": "eleven_v4" },
-  "entrada": 0.45,
+  "entrada": 0.2,
   "sobra": 1.0,
   "capitulos": [
     { "nome": "Livre", "linha": 3 },

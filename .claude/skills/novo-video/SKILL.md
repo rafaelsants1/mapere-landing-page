@@ -13,6 +13,11 @@ Fale com o Rafael em português do Brasil, com frases curtas. Siga as regras da 
 
 - O app ainda não existe: o que se diz do app fica no futuro ("vai ter", "vai mostrar"). A única chamada é seguir o perfil.
 - Linguagem de conversa entre motoristas: "tá", "pra", sem termo técnico. A pessoa tem que entender em 2 s. O gancho prende pela primeira frase, pela imagem e pelo tom.
+- Gancho, validado no T1 em 25/11. O 02, o 03b e o 06 seguraram 78% em 1 s no TikTok; os números estão em `social/_estrategia/analise-2026-11-25.md`. O gancho segue quatro regras:
+  - A primeira frase é uma situação de tensão que todo motorista de elétrico reconhece, em até 2,5 s: a bateria no fim e um carregador que falha (não libera, apagado, ocupado ou com defeito).
+  - A voz entra em 0,2 s (`"entrada": 0.2`, já no modelo do roteiro).
+  - Algo se mexe desde o primeiro quadro. Nada de tela de app parada no gancho. O `quadros.mjs` falha se o quadro de 0 s e o de 0,5 s forem iguais.
+  - Até os 3 s, a fala diz o que a pessoa vai ganhar se ficar, como "Três motivos e o que fazer".
 - Nenhum número da pesquisa no vídeo. Textos de produto saem de `src/data/copy.ts`.
 - Status sempre com ícone e texto. Nada de chama, fumaça ou fogo. Sem lugar real reconhecível.
 - Voz: Matheus Alves (`wSbRKUhF0tUmkj9exCud`), `eleven_v4`, pelo conector claude.ai ElevenLabs, sem chave de API. Teto da narração: 2.000 créditos por vídeo. Imagem ou vídeo por IA tem conta separada e só roda com o ok do Rafael para o valor orçado (`estimate_only` antes).
@@ -23,7 +28,7 @@ Fale com o Rafael em português do Brasil, com frases curtas. Siga as regras da 
 ## Passos
 
 1. **Tema.** Leia a semana-modelo e os pilares em `C:\Users\Rafael\Documents\Obsidian Vault\Projetos\Mapere\06-plano-redes-sociais.md` e veja quais pilares os vídeos anteriores (`social/NN-*/plano.md`) já cobriram. Proponha 3 temas, cada um com gancho e título, com AskUserQuestion. Se o Rafael pedir base em dados, leia a planilha "Respostas-formulario-mapere" no Drive.
-2. **Roteiro: checkpoint 1.** Escreva as falas (35 a 45 s, ~90 a 110 palavras), o título fixo e os capítulos. Mostre o roteiro inteiro numa pergunta e só siga com o ok dele.
+2. **Roteiro: checkpoint 1.** Escreva as falas (35 a 45 s, ~90 a 110 palavras), o título fixo e os capítulos. Antes de mostrar, confira as duas primeiras frases contra a regra do gancho: a situação de tensão em até 2,5 s e a promessa até os 3 s. Mostre o roteiro inteiro numa pergunta e só siga com o ok dele.
 3. **Pasta.** Crie `social/NN-slug/` com `_fonte/`, `video/` e `_ref/`. Copie `_motor/modelo/roteiro.json` e adapte; rode `node _motor/voz.mjs NN` até tela e fala baterem, depois `node _motor/dados.mjs NN`.
 4. **Fundo por IA (opcional, só se o gancho pedir uma cena real).**
    - Orce primeiro. Imagem 9:16 2K com 2 variações custa ~550 créditos. Vídeo custa de 1.450 a 14.000 por clipe e só entra com pedido explícito.
