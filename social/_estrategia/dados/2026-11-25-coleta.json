@@ -160,7 +160,16 @@
         "postado": "2026-11-17 19:03", "visualizacoes": 1501, "alcance": 1284, "visualizadores": 1279, "interacoes_liquidas": 41, "curtidas": 38, "comentarios": 0, "compartilhamentos": 1, "salvamentos": 0, "seguidores": 2, "tempo_total": "5 h 52 min", "tempo_medio_s": 16,
         "chegada": { "inicio": "2026-11-17 19:18 (Brasília)", "acumulado_por_hora": { "0.25": 1, "0.5": 19, "0.75": 63, "1": 134, "1.25": 161, "1.75": 172, "2.75": 178, "3.75": 193, "4.75": 213, "5.75": 216, "7.75": 219, "9.75": 224, "11.75": 236, "12.75": 270, "13.75": 301, "14.75": 321, "15.75": 367, "16.75": 522, "17.75": 701, "18.75": 945, "19.75": 1116, "20.75": 1204, "21.75": 1280, "22.75": 1407, "23.75": 1471, "26.75": 1476, "29.75": 1479, "53.75": 1481, "167.75": 1481 } },
         "painel": "Este reel obteve mais visualizações e mais interações em comparação com seus reels típicos",
-        "instagram_com": { "visualizacoes_seguidores_pct": 0, "interacoes_seguidores_pct": 0, "contas_com_engajamento": 42, "atividade_do_perfil": 2, "seguidores": 2 }
+        "instagram_com": { "visualizacoes_seguidores_pct": 0, "interacoes_seguidores_pct": 0, "contas_com_engajamento": 42, "atividade_do_perfil": 2, "seguidores": 2 },
+        "app_celular": {
+          "fonte": "gravação de tela do Rafael, 25/11 às 15h00; quadros em dados/03b-instagram-retencao.png",
+          "reposts": 2,
+          "taxas_pct": { "reels_pulados": 30.8, "compartilhamentos": 0.1, "curtidas": 3.0, "salvamentos": 0.0, "repost": 0.2, "comentarios": 0.0 },
+          "taxas_avaliacao": { "reels_pulados": "mais baixo", "compartilhamentos": "mais alto", "curtidas": "mais alto", "salvamentos": "típico", "repost": "mais baixo", "comentarios": "típico" },
+          "origem_pct": { "aba_reels": 94.9, "explorar": 4.9, "perfil": 0.1, "feed": 0.1 },
+          "retencao_digitalizada_pct": { "1": 84, "2": 77, "3": 72, "4": 69, "5": 62, "6": 57, "7": 52, "8": 51, "10": 48, "12": 45, "15": 43, "20": 39, "25": 31, "30": 28, "35": 25, "fim": 10 },
+          "nota_retencao": "o app não mostra números; curva digitalizada pelos pixels do gráfico, com a grade de 100/50/0 como régua; erro de uns 2 pontos"
+        }
       },
       "04b": { "postado": "2026-11-18 19:49", "visualizacoes": 149, "alcance": 130, "visualizadores": 135, "interacoes_liquidas": 5, "curtidas": 4, "comentarios": 0, "compartilhamentos": 0, "salvamentos": 0, "seguidores": 0, "tempo_total": "13 min 36 s", "tempo_medio_s": 6,
         "instagram_com": { "visualizacoes_seguidores_pct": 2, "interacoes_seguidores_pct": 0, "contas_com_engajamento": 4, "atividade_do_perfil": 0, "seguidores": 0 } },
@@ -168,7 +177,16 @@
       "06": {
         "postado": "2026-11-20 19:00", "visualizacoes": 814, "alcance": 756, "visualizadores": 737, "interacoes_liquidas": 24, "curtidas": 19, "comentarios": 0, "compartilhamentos": 0, "salvamentos": 3, "seguidores": 5, "tempo_total": "2 h 23 min", "tempo_medio_s": 11,
         "chegada": { "inicio": "2026-11-20 19:15 (Brasília)", "acumulado_por_hora": { "0.25": 5, "0.5": 37, "0.75": 88, "1": 120, "1.25": 124, "1.75": 128, "2.75": 134, "3.75": 142, "4.75": 149, "5.75": 168, "6.75": 179, "7.75": 187, "8.75": 199, "9.75": 206, "10.75": 221, "11.75": 256, "12.75": 277, "13.75": 315, "14.75": 365, "15.75": 436, "16.75": 533, "17.75": 576, "18.75": 624, "19.75": 665, "20.75": 700, "21.75": 731, "22.75": 777, "23.75": 808, "26.75": 810, "47.75": 812, "107.75": 812 } },
-        "instagram_com": { "visualizacoes_seguidores_pct": 0.6, "interacoes_seguidores_pct": 8.3, "contas_com_engajamento": 22, "atividade_do_perfil": 5, "seguidores": 5 }
+        "instagram_com": { "visualizacoes_seguidores_pct": 0.6, "interacoes_seguidores_pct": 8.3, "contas_com_engajamento": 22, "atividade_do_perfil": 5, "seguidores": 5 },
+        "app_celular": {
+          "fonte": "gravação de tela do Rafael, 25/11 às 15h01; quadros em dados/06-instagram-retencao.png",
+          "reposts": 2,
+          "taxas_pct": { "reels_pulados": 48.4, "compartilhamentos": 0.0, "curtidas": 2.6, "salvamentos": 0.4, "repost": 0.3, "comentarios": 0.0 },
+          "taxas_avaliacao": { "reels_pulados": "mais baixo", "compartilhamentos": "típico", "curtidas": "mais baixo", "salvamentos": "mais alto", "repost": "mais baixo", "comentarios": "típico" },
+          "origem_pct": { "aba_reels": 93.2, "explorar": 5.4, "perfil": 0.5, "feed": 0.5, "stories": 0.1 },
+          "retencao_digitalizada_pct": { "1": 81, "2": 61, "3": 55, "4": 51, "5": 49, "6": 46, "7": 45, "8": 43, "10": 42, "12": 40, "15": 36, "20": 28, "25": 22, "30": 12, "35": 7, "fim": 5 },
+          "nota_retencao": "o app não mostra números; curva digitalizada pelos pixels do gráfico, com a grade de 100/50/0 como régua; erro de uns 2 pontos"
+        }
       }
     },
     "stories": [

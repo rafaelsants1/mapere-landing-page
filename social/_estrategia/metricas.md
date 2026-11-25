@@ -259,9 +259,45 @@ Quem assistiu (aba Espectadores):
 
 O 02 não apareceu na tabela do Business Suite: as 218 visualizações saíram da aba de reels do perfil. Os stories dos dias 18 e 19/11 tiveram 0 visualização, e o de 20/11, 4.
 
-As quatro últimas linhas saíram de "Ver insights" no instagram.com, em 25/11, logado como @mapere.app. Na web, o painel do reel mostra só visualizações, interações e perfil. Retenção, taxa de pulo e origem (aba Reels, Explorar, perfil) continuam só no app do celular.
+As quatro últimas linhas saíram de "Ver insights" no instagram.com, em 25/11, logado como @mapere.app. Na web, o painel do reel mostra só visualizações, interações e perfil. Retenção, taxa de pulo e origem (aba Reels, Explorar, perfil) só aparecem no app do celular: para o 03b e o 06, vieram da gravação de tela, mais abaixo.
 
 A atividade do perfil bate com os seguidores ganhos: 5 e 5 no 06, 2 e 2 no 03b. Quem chegou ao perfil seguiu. O 06 levou ao perfil 0,68% de quem o viu (5 de 737), e o 03b, 0,16% (2 de 1.279).
+
+**Pelo app do celular (03b e 06).** O Rafael mandou em 25/11 uma gravação de tela, das 15h00, dos insights dos dois reels no app. Os quadros usados estão em `dados/03b-instagram-retencao.png` e `dados/06-instagram-retencao.png`.
+
+| | 03b | 06 |
+|---|---|---|
+| Taxa de reels pulados | 30,8% (o app diz "mais baixo" que o típico da conta) | 48,4% ("mais baixo") |
+| Taxa de compartilhamentos | 0,1% ("mais alto") | 0,0% ("típico") |
+| Taxa de curtidas | 3,0% ("mais alto") | 2,6% ("mais baixo") |
+| Taxa de salvamentos | 0,0% ("típico") | 0,4% ("mais alto") |
+| Taxa de repost | 0,2% ("mais baixo") | 0,3% ("mais baixo") |
+| Taxa de comentários | 0,0% ("típico") | 0,0% ("típico") |
+| Reposts | 2 | 2 |
+| Origem: aba Reels / Explorar / perfil / feed / stories | 94,9% / 4,9% / 0,1% / 0,1% / não aparece | 93,2% / 5,4% / 0,5% / 0,5% / 0,1% |
+
+As taxas são calculadas sobre os visualizadores: 38 curtidas ÷ 1.279 = 3,0%. O app lista as taxas "em ordem de importância para o alcance", e a de reels pulados vem em primeiro.
+
+Retenção no Instagram, lida no gráfico "Por quanto tempo as pessoas assistiram ao seu reel". O app não mostra os números; a curva foi digitalizada pixel a pixel, com a grade de 100%, 50% e 0 como régua, e o erro é de uns 2 pontos. A leitura bate com a taxa de pulo: no 03b, 72% em 3 s e 30,8% de pulos; no 06, 55% e 48,4%. Ao lado, o TikTok, para comparar:
+
+| Segundo | 03b Instagram | 03b TikTok | 06 Instagram | 06 TikTok |
+|---|---|---|---|---|
+| 1 | 84% | 78% | 81% | 78% |
+| 2 | 77% | 60% | 61% | 50% |
+| 3 | 72% | 54% | 55% | 39% |
+| 6 | 57% | 37% | 46% | 28% |
+| 10 | 48% | 30% | 42% | 22% |
+| 15 | 43% | 26% | 36% | 18% |
+| 20 | 39% | 23% | 28% | 12% |
+| 25 | 31% | 19% | 22% | 9% |
+| 30 | 28% | 17% | 12% | 7% |
+| 35 | 25% | 14% | 7% | 5% |
+| fim | 10% | 6% | 5% | 5% |
+
+- No Instagram, os dois seguram mais que no TikTok, e a ordem entre eles é a mesma nas duas redes: o 03b segura mais que o 06 em todos os segundos.
+- No 06, a queda maior vem entre 1 e 2 s (de 81% para 61%). No 03b, a curva desce devagar.
+- No 06, a segunda metade perde mais: de 36% em 15 s para 12% em 30 s. Nesse trecho estão "A ideia nasceu em Aracaju", "em construção" e "as primeiras telas". O 03b ainda tem 28% em 30 s, no terceiro capítulo.
+- Na gravação, a capa do 03b no perfil do Instagram ainda é o quadro do celular do 03 original, e o 06 aparece com o rótulo "Conteúdo de IA".
 
 Conta no Instagram, últimos 30 dias (instagram.com, Painel profissional > Insights, em 25/11):
 - 3.094 visualizações, 0,7% delas de seguidores, de 2.524 visualizadores. Os reels são 99,9% das visualizações.
