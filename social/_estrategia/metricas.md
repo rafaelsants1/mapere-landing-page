@@ -252,10 +252,22 @@ Quem assistiu (aba Espectadores):
 | Compartilhamentos | não lido | 0 | 1 | 0 | 0 | 0 |
 | Salvamentos | não lido | 0 | 0 | 0 | 0 | 3 |
 | Seguidores ganhos | não lido | 0 | 2 | 0 | 1 | 5 |
+| Visualizações de seguidores / de não seguidores (instagram.com) | não lido | não lido | 0% / 100% | 2% / 98% | não lido | 0,6% / 99,4% |
+| Interações de seguidores (instagram.com) | não lido | não lido | 0% | 0% | não lido | 8,3% |
+| Contas com engajamento (instagram.com) | não lido | não lido | 42 | 4 | não lido | 22 |
+| Atividade do perfil (instagram.com) | não lido | não lido | 2 | 0 | não lido | 5 |
 
 O 02 não apareceu na tabela do Business Suite: as 218 visualizações saíram da aba de reels do perfil. Os stories dos dias 18 e 19/11 tiveram 0 visualização, e o de 20/11, 4.
 
-Retenção, taxa de pulo e origem continuam só no app do celular. O instagram.com abriu no navegador em 25/11, mas logado em outra conta, sem acesso aos insights do @mapere.app.
+As quatro últimas linhas saíram de "Ver insights" no instagram.com, em 25/11, logado como @mapere.app. Na web, o painel do reel mostra só visualizações, interações e perfil. Retenção, taxa de pulo e origem (aba Reels, Explorar, perfil) continuam só no app do celular.
+
+A atividade do perfil bate com os seguidores ganhos: 5 e 5 no 06, 2 e 2 no 03b. Quem chegou ao perfil seguiu. O 06 levou ao perfil 0,68% de quem o viu (5 de 737), e o 03b, 0,16% (2 de 1.279).
+
+Conta no Instagram, últimos 30 dias (instagram.com, Painel profissional > Insights, em 25/11):
+- 3.094 visualizações, 0,7% delas de seguidores, de 2.524 visualizadores. Os reels são 99,9% das visualizações.
+- 75 interações, 1,3% delas de seguidores, de 69 contas com engajamento.
+- 5 visitas ao perfil e 9 seguidores no total.
+- Conteúdo com mais visualizações: 1,4 mil (17/11, o 03b), 812 (20/11, o 06), 217 (11/11, o 02), 149 (18/11, o 04b) e 126 (16/11, o 05).
 
 Como as visualizações chegaram (gráfico do detalhe do reel, valor acumulado depois de postar, no último ponto do gráfico antes de cada marca):
 
