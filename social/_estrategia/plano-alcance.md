@@ -157,7 +157,7 @@ O T1 passou, e o T3 começa com a abertura dele. Decisões do Rafael em 25/11.
 
 | Semana | Posts | Leitura |
 |---|---|---|
-| 23 a 27/11 | sex 27: post leve com as primeiras telas do app (Figma), que cumpre a promessa do 06 | |
+| 23 a 27/11 | qua 25, 19h: post leve `social/07-primeiras-telas`, que cumpre a promessa do 06. É um carrossel com as quatro telas da landing; as do Figma ficaram de fora, por decisão do Rafael em 25/11. Estava marcado para sexta, 27/11 | sex 27/11, depois das 19h: visitas ao perfil e seguidores por 1.000 visualizações, comparados com o 06 |
 | 30/11 a 04/12 | T3, todos com a receita da [análise](analise-2026-11-25.md) (seção 6). seg 30: curto, "A recarga para sozinha no meio: por quê". qua 02: longo, "Carregador quebrado na estrada: como não ficar na mão". sex 04: curto, "Meu carro não carrega nesse carregador". | T3 na segunda 07/12, 72 h depois do último |
 | 07 a 11/12 | seg 07, qua 09 e sex 11: T4, três vídeos na duração que ganhar o T3, com pedido de envio | T4 na segunda 14/12 |
 
